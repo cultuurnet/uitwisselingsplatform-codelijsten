@@ -1,0 +1,23 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+
+<https://data.cultuurparticipatie.be/id/conceptscheme/PrijsCategorieType>
+    a skos:ConceptScheme ;
+    skos:prefLabel "conceptscheme PrijsCategorieType" ;
+    skos:definition "Codelijst om het type van PrijsCategorie aan te geven." .
+
+
+<https://data.cultuurparticipatie.be/id/concept/PrijsCategorieType/basis> 
+    a skos:Concept ;
+    skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/PrijsCategorieType> ;
+    skos:prefLabel "basistarief"@nl ;
+    skos:definition "Basisprijs voor deelnemers zonder korting."@nl ;
+    skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/PrijsCategorieType> .
+
+<https://data.cultuurparticipatie.be/id/concept/PrijsCategorieType/tarief> 
+    a skos:Concept ;
+    skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/PrijsCategorieType> ;
+    skos:prefLabel "tarief"@nl ;
+    skos:definition "Niet-gespecifieerd (kortings)tarief voor deelnemers"@nl ;
+    skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/PrijsCategorieType> .

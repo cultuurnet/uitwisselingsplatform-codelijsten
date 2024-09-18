@@ -1,0 +1,179 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+
+<https://data.cultuurparticipatie.be/id/conceptscheme/Locatietype>
+    a skos:ConceptScheme ;
+    skos:prefLabel "conceptscheme Locatietype" ;
+    skos:definition "Codelijst voor het type van een Locatie." .
+
+<https://data.cultuurparticipatie.be/id/concept/Locatietype/natuurgebiedOfPark>
+    a skos:Concept ;
+    skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/Locatietype> ;
+    skos:prefLabel "Natuurgebied of park"@nl, "Zone naturel ou parc"@fr, "Landschaft oder Natur"@de, "Landscape or nature reserve"@en ;
+    skos:definition "Een gebied met ongerepte natuur of aangelegd park, geschikt voor recreatie en ontspanning in een natuurlijke omgeving."@nl ;
+    skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/Locatietype> ;
+    skos:related <https://taxonomy.uitdatabank.be/terms/0.15.0.0.0> ;
+    skos:related  <https://www.wikidata.org/entity/Q10594991> .
+
+<https://data.cultuurparticipatie.be/id/concept/Locatietype/monument>
+    a skos:Concept ;
+    skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/Locatietype> ;
+    skos:prefLabel "Monument"@nl, "Monument"@fr, "Denkmal"@de, "Monument"@en ;
+    skos:definition "Een bouwwerk, standbeeld, gedenksteen, enz., dat vanwege zijn historische, artistieke of cultuurhistorische waarde behouden moet blijven."@nl ;
+    skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/Locatietype> ;
+    skos:related <https://taxonomy.uitdatabank.be/terms/0.14.0.0.0> ;
+    skos:related  <https://www.wikidata.org/entity/Q4989906> .
+
+<https://data.cultuurparticipatie.be/id/concept/Locatietype/recreatiedomeinOfCentrum>
+    a skos:Concept ;
+    skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/Locatietype> ;
+    skos:prefLabel "Recreatiedomein of centrum"@nl, "Centre de loisirs ou centre de récréation"@fr, "Recreation Area oder ûcentrum"@de, "Recreation center"@en ;
+    skos:definition "Een plek die speciaal is ingericht voor recreatie, ontspanning en vrijetijdsbesteding van mensen."@nl ;
+    skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/Locatietype> ;
+    skos:related <https://taxonomy.uitdatabank.be/terms/0.53.0.0.0> ;
+    skos:related  <https://www.wikidata.org/entity/Q338112> .
+
+<https://data.cultuurparticipatie.be/id/concept/Locatietype/themaOfPretpark>
+    a skos:Concept ;
+    skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/Locatietype> ;
+    skos:prefLabel "Thema of pretpark"@nl, "Parc à thème ou parc d'attractions"@fr, "Unterhaltungspark"@de, "Theme park"@en ;
+    skos:definition "Een park dat speciaal is ingericht voor amusement en vermaak, vaak rond een bepaald thema."@nl ;
+    skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/Locatietype> ;
+    skos:related <https://taxonomy.uitdatabank.be/terms/0.41.0.0.0> ;
+    skos:related  <https://www.wikidata.org/entity/Q2416723> .
+
+<https://data.cultuurparticipatie.be/id/concept/Locatietype/archeologischeSite>
+    a skos:Concept ;
+    skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/Locatietype> ;
+    skos:prefLabel "Archeologische site"@nl, "Site archéologique"@fr, "Archäologische Stätte"@de, "Archaeological site"@en ;
+    skos:definition "Een locatie waar archeologische vondsten worden gedaan of waar archeologische opgravingen plaatsvinden."@nl ;
+    skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/Locatietype> ;
+    skos:related <https://taxonomy.uitdatabank.be/terms/3CuHvenJ+EGkcvhXLg9Ykg> ;
+    skos:related  <https://www.wikidata.org/entity/Q839954> .
+
+<https://data.cultuurparticipatie.be/id/concept/Locatietype/schoolOfOnderwijscentrum>
+    a skos:Concept ;
+    skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/Locatietype> ;
+    skos:prefLabel "School of onderwijscentrum"@nl, "École ou centre éducatif"@fr, "Schule oder Bildungszentrum"@de, "School or educational centre"@en ;
+    skos:definition "Een instelling die is gericht op onderwijs en scholing."@nl ;
+    skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/Locatietype> ;
+    skos:related <https://taxonomy.uitdatabank.be/terms/rJRFUqmd6EiqTD4c7HS90w> ;
+    skos:related  <https://www.wikidata.org/entity/Q2385804> .
+
+<https://data.cultuurparticipatie.be/id/concept/Locatietype/sportcentrum>
+    a skos:Concept ;
+    skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/Locatietype> ;
+    skos:prefLabel "Sportcentrum"@nl, "Centre sportif"@fr, "Sportzentrum"@de, "Sports Centre"@en ;
+    skos:definition "Een plek waar sportbeoefening centraal staat, met faciliteiten zoals sportvelden, zwembaden en fitnessruimtes."@nl ;
+    skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/Locatietype> ;
+    skos:related <https://taxonomy.uitdatabank.be/terms/eBwaUAAhw0ur0Z02i5ttnw> ;
+    skos:related  <https://www.wikidata.org/entity/Q1076486> .
+
+<https://data.cultuurparticipatie.be/id/concept/Locatietype/winkel>
+    a skos:Concept ;
+    skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/Locatietype> ;
+    skos:prefLabel "Winkel"@nl, "Magasin"@fr, "Laden"@de, "Shop"@en ;
+    skos:definition "Een commerciële instelling waar goederen of diensten worden verkocht."@nl ;
+    skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/Locatietype> ;
+    skos:related <https://taxonomy.uitdatabank.be/terms/VRC6HX0Wa063sq98G5ciqw> ;
+    skos:related  <https://www.wikidata.org/entity/Q213441> .
+
+<https://data.cultuurparticipatie.be/id/concept/Locatietype/museumOfGalerij>
+    a skos:Concept ;
+    skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/Locatietype> ;
+    skos:prefLabel "Museum of galerij"@nl, "Musée ou galerie"@fr, "Museum oder Galerie"@de, "Museum or gallery"@en ;
+    skos:definition "Een instelling waar kunstwerken, historische objecten of andere collecties worden tentoongesteld."@nl ;
+    skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/Locatietype> ;
+    skos:related <https://taxonomy.uitdatabank.be/terms/GnPFp9uvOUyqhOckIFMKmg> ;
+    skos:related  <https://www.wikidata.org/entity/Q33506> .
+
+<https://data.cultuurparticipatie.be/id/concept/Locatietype/jeugdhuisOfJeugdcentrum>
+    a skos:Concept ;
+    skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/Locatietype> ;
+    skos:prefLabel "Jeugdhuis of jeugdcentrum"@nl, "Maison de jeunes ou centre de jeunesse"@fr, "Jugendzentrum"@de, "Youth centre"@en ;
+    skos:definition "Een ontmoetingsplek voor jongeren waar activiteiten worden georganiseerd."@nl ;
+    skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/Locatietype> ;
+    skos:related <https://taxonomy.uitdatabank.be/terms/JCjA0i5COUmdjMwcyjNAFA> ;
+    skos:related  <https://www.wikidata.org/entity/Q1302299> .
+
+<https://data.cultuurparticipatie.be/id/concept/Locatietype/cultuurOfOntmoetingscentrum>
+    a skos:Concept ;
+    skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/Locatietype> ;
+    skos:prefLabel "Cultuur- of ontmoetingscentrum"@nl, "Centre culturel ou centre de réunion"@fr, "Kultur- oder Begegnungszentrum"@de, "Cultural centre"@en ;
+    skos:definition "Een locatie waar culturele activiteiten plaatsvinden en waar mensen samenkomen voor diverse sociale en culturele evenementen."@nl ;
+    skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/Locatietype> ;
+    skos:related <https://taxonomy.uitdatabank.be/terms/Yf4aZBfsUEu2NsQqsprngw> ;
+    skos:related  <https://www.wikidata.org/entity/Q1329623> .
+
+<https://data.cultuurparticipatie.be/id/concept/Locatietype/discotheek>
+    a skos:Concept ;
+    skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/Locatietype> ;
+    skos:prefLabel "Discotheek"@nl, "Discothèque"@fr, "Diskothek"@de, "Nightclub"@en ;
+    skos:definition "Een uitgaansgelegenheid waar gedanst wordt op muziek die wordt gedraaid door een DJ."@nl ;
+    skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/Locatietype> ;
+    skos:related <https://taxonomy.uitdatabank.be/terms/YVBc8KVdrU6XfTNvhMYUpg> ;
+    skos:related  <https://www.wikidata.org/entity/Q1228895> .
+
+<https://data.cultuurparticipatie.be/id/concept/Locatietype/bibliotheekOfDocumentatiecentrum>
+    a skos:Concept ;
+    skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/Locatietype> ;
+    skos:prefLabel "Bibliotheek of documentatiecentrum"@nl, "Bibliothèque ou centre de documentation"@fr, "Bibliothek oder Dokumentationszentrum"@de, "Library or documentation centre"@en ;
+    skos:definition "Een instelling waar boeken, tijdschriften en andere media worden uitgeleend en waar informatie geraadpleegd kan worden."@nl ;
+    skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/Locatietype> ;
+    skos:related <https://taxonomy.uitdatabank.be/terms/kI7uAyn2uUu9VV6Z3uWZTA> ;
+    skos:related  <https://www.wikidata.org/entity/Q7075> .
+
+<https://data.cultuurparticipatie.be/id/concept/Locatietype/bioscoop>
+    a skos:Concept ;
+    skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/Locatietype> ;
+    skos:prefLabel "Bioscoop"@nl, "Cinéma"@fr, "Kino"@de, "Cinema"@en ;
+    skos:definition "Een locatie waar films worden vertoond voor publiek."@nl ;
+    skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/Locatietype> ;
+    skos:related <https://taxonomy.uitdatabank.be/terms/BtVNd33sR0WntjALVbyp3w> ;
+    skos:related  <https://www.wikidata.org/entity/Q41253> .
+
+<https://data.cultuurparticipatie.be/id/concept/Locatietype/horeca>
+    a skos:Concept ;
+    skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/Locatietype> ;
+    skos:prefLabel "Horeca"@nl, "Horeca"@fr, "Gastgewerbe"@de, "Hospitality"@en ;
+    skos:definition "Een verzamelnaam voor gelegenheden waar eten en/of drinken wordt geserveerd, zoals restaurants, cafés en bars."@nl ;
+    skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/Locatietype> ;
+    skos:related <https://taxonomy.uitdatabank.be/terms/ekdc4ATGoUitCa0e6me6xA> ;
+    skos:related  <https://www.wikidata.org/entity/Q1431026> .
+
+<https://data.cultuurparticipatie.be/id/concept/Locatietype/speeltuin>
+    a skos:Concept ;
+    skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/Locatietype> ;
+    skos:prefLabel "Speeltuin"@nl, "Aire de jeu"@fr, "Spielplatz"@de, "Playground"@en ;
+    skos:definition "Een plek met speeltoestellen en ruimte om te spelen, speciaal voor kinderen."@nl ;
+    skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/Locatietype> ;
+    skos:related <https://taxonomy.uitdatabank.be/terms/wwjRVmExI0w6xfQwT1KWpx> ;
+    skos:related  <https://www.wikidata.org/entity/Q11875349> .
+
+<https://data.cultuurparticipatie.be/id/concept/Locatietype/zaalOfExpohal>
+    a skos:Concept ;
+    skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/Locatietype> ;
+    skos:prefLabel "Zaal of expohal"@nl, "Hall ou salle d'expo"@fr, "Saal oder Expo-Halle"@de, "Hall or exhibition hall"@en ;
+    skos:definition "Een ruimte die wordt gebruikt voor evenementen, tentoonstellingen of bijeenkomsten."@nl ;
+    skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/Locatietype> ;
+    skos:related <https://taxonomy.uitdatabank.be/terms/OyaPaf64AEmEAYXHeLMAtA> ;
+    skos:related  <https://www.wikidata.org/entity/Q17350442> .
+
+<https://data.cultuurparticipatie.be/id/concept/Locatietype/openbareRuimte>
+    a skos:Concept ;
+    skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/Locatietype> ;
+    skos:prefLabel "Openbare ruimte"@nl, "Espace public"@fr, "Der öffentliche Raum"@de, "Public space"@en ;
+    skos:definition "Een ruimte die voor iedereen toegankelijk is en vaak in open lucht, zoals pleinen, parken en straten."@nl ;
+    skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/Locatietype> ;
+    skos:related <https://taxonomy.uitdatabank.be/terms/0.8.0.0.0> ;
+    skos:related  <https://www.wikidata.org/entity/Q294440> .
+
+<https://data.cultuurparticipatie.be/id/concept/Locatietype/theater>
+    a skos:Concept ;
+    skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/Locatietype> ;
+    skos:prefLabel "Theater"@nl, "Théâtre"@fr, "Theater"@de, "Theatre"@en ;
+    skos:definition "Een gebouw of ruimte waar theatervoorstellingen worden opgevoerd voor publiek."@nl ;
+    skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/Locatietype> ;
+    skos:related <https://taxonomy.uitdatabank.be/terms/8.70.0.0.0> ;
+    skos:related  <https://www.wikidata.org/entity/Q24354> .

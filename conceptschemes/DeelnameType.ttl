@@ -1,0 +1,23 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+
+<https://data.cultuurparticipatie.be/id/conceptscheme/DeelnameType>
+    a skos:ConceptScheme ;
+    skos:prefLabel "conceptscheme DeelnameType" ;
+    skos:definition "Codelijst om aan te geven in welke hoedanigheid een participant deelneemt aan een Activiteit." .
+
+
+<https://data.cultuurparticipatie.be/id/concept/DeelnameType/bezoeker> 
+    a skos:Concept ;
+    skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/DeelnameType> ;
+    skos:prefLabel "bezoeker"@nl ;
+    skos:definition "De participant neemt de rol van bezoeker op bij de Activiteit"@nl ;
+    skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/DeelnameType> .
+
+<https://data.cultuurparticipatie.be/id/concept/DeelnameType/toeschouwer> 
+    a skos:Concept ;
+    skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/DeelnameType> ;
+    skos:prefLabel "toeschouwer"@nl ;
+    skos:definition "De participant neemt de rol van toeschouwer op bij de Activiteit"@nl ;
+    skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/DeelnameType> .

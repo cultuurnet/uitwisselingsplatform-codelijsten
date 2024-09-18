@@ -1,0 +1,30 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+
+<https://data.cultuurparticipatie.be/id/conceptscheme/Aanwezigheidsmodus>
+    a skos:ConceptScheme ;
+    skos:prefLabel "conceptscheme aanwezigheidsmodus" ;
+    skos:definition "Codelijst om aan te geven of een Activiteit fysiek, online of hybride bijgewoond kan worden." .
+
+
+<https://data.cultuurparticipatie.be/id/concept/Aanwezigheidsmodus/fysiek> 
+    a skos:Concept ;
+    skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/Aanwezigheidsmodus> ;
+    skos:prefLabel "fysiek"@nl ;
+    skos:definition "De Activiteit gaat door op een fysieke locatie"@nl ;
+    skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/Aanwezigheidsmodus> .
+
+<https://data.cultuurparticipatie.be/id/concept/Aanwezigheidsmodus/online> 
+    a skos:Concept ;
+    skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/Aanwezigheidsmodus> ;
+    skos:prefLabel "online"@nl ;
+    skos:definition "De Activiteit gaat online door"@nl ;
+    skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/Aanwezigheidsmodus> .
+
+<https://data.cultuurparticipatie.be/id/concept/Aanwezigheidsmodus/hybride> 
+    a skos:Concept ;
+    skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/Aanwezigheidsmodus> ;
+    skos:prefLabel "hybride"@nl ;
+    skos:definition "De Activiteit kan zowel online als fysiek bijgewoond worden"@nl ;
+    skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/Aanwezigheidsmodus> .

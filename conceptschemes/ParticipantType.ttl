@@ -1,0 +1,37 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+
+<https://data.cultuurparticipatie.be/id/conceptscheme/ParticipantType>
+    a skos:ConceptScheme ;
+    skos:prefLabel "conceptscheme ParticipantType" ;
+    skos:definition "Codelijst om het algemeen kenmerk van de participant te beschrijven." .
+
+
+<https://data.cultuurparticipatie.be/id/concept/ParticipantType/natuurlijkPersoon> 
+    a skos:Concept ;
+    skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/ParticipantType> ;
+    skos:prefLabel "Natuurlijk Persoon"@nl ;
+    skos:definition "De participant neemt deel aan de Activiteit als een natuurlijk persoon"@nl ;
+    skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/ParticipantType> .
+
+<https://data.cultuurparticipatie.be/id/concept/ParticipantType/rechtspersoon> 
+    a skos:Concept ;
+    skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/ParticipantType> ;
+    skos:prefLabel "Rechtspersoon"@nl ;
+    skos:definition "De participant neemt deel aan de Activiteit als een rechtspersoon"@nl ;
+    skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/ParticipantType> .
+
+<https://data.cultuurparticipatie.be/id/concept/ParticipantType/feitelijkeVereniging> 
+    a skos:Concept ;
+    skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/ParticipantType> ;
+    skos:prefLabel "Feitelijke vereniging"@nl ;
+    skos:definition "De participant neemt deel aan de Activiteit als een feitelijke vereniging"@nl ;
+    skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/ParticipantType> .
+
+<https://data.cultuurparticipatie.be/id/concept/ParticipantType/publiekeOrganisatie> 
+    a skos:Concept ;
+    skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/ParticipantType> ;
+    skos:prefLabel "Publieke organisatie"@nl ;
+    skos:definition "De participant neemt deel aan de Activiteit als een Publieke organisatie"@nl ;
+    skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/ParticipantType> .

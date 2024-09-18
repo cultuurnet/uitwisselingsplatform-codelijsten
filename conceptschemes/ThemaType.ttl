@@ -1,0 +1,700 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+
+<https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType>
+    a skos:ConceptScheme ;
+    skos:prefLabel "conceptscheme thema" ;
+    skos:definition "Codelijst voor het thema van een Activiteit." .
+
+<https://data.cultuurparticipatie.be/id/concept/ThemaType/circus> 
+    a skos:Concept ;
+    skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    skos:prefLabel "Circus"@nl, "Cirque"@fr, "Zirkus"@de, "Circus"@en ;
+    skos:definition "Een vorm van entertainment met acrobaten, clowns, dierenacts en andere spectaculaire shows."@nl ;
+    skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    owl:sameAs <https://taxonomy.uitdatabank.be/terms/0.52.0.0.0> .
+
+
+<https://data.cultuurparticipatie.be/id/concept/ThemaType/antiekEnBrocante> 
+    a skos:Concept ;
+    skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    skos:prefLabel "Antiek en brocante"@nl, "Antiquités ou brocantes"@fr, "Antik-und Flohmarkt"@de, "Antiques"@en ;
+    skos:definition "Oude, waardevolle voorwerpen en meubels die vaak verzameld of verkocht worden."@nl ;
+    skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    owl:sameAs <https://taxonomy.uitdatabank.be/terms/1.17.0.0.0> .
+
+
+<https://data.cultuurparticipatie.be/id/concept/ThemaType/architectuur> 
+    a skos:Concept ;
+    skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    skos:prefLabel "Architectuur"@nl, "Architecture"@fr, "Architektur"@de, "Architecture"@en ;
+    skos:definition "De kunst en wetenschap van het ontwerpen en bouwen van gebouwen en structuren."@nl ;
+    skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    owl:sameAs <https://taxonomy.uitdatabank.be/terms/1.2.1.0.0> .
+
+
+<https://data.cultuurparticipatie.be/id/concept/ThemaType/audiovisueleKunst> 
+    a skos:Concept ;
+    skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    skos:prefLabel "Audiovisuele kunst"@nl, "Arts audiovisuels"@fr, "Audiovisuelle Kunst"@de, "Audiovisual arts"@en ;
+    skos:definition "Kunstvormen die gebruik maken van beeld en geluid, zoals video-installaties en mediakunst."@nl ;
+    skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    owl:sameAs <https://taxonomy.uitdatabank.be/terms/1.1.0.0.0> .
+
+
+<https://data.cultuurparticipatie.be/id/concept/ThemaType/beeldhouwkunst> 
+    a skos:Concept ;
+    skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    skos:prefLabel "Beeldhouwkunst"@nl, "Sculpture"@fr, "Skulptur"@de, "Sculpture"@en ;
+    skos:definition "De kunst van het creëren van driedimensionale sculpturen en beelden."@nl ;
+    skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    owl:sameAs <https://taxonomy.uitdatabank.be/terms/1.0.2.0.0> .
+
+
+<https://data.cultuurparticipatie.be/id/concept/ThemaType/fotografie> 
+    a skos:Concept ;
+    skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    skos:prefLabel "Fotografie"@nl, "Photographie"@fr, "Fotografie"@de, "Photography"@en ;
+    skos:definition "Het vastleggen van afbeeldingen met behulp van een camera."@nl ;
+    skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    owl:sameAs <https://taxonomy.uitdatabank.be/terms/1.0.6.0.0> .
+
+
+<https://data.cultuurparticipatie.be/id/concept/ThemaType/grafiek> 
+    a skos:Concept ;
+    skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    skos:prefLabel "Grafiek"@nl, "Art grafique"@fr, "Grafik"@de, "Graphics"@en ;
+    skos:definition "Kunstwerken gemaakt door middel van druktechnieken, zoals etsen en lithografie."@nl ;
+    skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    owl:sameAs <https://taxonomy.uitdatabank.be/terms/1.0.4.0.0> .
+
+
+<https://data.cultuurparticipatie.be/id/concept/ThemaType/installatiekunst> 
+    a skos:Concept ;
+    skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    skos:prefLabel "Installatiekunst"@nl, "Art d'installation"@fr, "Installation Art"@de, "Installation art"@en ;
+    skos:definition "Kunstwerken die zijn ontworpen om een ruimte te transformeren en vaak interactief zijn."@nl ;
+    skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    owl:sameAs <https://taxonomy.uitdatabank.be/terms/1.0.3.0.0> .
+
+
+<https://data.cultuurparticipatie.be/id/concept/ThemaType/schilderkunst> 
+    a skos:Concept ;
+    skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    skos:prefLabel "Schilderkunst"@nl, "Peinture"@fr, "Malerei"@de, "Painting"@en ;
+    skos:definition "De kunst van het creëren van tweedimensionale afbeeldingen met verf, pigmenten of andere materialen."@nl ;
+    skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    owl:sameAs <https://taxonomy.uitdatabank.be/terms/1.0.1.0.0> .
+
+
+<https://data.cultuurparticipatie.be/id/concept/ThemaType/decoratieveKunst> 
+    a skos:Concept ;
+    skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    skos:prefLabel "Decoratieve kunst"@nl, "Arts décoratives"@fr, "Angewandte Kunst"@de, "Decorative arts"@en ;
+    skos:definition "Kunstwerken die bedoeld zijn ter decoratie of verfraaiing van een ruimte of object."@nl ;
+    skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    owl:sameAs <https://taxonomy.uitdatabank.be/terms/1.0.5.0.0> .
+
+
+<https://data.cultuurparticipatie.be/id/concept/ThemaType/design> 
+    a skos:Concept ;
+    skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    skos:prefLabel "Design"@nl, "Design"@fr, "Design"@de, "Design"@en ;
+    skos:definition "Het ontwerpen van functionele objecten en producten met esthetische waarde."@nl ;
+    skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    owl:sameAs <https://taxonomy.uitdatabank.be/terms/1.2.2.0.0> .
+
+
+<https://data.cultuurparticipatie.be/id/concept/ThemaType/mode> 
+    a skos:Concept ;
+    skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    skos:prefLabel "Mode"@nl, "Mode"@fr, "Mode"@de, "Fashion"@en ;
+    skos:definition "De wereld van modeontwerpen en kledingstijlen."@nl ;
+    skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    owl:sameAs <https://taxonomy.uitdatabank.be/terms/1.49.0.0.0> .
+
+
+<https://data.cultuurparticipatie.be/id/concept/ThemaType/balletEnKlassiekeDans> 
+    a skos:Concept ;
+    skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    skos:prefLabel "Ballet en klassieke dans"@nl, "Ballet et danse classique"@fr, "Ballett und klassischer Tanz"@de, "Classical dance and ballet"@en ;
+    skos:definition "Een vorm van dans die gekenmerkt wordt door precisie, elegantie en klassieke technieken."@nl ;
+    skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    owl:sameAs <https://taxonomy.uitdatabank.be/terms/1.9.1.0.0> .
+
+
+<https://data.cultuurparticipatie.be/id/concept/ThemaType/volksdansEnWerelddans> 
+    a skos:Concept ;
+    skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    skos:prefLabel "Volksdans en werelddans"@nl, "Danse folklorique et mondiale"@fr, "Folk-und World Dance"@de, "Folk dance"@en ;
+    skos:definition "Dansen uit verschillende culturen en tradities over de hele wereld."@nl ;
+    skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    owl:sameAs <https://taxonomy.uitdatabank.be/terms/1.9.3.0.0> .
+
+
+<https://data.cultuurparticipatie.be/id/concept/ThemaType/stijlEnSalondansen> 
+    a skos:Concept ;
+    skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    skos:prefLabel "Stijl en salondansen"@nl, "Danse de salon et stylée"@fr, "Stil-und Gesellschaftstanz"@de, "Ballroom dancing"@en ;
+    skos:definition "Een vorm van sociale dans die vaak in gezelschap wordt uitgevoerd."@nl ;
+    skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    owl:sameAs <https://taxonomy.uitdatabank.be/terms/1.9.5.0.0> .
+
+
+<https://data.cultuurparticipatie.be/id/concept/ThemaType/moderneDans> 
+    a skos:Concept ;
+    skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    skos:prefLabel "Moderne dans"@nl, "Danse moderne"@fr, "Modern Dance"@de, "Modern dance"@en ;
+    skos:definition "Een moderne en experimentele vorm van dans die vaak abstracte bewegingen bevat."@nl ;
+    skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    owl:sameAs <https://taxonomy.uitdatabank.be/terms/1.9.2.0.0> .
+
+
+<https://data.cultuurparticipatie.be/id/concept/ThemaType/erfgoed> 
+    a skos:Concept ;
+    skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    skos:prefLabel "Erfgoed"@nl, "Patrimoine"@fr, "Kulturerben"@de, "Heritage"@en ;
+    skos:definition "Erfgoed omvat alle tastbare en niet-tastbare overblijfselen uit het verleden die mensen het bewaren waard vinden."@nl ;
+    skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    owl:sameAs <https://taxonomy.uitdatabank.be/terms/1.40.0.0.0> .
+
+
+<https://data.cultuurparticipatie.be/id/concept/ThemaType/actieEnAvonturenfilm> 
+    a skos:Concept ;
+    skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    skos:prefLabel "Actie- en avonturenfilm"@nl, "Film d'action et d'aventure"@fr, "Action- und Abenteuerfilm"@de, "Action and adventure film"@en ;
+    skos:definition "Een filmgenre dat vol zit met opwinding, avontuur en actiescènes."@nl ;
+    skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    owl:sameAs <https://taxonomy.uitdatabank.be/terms/1.7.2.0.0> .
+
+
+<https://data.cultuurparticipatie.be/id/concept/ThemaType/animatieEnKinderfilms> 
+    a skos:Concept ;
+    skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    skos:prefLabel "Animatie en kinderfilms"@nl, "Films animés et films pour enfants"@fr, "Animations-und Kinderfilme"@de, "Animation and children's films"@en ;
+    skos:definition "Films die zijn gemaakt voor kinderen en vaak animatie bevatten."@nl ;
+    skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    owl:sameAs <https://taxonomy.uitdatabank.be/terms/1.7.12.0.0> .
+
+
+<https://data.cultuurparticipatie.be/id/concept/ThemaType/documentairesEnReportages> 
+    a skos:Concept ;
+    skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    skos:prefLabel "Documentaires en reportages"@nl, "Documentaires et reportages"@fr, "Dokumentationen und Reportagen"@de, "Documentary"@en ;
+    skos:definition "Films die feitelijke gebeurtenissen of documentatie van de realiteit presenteren."@nl ;
+    skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    owl:sameAs <https://taxonomy.uitdatabank.be/terms/1.7.1.0.0> .
+
+
+<https://data.cultuurparticipatie.be/id/concept/ThemaType/griezelfilmOfHorror> 
+    a skos:Concept ;
+    skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    skos:prefLabel "Griezelfilm of horror"@nl, "Films d'épouvantes ou orreurs"@fr, "Horror"@de, "Horror"@en ;
+    skos:definition "Een filmgenre dat gericht is op het opwekken van angst of spanning bij de kijker."@nl ;
+    skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    owl:sameAs <https://taxonomy.uitdatabank.be/terms/1.7.6.0.0> .
+
+
+<https://data.cultuurparticipatie.be/id/concept/ThemaType/historischeFilm> 
+    a skos:Concept ;
+    skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    skos:prefLabel "Historische film"@nl, "Films historiques"@fr, "Historische Film"@de, "Historical film"@en ;
+    skos:definition "Films die zich afspelen in het verleden en historische gebeurtenissen weergeven."@nl ;
+    skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    owl:sameAs <https://taxonomy.uitdatabank.be/terms/1.7.8.0.0> .
+
+
+<https://data.cultuurparticipatie.be/id/concept/ThemaType/komedie> 
+    a skos:Concept ;
+    skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    skos:prefLabel "Komedie"@nl, "Comédie"@fr, "Komödie"@de, "Comedy"@en ;
+    skos:definition "Films die bedoeld zijn om het publiek aan het lachen te maken en te vermaken."@nl ;
+    skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    owl:sameAs <https://taxonomy.uitdatabank.be/terms/1.7.3.0.0> .
+
+
+<https://data.cultuurparticipatie.be/id/concept/ThemaType/kortfilm> 
+    a skos:Concept ;
+    skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    skos:prefLabel "Kortfilm"@nl, "Court métrage"@fr, "Kurzfilm"@de, "Short film"@en ;
+    skos:definition "Korte films met een beperkte speelduur."@nl ;
+    skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    owl:sameAs <https://taxonomy.uitdatabank.be/terms/1.7.13.0.0> .
+
+
+<https://data.cultuurparticipatie.be/id/concept/ThemaType/filmmusical> 
+    a skos:Concept ;
+    skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    skos:prefLabel "Filmmusical"@nl, "Comédie musicale"@fr, "Musical"@de, "Musical"@en ;
+    skos:definition "Een filmgenre dat zowel zang als dans combineert om het verhaal te vertellen."@nl ;
+    skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    owl:sameAs <https://taxonomy.uitdatabank.be/terms/1.7.10.0.0> .
+
+
+<https://data.cultuurparticipatie.be/id/concept/ThemaType/drama> 
+    a skos:Concept ;
+    skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    skos:prefLabel "Drama"@nl, "Films dramatiques"@fr, "Drama"@de, "Drama"@en ;
+    skos:definition "Films die de nadruk leggen op de emoties en de psychologische ontwikkeling van de personages."@nl ;
+    skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    owl:sameAs <https://taxonomy.uitdatabank.be/terms/1.7.4.0.0> .
+
+
+<https://data.cultuurparticipatie.be/id/concept/ThemaType/scienceFiction> 
+    a skos:Concept ;
+    skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    skos:prefLabel "Science fiction"@nl, "Science fiction"@fr, "Science-Fiction"@de, "Science fiction"@en ;
+    skos:definition "Een genre in de filmindustrie dat zich bezighoudt met futuristische concepten en technologieën."@nl ;
+    skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    owl:sameAs <https://taxonomy.uitdatabank.be/terms/1.7.7.0.0> .
+
+
+<https://data.cultuurparticipatie.be/id/concept/ThemaType/cinefiel> 
+    a skos:Concept ;
+    skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    skos:prefLabel "Cinefiel"@nl, "Cinéphile"@fr, "Cinephile"@de, "Independent"@en ;
+    skos:definition "Een liefhebber van cinema en een diepgaande kennis heeft van films."@nl ;
+    skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    owl:sameAs <https://taxonomy.uitdatabank.be/terms/1.7.11.0.0> .
+
+
+<https://data.cultuurparticipatie.be/id/concept/ThemaType/geschiedenis> 
+    a skos:Concept ;
+    skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    skos:prefLabel "Geschiedenis"@nl, "Histoire"@fr, "Geschichte"@de, "History"@en ;
+    skos:definition "De studie van gebeurtenissen en ontwikkelingen uit het verleden."@nl ;
+    skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    owl:sameAs <https://taxonomy.uitdatabank.be/terms/1.11.0.0.0> .
+
+
+<https://data.cultuurparticipatie.be/id/concept/ThemaType/gezondheidEnWellness> 
+    a skos:Concept ;
+    skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    skos:prefLabel "Gezondheid en wellness"@nl, "Santé et bien-être"@fr, "Gesundheit und Wellness"@de, "Health and wellness"@en ;
+    skos:definition "De gezondheid en het welzijn van het individu, zowel fysiek als mentaal."@nl ;
+    skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    owl:sameAs <https://taxonomy.uitdatabank.be/terms/1.62.0.0.0> .
+
+
+<https://data.cultuurparticipatie.be/id/concept/ThemaType/landbouwEnPlatteland> 
+    a skos:Concept ;
+    skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    skos:prefLabel "Landbouw en platteland"@nl, "Agriculture et campagne"@fr, "Landwirtschaft"@de, "Agriculture"@en ;
+    skos:definition "De agrarische sector en het leven op het platteland."@nl ;
+    skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    owl:sameAs <https://taxonomy.uitdatabank.be/terms/1.63.0.0.0> .
+
+
+<https://data.cultuurparticipatie.be/id/concept/ThemaType/literatuur> 
+    a skos:Concept ;
+    skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    skos:prefLabel "Literatuur"@nl, "Litérature"@fr, "Literatur"@de, "Literature"@en ;
+    skos:definition "Geschreven werken, inclusief romans, poëzie, proza en essays."@nl ;
+    skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    owl:sameAs <https://taxonomy.uitdatabank.be/terms/1.10.0.0.0> .
+
+
+<https://data.cultuurparticipatie.be/id/concept/ThemaType/poezie> 
+    a skos:Concept ;
+    skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    skos:prefLabel "Poezie"@nl, "Poésie"@fr, "Poesie"@de, "Poetry"@en ;
+    skos:definition "Een literaire vorm die de expressie van gevoelens en ideeën benadrukt."@nl ;
+    skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    owl:sameAs <https://taxonomy.uitdatabank.be/terms/1.10.5.0.0> .
+
+
+<https://data.cultuurparticipatie.be/id/concept/ThemaType/fictie> 
+    a skos:Concept ;
+    skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    skos:prefLabel "Fictie"@nl, "Fiction"@fr, "Fiktion"@de, "Fiction"@en ;
+    skos:definition "Fictieve verhalen die verzonnen zijn door de auteur."@nl ;
+    skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    owl:sameAs <https://taxonomy.uitdatabank.be/terms/1.10.11.0.0> .
+
+
+<https://data.cultuurparticipatie.be/id/concept/ThemaType/nonFictie> 
+    a skos:Concept ;
+    skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    skos:prefLabel "Non fictie"@nl, "Non fiction"@fr, "Sachbücher"@de, "Non fiction"@en ;
+    skos:definition "Feitelijke en informatieve literaire werken."@nl ;
+    skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    owl:sameAs <https://taxonomy.uitdatabank.be/terms/1.10.12.0.0> .
+
+
+<https://data.cultuurparticipatie.be/id/concept/ThemaType/strips> 
+    a skos:Concept ;
+    skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    skos:prefLabel "Strips"@nl, "Bandes dessinés"@fr, "Comics"@de, "Comic books"@en ;
+    skos:definition "Strips zijn afbeeldingsverhalen met tekstballonnen die personages en verhaallijnen bevatten."@nl ;
+    skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    owl:sameAs <https://taxonomy.uitdatabank.be/terms/1.10.8.0.0> .
+
+
+<https://data.cultuurparticipatie.be/id/concept/ThemaType/milieuEnNatuur> 
+    a skos:Concept ;
+    skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    skos:prefLabel "Milieu en natuur"@nl, "Environnement et nature"@fr, "Umwelt und Natur"@de, "Environment and nature"@en ;
+    skos:definition "Milieu en natuur omvatten alle aspecten van het natuurlijke ecosysteem en de omgeving."@nl ;
+    skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    owl:sameAs <https://taxonomy.uitdatabank.be/terms/1.64.0.0.0> .
+
+
+<https://data.cultuurparticipatie.be/id/concept/ThemaType/klassiekeMuziek> 
+    a skos:Concept ;
+    skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    skos:prefLabel "Klassieke muziek"@nl, "Musique classique"@fr, "Klassische Musik"@de, "Classical music"@en ;
+    skos:definition "Klassieke muziek omvat composities die zijn geschreven voor orkestrale uitvoeringen."@nl ;
+    skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    owl:sameAs <https://taxonomy.uitdatabank.be/terms/1.8.1.0.0> .
+
+
+<https://data.cultuurparticipatie.be/id/concept/ThemaType/jazzEnBlues> 
+    a skos:Concept ;
+    skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    skos:prefLabel "Jazz en blues"@nl, "Jazz et blues"@fr, "Jazz und Blues"@de, "Jazz and blues"@en ;
+    skos:definition "Jazz en blues zijn muziekgenres die bekend staan om hun improvisatie en ritmische complexiteit."@nl ;
+    skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    owl:sameAs <https://taxonomy.uitdatabank.be/terms/1.8.2.0.0> .
+
+
+<https://data.cultuurparticipatie.be/id/concept/ThemaType/popEnRock> 
+    a skos:Concept ;
+    skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    skos:prefLabel "Pop en rock"@nl, "Pop et rock"@fr, "Pop und Rock"@de, "Pop and rock"@en ;
+    skos:definition "Pop en rock zijn populaire muziekgenres met een breed publieksbereik."@nl ;
+    skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    owl:sameAs <https://taxonomy.uitdatabank.be/terms/1.8.3.1.0> .
+
+
+<https://data.cultuurparticipatie.be/id/concept/ThemaType/hipHopRnbEnRap> 
+    a skos:Concept ;
+    skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    skos:prefLabel "Hip hop, rnb en rap"@nl, "Hip hop, rnb et rap"@fr, "Hip-Hop, R und B und Rap"@de, "Hip hop, rnb and rap"@en ;
+    skos:definition "Hip hop, rnb en rap zijn genres die zich kenmerken door ritmische spraak met een sterke beat."@nl ;
+    skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    owl:sameAs <https://taxonomy.uitdatabank.be/terms/1.8.3.2.0> .
+
+
+<https://data.cultuurparticipatie.be/id/concept/ThemaType/danceMuziek> 
+    a skos:Concept ;
+    skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    skos:prefLabel "Dance muziek"@nl, "Musique de danse"@fr, "Tanzmusik"@de, "Dance music"@en ;
+    skos:definition "Dance muziek omvat elektronische muziekgenres die bedoeld zijn om op te dansen."@nl ;
+    skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    owl:sameAs <https://taxonomy.uitdatabank.be/terms/1.8.3.3.0> .
+
+
+<https://data.cultuurparticipatie.be/id/concept/ThemaType/folkEnWereldmuziek> 
+    a skos:Concept ;
+    skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    skos:prefLabel "Folk en wereldmuziek"@nl, "Musique folklorique et mondiale"@fr, "Folk und World"@de, "Folk and world music"@en ;
+    skos:definition "Folk en wereldmuziek vertegenwoordigen de muzikale tradities van verschillende culturen."@nl ;
+    skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    owl:sameAs <https://taxonomy.uitdatabank.be/terms/1.8.4.0.0> .
+
+
+<https://data.cultuurparticipatie.be/id/concept/ThemaType/amusementsmuziek> 
+    a skos:Concept ;
+    skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    skos:prefLabel "Amusementsmuziek"@nl, "Cabaret"@fr, "Schlager"@de, "Cabaret music"@en ;
+    skos:definition "Amusementsmuziek is muziek die is bedoeld om te vermaken en te plezieren."@nl ;
+    skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    owl:sameAs <https://taxonomy.uitdatabank.be/terms/1.8.3.5.0> .
+
+
+<https://data.cultuurparticipatie.be/id/concept/ThemaType/politiekEnMaatschappij> 
+    a skos:Concept ;
+    skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    skos:prefLabel "Politiek en maatschappij"@nl, "Politique et société"@fr, "Politik und Gesellschaft"@de, "Politics and society"@en ;
+    skos:definition "Politiek en maatschappij behandelen de structuren en functies van regeringen en samenlevingen."@nl ;
+    skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    owl:sameAs <https://taxonomy.uitdatabank.be/terms/1.52.0.0.0> .
+
+
+<https://data.cultuurparticipatie.be/id/concept/ThemaType/creativiteit> 
+    a skos:Concept ;
+    skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    skos:prefLabel "Creativiteit"@nl, "Créativité"@fr, "Kreativität"@de, "Creativity"@en ;
+    skos:definition "Creativiteit verwijst naar het vermogen om iets nieuws en origineels te bedenken en te creëren."@nl ;
+    skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    owl:sameAs <https://taxonomy.uitdatabank.be/terms/1.42.0.0.0> .
+
+
+<https://data.cultuurparticipatie.be/id/concept/ThemaType/computerEnTechniek> 
+    a skos:Concept ;
+    skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    skos:prefLabel "Computer en techniek"@nl, "Ordinateurs et technologie"@fr, "Computer-und Technik"@de, "Computer and technology"@en ;
+    skos:definition "Computer en techniek omvatten de studie en toepassing van technologie en informatica."@nl ;
+    skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    owl:sameAs <https://taxonomy.uitdatabank.be/terms/1.21.0.0.0> .
+
+
+<https://data.cultuurparticipatie.be/id/concept/ThemaType/opvoeding> 
+    a skos:Concept ;
+    skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    skos:prefLabel "Opvoeding"@nl, "Éducation"@fr, "Bildung"@de, "Education"@en ;
+    skos:definition "Opvoeding heeft betrekking op het proces van het begeleiden en opleiden van individuen."@nl ;
+    skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    owl:sameAs <https://taxonomy.uitdatabank.be/terms/1.37.0.0.0> .
+
+
+<https://data.cultuurparticipatie.be/id/concept/ThemaType/persoonEnRelaties> 
+    a skos:Concept ;
+    skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    skos:prefLabel "Persoon en relaties"@nl, "Hommes et relations"@fr, "Person und Gesellschaft"@de, "People and society"@en ;
+    skos:definition "Persoon en relaties gaan over individuele identiteit en interpersoonlijke interacties."@nl ;
+    skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    owl:sameAs <https://taxonomy.uitdatabank.be/terms/1.61.0.0.0> .
+
+
+<https://data.cultuurparticipatie.be/id/concept/ThemaType/intercultureleVorming> 
+    a skos:Concept ;
+    skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    skos:prefLabel "Interculturele vorming"@nl, "Formation interculturelle"@fr, "Interkulturelle Erziehung"@de, "Cross-cultural education"@en ;
+    skos:definition "Interculturele vorming richt zich op het begrijpen en waarderen van verschillende culturen."@nl ;
+    skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    owl:sameAs <https://taxonomy.uitdatabank.be/terms/1.43.0.0.0> .
+
+
+<https://data.cultuurparticipatie.be/id/concept/ThemaType/kunstEnKunsteducatie> 
+    a skos:Concept ;
+    skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    skos:prefLabel "Kunst en kunsteducatie"@nl, "Arts et formation artistique"@fr, "Kunst und Kunsterziehung"@de, "Arts education"@en ;
+    skos:definition "Kunst en kunsteducatie bevorderen het begrip en de waardering van kunstvormen."@nl ;
+    skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    owl:sameAs <https://taxonomy.uitdatabank.be/terms/1.41.0.0.0> .
+
+
+<https://data.cultuurparticipatie.be/id/concept/ThemaType/balEnRacketsport> 
+    a skos:Concept ;
+    skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    skos:prefLabel "Bal en racketsport"@nl, "Sports au ballons et raquettes"@fr, "Ball und Schläger"@de, "Ball and racket sports"@en ;
+    skos:definition "Bal en racketsport omvatten verschillende sporten die een bal gebruiken als hoofdinstrument."@nl ;
+    skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    owl:sameAs <https://taxonomy.uitdatabank.be/terms/1.51.13.0.0> .
+
+
+<https://data.cultuurparticipatie.be/id/concept/ThemaType/atletiekWandelenEnFietsen> 
+    a skos:Concept ;
+    skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    skos:prefLabel "Atletiek, wandelen en fietsen"@nl, "Athlétisme, marche et cyclisme"@fr, "Leichtathletik, Wandern und Radfahren"@de, "Athletics, running and cycling"@en ;
+    skos:definition "Atletiek, wandelen en fietsen zijn fysieke activiteiten die uithoudingsvermogen vereisen."@nl ;
+    skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    owl:sameAs <https://taxonomy.uitdatabank.be/terms/1.51.14.0.0> .
+
+
+<https://data.cultuurparticipatie.be/id/concept/ThemaType/zwemmenEnWatersport> 
+    a skos:Concept ;
+    skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    skos:prefLabel "Zwemmen en watersport"@nl, "Natation et sports nautiques"@fr, "Schwimmen und Wassersport"@de, "Swimming and water sports"@en ;
+    skos:definition "Zwemmen en watersport omvatten activiteiten in en op het water."@nl ;
+    skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    owl:sameAs <https://taxonomy.uitdatabank.be/terms/1.51.3.0.0> .
+
+
+<https://data.cultuurparticipatie.be/id/concept/ThemaType/fitnessGymnastiekDansEnVechtsport> 
+    a skos:Concept ;
+    skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    skos:prefLabel "Fitness, gymnastiek, dans en vechtsport"@nl, "Fitness, gymnastique, danse et arts martiaux"@fr, "Fitness, Tanz und Kampfkunst"@de, "Fitness, gymnastics, dance and martial arts"@en ;
+    skos:definition "Fitness, gymnastiek, dans en vechtsport bevorderen fysieke fitheid en behendigheid."@nl ;
+    skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    owl:sameAs <https://taxonomy.uitdatabank.be/terms/1.51.6.0.0> .
+
+
+<https://data.cultuurparticipatie.be/id/concept/ThemaType/outdoorEnAdventureSport> 
+    a skos:Concept ;
+    skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    skos:prefLabel "Outdoor en Adventure sport"@nl, "Sports de plein air et d'aventure"@fr, "Outdoor- und Abenteuersport"@de, "Outdoor and Adventure sports"@en ;
+    skos:definition "Outdoor en Adventure sport omvatten activiteiten in de natuur met een element van avontuur."@nl ;
+    skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    owl:sameAs <https://taxonomy.uitdatabank.be/terms/1.51.11.0.0> .
+
+
+<https://data.cultuurparticipatie.be/id/concept/ThemaType/luchtEnMotorsport> 
+    a skos:Concept ;
+    skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    skos:prefLabel "Lucht en motorsport"@nl, "Sports aero et moteurs"@fr, "Luft-und Motorsport"@de, "Air and motorsports"@en ;
+    skos:definition "Lucht en motorsport omvatten activiteiten die gebruik maken van vliegtuigen en voertuigen met motoren."@nl ;
+    skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    owl:sameAs <https://taxonomy.uitdatabank.be/terms/1.58.8.0.0> .
+
+
+<https://data.cultuurparticipatie.be/id/concept/ThemaType/volkssporten> 
+    a skos:Concept ;
+    skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    skos:prefLabel "Volkssporten"@nl, "Sports folkloriques"@fr, "Sport Menschen"@de, "Folklore sports"@en ;
+    skos:definition "Volkssporten zijn traditionele en informele sporten die populair zijn in lokale gemeenschappen."@nl ;
+    skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    owl:sameAs <https://taxonomy.uitdatabank.be/terms/1.51.10.0.0> .
+
+
+<https://data.cultuurparticipatie.be/id/concept/ThemaType/omnisportEnAndere> 
+    a skos:Concept ;
+    skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    skos:prefLabel "Omnisport en andere"@nl, "Omnisports et autres"@fr, "Omnisport und andere"@de, "Other sports"@en ;
+    skos:definition "Omnisport en andere omvatten diverse sporten die in teamverband worden beoefend."@nl ;
+    skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    owl:sameAs <https://taxonomy.uitdatabank.be/terms/1.51.12.0.0> .
+
+
+<https://data.cultuurparticipatie.be/id/concept/ThemaType/tekstEnMuziektheater> 
+    a skos:Concept ;
+    skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    skos:prefLabel "Tekst en muziektheater"@nl, "Théâtre dramatique et musical"@fr, "Text und Musik"@de, "Theatre and Musical theatre"@en ;
+    skos:definition "Tekst en muziektheater omvatten toneelstukken en voorstellingen met zowel gesproken tekst als muziek."@nl ;
+    skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    owl:sameAs <https://taxonomy.uitdatabank.be/terms/1.3.1.0.0> .
+
+
+<https://data.cultuurparticipatie.be/id/concept/ThemaType/humorEnComedy> 
+    a skos:Concept ;
+    skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    skos:prefLabel "Humor en comedy"@nl, "L'humour et la comédie"@fr, "Humor und comedy"@de, "Humor and comedy"@en ;
+    skos:definition "Humor en comedy zijn vormen van amusement die bedoeld zijn om te laten lachen."@nl ;
+    skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    owl:sameAs <https://taxonomy.uitdatabank.be/terms/1.3.10.0.0> .
+
+
+<https://data.cultuurparticipatie.be/id/concept/ThemaType/musical> 
+    a skos:Concept ;
+    skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    skos:prefLabel "Musical"@nl, "Comédie musicale"@fr, "Musical"@de, "Musical"@en ;
+    skos:definition "Musical is een genre van theater dat zang, dans en dramatische kunst combineert."@nl ;
+    skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    owl:sameAs <https://taxonomy.uitdatabank.be/terms/1.4.0.0.0> .
+
+
+<https://data.cultuurparticipatie.be/id/concept/ThemaType/figurenEnPoppentheater> 
+    a skos:Concept ;
+    skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    skos:prefLabel "Figuren en poppentheater"@nl, "Théâtre de marionnettes"@fr, "Figuren und Marionetten"@de, "Puppetry"@en ;
+    skos:definition "Figuren en poppentheater gebruiken marionetten en poppen om verhalen te vertellen."@nl ;
+    skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    owl:sameAs <https://taxonomy.uitdatabank.be/terms/1.3.5.0.0> .
+
+
+<https://data.cultuurparticipatie.be/id/concept/ThemaType/operaEnOperette> 
+    a skos:Concept ;
+    skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    skos:prefLabel "Opera en operette"@nl, "Opéra et opérette"@fr, "Oper und Operette"@de, "Opera and operetta"@en ;
+    skos:definition "Opera en operette zijn theatrale voorstellingen met muziek en zang."@nl ;
+    skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    owl:sameAs <https://taxonomy.uitdatabank.be/terms/1.5.0.0.0> .
+
+
+<https://data.cultuurparticipatie.be/id/concept/ThemaType/mimeEnBewegingstheater> 
+    a skos:Concept ;
+    skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    skos:prefLabel "Mime en bewegingstheater"@nl, "Mime et theéâtre de mouvements"@fr, "Mime und Bewegungstheater"@de, "Mime"@en ;
+    skos:definition "Mime en bewegingstheater gebruiken lichaamstaal en beweging om verhalen te vertellen."@nl ;
+    skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    owl:sameAs <https://taxonomy.uitdatabank.be/terms/1.3.4.0.0> .
+
+
+<https://data.cultuurparticipatie.be/id/concept/ThemaType/wetenschap> 
+    a skos:Concept ;
+    skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    skos:prefLabel "Wetenschap"@nl, "Science"@fr, "Wissenschaft"@de, "Science"@en ;
+    skos:definition "Wetenschap omvat de studie van de natuur en de wereld om ons heen."@nl ;
+    skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    owl:sameAs <https://taxonomy.uitdatabank.be/terms/1.25.0.0.0> .
+
+
+<https://data.cultuurparticipatie.be/id/concept/ThemaType/zingevingFilosofieEnReligie> 
+    a skos:Concept ;
+    skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    skos:prefLabel "Zingeving, filosofie en religie"@nl, "Sense de la vie, philosophie et religion"@fr, "Philosophie und Religion"@de, "Philosophy and religion"@en ;
+    skos:definition "Zingeving, filosofie en religie behandelen fundamentele vragen over het bestaan en de menselijke ervaring."@nl ;
+    skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    owl:sameAs <https://taxonomy.uitdatabank.be/terms/1.44.0.0.0> .
+
+
+<https://data.cultuurparticipatie.be/id/concept/ThemaType/ThemaTypeOnbepaald> 
+    a skos:Concept ;
+    skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    skos:prefLabel "Thema onbepaald"@nl, "Thème non défini"@fr, "unbestimmt"@de, "Thema undefined"@en ;
+    skos:definition "Er is geen specifiek thema of onderwerp aangegeven voor het evenement."@nl ;
+    skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    owl:sameAs <https://taxonomy.uitdatabank.be/terms/1.58.0.0.0> .
+
+
+<https://data.cultuurparticipatie.be/id/concept/ThemaType/meerdereKunstvormen> 
+    a skos:Concept ;
+    skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    skos:prefLabel "Meerdere kunstvormen"@nl, "Arts multiples"@fr, "Mehrere Formen der Kunst"@de, "Multiple art forms"@en ;
+    skos:definition "Het evenement omvat verschillende vormen van kunst."@nl ;
+    skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    owl:sameAs <https://taxonomy.uitdatabank.be/terms/1.0.9.0.0> .
+
+
+<https://data.cultuurparticipatie.be/id/concept/ThemaType/meerdereFilmgenres> 
+    a skos:Concept ;
+    skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    skos:prefLabel "Meerdere filmgenres"@nl, "Films de tous genres"@fr, "Mehrere Filmgenres"@de, "Multiple film genres"@en ;
+    skos:definition "Het evenement omvat verschillende filmgenres."@nl ;
+    skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    owl:sameAs <https://taxonomy.uitdatabank.be/terms/1.7.14.0.0> .
+
+
+<https://data.cultuurparticipatie.be/id/concept/ThemaType/gezondheidEnZorg> 
+    a skos:Concept ;
+    skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    skos:prefLabel "Gezondheid en zorg"@nl, "Santé et soins"@fr, "Gesundheit und Pflege"@de, "Health and care"@en ;
+    skos:definition "Het evenement richt zich op gezondheid en welzijn."@nl ;
+    skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    owl:sameAs <https://taxonomy.uitdatabank.be/terms/1.37.1.0.0> .
+
+
+<https://data.cultuurparticipatie.be/id/concept/ThemaType/samenleving> 
+    a skos:Concept ;
+    skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    skos:prefLabel "Samenleving"@nl, "Vivre en société"@fr, "Gesellschaft"@de, "Society"@en ;
+    skos:definition "Het evenement behandelt onderwerpen met betrekking tot de samenleving en gemeenschap."@nl ;
+    skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    owl:sameAs <https://taxonomy.uitdatabank.be/terms/1.37.2.0.0> .
+
+
+<https://data.cultuurparticipatie.be/id/concept/ThemaType/thriller> 
+    a skos:Concept ;
+    skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    skos:prefLabel "Thriller"@nl, "Films à suspense"@fr, "Thriller"@de, "Thriller"@en ;
+    skos:definition "Een film of boek dat spanning en opwinding oproept, vaak met een element van gevaar."@nl ;
+    skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    owl:sameAs <https://taxonomy.uitdatabank.be/terms/1.7.15.0.0> .
+
+
+<https://data.cultuurparticipatie.be/id/concept/ThemaType/voeding> 
+    a skos:Concept ;
+    skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    skos:prefLabel "Voeding"@nl, "Nutrition"@fr, "Ernährung"@de, "Nutrition"@en ;
+    skos:definition "Het evenement richt zich op voeding en voedselgerelateerde onderwerpen."@nl ;
+    skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    owl:sameAs <https://taxonomy.uitdatabank.be/terms/1.65.0.0.0> .
+
+
+<https://data.cultuurparticipatie.be/id/concept/ThemaType/economie> 
+    a skos:Concept ;
+    skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    skos:prefLabel "Economie"@nl, "Économie"@fr, "Wirtschaft"@de, "Economy"@en ;
+    skos:definition "Het evenement behandelt onderwerpen met betrekking tot economie en financiën."@nl ;
+    skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    owl:sameAs <https://taxonomy.uitdatabank.be/terms/1.66.0.0.0> .
+
+
+<https://data.cultuurparticipatie.be/id/concept/ThemaType/taalEnCommunicatie> 
+    a skos:Concept ;
+    skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    skos:prefLabel "Taal en communicatie"@nl, "Langue et communication"@fr, "Sprache und Kommunikation"@de, "Language and communication"@en ;
+    skos:definition "Het evenement gaat over taalgebruik en communicatie."@nl ;
+    skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    owl:sameAs <https://taxonomy.uitdatabank.be/terms/1.11.1.0.0> .
+
+
+<https://data.cultuurparticipatie.be/id/concept/ThemaType/ThemaTypekamp> 
+    a skos:Concept ;
+    skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    skos:prefLabel "Themakamp"@nl, "Camp thématique"@fr, "Themancamp"@de, "Thema camp"@en ;
+    skos:definition "Een kamp of vakantie met een specifiek thema of onderwerp."@nl ;
+    skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+    owl:sameAs <https://taxonomy.uitdatabank.be/terms/1.11.2.0.0> .

@@ -1,0 +1,206 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+
+<https://data.cultuurparticipatie.be/id/conceptscheme/ActiviteitType>
+    a skos:ConceptScheme ;
+    skos:prefLabel "conceptscheme activiteittype" ;
+    skos:definition "Codelijst voor het type van een Activiteit." .
+
+
+<https://data.cultuurparticipatie.be/id/concept/ActiviteitType/concert> 
+    a skos:Concept ;
+    skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/ActiviteitType> ;
+    skos:prefLabel "Concert"@nl, "Concert"@fr, "Konzert"@de, "Concert"@en ;
+    skos:definition "Een live muzikaal optreden"@nl ;
+    skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/ActiviteitType> ;
+    owl:sameAs <https://taxonomy.uitdatabank.be/terms/0.50.4.0.0> .
+
+
+<https://data.cultuurparticipatie.be/id/concept/ActiviteitType/dansvoorstelling> 
+    a skos:Concept ;
+    skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/ActiviteitType> ;
+    skos:prefLabel "Dansvoorstelling"@nl, "Spectacle de danse"@fr, "Tanz-Performance"@de, "Dance performance"@en ;
+    skos:definition "Een optreden waarin dans centraal staat"@nl ;
+    skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/ActiviteitType> ;
+    owl:sameAs <https://taxonomy.uitdatabank.be/terms/0.54.0.0.0> .
+
+
+<https://data.cultuurparticipatie.be/id/concept/ActiviteitType/festival> 
+    a skos:Concept ;
+    skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/ActiviteitType> ;
+    skos:prefLabel "Festival"@nl, "Festival"@fr, "Festival"@de, "Festival"@en ;
+    skos:definition "Een evenement met verschillende activiteiten, vaak gerelateerd aan kunst, muziek, eten, enz."@nl ;
+    skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/ActiviteitType> ;
+    owl:sameAs <https://taxonomy.uitdatabank.be/terms/0.5.0.0.0> .
+
+
+<https://data.cultuurparticipatie.be/id/concept/ActiviteitType/film> 
+    a skos:Concept ;
+    skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/ActiviteitType> ;
+    skos:prefLabel "Film"@nl, "Cinéma"@fr, "Film"@de, "Film"@en ;
+    skos:definition "Een vertoning van een cinematografisch werk"@nl ;
+    skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/ActiviteitType> ;
+    owl:sameAs <https://taxonomy.uitdatabank.be/terms/0.50.6.0.0> .
+
+
+<https://data.cultuurparticipatie.be/id/concept/ActiviteitType/lezingOfCongres> 
+    a skos:Concept ;
+    skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/ActiviteitType> ;
+    skos:prefLabel "Lezing of congres"@nl, "Conférence ou congrès"@fr, "Vortrag oder Gespräch"@de, "Lecture or conference"@en ;
+    skos:definition "Een presentatie of bijeenkomst waarin kennis wordt gedeeld en besproken"@nl ;
+    skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/ActiviteitType> ;
+    owl:sameAs <https://taxonomy.uitdatabank.be/terms/0.3.2.0.0> .
+
+
+<https://data.cultuurparticipatie.be/id/concept/ActiviteitType/theatervoorstelling> 
+    a skos:Concept ;
+    skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/ActiviteitType> ;
+    skos:prefLabel "Theatervoorstelling"@nl, "Théâtre"@fr, "Theater"@de, "Theatre"@en ;
+    skos:definition "Een live uitvoering van een toneelstuk of voorstelling"@nl ;
+    skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/ActiviteitType> ;
+    owl:sameAs <https://taxonomy.uitdatabank.be/terms/0.55.0.0.0> .
+
+
+<https://data.cultuurparticipatie.be/id/concept/ActiviteitType/sportwedstrijdBekijken> 
+    a skos:Concept ;
+    skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/ActiviteitType> ;
+    skos:prefLabel "Sportwedstrijd bekijken"@nl, "Assister à une compétition sportive"@fr, "Sport Antzeigen"@de, "Sports Viewing"@en ;
+    skos:definition "Het kijken naar een competitieve sportwedstrijd"@nl ;
+    skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/ActiviteitType> ;
+    owl:sameAs <https://taxonomy.uitdatabank.be/terms/0.19.0.0.0> .
+
+
+<https://data.cultuurparticipatie.be/id/concept/ActiviteitType/marktBraderieOfKermis> 
+    a skos:Concept ;
+    skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/ActiviteitType> ;
+    skos:prefLabel "Markt, braderie of kermis"@nl, "Marché, foire ou fête foraine"@fr, "Markt oder Messe"@de, "Market, fair or funfair"@en ;
+    skos:definition "Een gelegenheid om goederen te kopen en te verkopen, vaak met amusement en attracties"@nl ;
+    skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/ActiviteitType> ;
+    owl:sameAs <https://taxonomy.uitdatabank.be/terms/0.37.0.0.0> .
+
+
+<https://data.cultuurparticipatie.be/id/concept/ActiviteitType/opendeurdag> 
+    a skos:Concept ;
+    skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/ActiviteitType> ;
+    skos:prefLabel "Opendeurdag"@nl, "Journée portes ouvertes"@fr, "Tag der offenen Tür"@de, "Open house"@en ;
+    skos:definition "Een dag waarop een instelling of locatie open is voor het publiek"@nl ;
+    skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/ActiviteitType> ;
+    owl:sameAs <https://taxonomy.uitdatabank.be/terms/0.12.0.0.0> .
+
+
+<https://data.cultuurparticipatie.be/id/concept/ActiviteitType/beurs> 
+    a skos:Concept ;
+    skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/ActiviteitType> ;
+    skos:prefLabel "Beurs"@nl, "Foire"@fr, "Aktienmarkt"@de, "Fair"@en ;
+    skos:definition "Een evenement waar bedrijven hun producten of diensten presenteren aan potentiële klanten"@nl ;
+    skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/ActiviteitType> ;
+    owl:sameAs <https://taxonomy.uitdatabank.be/terms/0.6.0.0.0> .
+
+
+<https://data.cultuurparticipatie.be/id/concept/ActiviteitType/tentoonstelling> 
+    a skos:Concept ;
+    skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/ActiviteitType> ;
+    skos:prefLabel "Tentoonstelling"@nl, "Exposition"@fr, "Ausstellung"@de, "Exhibition"@en ;
+    skos:definition "Een presentatie van kunstwerken, voorwerpen of informatie"@nl ;
+    skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/ActiviteitType> ;
+    owl:sameAs <https://taxonomy.uitdatabank.be/terms/0.0.0.0.0> .
+
+
+<https://data.cultuurparticipatie.be/id/concept/ActiviteitType/begeleideUitstapOfRondleiding> 
+    a skos:Concept ;
+    skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/ActiviteitType> ;
+    skos:prefLabel "Begeleide uitstap of rondleiding"@nl, "Tour ou excursion guidée"@fr, "Geführte Wanderung oder Tour"@de, "Guided tour"@en ;
+    skos:definition "Een georganiseerde reis of bezoek met een gids"@nl ;
+    skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/ActiviteitType> ;
+    owl:sameAs <https://taxonomy.uitdatabank.be/terms/0.7.0.0.0> .
+
+
+<https://data.cultuurparticipatie.be/id/concept/ActiviteitType/lessenreeks> 
+    a skos:Concept ;
+    skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/ActiviteitType> ;
+    skos:prefLabel "Lessenreeks"@nl, "Série de cours"@fr, "Unterrichtsreihe"@de, "Course series"@en ;
+    skos:definition "Een opeenvolging van lessen of workshops over een specifiek onderwerp"@nl ;
+    skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/ActiviteitType> ;
+    owl:sameAs <https://taxonomy.uitdatabank.be/terms/0.3.1.0.0> .
+
+
+<https://data.cultuurparticipatie.be/id/concept/ActiviteitType/kampOfVakantie> 
+    a skos:Concept ;
+    skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/ActiviteitType> ;
+    skos:prefLabel "Kamp of vakantie"@nl, "Camp de vacance"@fr, "Camp oder Urlaub"@de, "Camping"@en ;
+    skos:definition "Een georganiseerde periode van recreatie en activiteiten, vaak buitenshuis"@nl ;
+    skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/ActiviteitType> ;
+    owl:sameAs <https://taxonomy.uitdatabank.be/terms/0.57.0.0.0> .
+
+
+<https://data.cultuurparticipatie.be/id/concept/ActiviteitType/festiviteit> 
+    a skos:Concept ;
+    skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/ActiviteitType> ;
+    skos:prefLabel "Festiviteit"@nl, "Festivité"@fr, "Fest"@de, "Festivity"@en ;
+    skos:definition "Een feestelijke gebeurtenis of viering"@nl ;
+    skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/ActiviteitType> ;
+    owl:sameAs <https://taxonomy.uitdatabank.be/terms/0.28.0.0.0> .
+
+
+<https://data.cultuurparticipatie.be/id/concept/ActiviteitType/fietsOfWandelroute> 
+    a skos:Concept ;
+    skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/ActiviteitType> ;
+    skos:prefLabel "Fiets- of wandelroute"@nl, "Randonnée pédestre ou cycliste"@fr, "Route"@de, "Cycling or hiking tour"@en ;
+    skos:definition "Een voorgestelde route om te fietsen of wandelen, vaak met bezienswaardigheden"@nl ;
+    skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/ActiviteitType> ;
+    owl:sameAs <https://taxonomy.uitdatabank.be/terms/0.17.0.0.0> .
+
+
+<https://data.cultuurparticipatie.be/id/concept/ActiviteitType/partyOfFuif> 
+    a skos:Concept ;
+    skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/ActiviteitType> ;
+    skos:prefLabel "Party of fuif"@nl, "Soirée"@fr, "Ausgehen"@de, "Party or nightlife"@en ;
+    skos:definition "Een sociaal evenement met muziek en dans"@nl ;
+    skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/ActiviteitType> ;
+    owl:sameAs <https://taxonomy.uitdatabank.be/terms/0.49.0.0.0> .
+
+
+<https://data.cultuurparticipatie.be/id/concept/ActiviteitType/eetOfDrankfestijn> 
+    a skos:Concept ;
+    skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/ActiviteitType> ;
+    skos:prefLabel "Eet- of drankfestijn"@nl, "Festin de nourriture ou de boisson"@fr, "Essen oder Trinken Fest"@de, "Food or beverage feast"@en ;
+    skos:definition "Een bijeenkomst waar eten en drinken centraal staan"@nl ;
+    skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/ActiviteitType> ;
+    owl:sameAs <https://taxonomy.uitdatabank.be/terms/1.50.0.0.0> .
+
+
+<https://data.cultuurparticipatie.be/id/concept/ActiviteitType/spelOfQuiz> 
+    a skos:Concept ;
+    skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/ActiviteitType> ;
+    skos:prefLabel "Spel of quiz"@nl, "Jeu ou quiz"@fr, "Spiel oder Quiz"@de, "Game or quiz"@en ;
+    skos:definition "Een competitieve activiteit of test van kennis"@nl ;
+    skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/ActiviteitType> ;
+    owl:sameAs <https://taxonomy.uitdatabank.be/terms/0.50.21.0.0> .
+
+
+<https://data.cultuurparticipatie.be/id/concept/ActiviteitType/sportactiviteit> 
+    a skos:Concept ;
+    skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/ActiviteitType> ;
+    skos:prefLabel "Sportactiviteit"@nl, "Activité sportive"@fr, "Sportliche Aktivität"@de, "Sports activity"@en ;
+    skos:definition "Een georganiseerde fysieke activiteit of wedstrijd"@nl ;
+    skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/ActiviteitType> ;
+    owl:sameAs <https://taxonomy.uitdatabank.be/terms/0.59.0.0.0> .
+
+
+<https://data.cultuurparticipatie.be/id/concept/ActiviteitType/typeOnbepaald> 
+    a skos:Concept ;
+    skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/ActiviteitType> ;
+    skos:prefLabel "Type onbepaald"@nl, "Catégorie non déterminé"@fr, "unbestimmt"@de, "Type undefined"@en ;
+    skos:definition "Een evenement waarvan het type niet specifiek is aangegeven"@nl ;
+    skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/ActiviteitType> ;
+    owl:sameAs <https://taxonomy.uitdatabank.be/terms/0.51.0.0.0> .
+
+
+<https://data.cultuurparticipatie.be/id/concept/ActiviteitType/cursusMetOpenSessies> 
+    a skos:Concept ;
+    skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/ActiviteitType> ;
+    skos:prefLabel "Cursus met open sessies"@nl, "Cours avec sessions ouvertes"@fr, "Kurs mit offenen Sitzungen"@de, "Course with open sessions"@en ;
+    skos:definition "Een opleiding of reeks lessen met de mogelijkheid om op verschillende momenten deel te nemen"@nl ;
+    skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/ActiviteitType> ;
+    owl:sameAs <https://taxonomy.uitdatabank.be/terms/0.3.1.0.1> .

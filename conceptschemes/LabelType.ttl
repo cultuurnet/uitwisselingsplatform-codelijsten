@@ -1,0 +1,23 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+
+<https://data.cultuurparticipatie.be/id/conceptscheme/LabelType>
+    a skos:ConceptScheme ;
+    skos:prefLabel "conceptscheme LabelType" ;
+    skos:definition "Codelijst om het type van Label aan te geven." .
+
+
+<https://data.cultuurparticipatie.be/id/concept/LabelType/publiek> 
+    a skos:Concept ;
+    skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/LabelType> ;
+    skos:prefLabel "publiek"@nl ;
+    skos:definition "Het label is publiek en mag voor eindgebruikers verschijnen om meer informatie te verschaffen over het gerelateerde subject."@nl ;
+    skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/LabelType> .
+
+<https://data.cultuurparticipatie.be/id/concept/LabelType/verborgen> 
+    a skos:Concept ;
+    skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/LabelType> ;
+    skos:prefLabel "verborgen"@nl ;
+    skos:definition "Het label is verborgen en mag niet voor eindgebruikers verschijnen. Het label wordt gebruikt voor categorisatie van het gerelateerde subject."@nl ;
+    skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/LabelType> .
