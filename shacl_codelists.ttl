@@ -156,7 +156,7 @@
   ] ;
   sh:property [
     sh:path skos:related ;
-    sh:class skos:Concept ;
+    sh:nodeKind sh:IRI ;
     sh:severity sh:Violation ;
     sh:message "Target class of skos:related should be a skos:Concept" ;
     
