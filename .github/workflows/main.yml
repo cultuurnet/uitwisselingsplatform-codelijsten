@@ -1,0 +1,26 @@
+name: check rdf syntax
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        name: checkout the repository
+      - uses: actions/setup-python@v4
+        name: install python
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+      - run: pip install -r requirements.txt
+        name: install dependencies
+        shell: sh
+      - run: python check_rdf.py
+        name: run the script to check for valid rdf
+        shell: sh
