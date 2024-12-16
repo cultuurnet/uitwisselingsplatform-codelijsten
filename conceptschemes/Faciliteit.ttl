@@ -13,7 +13,7 @@
     skos:prefLabel "Educatieve dienstverlening"@nl, "Services éducatifs"@fr, "Bildungsleistungen"@de, "Educational service"@en ;
     skos:definition "Diensten die gericht zijn op educatie en het overbrengen van kennis en vaardigheden."@nl ;
     skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/Faciliteit> ;
-    owl:sameAs <https://taxonomy.uitdatabank.be/terms/3.14.0.0.0> .
+    skos:exactMatch <https://taxonomy.uitdatabank.be/terms/3.14.0.0.0> .
 
 
 <https://data.cultuurparticipatie.be/id/concept/Faciliteit/voorzieningenVoorRolstoelgebruikers> 
@@ -22,7 +22,7 @@
     skos:prefLabel "Voorzieningen voor rolstoelgebruikers"@nl, "Facilités pour fauteuils roulants"@fr, "EInrichtung für Rollstuhlfahrer"@de, "Wheelchair facilities"@en ;
     skos:definition "Voorzieningen en aanpassingen die specifiek bedoeld zijn om toegankelijkheid te bieden voor rolstoelgebruikers."@nl ;
     skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/Faciliteit> ;
-    owl:sameAs <https://taxonomy.uitdatabank.be/terms/3.23.1.0.0> .
+    skos:exactMatch <https://taxonomy.uitdatabank.be/terms/3.23.1.0.0> .
 
 
 <https://data.cultuurparticipatie.be/id/concept/Faciliteit/assistentie> 
@@ -31,7 +31,7 @@
     skos:prefLabel "Assistentie"@nl, "Assistance"@fr, "Hilfe"@de, "Assistance"@en ;
     skos:definition "Hulp of ondersteuning die geboden wordt om mensen met een handicap in staat te stellen activiteiten uit te voeren."@nl ;
     skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/Faciliteit> ;
-    owl:sameAs <https://taxonomy.uitdatabank.be/terms/3.23.2.0.0> .
+    skos:exactMatch <https://taxonomy.uitdatabank.be/terms/3.23.2.0.0> .
 
 
 <https://data.cultuurparticipatie.be/id/concept/Faciliteit/rolstoelTerBeschikking> 
@@ -40,7 +40,7 @@
     skos:prefLabel "Rolstoel ter beschikking"@nl, "Disponibilité de fauteuils roulants"@fr, "Rollstuhl verfügbar"@de, "Wheelchair available"@en ;
     skos:definition "Beschikbaarstelling van rolstoelen voor gebruik."@nl ;
     skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/Faciliteit> ;
-    owl:sameAs <https://taxonomy.uitdatabank.be/terms/3.23.3.0.0> .
+    skos:exactMatch <https://taxonomy.uitdatabank.be/terms/3.23.3.0.0> .
 
 
 <https://data.cultuurparticipatie.be/id/concept/Faciliteit/voorzieningenVoorAssistentiehonden> 
@@ -49,7 +49,7 @@
     skos:prefLabel "Voorzieningen voor assistentiehonden"@nl, "Facilités de chiens d'assistance"@fr, "Einrichtung für Begleithunden"@de, "Facilities for guide dogs"@en ;
     skos:definition "Voorzieningen die speciaal zijn ontworpen om assistentiehonden te accommoderen."@nl ;
     skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/Faciliteit> ;
-    owl:sameAs <https://taxonomy.uitdatabank.be/terms/3.13.1.0.0> .
+    skos:exactMatch <https://taxonomy.uitdatabank.be/terms/3.13.1.0.0> .
 
 
 <https://data.cultuurparticipatie.be/id/concept/Faciliteit/audiodescriptie> 
@@ -58,7 +58,7 @@
     skos:prefLabel "Audiodescriptie"@nl, "Audiodéscription"@fr, "Audio-Beschreibung"@de, "Audiodescription"@en ;
     skos:definition "Een auditief hulpmiddel waarbij visuele informatie wordt omgezet in gesproken taal."@nl ;
     skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/Faciliteit> ;
-    owl:sameAs <https://taxonomy.uitdatabank.be/terms/3.13.2.0.0> .
+    skos:exactMatch <https://taxonomy.uitdatabank.be/terms/3.13.2.0.0> .
 
 
 <https://data.cultuurparticipatie.be/id/concept/Faciliteit/ringleiding> 
@@ -67,7 +67,7 @@
     skos:prefLabel "Ringleiding"@nl, "Boucle auditive"@fr, "Audio Induktionsschleife"@de, "Audio induction loop"@en ;
     skos:definition "Een systeem dat gesproken woorden of geluiden versterkt, speciaal voor mensen met gehoorproblemen."@nl ;
     skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/Faciliteit> ;
-    owl:sameAs <https://taxonomy.uitdatabank.be/terms/3.17.1.0.0> .
+    skos:exactMatch <https://taxonomy.uitdatabank.be/terms/3.17.1.0.0> .
 
 
 <https://data.cultuurparticipatie.be/id/concept/Faciliteit/bovenOfOndertiteling> 
@@ -76,7 +76,7 @@
     skos:prefLabel "Boven- of ondertiteling"@nl, "Soustitrages"@fr, "Untertitel"@de, "Subtitles"@en ;
     skos:definition "Een tekstuele weergave van gesproken taal, vaak onderaan een scherm, om informatie toegankelijk te maken voor doven en slechthorenden."@nl ;
     skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/Faciliteit> ;
-    owl:sameAs <https://taxonomy.uitdatabank.be/terms/3.17.3.0.0> .
+    skos:exactMatch <https://taxonomy.uitdatabank.be/terms/3.17.3.0.0> .
 
 
 <https://data.cultuurparticipatie.be/id/concept/Faciliteit/contactpuntVoorPersonenMetHandicap> 
@@ -85,7 +85,7 @@
     skos:prefLabel "Contactpunt voor personen met handicap"@nl, "point de contact pour les personnes avec un handicap"@fr, "Kontakpunkt für Menschen mit Behinderung"@de, "Point of contact for people with a disability"@en ;
     skos:definition "Een aangewezen punt of locatie waar personen met een handicap terecht kunnen voor specifieke ondersteuning en informatie."@nl ;
     skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/Faciliteit> ;
-    owl:sameAs <https://taxonomy.uitdatabank.be/terms/3.25.0.0.0> .
+    skos:exactMatch <https://taxonomy.uitdatabank.be/terms/3.25.0.0.0> .
 
 
 <https://data.cultuurparticipatie.be/id/concept/Faciliteit/parkeerplaats> 
@@ -94,7 +94,7 @@
     skos:prefLabel "Parkeerplaats"@nl, "Place de parking"@fr, "Behindertenparkplatz"@de, "Parking area"@en ;
     skos:definition "Een aangewezen gebied of plaats voor het parkeren van voertuigen, vaak met speciale voorzieningen."@nl ;
     skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/Faciliteit> ;
-    owl:sameAs <https://taxonomy.uitdatabank.be/terms/3.26.0.0.0> .
+    skos:exactMatch <https://taxonomy.uitdatabank.be/terms/3.26.0.0.0> .
 
 
 <https://data.cultuurparticipatie.be/id/concept/Faciliteit/rolstoeltoegankelijk> 
@@ -103,7 +103,7 @@
     skos:prefLabel "Rolstoeltoegankelijk"@nl, "Accessible en fauteuil roulant"@fr, "Rollstuhlgerecht"@de, "Accessible for wheelchairs"@en ;
     skos:definition "Ontworpen om rolstoelgebruikers toegang te verlenen tot gebouwen, faciliteiten of openbare ruimtes."@nl ;
     skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/Faciliteit> ;
-    owl:sameAs <https://taxonomy.uitdatabank.be/terms/3.27.0.0.0> .
+    skos:exactMatch <https://taxonomy.uitdatabank.be/terms/3.27.0.0.0> .
 
 
 <https://data.cultuurparticipatie.be/id/concept/Faciliteit/alternatieveIngang> 
@@ -112,7 +112,7 @@
     skos:prefLabel "Alternatieve ingang"@nl, "Entrée alternative"@fr, "Alternativer Eingang"@de, "Alternative entrance"@en ;
     skos:definition "Een alternatieve ingang die specifiek is ontworpen om toegang te bieden aan mensen met beperkte mobiliteit."@nl ;
     skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/Faciliteit> ;
-    owl:sameAs <https://taxonomy.uitdatabank.be/terms/3.28.0.0.0> .
+    skos:exactMatch <https://taxonomy.uitdatabank.be/terms/3.28.0.0.0> .
 
 
 <https://data.cultuurparticipatie.be/id/concept/Faciliteit/gegarandeerdZicht> 
@@ -121,7 +121,7 @@
     skos:prefLabel "Gegarandeerd zicht"@nl, "Vue garantie"@fr, "Gewährleistete Aussicht"@de, "Guaranteed view"@en ;
     skos:definition "Zekere garantie op een goed zicht op het podium of het evenement voor personen met een handicap."@nl ;
     skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/Faciliteit> ;
-    owl:sameAs <https://taxonomy.uitdatabank.be/terms/3.29.0.0.0> .
+    skos:exactMatch <https://taxonomy.uitdatabank.be/terms/3.29.0.0.0> .
 
 
 <https://data.cultuurparticipatie.be/id/concept/Faciliteit/rolstoelpodium> 
@@ -130,7 +130,7 @@
     skos:prefLabel "Rolstoelpodium"@nl, "Podium surélevé"@fr, "Rollstuhlpodest"@de, "Viewing platform"@en ;
     skos:definition "Een verhoogd platform of podium ontworpen om toegang te bieden aan rolstoelgebruikers."@nl ;
     skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/Faciliteit> ;
-    owl:sameAs <https://taxonomy.uitdatabank.be/terms/3.30.0.0.0> .
+    skos:exactMatch <https://taxonomy.uitdatabank.be/terms/3.30.0.0.0> .
 
 
 <https://data.cultuurparticipatie.be/id/concept/Faciliteit/toegankelijkSanitair> 
@@ -139,7 +139,7 @@
     skos:prefLabel "Toegankelijk sanitair"@nl, "Installations sanitaires accesibles"@fr, "Sanitäranlage für Rollstuhlbenutzer"@de, "Accessible sanitary facilities"@en ;
     skos:definition "Sanitaire voorzieningen die specifiek zijn ontworpen voor gebruik door personen met een handicap."@nl ;
     skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/Faciliteit> ;
-    owl:sameAs <https://taxonomy.uitdatabank.be/terms/3.31.0.0.0> .
+    skos:exactMatch <https://taxonomy.uitdatabank.be/terms/3.31.0.0.0> .
 
 
 <https://data.cultuurparticipatie.be/id/concept/Faciliteit/voorbehoudenCamping> 
@@ -148,7 +148,7 @@
     skos:prefLabel "Voorbehouden camping"@nl, "Camping réservé"@fr, "Reservierter Campingplatz"@de, "Reserved campsite"@en ;
     skos:definition "Een speciaal ingerichte camping of kampeerplaats voor mensen met een handicap."@nl ;
     skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/Faciliteit> ;
-    owl:sameAs <https://taxonomy.uitdatabank.be/terms/3.32.0.0.0> .
+    skos:exactMatch <https://taxonomy.uitdatabank.be/terms/3.32.0.0.0> .
 
 
 <https://data.cultuurparticipatie.be/id/concept/Faciliteit/tolkenVlaamseGebarentaal> 
@@ -157,7 +157,7 @@
     skos:prefLabel "Tolken Vlaamse Gebarentaal"@nl, "Interprètes de langue de signes"@fr, "Gebärdensprachdolmetscher"@de, "Sign language interpreting service"@en ;
     skos:definition "Diensten voor het vertalen van gesproken taal naar gebarentaal, speciaal voor doven en slechthorenden."@nl ;
     skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/Faciliteit> ;
-    owl:sameAs <https://taxonomy.uitdatabank.be/terms/3.33.0.0.0> .
+    skos:exactMatch <https://taxonomy.uitdatabank.be/terms/3.33.0.0.0> .
 
 
 <https://data.cultuurparticipatie.be/id/concept/Faciliteit/vereenvoudigdeInformatie> 
@@ -166,7 +166,7 @@
     skos:prefLabel "Vereenvoudigde informatie"@nl, "Information simplifiée"@fr, "Vereinfachte Information"@de, "Simplified information"@en ;
     skos:definition "Informatie die is vereenvoudigd of aangepast om het begrip te vergemakkelijken, vaak gebruikt voor mensen met cognitieve beperkingen."@nl ;
     skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/Faciliteit> ;
-    owl:sameAs <https://taxonomy.uitdatabank.be/terms/3.34.0.0.0> .
+    skos:exactMatch <https://taxonomy.uitdatabank.be/terms/3.34.0.0.0> .
 
 
 <https://data.cultuurparticipatie.be/id/concept/Faciliteit/verzorgingsruimte> 
@@ -175,7 +175,7 @@
     skos:prefLabel "Verzorgingsruimte"@nl, "Salle de soins"@fr, "Pflegeraum"@de, "Care room"@en ;
     skos:definition "Een ruimte met speciale voorzieningen voor persoonlijke verzorging en hygiëne."@nl ;
     skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/Faciliteit> ;
-    owl:sameAs <https://taxonomy.uitdatabank.be/terms/3.36.0.0.0> .
+    skos:exactMatch <https://taxonomy.uitdatabank.be/terms/3.36.0.0.0> .
 
 
 <https://data.cultuurparticipatie.be/id/concept/Faciliteit/oplaadzoneRolstoelen> 
@@ -184,7 +184,7 @@
     skos:prefLabel "Oplaadzone rolstoelen"@nl, "Zone de chargement pour fauteuils roulants"@fr, "Aufladungsmöglichkeit für Rollstuhle"@de, "Charging Faciliteit for wheelchairs"@en ;
     skos:definition "Een aangewezen zone voor het opladen van rolstoelen en andere mobiliteitsapparatuur."@nl ;
     skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/Faciliteit> ;
-    owl:sameAs <https://taxonomy.uitdatabank.be/terms/3.37.0.0.0> .
+    skos:exactMatch <https://taxonomy.uitdatabank.be/terms/3.37.0.0.0> .
 
 
 <https://data.cultuurparticipatie.be/id/concept/Faciliteit/interassistentie> 
@@ -193,7 +193,7 @@
     skos:prefLabel "Inter-assistentie"@nl, "Assistance spéciale"@fr, "Spezialhilfe"@de, "Special assistance"@en ;
     skos:definition "Ondersteuning en assistentie tussen mensen met verschillende soorten handicaps."@nl ;
     skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/Faciliteit> ;
-    owl:sameAs <https://taxonomy.uitdatabank.be/terms/3.38.0.0.0> .
+    skos:exactMatch <https://taxonomy.uitdatabank.be/terms/3.38.0.0.0> .
 
 
 <https://data.cultuurparticipatie.be/id/concept/Faciliteit/begeleiderspasBijGehandicapten> 
@@ -202,7 +202,7 @@
     skos:prefLabel "Begeleiderspas bij gehandicapten"@nl, "Carte d'accompagnateur"@fr, "Ausweis Begleitperson"@de, "Carer pass"@en ;
     skos:definition "Een identificatiekaart die begeleiders toegang verleent tot evenementen of locaties samen met een persoon met een handicap."@nl ;
     skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/Faciliteit> ;
-    owl:sameAs <https://taxonomy.uitdatabank.be/terms/3.39.0.0.0> .
+    skos:exactMatch <https://taxonomy.uitdatabank.be/terms/3.39.0.0.0> .
 
 
 <https://data.cultuurparticipatie.be/id/concept/Faciliteit/intertoegankelijkheidsgarantie> 
@@ -211,7 +211,7 @@
     skos:prefLabel "Inter-Toegankelijkheidsgarantie"@nl, "Accessibilité garantie"@fr, "Zertifizierte Zugänglichkeit"@de, "Certified accessibility"@en ;
     skos:definition "Een garantie voor algemene toegankelijkheid en voorzieningen voor personen met verschillende soorten handicaps."@nl ;
     skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/Faciliteit> ;
-    owl:sameAs <https://taxonomy.uitdatabank.be/terms/3.40.0.0.0> .
+    skos:exactMatch <https://taxonomy.uitdatabank.be/terms/3.40.0.0.0> .
 
 
 <https://data.cultuurparticipatie.be/id/concept/Faciliteit/prikkelarmAanbod> 
@@ -220,7 +220,7 @@
     skos:prefLabel "Prikkelarm aanbod"@nl, "Offre faiblement incitative"@fr, "Anreizarmes Angebot"@de, "Low incentive"@en ;
     skos:definition "Een aanbod dat rekening houdt met prikkelgevoeligheid en geschikt is voor mensen met sensorische overgevoeligheden."@nl ;
     skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/Faciliteit> ;
-    owl:sameAs <https://taxonomy.uitdatabank.be/terms/H28fcfRKFQAQs00K9NF9hh> .
+    skos:exactMatch <https://taxonomy.uitdatabank.be/terms/H28fcfRKFQAQs00K9NF9hh> .
 
 
 <https://data.cultuurparticipatie.be/id/concept/Faciliteit/afsprakenEnVoorspelbaarheid> 
@@ -229,4 +229,4 @@
     skos:prefLabel "Afspraken en voorspelbaarheid"@nl, "Accords et prévisibilité"@fr, "Vereinbarungen und Vorhersehbarkeit"@de, "Agreements and predictability"@en ;
     skos:definition "Voorzieningen die zorgen voor duidelijke afspraken en voorspelbaarheid, vaak belangrijk voor mensen met autisme of andere neurodivergente eigenschappen."@nl ;
     skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/Faciliteit> ;
-    owl:sameAs <https://taxonomy.uitdatabank.be/terms/4Vz9eZf0cnQmtfqcGGnNMF> .
+    skos:exactMatch <https://taxonomy.uitdatabank.be/terms/4Vz9eZf0cnQmtfqcGGnNMF> .
