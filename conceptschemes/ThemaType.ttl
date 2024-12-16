@@ -610,7 +610,7 @@
     skos:exactMatch <https://taxonomy.uitdatabank.be/terms/1.44.0.0.0> .
 
 
-<https://data.cultuurparticipatie.be/id/concept/ThemaType/ThemaTypeOnbepaald> 
+<https://data.cultuurparticipatie.be/id/concept/ThemaType/themaOnbepaald> 
     a skos:Concept ;
     skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
     skos:prefLabel "Thema onbepaald"@nl, "Thème non défini"@fr, "unbestimmt"@de, "Thema undefined"@en ;
@@ -691,7 +691,7 @@
     skos:exactMatch <https://taxonomy.uitdatabank.be/terms/1.11.1.0.0> .
 
 
-<https://data.cultuurparticipatie.be/id/concept/ThemaType/ThemaTypekamp> 
+<https://data.cultuurparticipatie.be/id/concept/ThemaType/themakamp> 
     a skos:Concept ;
     skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
     skos:prefLabel "Themakamp"@nl, "Camp thématique"@fr, "Themancamp"@de, "Thema camp"@en ;
