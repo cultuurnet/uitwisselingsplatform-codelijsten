@@ -41,7 +41,7 @@
     skos:definition "Een park dat speciaal is ingericht voor amusement en vermaak, vaak rond een bepaald thema."@nl ;
     skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/Locatietype> ;
     skos:exactMatch <https://taxonomy.uitdatabank.be/terms/0.41.0.0.0> ;
-    skos:related <https://www.wikidata.org/entity/Q2416723> .
+    skos:related <https://www.wikidata.org/entity/Q194195> .
 
 <https://data.cultuurparticipatie.be/id/concept/Locatietype/archeologischeSite>
     a skos:Concept ;
@@ -158,7 +158,7 @@
     skos:definition "Een ruimte die wordt gebruikt voor evenementen, tentoonstellingen of bijeenkomsten."@nl ;
     skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/Locatietype> ;
     skos:exactMatch <https://taxonomy.uitdatabank.be/terms/OyaPaf64AEmEAYXHeLMAtA> ;
-    skos:related <https://www.wikidata.org/entity/Q17350442> .
+    skos:related <https://www.wikidata.org/entity/Q1763828> .
 
 <https://data.cultuurparticipatie.be/id/concept/Locatietype/openbareRuimte>
     a skos:Concept ;
@@ -167,7 +167,7 @@
     skos:definition "Een ruimte die voor iedereen toegankelijk is en vaak in open lucht, zoals pleinen, parken en straten."@nl ;
     skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/Locatietype> ;
     skos:exactMatch <https://taxonomy.uitdatabank.be/terms/0.8.0.0.0> ;
-    skos:related <https://www.wikidata.org/entity/Q294440> .
+    skos:related <https://www.wikidata.org/entity/Q117187730> .
 
 <https://data.cultuurparticipatie.be/id/concept/Locatietype/theater>
     a skos:Concept ;
