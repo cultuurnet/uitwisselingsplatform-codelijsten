@@ -25,7 +25,8 @@ skos:definition | een definitie van het concept
 skos:inscheme  | het conceptscheme waartoe dit concept behoort
 skos:topConceptOf | het conceptscheme waarvan dit concept een top concept is 
 skos:broader | de concepten die boven dit concept hangen in de conceptscheme boom.
-owl:sameAs | verwijzing naar een identiek concept.
+skos:exactMatch | verwijzing naar een identiek concept.
+skos:related  | verwijzing naar een gerelateerd concept.
 
 - gebruik language-tagged strings i.p.v. plain literals
 Dus `"mijn label@nl` i.p.v. `"mijn label"`
