@@ -1,0 +1,1591 @@
+@prefix cp: <https://data.vlaanderen.be/ns/cultuurparticipatie#> .
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#> .
+@prefix m8g: <http://data.europa.eu/m8g/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix uwp: <https://data.uitwisselingsplatform.be/ns/platform#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix adms: <http://www.w3.org/ns/adms#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix locn: <http://www.w3.org/ns/locn#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix cidoc: <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix schemas: <https://schema.org/> .
+@prefix generiek: <https://data.vlaanderen.be/ns/generiek#> .
+@base <http://www.w3.org/2002/07/owl#> .
+
+[ rdf:type owl:Ontology
+ ] .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://www.w3.org/2002/07/owl#maxCardinality
+owl:maxCardinality rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2002/07/owl#minCardinality
+owl:minCardinality rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Datatypes
+#################################################################
+
+###  http://www.w3.org/2001/XMLSchema#gYear
+xsd:gYear rdf:type rdfs:Datatype .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://purl.org/dc/terms/creator
+dcterms:creator rdf:type owl:ObjectProperty ;
+                rdfs:domain adms:Identifier ;
+                rdfs:range foaf:Agent ;
+                rdfs:comment "Link naar de agent die de identificator heeft uitgegeven. URI met OVO-code van de organisatie"@nl ;
+                rdfs:label "toegekend door"@nl ;
+                owl:maxCardinality 1 ;
+                owl:minCardinality 1 .
+
+
+###  http://purl.org/dc/terms/isVersionOf
+dcterms:isVersionOf rdf:type owl:ObjectProperty ;
+                    rdfs:domain adms:Identifier ;
+                    rdfs:range adms:Identifier ;
+                    rdfs:comment "Een verwijzing naar een andere versie van de identificator."@nl ;
+                    rdfs:label "is versie van"@nl .
+
+
+###  http://purl.org/dc/terms/type
+dcterms:type rdf:type owl:ObjectProperty ;
+             rdfs:domain dcterms:Location ,
+                         cidoc:E7_Activity ,
+                         cp:AlgemeenParticipantkenmerk ,
+                         cp:Deelname ,
+                         cp:Realisator ;
+             rdfs:range skos:Concept ;
+             rdfs:comment "Het type van activiteit."@nl ;
+             rdfs:label "type"@nl ;
+             owl:maxCardinality 1 .
+
+
+###  http://www.cidoc-crm.org/cidoc-crm/P14_carried_out_by
+cidoc:P14_carried_out_by rdf:type owl:ObjectProperty ;
+                         rdfs:domain cidoc:E7_Activity ;
+                         rdfs:range cp:Realisator ;
+                         rdfs:comment "De Activiteit wordt uitgevoerd door een Realisator."@nl ;
+                         rdfs:label "gerealiseerd door"@nl .
+
+
+###  http://www.cidoc-crm.org/cidoc-crm/P160_has_temporal_projection
+cidoc:P160_has_temporal_projection rdf:type owl:ObjectProperty ;
+                                   rdfs:domain cidoc:E92_Spacetime_Volume ;
+                                   rdfs:range m8g:PeriodOfTime .
+
+
+###  http://www.cidoc-crm.org/cidoc-crm/P161_has_spatial_projection
+cidoc:P161_has_spatial_projection rdf:type owl:ObjectProperty ;
+                                  rdfs:domain cidoc:E92_Spacetime_Volume ;
+                                  rdfs:range dcterms:Location .
+
+
+###  http://www.cidoc-crm.org/cidoc-crm/P4_has_time-span
+cidoc:P4_has_time-span rdf:type owl:ObjectProperty ;
+                       rdfs:domain cidoc:E7_Activity ;
+                       rdfs:range m8g:PeriodOfTime ;
+                       rdfs:comment "Tijdstip wanneer de activiteit zal plaatsvinden of heeft plaatsgevonden."@nl ;
+                       rdfs:label "tijd"@nl ;
+                       owl:maxCardinality 1 .
+
+
+###  http://www.w3.org/2004/02/skos/core#exactMatch
+skos:exactMatch rdf:type owl:ObjectProperty ;
+                rdfs:domain skos:Concept ;
+                rdfs:range skos:Concept .
+
+
+###  http://www.w3.org/2004/02/skos/core#inScheme
+skos:inScheme rdf:type owl:ObjectProperty ;
+              rdfs:domain skos:Concept ;
+              rdfs:range skos:ConceptScheme .
+
+
+###  http://www.w3.org/ns/adms#identifier
+adms:identifier rdf:type owl:ObjectProperty ;
+                rdfs:domain dcterms:Location ,
+                            cidoc:E7_Activity ,
+                            cp:Organisator ,
+                            cp:Participant ,
+                            cp:Uitvoerder ;
+                rdfs:range adms:Identifier ;
+                rdfs:comment "Een unieke identificator voor de entiteit."@nl ;
+                rdfs:label "identificator"@nl ;
+                owl:maxCardinality 1 ;
+                owl:minCardinality 1 .
+
+
+###  http://www.w3.org/ns/locn#address
+locn:address rdf:type owl:ObjectProperty ;
+             rdfs:domain dcterms:Location ,
+                         cp:Organisator ;
+             rdfs:range locn:Address ;
+             rdfs:comment "Het adres van de entiteit."@nl ;
+             rdfs:label "adres"@nl .
+
+
+###  http://www.w3.org/ns/locn#geometry
+locn:geometry rdf:type owl:ObjectProperty ;
+              rdfs:domain dcterms:Location ,
+                          foaf:Agent ;
+              rdfs:range locn:Geometry ;
+              rdfs:comment "De geometrie van de entiteit."@nl ;
+              rdfs:label "geometrie"@nl .
+
+
+###  http://www.w3.org/ns/prov#atLocation
+prov:atLocation rdf:type owl:ObjectProperty ;
+                rdfs:domain cidoc:E7_Activity ;
+                rdfs:range dcterms:Location ;
+                rdfs:comment "Aanduiding van een geografische positie, dmv coordinaten, een toponiem, een adreslabel, een verwijzing naar een plaats/regio of verwijzing naar een adres."@nl ;
+                rdfs:label "locatie"@nl ;
+                owl:maxCardinality 1 .
+
+
+###  https://data.uitwisselingsplatform.be/ns/platform#bron
+uwp:bron rdf:type owl:ObjectProperty ;
+         rdfs:domain adms:Identifier ;
+         rdfs:comment "URI van de bron in beheer van de agent die de identificator heeft uitgegeven. Gebaseerd op de naam van het dataproduct in het UiTwisselingsplatform"@nl ;
+         rdfs:label "bron"@nl ;
+         owl:maxCardinality 1 ;
+         owl:minCardinality 1 .
+
+
+###  https://data.uitwisselingsplatform.be/ns/platform#ticketBeschikbaarheid
+uwp:ticketBeschikbaarheid rdf:type owl:ObjectProperty ;
+                          rdfs:domain cp:Beschikbaarheid ;
+                          rdfs:range skos:Concept .
+
+
+###  https://data.uitwisselingsplatform.be/ns/platform#virtueleLocatie
+uwp:virtueleLocatie rdf:type owl:ObjectProperty ;
+                    rdfs:domain cidoc:E7_Activity ;
+                    rdfs:range schemas:VirtualLocation ;
+                    rdfs:comment "De virtuele locatie waar de Activiteit plaatsvindt. sub-property van schema:location. Te gebruiken in combinatie met Activiteit.locatietype online of hybride"@nl ;
+                    rdfs:label "virtuele locatie"@nl ;
+                    owl:maxCardinality 1 .
+
+
+###  https://data.vlaanderen.be/ns/cultuurparticipatie#Activiteit.beschikbaarheid
+cp:Activiteit.beschikbaarheid rdf:type owl:ObjectProperty ;
+                              rdfs:domain cidoc:E7_Activity ;
+                              rdfs:range cp:Beschikbaarheid ;
+                              rdfs:comment "Geeft de beschikbaarheid weer van de Activiteit."@nl ;
+                              rdfs:label "beschikbaarheid"@nl ;
+                              owl:maxCardinality 1 .
+
+
+###  https://data.vlaanderen.be/ns/cultuurparticipatie#Activiteit.boeking
+cp:Activiteit.boeking rdf:type owl:ObjectProperty ;
+                      rdfs:domain cidoc:E7_Activity ;
+                      rdfs:range cp:Boekingsinfo ;
+                      rdfs:comment "De Boekinginfo van de Activiteit."@nl ;
+                      rdfs:label "boeking"@nl ;
+                      owl:maxCardinality 1 .
+
+
+###  https://data.vlaanderen.be/ns/cultuurparticipatie#Activiteit.contactinfo
+cp:Activiteit.contactinfo rdf:type owl:ObjectProperty ;
+                          rdfs:domain cidoc:E7_Activity ;
+                          rdfs:range schemas:ContactPoint ;
+                          rdfs:comment "Informatie zoals email, telefoon... die toelaat de aanbieder te contacteren."@nl ;
+                          rdfs:label "contactinfo"@nl .
+
+
+###  https://data.vlaanderen.be/ns/cultuurparticipatie#Activiteit.deelnemer
+cp:Activiteit.deelnemer rdf:type owl:ObjectProperty ;
+                        rdfs:domain cidoc:E7_Activity ;
+                        rdfs:range cp:Participant ;
+                        rdfs:comment "Participant die deelneemt aan een Activiteit."@nl ;
+                        rdfs:label "deelnemer"@nl .
+
+
+###  https://data.vlaanderen.be/ns/cultuurparticipatie#Activiteit.locatieType
+cp:Activiteit.locatieType rdf:type owl:ObjectProperty ;
+                          rdfs:domain cidoc:E7_Activity ;
+                          rdfs:range skos:Concept ;
+                          rdfs:comment "Het type locatie van de activiteit. Keuze tussen 'online', 'fysiek' of 'hybride'."@nl ;
+                          rdfs:label "locatie type"@nl ;
+                          owl:maxCardinality 1 .
+
+
+###  https://data.vlaanderen.be/ns/cultuurparticipatie#Activiteit.prijs
+cp:Activiteit.prijs rdf:type owl:ObjectProperty ;
+                    rdfs:domain cidoc:E7_Activity ;
+                    rdfs:range schemas:PriceSpecification ;
+                    rdfs:comment "De Prijsinfo van de Activiteit."@nl ;
+                    rdfs:label "prijs"@nl .
+
+
+###  https://data.vlaanderen.be/ns/cultuurparticipatie#Activiteit.ruimtetijd
+cp:Activiteit.ruimtetijd rdf:type owl:ObjectProperty ;
+                         rdfs:domain cidoc:E7_Activity ;
+                         rdfs:range cidoc:E92_Spacetime_Volume ;
+                         rdfs:comment "Een vierdimensionele puntenreeks in de fysieke ruimtetijd waarbij er een intersectie kan zijn van een plaats en tijdsaanduiding."@nl ;
+                         rdfs:label "ruimtetijd"@nl .
+
+
+###  https://data.vlaanderen.be/ns/cultuurparticipatie#Boekingsinfo.beschikbaar
+cp:Boekingsinfo.beschikbaar rdf:type owl:ObjectProperty ;
+                            rdfs:domain cp:Boekingsinfo ;
+                            rdfs:range m8g:PeriodOfTime ;
+                            rdfs:comment "Periode waarin de boekinginfo beschikbaar is."@nl ;
+                            rdfs:label "beschikbaar"@nl .
+
+
+###  https://data.vlaanderen.be/ns/cultuurparticipatie#Cultuurdeelname.themaActiviteit
+cp:Cultuurdeelname.themaActiviteit rdf:type owl:ObjectProperty ;
+                                   rdfs:domain cp:Cultuurdeelname ;
+                                   rdfs:range skos:Concept ;
+                                   rdfs:comment "Het thema van de activiteit waaraan de participant deelneemt."@nl ;
+                                   rdfs:label "thema activiteit"@nl .
+
+
+###  https://data.vlaanderen.be/ns/cultuurparticipatie#Cultuurdeelname.typeActiviteit
+cp:Cultuurdeelname.typeActiviteit rdf:type owl:ObjectProperty ;
+                                  rdfs:domain cp:Cultuurdeelname ;
+                                  rdfs:range skos:Concept ;
+                                  rdfs:comment "Het type activiteit waaraan de participant deelneemt."@nl ;
+                                  rdfs:label "type activiteit"@nl .
+
+
+###  https://data.vlaanderen.be/ns/cultuurparticipatie#Deelname.activiteit
+cp:Deelname.activiteit rdf:type owl:ObjectProperty ;
+                       rdfs:domain cp:Deelname ;
+                       rdfs:range cidoc:E7_Activity ;
+                       rdfs:comment "Referentie naar verbonden klasse."@nl ;
+                       rdfs:label "Activiteit"@nl .
+
+
+###  https://data.vlaanderen.be/ns/cultuurparticipatie#Deelname.inputVoor
+cp:Deelname.inputVoor rdf:type owl:ObjectProperty ;
+                      rdfs:domain cp:Deelname ;
+                      rdfs:range cp:ParticipantProfiel ;
+                      rdfs:comment "De ParticipantProfiel die gebruikt wordt als input voor de Deelname."@nl ;
+                      rdfs:label "input voor"@nl .
+
+
+###  https://data.vlaanderen.be/ns/cultuurparticipatie#Deelname.participant
+cp:Deelname.participant rdf:type owl:ObjectProperty ;
+                        rdfs:domain cp:Deelname ;
+                        rdfs:range cp:Participant ;
+                        rdfs:comment "De Participant die deelneemt aan de activiteit."@nl ;
+                        rdfs:label "participant"@nl .
+
+
+###  https://data.vlaanderen.be/ns/cultuurparticipatie#Deelname.tijdstip
+cp:Deelname.tijdstip rdf:type owl:ObjectProperty ;
+                     rdfs:domain cp:Deelname ;
+                     rdfs:range m8g:PeriodOfTime ;
+                     rdfs:comment "Het tijdstip van de deelname."@nl ;
+                     rdfs:label "tijdstip"@nl .
+
+
+###  https://data.vlaanderen.be/ns/cultuurparticipatie#ParticipantProfiel.algemeenKenmerk
+cp:ParticipantProfiel.algemeenKenmerk rdf:type owl:ObjectProperty ;
+                                      rdfs:domain cp:ParticipantProfiel ;
+                                      rdfs:range cp:AlgemeenParticipantkenmerk ;
+                                      rdfs:comment "Algemeen kenmerk van de participant."@nl ;
+                                      rdfs:label "algemeen kenmerk"@nl .
+
+
+###  https://data.vlaanderen.be/ns/cultuurparticipatie#ParticipantProfiel.cultureel
+cp:ParticipantProfiel.cultureel rdf:type owl:ObjectProperty ;
+                                rdfs:domain cp:ParticipantProfiel ;
+                                rdfs:range cp:Cultuurdeelname ;
+                                rdfs:comment "Culturele deelname-informatie van de participant."@nl ;
+                                rdfs:label "cultureel"@nl .
+
+
+###  https://data.vlaanderen.be/ns/cultuurparticipatie#ParticipantProfiel.sociodemografisch
+cp:ParticipantProfiel.sociodemografisch rdf:type owl:ObjectProperty ;
+                                        rdfs:domain cp:ParticipantProfiel ;
+                                        rdfs:range cp:SociodemografischKenmerk ;
+                                        rdfs:comment "Sociodemografisch kenmerk van de participant."@nl ;
+                                        rdfs:label "sociodemografisch"@nl .
+
+
+###  https://data.vlaanderen.be/ns/cultuurparticipatie#Prijs.prijscategorie
+cp:Prijs.prijscategorie rdf:type owl:ObjectProperty ;
+                        rdfs:domain schemas:PriceSpecification ;
+                        rdfs:range skos:Concept ;
+                        rdfs:comment "De categorie van de prijs zoals een jongerentarief of seniorentarief."@nl ;
+                        rdfs:label "prijscategorie"@nl .
+
+
+###  https://data.vlaanderen.be/ns/cultuurparticipatie#Realisator.thema
+cp:Realisator.thema rdf:type owl:ObjectProperty ;
+                    rdfs:domain cp:Realisator ;
+                    rdfs:range skos:Concept ;
+                    rdfs:comment "Het thema van de activiteiten die de Realisator uitvoert."@nl ;
+                    rdfs:label "thema"@nl .
+
+
+###  https://data.vlaanderen.be/ns/cultuurparticipatie#thema
+cp:thema rdf:type owl:ObjectProperty ;
+         rdfs:domain cidoc:E7_Activity ;
+         rdfs:range skos:Concept ;
+         rdfs:comment "Waar de Activiteit inhoudelijk over gaat."@nl ;
+         rdfs:label "thema"@nl ;
+         owl:maxCardinality 1 .
+
+
+###  https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator
+generiek:gestructureerdeIdentificator rdf:type owl:ObjectProperty ;
+                                      rdfs:domain adms:Identifier ;
+                                      rdfs:range generiek:GestructureerdeIdentificator ;
+                                      rdfs:comment "Identificator van een object opgesplitst in zijn onderdelen."@nl ;
+                                      rdfs:label "gestructureerde identificator"@nl ;
+                                      owl:maxCardinality 1 ;
+                                      owl:minCardinality 1 .
+
+
+###  https://schema.org/contactPoint
+schemas:contactPoint rdf:type owl:ObjectProperty ;
+                     rdfs:domain cidoc:E7_Activity ,
+                                 foaf:Agent ;
+                     rdfs:range schemas:ContactPoint ;
+                     rdfs:comment "Informatie zoals email, telefoon... die toelaat de aanbieder te contacteren."@nl ;
+                     rdfs:label "contactinfo"@nl .
+
+
+###  https://schema.org/dayOfWeek
+schemas:dayOfWeek rdf:type owl:ObjectProperty ;
+                  rdfs:domain schemas:OpeningHoursSpecification ;
+                  rdfs:range skos:Concept ;
+                  rdfs:comment "De dag van de week waarop de openingstijden van toepassing zijn."@nl ;
+                  rdfs:label "dag van de week"@nl .
+
+
+###  https://schema.org/hoursAvailable
+schemas:hoursAvailable rdf:type owl:ObjectProperty ;
+                       rdfs:domain cp:Beschikbaarheid ;
+                       rdfs:range schemas:OpeningHoursSpecification ;
+                       rdfs:comment "De openingstijden van de beschikbaarheid."@nl ;
+                       rdfs:label "openingstijden"@nl .
+
+
+###  https://schema.org/price
+schemas:price rdf:type owl:ObjectProperty ;
+              rdfs:domain schemas:PriceSpecification ;
+              rdfs:range schemas:MonetaryAmount ;
+              rdfs:comment "De aanbiedingsprijs van een activiteit."@nl ;
+              rdfs:label "prijs"@nl .
+
+
+###  https://schema.org/value
+schemas:value rdf:type owl:ObjectProperty ;
+              rdfs:range schemas:Number .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://data.europa.eu/m8g/endTime
+m8g:endTime rdf:type owl:DatatypeProperty ;
+            rdfs:range xsd:dateTime ;
+            rdfs:comment "Einde vd tijdsduur."@nl ;
+            rdfs:label "einde"@nl .
+
+
+###  http://data.europa.eu/m8g/startTime
+m8g:startTime rdf:type owl:DatatypeProperty ;
+              rdfs:range xsd:dateTime ;
+              rdfs:comment "Aanvang van de tijdsduur."@nl ;
+              rdfs:label "begin"@nl .
+
+
+###  http://purl.org/dc/terms/created
+dcterms:created rdf:type owl:DatatypeProperty ;
+                rdfs:range xsd:dateTime ;
+                rdfs:comment "Het tijdstip waarop de entiteit is gecreëerd."@nl ;
+                rdfs:label "gecreëerd"@nl ;
+                owl:maxCardinality 1 .
+
+
+###  http://purl.org/dc/terms/description
+dcterms:description rdf:type owl:DatatypeProperty ;
+                    rdfs:range rdf:langString ;
+                    rdfs:comment "De beschrijving van de entiteit."@nl ;
+                    rdfs:label "beschrijving"@nl .
+
+
+###  http://purl.org/dc/terms/modified
+dcterms:modified rdf:type owl:DatatypeProperty ;
+                 rdfs:range xsd:dateTime ;
+                 rdfs:comment "Het tijdstip waarop de entiteit is gewijzigd."@nl ;
+                 rdfs:label "gewijzigd"@nl ;
+                 owl:maxCardinality 1 .
+
+
+###  http://purl.org/dc/terms/title
+dcterms:title rdf:type owl:DatatypeProperty ;
+              rdfs:range rdf:langString ;
+              rdfs:comment "De titel van de entiteit."@nl ;
+              rdfs:label "titel"@nl ;
+              owl:minCardinality 1 .
+
+
+###  http://www.w3.org/2003/01/geo/wgs84_pos#lat
+geo:lat rdf:type owl:DatatypeProperty ;
+        rdfs:range xsd:decimal ;
+        rdfs:comment "De breedtegraad."@nl ;
+        rdfs:label "latitude"@nl .
+
+
+###  http://www.w3.org/2003/01/geo/wgs84_pos#lon
+geo:lon rdf:type owl:DatatypeProperty ;
+        rdfs:range xsd:decimal ;
+        rdfs:comment "De lengtegraad."@nl ;
+        rdfs:label "longitude"@nl .
+
+
+###  http://www.w3.org/2004/02/skos/core#definition
+skos:definition rdf:type owl:DatatypeProperty .
+
+
+###  http://www.w3.org/2004/02/skos/core#notation
+skos:notation rdf:type owl:DatatypeProperty ;
+              rdfs:range xsd:anyURI ;
+              rdfs:comment "Unieke identificator (URI) die de entiteit verkreeg bij registratie in het dataproduct."@nl ;
+              rdfs:label "notatie"@nl .
+
+
+###  http://www.w3.org/2004/02/skos/core#prefLabel
+skos:prefLabel rdf:type owl:DatatypeProperty ;
+               rdfs:range rdf:langString ;
+               rdfs:comment "Naam waarmee de organisatie bij voorkeur wordt aangeduid."@nl ;
+               rdfs:label "voorkeursnaam"@nl .
+
+
+###  http://www.w3.org/ns/locn#adminUnitL1
+locn:adminUnitL1 rdf:type owl:DatatypeProperty ;
+                 rdfs:range xsd:string ;
+                 rdfs:comment "De administratieve eenheid level 1 (land) van het adres."@nl ;
+                 rdfs:label "administrative unit level 1"@nl .
+
+
+###  http://www.w3.org/ns/locn#locatorDesignator
+locn:locatorDesignator rdf:type owl:DatatypeProperty ;
+                       rdfs:range xsd:string ;
+                       rdfs:comment "Het huisnummer of andere designator."@nl ;
+                       rdfs:label "locator designator"@nl .
+
+
+###  http://www.w3.org/ns/locn#locatorName
+locn:locatorName rdf:type owl:DatatypeProperty ;
+                 rdfs:range rdf:langString ;
+                 rdfs:comment "De naam van de locator."@nl ;
+                 rdfs:label "locator naam"@nl .
+
+
+###  http://www.w3.org/ns/locn#postCode
+locn:postCode rdf:type owl:DatatypeProperty ;
+              rdfs:range xsd:string ;
+              rdfs:comment "De postcode van het adres."@nl ;
+              rdfs:label "post code"@nl .
+
+
+###  http://www.w3.org/ns/locn#postName
+locn:postName rdf:type owl:DatatypeProperty ;
+              rdfs:range rdf:langString ;
+              rdfs:comment "De naam van de plaats of gemeente."@nl ;
+              rdfs:label "gemeentenaam"@nl .
+
+
+###  http://www.w3.org/ns/locn#thoroughfare
+locn:thoroughfare rdf:type owl:DatatypeProperty ;
+                  rdfs:range rdf:langString ;
+                  rdfs:comment "De naam van de straat."@nl ;
+                  rdfs:label "straatnaam"@nl .
+
+
+###  http://xmlns.com/foaf/0.1/homepage
+foaf:homepage rdf:type owl:DatatypeProperty ;
+              rdfs:range xsd:string ;
+              rdfs:comment "De homepage van de agent."@nl ;
+              rdfs:label "homepage"@nl .
+
+
+###  https://data.uitwisselingsplatform.be/ns/platform#geboortejaar
+uwp:geboortejaar rdf:type owl:DatatypeProperty ;
+                 rdfs:domain cp:Participant ,
+                             cp:SociodemografischKenmerk ;
+                 rdfs:range xsd:gYear ;
+                 rdfs:comment "Gepseudonimiseerde informatie van de Participant: geboortedatum gereduceerd tot geboortejaar"@nl ;
+                 rdfs:label "geboortejaar"@nl .
+
+
+###  https://data.uitwisselingsplatform.be/ns/platform#statistischeSectorId
+uwp:statistischeSectorId rdf:type owl:DatatypeProperty ;
+                         rdfs:domain cp:Participant ,
+                                     cp:SociodemografischKenmerk ;
+                         rdfs:range xsd:string ;
+                         rdfs:comment "Gepseudonimiseerde informatie van een Participant: adresgegevens gereduceerd tot Statistische Sector: sector_id"@nl ;
+                         rdfs:label "statistische sector identificator"@nl .
+
+
+###  https://data.uitwisselingsplatform.be/ns/platform#statistischeSectorNaam
+uwp:statistischeSectorNaam rdf:type owl:DatatypeProperty ;
+                           rdfs:domain cp:Participant ,
+                                       cp:SociodemografischKenmerk ;
+                           rdfs:range xsd:string ;
+                           rdfs:comment "Gepseudonimiseerde informatie van een Participant: adresgegevens gereduceerd tot Statistische Sector: sector_name"@nl ;
+                           rdfs:label "statistische sector naam"@nl .
+
+
+###  https://data.uitwisselingsplatform.be/ns/platform#verwerktOp
+uwp:verwerktOp rdf:type owl:DatatypeProperty ;
+               rdfs:range xsd:dateTime ;
+               rdfs:comment "Het tijdstip waarop de entiteit is verwerkt in het systeem."@nl ;
+               rdfs:label "verwerkt op"@nl ;
+               owl:maxCardinality 1 ;
+               owl:minCardinality 1 .
+
+
+###  https://data.vlaanderen.be/ns/cultuurparticipatie#Realisator.naam
+cp:Realisator.naam rdf:type owl:DatatypeProperty ;
+                   rdfs:range rdf:langString ;
+                   rdfs:comment "De naam van de Realisator."@nl ;
+                   rdfs:label "naam"@nl .
+
+
+###  https://data.vlaanderen.be/ns/generiek#lokaleIdentificator
+generiek:lokaleIdentificator rdf:type owl:DatatypeProperty ;
+                             rdfs:range xsd:string ;
+                             rdfs:comment "String gebruikt om het object uniek te identificeren binnen de naamruimte."@nl ;
+                             rdfs:label "lokale identificator"@nl .
+
+
+###  https://data.vlaanderen.be/ns/generiek#naamruimte
+generiek:naamruimte rdf:type owl:DatatypeProperty ;
+                    rdfs:range xsd:string ;
+                    rdfs:comment "String die toegevoegd wordt aan de lokaleidentificator om deze globaal uniek te maken."@nl ;
+                    rdfs:label "naamruimte"@nl .
+
+
+###  https://schema.org/closes
+schemas:closes rdf:type owl:DatatypeProperty ;
+               rdfs:range xsd:string ;
+               rdfs:comment "Tijdstip waarop iets sluit."@nl ;
+               rdfs:label "sluit"@nl .
+
+
+###  https://schema.org/currency
+schemas:currency rdf:type owl:DatatypeProperty ;
+                 rdfs:range xsd:string ;
+                 rdfs:comment "Valuta waarin een bedrag wordt uitgedrukt."@nl ;
+                 rdfs:label "valuta"@nl .
+
+
+###  https://schema.org/email
+schemas:email rdf:type owl:DatatypeProperty ;
+              rdfs:range xsd:string ;
+              rdfs:comment "E-mailadres voor contact."@nl ;
+              rdfs:label "e-mail"@nl .
+
+
+###  https://schema.org/opens
+schemas:opens rdf:type owl:DatatypeProperty ;
+              rdfs:range xsd:string ;
+              rdfs:comment "Tijdstip waarop iets opent."@nl ;
+              rdfs:label "opent"@nl .
+
+
+###  https://schema.org/telephone
+schemas:telephone rdf:type owl:DatatypeProperty ;
+                  rdfs:range xsd:string ;
+                  rdfs:comment "Telefoonnummer voor contact."@nl ;
+                  rdfs:label "telefoon"@nl .
+
+
+###  https://schema.org/url
+schemas:url rdf:type owl:DatatypeProperty ;
+            rdfs:domain owl:Thing ;
+            rdfs:range xsd:string ;
+            rdfs:comment "URL voor contact of informatie."@nl ;
+            rdfs:label "URL"@nl .
+
+
+###  https://schema.org/value
+schemas:value rdf:type owl:DatatypeProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://data.europa.eu/m8g/PeriodOfTime
+m8g:PeriodOfTime rdf:type owl:Class ;
+                 rdfs:comment "Een periode van tijd."@nl ;
+                 rdfs:label "Periode van Tijd"@nl .
+
+
+###  http://purl.org/dc/terms/Location
+dcterms:Location rdf:type owl:Class ;
+                 rdfs:comment "Een geografische locatie."@nl ;
+                 rdfs:label "Locatie"@nl .
+
+
+###  http://www.cidoc-crm.org/cidoc-crm/E7_Activity
+cidoc:E7_Activity rdf:type owl:Class ;
+                  rdfs:comment "Een activiteit die plaatsvindt in de tijd en ruimte."@nl ;
+                  rdfs:label "Activiteit"@nl .
+
+
+###  http://www.cidoc-crm.org/cidoc-crm/E92_Spacetime_Volume
+cidoc:E92_Spacetime_Volume rdf:type owl:Class ;
+                           rdfs:comment "Een vierdimensionele puntenreeks in de fysieke ruimtetijd."@nl ;
+                           rdfs:label "Ruimtetijd Volume"@nl .
+
+
+###  http://www.w3.org/2004/02/skos/core#Concept
+skos:Concept rdf:type owl:Class ;
+             rdfs:comment "Een concept uit een conceptenschema."@nl ;
+             rdfs:label "Concept"@nl .
+
+
+###  http://www.w3.org/2004/02/skos/core#ConceptScheme
+skos:ConceptScheme rdf:type owl:Class ;
+                   rdfs:comment "Een verzameling van concepten die samen een conceptenschema vormen."@nl ;
+                   rdfs:label "Conceptenschema"@nl .
+
+
+###  http://www.w3.org/ns/adms#Identifier
+adms:Identifier rdf:type owl:Class ;
+                rdfs:comment "Een identificator voor een entiteit."@nl ;
+                rdfs:label "Identificator"@nl .
+
+
+###  http://www.w3.org/ns/locn#Address
+locn:Address rdf:type owl:Class ;
+             rdfs:comment "Een spatial object dat de locatie van een postadres representeert."@nl ;
+             rdfs:label "Adres"@nl .
+
+
+###  http://www.w3.org/ns/locn#Geometry
+locn:Geometry rdf:type owl:Class ;
+              rdfs:comment "Een spatial object dat de geometrie van een locatie representeert."@nl ;
+              rdfs:label "Geometrie"@nl .
+
+
+###  http://xmlns.com/foaf/0.1/Agent
+foaf:Agent rdf:type owl:Class ;
+           rdfs:comment "Een agent (persoon, organisatie, software)."@nl ;
+           rdfs:label "Agent"@nl .
+
+
+###  https://data.vlaanderen.be/ns/cultuurparticipatie#AlgemeenParticipantKenmerk
+cp:AlgemeenParticipantKenmerk rdf:type owl:Class .
+
+
+###  https://data.vlaanderen.be/ns/cultuurparticipatie#AlgemeenParticipantkenmerk
+cp:AlgemeenParticipantkenmerk rdf:type owl:Class ;
+                              rdfs:subClassOf cp:ParticipantProfiel ;
+                              rdfs:comment "Algemeen kenmerk van een participant."@nl ;
+                              rdfs:label "Algemeen Participantkenmerk"@nl .
+
+
+###  https://data.vlaanderen.be/ns/cultuurparticipatie#Beschikbaarheid
+cp:Beschikbaarheid rdf:type owl:Class ;
+                   rdfs:comment "Beschikbaarheid van een activiteit."@nl ;
+                   rdfs:label "Beschikbaarheid"@nl .
+
+
+###  https://data.vlaanderen.be/ns/cultuurparticipatie#Boekingsinfo
+cp:Boekingsinfo rdf:type owl:Class ;
+                rdfs:comment "Informatie over boekingsmogelijkheden."@nl ;
+                rdfs:label "Boekingsinfo"@nl .
+
+
+###  https://data.vlaanderen.be/ns/cultuurparticipatie#Cultuurdeelname
+cp:Cultuurdeelname rdf:type owl:Class ;
+                   rdfs:subClassOf cp:ParticipantProfiel ;
+                   rdfs:comment "Deelname van een participant aan culturele activiteiten."@nl ;
+                   rdfs:label "Cultuurdeelname"@nl .
+
+
+###  https://data.vlaanderen.be/ns/cultuurparticipatie#Deelname
+cp:Deelname rdf:type owl:Class ;
+            rdfs:comment "Deelname van een participant aan een activiteit."@nl ;
+            rdfs:label "Deelname"@nl .
+
+
+###  https://data.vlaanderen.be/ns/cultuurparticipatie#Organisator
+cp:Organisator rdf:type owl:Class ;
+               rdfs:subClassOf cp:Realisator ;
+               rdfs:comment "Een realisator die activiteiten organiseert."@nl ;
+               rdfs:label "Organisator"@nl .
+
+
+###  https://data.vlaanderen.be/ns/cultuurparticipatie#Participant
+cp:Participant rdf:type owl:Class ;
+               rdfs:comment "Een persoon die deelneemt aan activiteiten."@nl ;
+               rdfs:label "Participant"@nl .
+
+
+###  https://data.vlaanderen.be/ns/cultuurparticipatie#ParticipantProfiel
+cp:ParticipantProfiel rdf:type owl:Class ;
+                      rdfs:comment "Profiel van een participant met kenmerken en deelname-informatie."@nl ;
+                      rdfs:label "Participant Profiel"@nl .
+
+
+###  https://data.vlaanderen.be/ns/cultuurparticipatie#Realisator
+cp:Realisator rdf:type owl:Class ;
+              rdfs:subClassOf foaf:Agent ;
+              rdfs:comment "Een agent die activiteiten realiseert."@nl ;
+              rdfs:label "Realisator"@nl .
+
+
+###  https://data.vlaanderen.be/ns/cultuurparticipatie#SociodemografischKenmerk
+cp:SociodemografischKenmerk rdf:type owl:Class ;
+                            rdfs:subClassOf cp:ParticipantProfiel ;
+                            rdfs:comment "Sociodemografisch kenmerk van een participant."@nl ;
+                            rdfs:label "Sociodemografisch Kenmerk"@nl .
+
+
+###  https://data.vlaanderen.be/ns/cultuurparticipatie#Uitvoerder
+cp:Uitvoerder rdf:type owl:Class ;
+              rdfs:subClassOf cp:Realisator ;
+              rdfs:comment "Een realisator die activiteiten uitvoert."@nl ;
+              rdfs:label "Uitvoerder"@nl .
+
+
+###  https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator
+generiek:GestructureerdeIdentificator rdf:type owl:Class ;
+                                      rdfs:comment "Een identificator die opgesplitst is in zijn onderdelen."@nl ;
+                                      rdfs:label "Gestructureerde Identificator"@nl .
+
+
+###  https://schema.org/ContactPoint
+schemas:ContactPoint rdf:type owl:Class ;
+                     rdfs:comment "Contactinformatie zoals email, telefoon, URL."@nl ;
+                     rdfs:label "Contactpunt"@nl .
+
+
+###  https://schema.org/MonetaryAmount
+schemas:MonetaryAmount rdf:type owl:Class ;
+                       rdfs:comment "Een geldbedrag met valuta."@nl ;
+                       rdfs:label "Geldbedrag"@nl .
+
+
+###  https://schema.org/Number
+schemas:Number rdf:type owl:Class ;
+               rdfs:comment "Een numerieke waarde."@nl ;
+               rdfs:label "Nummer"@nl .
+
+
+###  https://schema.org/OpeningHoursSpecification
+schemas:OpeningHoursSpecification rdf:type owl:Class ;
+                                  rdfs:comment "Specificatie van openingstijden."@nl ;
+                                  rdfs:label "Openingstijden Specificatie"@nl .
+
+
+###  https://schema.org/PriceSpecification
+schemas:PriceSpecification rdf:type owl:Class ;
+                           rdfs:comment "Specificatie van prijsinformatie."@nl ;
+                           rdfs:label "Prijs Specificatie"@nl .
+
+
+###  https://schema.org/VirtualLocation
+schemas:VirtualLocation rdf:type owl:Class ;
+                        rdfs:comment "Virtuele locatie waar activiteiten plaatsvinden."@nl ;
+                        rdfs:label "Virtuele Locatie"@nl .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  https://data.cultuurparticipatie.be/id/concept/ActiviteitType/tentoonstelling
+<https://data.cultuurparticipatie.be/id/concept/ActiviteitType/tentoonstelling> rdf:type owl:NamedIndividual ,
+                                                                                         skos:Concept ;
+                                                                                owl:sameAs <https://taxonomy.uitdatabank.be/terms/0.0.0.0.0> ;
+                                                                                skos:exactMatch <https://taxonomy.uitdatabank.be/terms/0.0.0.0.0> ;
+                                                                                skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/ActiviteitType> ;
+                                                                                skos:definition "Een presentatie van kunstwerken, voorwerpen of informatie"@nl ;
+                                                                                skos:prefLabel "Tentoonstelling"@nl .
+
+
+###  https://taxonomy.uitdatabank.be/terms/0.0.0.0.0
+
+###  https://data.cultuurparticipatie.be/id/concept/DeelnameType/bezoeker
+<https://data.cultuurparticipatie.be/id/concept/DeelnameType/bezoeker> rdf:type owl:NamedIndividual ,
+                                                                                skos:Concept ;
+                                                                       skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/DeelnameType> ;
+                                                                       skos:definition "Deelnemer die een activiteit bezoekt."@nl ;
+                                                                       skos:prefLabel "Bezoeker"@nl .
+
+
+###  https://data.cultuurparticipatie.be/id/concept/LocatieType/museumOfGalerij
+<https://data.cultuurparticipatie.be/id/concept/LocatieType/museumOfGalerij> rdf:type owl:NamedIndividual ,
+                                                                                      skos:Concept ;
+                                                                             skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/LocatieType> ;
+                                                                             skos:definition "Museum of galerij locatie."@nl ;
+                                                                             skos:prefLabel "Museum of Galerij"@nl .
+
+
+###  https://data.cultuurparticipatie.be/id/concept/ParticipantType/natuurlijkPersoon
+<https://data.cultuurparticipatie.be/id/concept/ParticipantType/natuurlijkPersoon> rdf:type owl:NamedIndividual ,
+                                                                                            skos:Concept ;
+                                                                                   skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/ParticipantType> ;
+                                                                                   skos:definition "Natuurlijke persoon als participant."@nl ;
+                                                                                   skos:prefLabel "Natuurlijk Persoon"@nl .
+
+
+###  https://data.cultuurparticipatie.be/id/concept/PrijsCategorieType/basis
+<https://data.cultuurparticipatie.be/id/concept/PrijsCategorieType/basis> rdf:type owl:NamedIndividual ,
+                                                                                   skos:Concept ;
+                                                                          skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/PrijsCategorieType> ;
+                                                                          skos:definition "Basisprijs voor deelnemers zonder korting."@nl ;
+                                                                          skos:prefLabel "basistarief"@nl .
+
+
+###  https://data.cultuurparticipatie.be/id/concept/PrijsCategorieType/tarief
+<https://data.cultuurparticipatie.be/id/concept/PrijsCategorieType/tarief> rdf:type owl:NamedIndividual ,
+                                                                                    skos:Concept ;
+                                                                           skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/PrijsCategorieType> ;
+                                                                           skos:definition "Niet-gespecifieerd (kortings)tarief voor deelnemers"@nl ;
+                                                                           skos:prefLabel "tarief"@nl .
+
+
+###  https://data.cultuurparticipatie.be/id/concept/ThemaType/erfgoed
+<https://data.cultuurparticipatie.be/id/concept/ThemaType/erfgoed> rdf:type owl:NamedIndividual ,
+                                                                            skos:Concept ;
+                                                                   skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+                                                                   skos:definition "Erfgoed omvat alle tastbare en niet-tastbare overblijfselen uit het verleden die mensen het bewaren waard vinden."@nl ;
+                                                                   skos:prefLabel "Erfgoed"@nl .
+
+
+###  https://data.cultuurparticipatie.be/id/concept/ThemaType/kunstEnKunsteducatie
+<https://data.cultuurparticipatie.be/id/concept/ThemaType/kunstEnKunsteducatie> rdf:type owl:NamedIndividual ,
+                                                                                         skos:Concept ;
+                                                                                skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+                                                                                skos:definition "Kunst en kunsteducatie activiteiten."@nl ;
+                                                                                skos:prefLabel "Kunst en Kunsteducatie"@nl .
+
+
+###  https://data.cultuurparticipatie.be/id/concept/ThemaType/meerdereKunstvormen
+<https://data.cultuurparticipatie.be/id/concept/ThemaType/meerdereKunstvormen> rdf:type owl:NamedIndividual ,
+                                                                                        skos:Concept ;
+                                                                               skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> ;
+                                                                               skos:definition "Activiteiten die meerdere kunstvormen combineren."@nl ;
+                                                                               skos:prefLabel "Meerdere Kunstvormen"@nl .
+
+
+###  https://data.cultuurparticipatie.be/id/conceptscheme/Aanwezigheidsmodus
+<https://data.cultuurparticipatie.be/id/conceptscheme/Aanwezigheidsmodus> rdf:type owl:NamedIndividual ,
+                                                                                   skos:ConceptScheme ;
+                                                                          skos:definition "Codelijst om aan te geven of een Activiteit fysiek, online of hybride bijgewoond kan worden."@nl ;
+                                                                          skos:prefLabel "conceptscheme aanwezigheidsmodus"@nl .
+
+
+###  https://data.cultuurparticipatie.be/id/conceptscheme/ActiviteitType
+<https://data.cultuurparticipatie.be/id/conceptscheme/ActiviteitType> rdf:type owl:NamedIndividual ,
+                                                                               skos:ConceptScheme ;
+                                                                      skos:definition "Codelijst voor het type van een Activiteit."@nl ;
+                                                                      skos:prefLabel "conceptscheme activiteittype"@nl .
+
+
+###  https://data.cultuurparticipatie.be/id/conceptscheme/DeelnameType
+<https://data.cultuurparticipatie.be/id/conceptscheme/DeelnameType> rdf:type owl:NamedIndividual .
+
+
+###  https://data.cultuurparticipatie.be/id/conceptscheme/LocatieType
+<https://data.cultuurparticipatie.be/id/conceptscheme/LocatieType> rdf:type owl:NamedIndividual .
+
+
+###  https://data.cultuurparticipatie.be/id/conceptscheme/ParticipantType
+<https://data.cultuurparticipatie.be/id/conceptscheme/ParticipantType> rdf:type owl:NamedIndividual .
+
+
+###  https://data.cultuurparticipatie.be/id/conceptscheme/PrijsCategorieType
+<https://data.cultuurparticipatie.be/id/conceptscheme/PrijsCategorieType> rdf:type owl:NamedIndividual ,
+                                                                                   skos:ConceptScheme ;
+                                                                          skos:definition "Codelijst om het type van PrijsCategorie aan te geven."@nl ;
+                                                                          skos:prefLabel "conceptscheme PrijsCategorieType"@nl .
+
+
+###  https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType
+<https://data.cultuurparticipatie.be/id/conceptscheme/ThemaType> rdf:type owl:NamedIndividual ,
+                                                                          skos:ConceptScheme ;
+                                                                 skos:definition "Codelijst voor het thema van een Activiteit."@nl ;
+                                                                 skos:prefLabel "conceptscheme thema"@nl .
+
+
+###  https://data.cultuurparticipatie.be/id/conceptscheme/Aanwezigheidsmodus/fysiek
+<https://data.cultuurparticipatie.be/id/conceptscheme/Aanwezigheidsmodus/fysiek> rdf:type owl:NamedIndividual ,
+                                                                                          skos:Concept ;
+                                                                                 skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/Aanwezigheidsmodus> ;
+                                                                                 skos:definition "De Activiteit gaat door op een fysieke locatie"@nl ;
+                                                                                 skos:prefLabel "fysiek"@nl .
+
+
+###  https://data.example.org/id/event-1
+<https://data.example.org/id/event-1> rdf:type owl:NamedIndividual ,
+                                               cidoc:E7_Activity ;
+                                      dcterms:type <https://data.cultuurparticipatie.be/id/concept/ActiviteitType/tentoonstelling> ;
+                                      cidoc:P14_carried_out_by <https://data.example.org/id/organizer-1> ,
+                                                               <https://data.example.org/id/performer-1> ;
+                                      cidoc:P4_has_time-span <https://data.example.org/id/event-1#period> ;
+                                      adms:identifier <https://data.example.org/id/event-1#identifier> ;
+                                      prov:atLocation <https://data.example.org/id/venue-1> ;
+                                      cp:Activiteit.beschikbaarheid <https://data.example.org/id/event-1#beschikbaarheid> ;
+                                      cp:Activiteit.boeking <https://data.example.org/id/event-1#boekingsInfo> ;
+                                      cp:Activiteit.locatieType <https://data.cultuurparticipatie.be/id/conceptscheme/Aanwezigheidsmodus/fysiek> ;
+                                      cp:Activiteit.prijs <https://data.example.org/id/event-1#prijsInfo-1> ,
+                                                          <https://data.example.org/id/event-1#prijsInfo-2> ,
+                                                          <https://data.example.org/id/event-1#prijsInfo-3> ,
+                                                          <https://data.example.org/id/event-1#prijsInfo-4> ;
+                                      cp:thema <https://data.cultuurparticipatie.be/id/concept/ThemaType/meerdereKunstvormen> ;
+                                      schemas:contactPoint <https://data.example.org/id/event-1#boekingsInfo-contactPoint> ;
+                                      dcterms:created "2023-04-26T12:14:01+01:00"^^xsd:dateTime ;
+                                      dcterms:description "McKenzie's tentoonstelling is te zien in tentoonstellingsvleugel Vleugel 19 die ontworpen werd door Francesca Torzo en een microkosmos van de stad Hasselt presenteert. [...]"@nl ;
+                                      dcterms:modified "2023-04-26T12:15:39+02:00"^^xsd:dateTime ;
+                                      dcterms:title "Lucy McKenzie: Super Palace"@nl ;
+                                      uwp:verwerktOp "2023-04-26T13:00:00+00:00"^^xsd:dateTime .
+
+
+###  https://data.example.org/id/organizer-1
+<https://data.example.org/id/organizer-1> rdf:type owl:NamedIndividual ,
+                                                   cp:Organisator .
+
+
+###  https://data.example.org/id/performer-1
+<https://data.example.org/id/performer-1> rdf:type owl:NamedIndividual ,
+                                                   cp:Uitvoerder .
+
+
+###  https://data.example.org/id/venue-1
+<https://data.example.org/id/venue-1> rdf:type owl:NamedIndividual ,
+                                               dcterms:Location .
+
+
+###  https://data.example.org/id/event-1#beschikbaarheid
+<https://data.example.org/id/event-1#beschikbaarheid> rdf:type owl:NamedIndividual ,
+                                                               cp:Beschikbaarheid ;
+                                                      uwp:ticketBeschikbaarheid schemas:LimitedAvailability ;
+                                                      schemas:hoursAvailable <https://data.example.org/id/event-1#beschikbaarheid-1-openinghours> ,
+                                                                             <https://data.example.org/id/event-1#beschikbaarheid-2-openinghours> ,
+                                                                             <https://data.example.org/id/event-1#beschikbaarheid-3-openinghours> ,
+                                                                             <https://data.example.org/id/event-1#beschikbaarheid-4-openinghours> ,
+                                                                             <https://data.example.org/id/event-1#beschikbaarheid-5-openinghours> .
+
+
+###  https://data.example.org/id/event-1#beschikbaarheid-1-openinghours
+<https://data.example.org/id/event-1#beschikbaarheid-1-openinghours> rdf:type owl:NamedIndividual ,
+                                                                              schemas:OpeningHoursSpecification ;
+                                                                     schemas:dayOfWeek schemas:Wednesday ;
+                                                                     schemas:closes "17:00" ;
+                                                                     schemas:opens "13:00" .
+
+
+###  https://data.example.org/id/event-1#beschikbaarheid-2-openinghours
+<https://data.example.org/id/event-1#beschikbaarheid-2-openinghours> rdf:type owl:NamedIndividual ,
+                                                                              schemas:OpeningHoursSpecification ;
+                                                                     schemas:dayOfWeek schemas:Thursday ;
+                                                                     schemas:closes "17:00" ;
+                                                                     schemas:opens "11:00" .
+
+
+###  https://data.example.org/id/event-1#beschikbaarheid-3-openinghours
+<https://data.example.org/id/event-1#beschikbaarheid-3-openinghours> rdf:type owl:NamedIndividual ,
+                                                                              schemas:OpeningHoursSpecification ;
+                                                                     schemas:dayOfWeek schemas:Friday ;
+                                                                     schemas:closes "17:00" ;
+                                                                     schemas:opens "11:00" .
+
+
+###  https://data.example.org/id/event-1#beschikbaarheid-4-openinghours
+<https://data.example.org/id/event-1#beschikbaarheid-4-openinghours> rdf:type owl:NamedIndividual ,
+                                                                              schemas:OpeningHoursSpecification ;
+                                                                     schemas:dayOfWeek schemas:Saturday ;
+                                                                     schemas:closes "17:00" ;
+                                                                     schemas:opens "11:00" .
+
+
+###  https://data.example.org/id/event-1#beschikbaarheid-5-openinghours
+<https://data.example.org/id/event-1#beschikbaarheid-5-openinghours> rdf:type owl:NamedIndividual ,
+                                                                              schemas:OpeningHoursSpecification ;
+                                                                     schemas:dayOfWeek schemas:Sunday ;
+                                                                     schemas:closes "17:00" ;
+                                                                     schemas:opens "11:00" .
+
+
+###  https://data.example.org/id/event-1#boekingsInfo
+<https://data.example.org/id/event-1#boekingsInfo> rdf:type owl:NamedIndividual ,
+                                                            cp:Boekingsinfo ;
+                                                   cp:Boekingsinfo.beschikbaar <https://data.example.org/id/event-1#boekingsInfo-period> ;
+                                                   schemas:contactPoint <https://data.example.org/id/event-1#boekingsInfo-contactPoint> .
+
+
+###  https://data.example.org/id/event-1#boekingsInfo-contactPoint
+<https://data.example.org/id/event-1#boekingsInfo-contactPoint> rdf:type owl:NamedIndividual ,
+                                                                         schemas:ContactPoint ;
+                                                                schemas:email "tickets@example.be" ;
+                                                                schemas:telephone "+3212345678" ;
+                                                                schemas:url "https://www.example.com/event/tickets" .
+
+
+###  https://data.example.org/id/event-1#boekingsInfo-period
+<https://data.example.org/id/event-1#boekingsInfo-period> rdf:type owl:NamedIndividual ,
+                                                                   m8g:PeriodOfTime ;
+                                                          m8g:endTime "2025-02-25T16:30:00+00:00"^^xsd:dateTime ;
+                                                          m8g:startTime "2024-03-09T10:00:00+00:00"^^xsd:dateTime .
+
+
+###  https://data.example.org/id/event-1#gestructureerdeIdentificator
+<https://data.example.org/id/event-1#gestructureerdeIdentificator> rdf:type owl:NamedIndividual ,
+                                                                            generiek:GestructureerdeIdentificator ;
+                                                                   generiek:lokaleIdentificator "285c5de7" ;
+                                                                   generiek:naamruimte "https://data.example.org/id/event/" .
+
+
+###  https://data.example.org/id/event-1#identifier
+<https://data.example.org/id/event-1#identifier> rdf:type owl:NamedIndividual ,
+                                                          adms:Identifier ;
+                                                 dcterms:creator <https://data.vlaanderen.be/id/organisatie/OVO003887> ;
+                                                 uwp:bron <https://data.uitwisselingsplatform.be/id/dp-be-publiq-demo-demo-dataproduct> ;
+                                                 generiek:gestructureerdeIdentificator <https://data.example.org/id/event-1#gestructureerdeIdentificator> ;
+                                                 skos:notation "https://data.example.org/id/event/285c5de7"^^xsd:anyURI ;
+                                                 rdfs:label "Identificator"@nl .
+
+
+###  https://data.example.org/id/event-1#period
+<https://data.example.org/id/event-1#period> rdf:type owl:NamedIndividual ,
+                                                      m8g:PeriodOfTime ;
+                                             m8g:endTime "2025-02-25T18:00:00+00:00"^^xsd:dateTime ;
+                                             m8g:startTime "2024-09-09T10:00:00+00:00"^^xsd:dateTime .
+
+
+###  https://data.example.org/id/event-1#prijsInfo-1
+<https://data.example.org/id/event-1#prijsInfo-1> rdf:type owl:NamedIndividual ,
+                                                           schemas:PriceSpecification ;
+                                                  cp:Prijs.prijscategorie <https://data.cultuurparticipatie.be/id/concept/PrijsCategorieType/basis> ;
+                                                  schemas:price <https://data.example.org/id/event-1#prijsInfo-1-priceValue> ;
+                                                  skos:prefLabel "Basistarief"@nl ,
+                                                                 "Tarif de base"@fr .
+
+
+###  https://data.example.org/id/event-1#prijsInfo-1-priceValue
+<https://data.example.org/id/event-1#prijsInfo-1-priceValue> rdf:type owl:NamedIndividual ,
+                                                                      schemas:MonetaryAmount ;
+                                                             schemas:currency "EUR" ;
+                                                             schemas:value 12.0 .
+
+
+###  https://data.example.org/id/event-1#prijsInfo-2
+<https://data.example.org/id/event-1#prijsInfo-2> rdf:type owl:NamedIndividual ,
+                                                           schemas:PriceSpecification ;
+                                                  cp:Prijs.prijscategorie <https://data.cultuurparticipatie.be/id/concept/PrijsCategorieType/tarief> ;
+                                                  schemas:price <https://data.example.org/id/event-1#prijsInfo-2-priceValue> ;
+                                                  skos:prefLabel "museumpas"@nl ,
+                                                                 "pass musées"@fr .
+
+
+###  https://data.example.org/id/event-1#prijsInfo-2-priceValue
+<https://data.example.org/id/event-1#prijsInfo-2-priceValue> rdf:type owl:NamedIndividual ,
+                                                                      schemas:MonetaryAmount ;
+                                                             schemas:currency "EUR" ;
+                                                             schemas:value 0.0 .
+
+
+###  https://data.example.org/id/event-1#prijsInfo-3
+<https://data.example.org/id/event-1#prijsInfo-3> rdf:type owl:NamedIndividual ,
+                                                           schemas:PriceSpecification ;
+                                                  cp:Prijs.prijscategorie <https://data.cultuurparticipatie.be/id/concept/PrijsCategorieType/tarief> ;
+                                                  schemas:price <https://data.example.org/id/event-1#prijsInfo-3-priceValue> ;
+                                                  skos:prefLabel "18-26 ans"@fr ,
+                                                                 "18-26 jaar"@nl .
+
+
+###  https://data.example.org/id/event-1#prijsInfo-3-priceValue
+<https://data.example.org/id/event-1#prijsInfo-3-priceValue> rdf:type owl:NamedIndividual ,
+                                                                      schemas:MonetaryAmount ;
+                                                             schemas:currency "EUR" ;
+                                                             schemas:value 6.0 .
+
+
+###  https://data.example.org/id/event-1#prijsInfo-4
+<https://data.example.org/id/event-1#prijsInfo-4> rdf:type owl:NamedIndividual ,
+                                                           schemas:PriceSpecification ;
+                                                  cp:Prijs.prijscategorie <https://data.cultuurparticipatie.be/id/concept/PrijsCategorieType/tarief> ;
+                                                  schemas:price <https://data.example.org/id/event-1#prijsInfo-4-priceValue> ;
+                                                  skos:prefLabel "0-18 ans"@fr ,
+                                                                 "0-18 jaar"@nl .
+
+
+###  https://data.example.org/id/event-1#prijsInfo-4-priceValue
+<https://data.example.org/id/event-1#prijsInfo-4-priceValue> rdf:type owl:NamedIndividual ,
+                                                                      schemas:MonetaryAmount ;
+                                                             schemas:currency "EUR" ;
+                                                             schemas:value 0.0 .
+
+
+###  https://data.example.org/id/event/285c5de7
+<https://data.example.org/id/event/285c5de7> rdf:type owl:NamedIndividual ,
+                                                      cidoc:E7_Activity ;
+                                             dcterms:type <https://data.cultuurparticipatie.be/id/concept/ActiviteitType/tentoonstelling> ;
+                                             cidoc:P14_carried_out_by <https://data.example.org/id/organizer/3b98fcf8> ,
+                                                                      <https://data.example.org/id/performer/c44359c7> ;
+                                             cidoc:P4_has_time-span <https://data.example.org/id/event/285c5de7#period> ;
+                                             adms:identifier <https://data.example.org/id/event/285c5de7#identifier> ;
+                                             prov:atLocation <https://data.example.org/id/venue/787d7420> ;
+                                             cp:Activiteit.beschikbaarheid <https://data.example.org/id/event/285c5de7#beschikbaarheid> ;
+                                             cp:Activiteit.boeking <https://data.example.org/id/event/285c5de7#boekingsInfo> ;
+                                             cp:Activiteit.locatieType <https://data.cultuurparticipatie.be/id/conceptscheme/Aanwezigheidsmodus/fysiek> ;
+                                             cp:Activiteit.prijs <https://data.example.org/id/event/285c5de7#prijsInfo-1> ,
+                                                                 <https://data.example.org/id/event/285c5de7#prijsInfo-2> ,
+                                                                 <https://data.example.org/id/event/285c5de7#prijsInfo-3> ,
+                                                                 <https://data.example.org/id/event/285c5de7#prijsInfo-4> ;
+                                             cp:thema <https://data.cultuurparticipatie.be/id/concept/ThemaType/meerdereKunstvormen> ;
+                                             dcterms:created "2023-04-26T12:14:01+01:00"^^xsd:dateTime ;
+                                             dcterms:description "McKenzie's tentoonstelling is te zien in tentoonstellingsvleugel Vleugel 19 die ontworpen werd door Francesca Torzo en een microkosmos van de stad Hasselt presenteert. [...]"@nl ;
+                                             dcterms:modified "2023-04-26T12:15:39+02:00"^^xsd:dateTime ;
+                                             dcterms:title "Lucy McKenzie: Super Palace"@nl ;
+                                             uwp:verwerktOp "2023-04-26T13:00:00+00:00"^^xsd:dateTime .
+
+
+###  https://data.example.org/id/event/285c5de7#beschikbaarheid
+<https://data.example.org/id/event/285c5de7#beschikbaarheid> rdf:type owl:NamedIndividual ,
+                                                                      cp:Beschikbaarheid ;
+                                                             uwp:ticketBeschikbaarheid schemas:LimitedAvailability ;
+                                                             schemas:hoursAvailable <https://data.example.org/id/event/285c5de7#beschikbaarheid-1-openinghours> ,
+                                                                                    <https://data.example.org/id/event/285c5de7#beschikbaarheid-2-openinghours> ,
+                                                                                    <https://data.example.org/id/event/285c5de7#beschikbaarheid-3-openinghours> ,
+                                                                                    <https://data.example.org/id/event/285c5de7#beschikbaarheid-4-openinghours> ,
+                                                                                    <https://data.example.org/id/event/285c5de7#beschikbaarheid-5-openinghours> .
+
+
+###  https://data.example.org/id/event/285c5de7#beschikbaarheid-1-openinghours
+<https://data.example.org/id/event/285c5de7#beschikbaarheid-1-openinghours> rdf:type owl:NamedIndividual ,
+                                                                                     schemas:OpeningHoursSpecification ;
+                                                                            schemas:dayOfWeek schemas:Wednesday ;
+                                                                            schemas:closes "17:00" ;
+                                                                            schemas:opens "13:00" .
+
+
+###  https://data.example.org/id/event/285c5de7#beschikbaarheid-2-openinghours
+<https://data.example.org/id/event/285c5de7#beschikbaarheid-2-openinghours> rdf:type owl:NamedIndividual ,
+                                                                                     schemas:OpeningHoursSpecification ;
+                                                                            schemas:dayOfWeek schemas:Thursday ;
+                                                                            schemas:closes "17:00" ;
+                                                                            schemas:opens "11:00" .
+
+
+###  https://data.example.org/id/event/285c5de7#beschikbaarheid-3-openinghours
+<https://data.example.org/id/event/285c5de7#beschikbaarheid-3-openinghours> rdf:type owl:NamedIndividual ,
+                                                                                     schemas:OpeningHoursSpecification ;
+                                                                            schemas:dayOfWeek schemas:Friday ;
+                                                                            schemas:closes "17:00" ;
+                                                                            schemas:opens "11:00" .
+
+
+###  https://data.example.org/id/event/285c5de7#beschikbaarheid-4-openinghours
+<https://data.example.org/id/event/285c5de7#beschikbaarheid-4-openinghours> rdf:type owl:NamedIndividual ,
+                                                                                     schemas:OpeningHoursSpecification ;
+                                                                            schemas:dayOfWeek schemas:Saturday ;
+                                                                            schemas:closes "17:00" ;
+                                                                            schemas:opens "11:00" .
+
+
+###  https://data.example.org/id/event/285c5de7#beschikbaarheid-5-openinghours
+<https://data.example.org/id/event/285c5de7#beschikbaarheid-5-openinghours> rdf:type owl:NamedIndividual ,
+                                                                                     schemas:OpeningHoursSpecification ;
+                                                                            schemas:dayOfWeek schemas:Sunday ;
+                                                                            schemas:closes "17:00" ;
+                                                                            schemas:opens "11:00" .
+
+
+###  https://data.example.org/id/event/285c5de7#boekingsInfo
+<https://data.example.org/id/event/285c5de7#boekingsInfo> rdf:type owl:NamedIndividual ,
+                                                                   cp:Boekingsinfo ;
+                                                          cp:Boekingsinfo.beschikbaar <https://data.example.org/id/event/285c5de7#boekingsInfo-period> ;
+                                                          schemas:contactPoint <https://data.example.org/id/event/285c5de7#boekingsInfo-contactPoint> .
+
+
+###  https://data.example.org/id/event/285c5de7#boekingsInfo-contactPoint
+<https://data.example.org/id/event/285c5de7#boekingsInfo-contactPoint> rdf:type owl:NamedIndividual ,
+                                                                                schemas:ContactPoint ;
+                                                                       schemas:email "tickets@example.be" ;
+                                                                       schemas:telephone "+3212345678" ;
+                                                                       schemas:url "https://www.example.com/event/tickets" .
+
+
+###  https://data.example.org/id/event/285c5de7#boekingsInfo-period
+<https://data.example.org/id/event/285c5de7#boekingsInfo-period> rdf:type owl:NamedIndividual ,
+                                                                          m8g:PeriodOfTime ;
+                                                                 m8g:endTime "2025-02-25T16:30:00+00:00"^^xsd:dateTime ;
+                                                                 m8g:startTime "2024-03-09T10:00:00+00:00"^^xsd:dateTime .
+
+
+###  https://data.example.org/id/event/285c5de7#gestructureerdeIdentificator
+<https://data.example.org/id/event/285c5de7#gestructureerdeIdentificator> rdf:type owl:NamedIndividual ,
+                                                                                   generiek:GestructureerdeIdentificator ;
+                                                                          generiek:lokaleIdentificator "285c5de7" ;
+                                                                          generiek:naamruimte "https://data.example.org/id/event/" .
+
+
+###  https://data.example.org/id/event/285c5de7#identifier
+<https://data.example.org/id/event/285c5de7#identifier> rdf:type owl:NamedIndividual ,
+                                                                 adms:Identifier ;
+                                                        dcterms:creator <https://data.vlaanderen.be/id/organisatie/OVO003887> ;
+                                                        uwp:bron <https://data.uitwisselingsplatform.be/id/dp-be-publiq-demo-demo-dataproduct> ;
+                                                        generiek:gestructureerdeIdentificator <https://data.example.org/id/event/285c5de7#gestructureerdeIdentificator> ;
+                                                        skos:notation "https://data.example.org/id/event/285c5de7"^^xsd:anyURI .
+
+
+###  https://data.example.org/id/event/285c5de7#period
+<https://data.example.org/id/event/285c5de7#period> rdf:type owl:NamedIndividual ,
+                                                             m8g:PeriodOfTime ;
+                                                    m8g:endTime "2025-02-25T18:00:00+00:00"^^xsd:dateTime ;
+                                                    m8g:startTime "2024-09-09T10:00:00+00:00"^^xsd:dateTime .
+
+
+###  https://data.example.org/id/event/285c5de7#prijsInfo-1
+<https://data.example.org/id/event/285c5de7#prijsInfo-1> rdf:type owl:NamedIndividual ,
+                                                                  schemas:PriceSpecification ;
+                                                         cp:Prijs.prijscategorie <https://data.cultuurparticipatie.be/id/concept/PrijsCategorieType/basis> ;
+                                                         schemas:price <https://data.example.org/id/event/285c5de7#prijsInfo-1-priceValue> ;
+                                                         skos:prefLabel "Basistarief"@nl ,
+                                                                        "Tarif de base"@fr .
+
+
+###  https://data.example.org/id/event/285c5de7#prijsInfo-1-priceValue
+<https://data.example.org/id/event/285c5de7#prijsInfo-1-priceValue> rdf:type owl:NamedIndividual ,
+                                                                             schemas:MonetaryAmount ;
+                                                                    schemas:currency "EUR" ;
+                                                                    schemas:value 12.0 .
+
+
+###  https://data.example.org/id/event/285c5de7#prijsInfo-2
+<https://data.example.org/id/event/285c5de7#prijsInfo-2> rdf:type owl:NamedIndividual ,
+                                                                  schemas:PriceSpecification ;
+                                                         cp:Prijs.prijscategorie <https://data.cultuurparticipatie.be/id/concept/PrijsCategorieType/tarief> ;
+                                                         schemas:price <https://data.example.org/id/event/285c5de7#prijsInfo-2-priceValue> ;
+                                                         skos:prefLabel "museumpas"@nl ,
+                                                                        "pass musées"@fr .
+
+
+###  https://data.example.org/id/event/285c5de7#prijsInfo-2-priceValue
+<https://data.example.org/id/event/285c5de7#prijsInfo-2-priceValue> rdf:type owl:NamedIndividual ,
+                                                                             schemas:MonetaryAmount ;
+                                                                    schemas:currency "EUR" ;
+                                                                    schemas:value 0 .
+
+
+###  https://data.example.org/id/event/285c5de7#prijsInfo-3
+<https://data.example.org/id/event/285c5de7#prijsInfo-3> rdf:type owl:NamedIndividual ,
+                                                                  schemas:PriceSpecification ;
+                                                         cp:Prijs.prijscategorie <https://data.cultuurparticipatie.be/id/concept/PrijsCategorieType/tarief> ;
+                                                         schemas:price <https://data.example.org/id/event/285c5de7#prijsInfo-3-priceValue> ;
+                                                         skos:prefLabel "18-26 ans"@fr ,
+                                                                        "18-26 jaar"@nl .
+
+
+###  https://data.example.org/id/event/285c5de7#prijsInfo-3-priceValue
+<https://data.example.org/id/event/285c5de7#prijsInfo-3-priceValue> rdf:type owl:NamedIndividual ,
+                                                                             schemas:MonetaryAmount ;
+                                                                    schemas:currency "EUR" ;
+                                                                    schemas:value 6 .
+
+
+###  https://data.example.org/id/event/285c5de7#prijsInfo-4
+<https://data.example.org/id/event/285c5de7#prijsInfo-4> rdf:type owl:NamedIndividual ,
+                                                                  schemas:PriceSpecification ;
+                                                         cp:Prijs.prijscategorie <https://data.cultuurparticipatie.be/id/concept/PrijsCategorieType/tarief> ;
+                                                         schemas:price <https://data.example.org/id/event/285c5de7#prijsInfo-4-priceValue> ;
+                                                         skos:prefLabel "0-18 ans"@fr ,
+                                                                        "0-18 jaar"@nl .
+
+
+###  https://data.example.org/id/event/285c5de7#prijsInfo-4-priceValue
+<https://data.example.org/id/event/285c5de7#prijsInfo-4-priceValue> rdf:type owl:NamedIndividual ,
+                                                                             schemas:MonetaryAmount ;
+                                                                    schemas:currency "EUR" ;
+                                                                    schemas:value 0 .
+
+
+###  https://data.example.org/id/organizer/3b98fcf8
+<https://data.example.org/id/organizer/3b98fcf8> rdf:type owl:NamedIndividual ,
+                                                          cp:Organisator ;
+                                                 adms:identifier <https://data.example.org/id/organizer/3b98fcf8#identifier> ;
+                                                 locn:address <https://data.example.org/id/organizer/3b98fcf8#address> ;
+                                                 locn:geometry <https://data.example.org/id/organizer/3b98fcf8#geometry> ;
+                                                 dcterms:created "2020-02-05T14:06:32+00:00"^^xsd:dateTime ;
+                                                 dcterms:modified "2024-02-05T21:06:32+00:00"^^xsd:dateTime ;
+                                                 foaf:homepage "https://www.z33.be/" ;
+                                                 uwp:verwerktOp "2024-05-01T14:06:32+00:00"^^xsd:dateTime ;
+                                                 cp:Realisator.naam "Z33"@nl .
+
+
+###  https://data.example.org/id/organizer/3b98fcf8#address
+<https://data.example.org/id/organizer/3b98fcf8#address> rdf:type owl:NamedIndividual ,
+                                                                  locn:Address ;
+                                                         locn:adminUnitL1 "BE" ;
+                                                         locn:locatorDesignator "1" ;
+                                                         locn:postCode "3500" ;
+                                                         locn:postName "Hasselt"@nl ;
+                                                         locn:thoroughfare "Bonnefantenstraat"@nl .
+
+
+###  https://data.example.org/id/organizer/3b98fcf8#geometry
+<https://data.example.org/id/organizer/3b98fcf8#geometry> rdf:type owl:NamedIndividual ,
+                                                                   locn:Geometry ;
+                                                          geo:lat 50.932540 ;
+                                                          geo:lon 5.340060 .
+
+
+###  https://data.example.org/id/organizer/3b98fcf8#gestructureerdeIdentificator
+<https://data.example.org/id/organizer/3b98fcf8#gestructureerdeIdentificator> rdf:type owl:NamedIndividual ,
+                                                                                       generiek:GestructureerdeIdentificator ;
+                                                                              generiek:lokaleIdentificator "3b98fcf8" ;
+                                                                              generiek:naamruimte "https://data.example.org/id/organizer/" .
+
+
+###  https://data.example.org/id/organizer/3b98fcf8#identifier
+<https://data.example.org/id/organizer/3b98fcf8#identifier> rdf:type owl:NamedIndividual ,
+                                                                     adms:Identifier ;
+                                                            dcterms:creator <https://data.vlaanderen.be/id/organisatie/OVO003887> ;
+                                                            uwp:bron <https://data.uitwisselingsplatform.be/id/dp-be-publiq-demo-demo-dataproduct> ;
+                                                            generiek:gestructureerdeIdentificator <https://data.example.org/id/organizer/3b98fcf8#gestructureerdeIdentificator> ;
+                                                            skos:notation "https://data.example.org/id/organizer/3b98fcf8"^^xsd:anyURI .
+
+
+###  https://data.example.org/id/participant/67db4b25
+<https://data.example.org/id/participant/67db4b25> rdf:type owl:NamedIndividual ,
+                                                            cp:Participant ;
+                                                   adms:identifier <https://data.example.org/id/participant/67db4b25#identifier> ;
+                                                   dcterms:created "2023-12-21T12:15:39+02:00"^^xsd:dateTime ;
+                                                   dcterms:modified "2023-12-21T12:15:39+02:00"^^xsd:dateTime ;
+                                                   uwp:geboortejaar "1987"^^xsd:gYear ;
+                                                   uwp:statistischeSectorId "24062A00" ;
+                                                   uwp:statistischeSectorNaam "LEUVEN-CENTRUM" ;
+                                                   uwp:verwerktOp "2024-03-06T00:02:17+00:00"^^xsd:dateTime .
+
+
+###  https://data.example.org/id/participant/67db4b25#gestructureerdeIdentificator
+<https://data.example.org/id/participant/67db4b25#gestructureerdeIdentificator> rdf:type owl:NamedIndividual ,
+                                                                                         generiek:GestructureerdeIdentificator ;
+                                                                                generiek:lokaleIdentificator "67db4b25" ;
+                                                                                generiek:naamruimte "https://data.example.org/id/participant/" .
+
+
+###  https://data.example.org/id/participant/67db4b25#identifier
+<https://data.example.org/id/participant/67db4b25#identifier> rdf:type owl:NamedIndividual ,
+                                                                       adms:Identifier ;
+                                                              dcterms:creator <https://data.vlaanderen.be/id/organisatie/OVO003887> ;
+                                                              uwp:bron <https://data.uitwisselingsplatform.be/id/dp-be-publiq-demo-demo-dataproduct> ;
+                                                              generiek:gestructureerdeIdentificator <https://data.example.org/id/participant/67db4b25#gestructureerdeIdentificator> ;
+                                                              skos:notation "https://data.example.org/id/participant/67db4b25"^^xsd:anyURI .
+
+
+###  https://data.example.org/id/participantProfiel/1c7ba8be
+<https://data.example.org/id/participantProfiel/1c7ba8be> rdf:type owl:NamedIndividual ,
+                                                                   cp:ParticipantProfiel ;
+                                                          cp:ParticipantProfiel.algemeenKenmerk <https://data.example.org/id/participantProfiel/1c7ba8be#algemeenKenmerk> ;
+                                                          cp:ParticipantProfiel.cultureel <https://data.example.org/id/participantProfiel/1c7ba8be#cultuurdeelname> ;
+                                                          cp:ParticipantProfiel.sociodemografisch <https://data.example.org/id/participantProfiel/1c7ba8be#sociodemografisch> .
+
+
+###  https://data.example.org/id/participantProfiel/1c7ba8be#algemeenKenmerk
+<https://data.example.org/id/participantProfiel/1c7ba8be#algemeenKenmerk> rdf:type owl:NamedIndividual ,
+                                                                                   cp:AlgemeenParticipantKenmerk ;
+                                                                          dcterms:type <https://data.cultuurparticipatie.be/id/concept/ParticipantType/natuurlijkPersoon> .
+
+
+###  https://data.example.org/id/participantProfiel/1c7ba8be#cultuurdeelname
+<https://data.example.org/id/participantProfiel/1c7ba8be#cultuurdeelname> rdf:type owl:NamedIndividual ,
+                                                                                   cp:Cultuurdeelname ;
+                                                                          cp:Cultuurdeelname.themaActiviteit <https://data.cultuurparticipatie.be/id/concept/ThemaType/meerdereKunstvormen> ;
+                                                                          cp:Cultuurdeelname.typeActiviteit <https://data.cultuurparticipatie.be/id/concept/ActiviteitType/tentoonstelling> .
+
+
+###  https://data.example.org/id/participantProfiel/1c7ba8be#sociodemografisch
+<https://data.example.org/id/participantProfiel/1c7ba8be#sociodemografisch> rdf:type owl:NamedIndividual ,
+                                                                                     cp:SociodemografischKenmerk ;
+                                                                            uwp:geboortejaar "1987"^^xsd:gYear ;
+                                                                            uwp:statistischeSectorId "24062A00" ;
+                                                                            uwp:statistischeSectorNaam "LEUVEN-CENTRUM" .
+
+
+###  https://data.example.org/id/participation/1c7ba8be
+<https://data.example.org/id/participation/1c7ba8be> rdf:type owl:NamedIndividual ,
+                                                              cp:Deelname ;
+                                                     dcterms:type <https://data.cultuurparticipatie.be/id/concept/DeelnameType/bezoeker> ;
+                                                     cp:Deelname.activiteit <https://data.example.org/id/event/285c5de7> ;
+                                                     cp:Deelname.inputVoor <https://data.example.org/id/participantProfiel/1c7ba8be> ;
+                                                     cp:Deelname.participant <https://data.example.org/id/participant/67db4b25> ;
+                                                     cp:Deelname.tijdstip <https://data.example.org/id/participation/1c7ba8be#tijdstip> .
+
+
+###  https://data.example.org/id/participation/1c7ba8be#tijdstip
+<https://data.example.org/id/participation/1c7ba8be#tijdstip> rdf:type owl:NamedIndividual ,
+                                                                       m8g:PeriodOfTime ;
+                                                              m8g:startTime "2024-10-12T12:15:39+02:00"^^xsd:dateTime .
+
+
+###  https://data.example.org/id/performer/c44359c7
+<https://data.example.org/id/performer/c44359c7> rdf:type owl:NamedIndividual ,
+                                                          cp:Uitvoerder ;
+                                                 adms:identifier <https://data.example.org/id/performer/c44359c7#identifier> ;
+                                                 cp:Realisator.thema <https://data.cultuurparticipatie.be/id/concept/ThemaType/kunstEnKunsteducatie> ;
+                                                 schemas:contactPoint <https://data.example.org/id/performer/c44359c7#contactPoint> ;
+                                                 dcterms:created "2023-04-26T12:14:01+01:00"^^xsd:dateTime ;
+                                                 dcterms:modified "2023-04-26T13:14:01+01:00"^^xsd:dateTime ;
+                                                 uwp:verwerktOp "2023-05-01T12:14:01+01:00"^^xsd:dateTime ;
+                                                 cp:Realisator.naam "Lucy McKenzie"@nl .
+
+
+###  https://data.example.org/id/performer/c44359c7#contactPoint
+<https://data.example.org/id/performer/c44359c7#contactPoint> rdf:type owl:NamedIndividual ,
+                                                                       schemas:ContactPoint ;
+                                                              schemas:url "https://www.lucymckenzie.com/" .
+
+
+###  https://data.example.org/id/performer/c44359c7#gestructureerdeIdentificator
+<https://data.example.org/id/performer/c44359c7#gestructureerdeIdentificator> rdf:type owl:NamedIndividual ,
+                                                                                       generiek:GestructureerdeIdentificator ;
+                                                                              generiek:lokaleIdentificator "c44359c7" ;
+                                                                              generiek:naamruimte "https://data.example.org/id/performer/" .
+
+
+###  https://data.example.org/id/performer/c44359c7#identifier
+<https://data.example.org/id/performer/c44359c7#identifier> rdf:type owl:NamedIndividual ,
+                                                                     adms:Identifier ;
+                                                            dcterms:creator <https://data.vlaanderen.be/id/organisatie/OVO003887> ;
+                                                            uwp:bron <https://data.uitwisselingsplatform.be/id/dp-be-publiq-demo-demo-dataproduct> ;
+                                                            generiek:gestructureerdeIdentificator <https://data.example.org/id/performer/c44359c7#gestructureerdeIdentificator> ;
+                                                            skos:notation "https://data.example.org/id/performer/c44359c7"^^xsd:anyURI .
+
+
+###  https://data.example.org/id/venue/787d7420
+<https://data.example.org/id/venue/787d7420> rdf:type owl:NamedIndividual ,
+                                                      dcterms:Location ;
+                                             dcterms:type <https://data.cultuurparticipatie.be/id/concept/LocatieType/museumOfGalerij> ;
+                                             adms:identifier <https://data.example.org/id/venue/787d7420#identifier> ;
+                                             locn:address <https://data.example.org/id/venue/787d7420#address> ;
+                                             locn:geometry <https://data.example.org/id/venue/787d7420#geometry> ;
+                                             dcterms:created "2010-01-11T22:13:39+01:00"^^xsd:dateTime ;
+                                             dcterms:modified "2024-06-05T17:52:17+02:00"^^xsd:dateTime ;
+                                             locn:locatorName "Z33"@nl ;
+                                             uwp:verwerktOp "2024-03-06T00:02:17+00:00"^^xsd:dateTime .
+
+
+###  https://data.example.org/id/venue/787d7420#address
+<https://data.example.org/id/venue/787d7420#address> rdf:type owl:NamedIndividual ,
+                                                              locn:Address ;
+                                                     locn:adminUnitL1 "BE" ;
+                                                     locn:locatorDesignator "1" ;
+                                                     locn:postCode "3500" ;
+                                                     locn:postName "Hasselt"@nl ;
+                                                     locn:thoroughfare "Bonnefantenstraat"@nl .
+
+
+###  https://data.example.org/id/venue/787d7420#geometry
+<https://data.example.org/id/venue/787d7420#geometry> rdf:type owl:NamedIndividual ,
+                                                               locn:Geometry ;
+                                                      geo:lat 50.932540 ;
+                                                      geo:lon 5.340060 .
+
+
+###  https://data.example.org/id/venue/787d7420#gestructureerdeIdentificator
+<https://data.example.org/id/venue/787d7420#gestructureerdeIdentificator> rdf:type owl:NamedIndividual ,
+                                                                                   generiek:GestructureerdeIdentificator ;
+                                                                          generiek:lokaleIdentificator "787d7420" ;
+                                                                          generiek:naamruimte "https://data.example.org/id/venue/" .
+
+
+###  https://data.example.org/id/venue/787d7420#identifier
+<https://data.example.org/id/venue/787d7420#identifier> rdf:type owl:NamedIndividual ,
+                                                                 adms:Identifier ;
+                                                        dcterms:creator <https://data.vlaanderen.be/id/organisatie/OVO003887> ;
+                                                        uwp:bron <https://data.uitwisselingsplatform.be/id/dp-be-publiq-demo-demo-dataproduct> ;
+                                                        generiek:gestructureerdeIdentificator <https://data.example.org/id/venue/787d7420#gestructureerdeIdentificator> ;
+                                                        skos:notation "https://data.example.org/id/venue/787d7420"^^xsd:anyURI .
+
+
+###  https://data.uitwisselingsplatform.be/id/dp-be-publiq-demo-demo-dataproduct
+<https://data.uitwisselingsplatform.be/id/dp-be-publiq-demo-demo-dataproduct> rdf:type owl:NamedIndividual .
+
+
+###  https://data.vlaanderen.be/id/organisatie/OVO003887
+<https://data.vlaanderen.be/id/organisatie/OVO003887> rdf:type owl:NamedIndividual ,
+                                                               foaf:Agent .
+
+
+###  https://schema.org/Friday
+schemas:Friday rdf:type owl:NamedIndividual ,
+                        skos:Concept ;
+               skos:prefLabel "Friday"@en ,
+                              "Vrijdag"@nl .
+
+
+###  https://schema.org/LimitedAvailability
+schemas:LimitedAvailability rdf:type owl:NamedIndividual ,
+                                     skos:Concept .
+
+
+###  https://schema.org/Saturday
+schemas:Saturday rdf:type owl:NamedIndividual ,
+                          skos:Concept ;
+                 skos:prefLabel "Saturday"@en ,
+                                "Zaterdag"@nl .
+
+
+###  https://schema.org/Sunday
+schemas:Sunday rdf:type owl:NamedIndividual ,
+                        skos:Concept ;
+               skos:prefLabel "Sunday"@en ,
+                              "Zondag"@nl .
+
+
+###  https://schema.org/Thursday
+schemas:Thursday rdf:type owl:NamedIndividual ,
+                          skos:Concept ;
+                 skos:prefLabel "Donderdag"@nl ,
+                                "Thursday"@en .
+
+
+###  https://schema.org/Wednesday
+schemas:Wednesday rdf:type owl:NamedIndividual ,
+                           skos:Concept ;
+                  skos:prefLabel "Wednesday"@en ,
+                                 "Woensdag"@nl .
+
+
+###  https://taxonomy.uitdatabank.be/terms/0.0.0.0.0
+<https://taxonomy.uitdatabank.be/terms/0.0.0.0.0> rdf:type owl:NamedIndividual ,
+                                                           skos:Concept .
+
+
+#################################################################
+#    Annotations
+#################################################################
+
+<https://data.vlaanderen.be/ns/cultuurparticipatie/ontology> rdfs:comment "De Prijsinfo van de Activiteit."@nl ;
+                                                             rdfs:label "prijs"@nl .
+
+
+schemas:value rdfs:comment "Getal waarmee de kwantiteit van het kenmerk kan worden uitgedrukt."@nl ;
+              rdfs:label "waarde"@nl .
+
+
+###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi
