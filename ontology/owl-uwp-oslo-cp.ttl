@@ -19,28 +19,35 @@
 @prefix generiek: <https://data.vlaanderen.be/ns/generiek#> .
 @prefix gebouw: <https://data.vlaanderen.be/ns/gebouw#> .
 @prefix infrastr: <https://data.vlaanderen.be/ns/cultuur-en-jeugd/infrastructuur#> .
+@prefix uitpas: <https://data.publiq.be/ns/uitpas#> .
+@prefix museumpas: <https://data.publiq.be/ns/museumpassmusees#> .
 @base <http://www.w3.org/2002/07/owl#> .
 
 <> rdf:type owl:Ontology ;
    owl:versionInfo "2026-05-18" ;
    rdfs:label "UWP OSLO Cultuurparticipatie ontology"@nl ;
-   rdfs:comment "Phase 1 alignment with instance-data gap analysis (2026-05-18)."@nl .
+   rdfs:comment "Phase 1-afstemming met instance-data gap-analyse (2026-05-18)."@nl .
 
 #################################################################
 #    Annotation properties
 #################################################################
 
 ###  http://www.w3.org/2002/07/owl#maxCardinality
-owl:maxCardinality rdf:type owl:AnnotationProperty .
+owl:maxCardinality rdf:type owl:AnnotationProperty ;
+                   rdfs:comment "Annotatie-eigenschap die het maximum aantal waarden voor een eigenschap aangeeft."@nl ;
+                   rdfs:label "maximum kardinaliteit"@nl .
 
 
 ###  http://www.w3.org/2002/07/owl#minCardinality
-owl:minCardinality rdf:type owl:AnnotationProperty .
+owl:minCardinality rdf:type owl:AnnotationProperty ;
+                   rdfs:comment "Annotatie-eigenschap die het minimum aantal waarden voor een eigenschap aangeeft."@nl ;
+                   rdfs:label "minimum kardinaliteit"@nl .
 
 
 ###  http://www.w3.org/2004/02/skos/core#scopeNote
 skos:scopeNote rdf:type owl:AnnotationProperty ;
-               rdfs:comment "A note that helps to clarify the meaning and/or the use of a concept." .
+               rdfs:comment "Nota die helpt de betekenis en/of het gebruik van een concept te verduidelijken."@nl ;
+               rdfs:label "toepassingsnota"@nl .
 
 
 #################################################################
@@ -97,13 +104,17 @@ cidoc:P14_carried_out_by rdf:type owl:ObjectProperty ;
 ###  http://www.cidoc-crm.org/cidoc-crm/P160_has_temporal_projection
 cidoc:P160_has_temporal_projection rdf:type owl:ObjectProperty ;
                                    rdfs:domain cidoc:E92_Spacetime_Volume ;
-                                   rdfs:range m8g:PeriodOfTime .
+                                   rdfs:range m8g:PeriodOfTime ;
+                                   rdfs:comment "Verbindt een ruimtetijd-volume met een tijdsperiode."@nl ;
+                                   rdfs:label "heeft temporele projectie"@nl .
 
 
 ###  http://www.cidoc-crm.org/cidoc-crm/P161_has_spatial_projection
 cidoc:P161_has_spatial_projection rdf:type owl:ObjectProperty ;
                                   rdfs:domain cidoc:E92_Spacetime_Volume ;
-                                  rdfs:range dcterms:Location .
+                                  rdfs:range dcterms:Location ;
+                                  rdfs:comment "Verbindt een ruimtetijd-volume met een locatie."@nl ;
+                                  rdfs:label "heeft ruimtelijke projectie"@nl .
 
 
 ###  http://www.cidoc-crm.org/cidoc-crm/P4_has_time-span
@@ -119,13 +130,17 @@ cidoc:P4_has_time-span rdf:type owl:ObjectProperty ;
 ###  http://www.w3.org/2004/02/skos/core#exactMatch
 skos:exactMatch rdf:type owl:ObjectProperty ;
                 rdfs:domain skos:Concept ;
-                rdfs:range skos:Concept .
+                rdfs:range skos:Concept ;
+                rdfs:comment "Verwijst naar een concept met dezelfde betekenis in een ander schema. Wordt gebruikt om de taxonomie van UiTdatabank te mappen op de officiele codelijsten van het UiTwisselingsplatform."@nl ;
+                rdfs:label "exacte overeenkomst"@nl .
 
 
 ###  http://www.w3.org/2004/02/skos/core#inScheme
 skos:inScheme rdf:type owl:ObjectProperty ;
               rdfs:domain skos:Concept ;
-              rdfs:range skos:ConceptScheme .
+              rdfs:range skos:ConceptScheme ;
+              rdfs:comment "Geeft aan tot welk conceptschema een concept behoort."@nl ;
+              rdfs:label "in schema"@nl .
 
 
 ###  http://www.w3.org/ns/adms#identifier
@@ -182,7 +197,9 @@ uwp:bron rdf:type owl:ObjectProperty ;
 ###  https://data.uitwisselingsplatform.be/ns/platform#ticketBeschikbaarheid
 uwp:ticketBeschikbaarheid rdf:type owl:ObjectProperty ;
                           rdfs:domain cp:Beschikbaarheid ;
-                          rdfs:range skos:Concept .
+                          rdfs:range skos:Concept ;
+                          rdfs:comment "Beschikbaarheid van tickets voor een activiteit, uitgedrukt als concept."@nl ;
+                          rdfs:label "ticketbeschikbaarheid"@nl .
 
 
 ###  https://data.uitwisselingsplatform.be/ns/platform#virtueleLocatie
@@ -410,7 +427,9 @@ schemas:price rdf:type owl:ObjectProperty ;
 
 ###  https://schema.org/value
 schemas:value rdf:type owl:ObjectProperty ;
-              rdfs:range schemas:Number .
+              rdfs:range schemas:Number ;
+              rdfs:comment "Verwijst naar een numerieke waarde (schema.org Number)."@nl ;
+              rdfs:label "waarde"@nl .
 
 
 #################################################################
@@ -477,7 +496,9 @@ geo:lon rdf:type owl:DatatypeProperty ;
 
 
 ###  http://www.w3.org/2004/02/skos/core#definition
-skos:definition rdf:type owl:DatatypeProperty .
+skos:definition rdf:type owl:DatatypeProperty ;
+                rdfs:comment "Tekstuele definitie van een concept."@nl ;
+                rdfs:label "definitie"@nl .
 
 
 ###  http://www.w3.org/2004/02/skos/core#notation
@@ -782,7 +803,9 @@ schemas:url rdf:type owl:DatatypeProperty ;
 
 
 ###  https://schema.org/value
-schemas:value rdf:type owl:DatatypeProperty .
+schemas:value rdf:type owl:DatatypeProperty ;
+              rdfs:comment "Getal waarmee de kwantiteit van het kenmerk kan worden uitgedrukt."@nl ;
+              rdfs:label "waarde"@nl .
 
 
 #################################################################
@@ -879,6 +902,30 @@ cp:Cultuurdeelname rdf:type owl:Class ;
 cp:Deelname rdf:type owl:Class ;
             rdfs:comment "Deelname van een participant aan een activiteit."@nl ;
             rdfs:label "Deelname"@nl .
+
+
+###  https://data.publiq.be/ns/uitpas#Ticketsale
+uitpas:Ticketsale rdf:type owl:Class ;
+                   rdfs:subClassOf cp:Deelname ;
+                   rdfs:comment "Deelname geregistreerd via de verkoop van een UiTPAS-ticket."@nl ;
+                   skos:scopeNote "Af te leiden voor cp:Deelname-instanties met subject-URI-prefix https://data.publiq.be/id/ticketsale/ups/ ."@nl ;
+                   rdfs:label "Ticketverkoop"@nl .
+
+
+###  https://data.publiq.be/ns/uitpas#Checkin
+uitpas:Checkin rdf:type owl:Class ;
+                rdfs:subClassOf cp:Deelname ;
+                rdfs:comment "Deelname geregistreerd via inchecken met UiTPAS."@nl ;
+                skos:scopeNote "Af te leiden voor cp:Deelname-instanties met subject-URI-prefix https://data.publiq.be/id/checkin/ups/ ."@nl ;
+                rdfs:label "Check-in"@nl .
+
+
+###  https://data.publiq.be/ns/museumpassmusees#Visit
+museumpas:Visit rdf:type owl:Class ;
+                 rdfs:subClassOf cp:Deelname ;
+                 rdfs:comment "Deelname geregistreerd als museumbezoek via museumPASSmusées."@nl ;
+                 skos:scopeNote "Af te leiden voor cp:Deelname-instanties met subject-URI-prefix https://data.publiq.be/id/visit/mpm/ ."@nl ;
+                 rdfs:label "Museumbezoek"@nl .
 
 
 ###  https://data.vlaanderen.be/ns/cultuurparticipatie#Organisator
@@ -1835,14 +1882,6 @@ schemas:Wednesday rdf:type owl:NamedIndividual ,
 ###  https://taxonomy.uitdatabank.be/terms/0.0.0.0.0
 <https://taxonomy.uitdatabank.be/terms/0.0.0.0.0> rdf:type owl:NamedIndividual ,
                                                            skos:Concept .
-
-
-#################################################################
-#    Annotations
-#################################################################
-
-schemas:value rdfs:comment "Getal waarmee de kwantiteit van het kenmerk kan worden uitgedrukt."@nl ;
-              rdfs:label "waarde"@nl .
 
 
 ###  Derived from owl-uwp-oslo-cp.ttl; Phase 1 updates 2026-05-18 (gap analysis + triage).
