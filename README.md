@@ -12,6 +12,10 @@ De repository bevat twee types metadata:
 
 2. **Ontologie** (`ontology/` directory): De OWL ontologie die de datamodellen voor het uitwisselingsplatform definieert. De ontologie bestanden worden alleen op syntax gevalideerd (geen SHACL validatie).
 
+   - **Bestand:** [`ontology/owl-uwp-oslo-cp.ttl`](ontology/owl-uwp-oslo-cp.ttl) — Phase 1 (2026-05-18): afgestemd op instance-data gap-analyse en triage (eigen namespace-uitbreidingen, ontologie-fixes, schema.org http/https-equivalenties, `skos:scopeNote` op locatie/tijd-eigenschappen).
+
+   Pre-analyse (lokaal): `Claude Work/Outputs/2026-05-18_uwp-ontologie-gap-analyse.xlsx`, `2026-05-18_uwp-ontologie-triage.xlsx`. SHACL wordt in Phase 1 niet mee bijgewerkt.
+
 # vormafspraken over de codelijsten
 
 
