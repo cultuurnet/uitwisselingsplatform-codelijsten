@@ -1,0 +1,41 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+
+<https://data.cultuurparticipatie.be/id/conceptscheme/DoelgroepType>
+    a skos:ConceptScheme ;
+    skos:prefLabel "conceptscheme DoelgroepType" ;
+    skos:definition "Codelijst om de doelgroep van een Activiteit aan te geven." .
+
+
+<https://data.cultuurparticipatie.be/id/concept/DoelgroepType/iedereen>
+    a skos:Concept ;
+    skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/DoelgroepType> ;
+    skos:prefLabel "iedereen"@nl ;
+    skos:definition "De Activiteit is vrij toegankelijk voor iedereen."@nl ;
+    skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/DoelgroepType> ;
+    skos:exactMatch <https://data.publiq.be/concepts/audienceType/everyone> .
+
+<https://data.cultuurparticipatie.be/id/concept/DoelgroepType/leden>
+    a skos:Concept ;
+    skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/DoelgroepType> ;
+    skos:prefLabel "leden"@nl ;
+    skos:definition "De Activiteit is enkel toegankelijk voor leden."@nl ;
+    skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/DoelgroepType> ;
+    skos:exactMatch <https://data.publiq.be/concepts/audienceType/members> .
+
+<https://data.cultuurparticipatie.be/id/concept/DoelgroepType/scholen>
+    a skos:Concept ;
+    skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/DoelgroepType> ;
+    skos:prefLabel "scholen"@nl ;
+    skos:definition "De Activiteit is gericht op scholen."@nl ;
+    skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/DoelgroepType> ;
+    skos:exactMatch <https://data.publiq.be/concepts/audienceType/education> .
+
+<https://data.cultuurparticipatie.be/id/concept/DoelgroepType/kinderen>
+    a skos:Concept ;
+    skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/DoelgroepType> ;
+    skos:prefLabel "kinderen"@nl ;
+    skos:definition "De Activiteit is enkel gericht op kinderen jonger dan 12 jaar."@nl ;
+    skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/DoelgroepType> ;
+    skos:exactMatch <https://data.publiq.be/concepts/audienceType/childrenOnly> .
