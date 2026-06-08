@@ -1249,8 +1249,7 @@
 <https://data.uitwisselingsplatform.be/doc/implementatieprofiel/2025-08-21#LocatieShape/3>
   shacl:datatype xsd:dateTime ;
   shacl:description "Tijdstip waarop de Entiteit werd verwerkt in het dataproduct"@nl;
-  shacl:maxCount 1 ;
-  shacl:minCount 1 ;
+  shacl:maxCount 1 ; # UWP: optional on nested entities; validate when present
   shacl:name "verwerkt op tijdstip"@nl ;
   shacl:path <https://data.uitwisselingsplatform.be/ns/platform#verwerktOp> .
 
