@@ -1265,8 +1265,7 @@
   shacl:class <http://www.w3.org/ns/adms#Identifier>;
   shacl:description "Identificator dat de Locatie verkreeg bij registratie."@nl;
   shacl:maxCount 1 ; # EDIT : added properties for UWP validation
-  shacl:minCount 1 ; # EDIT : added properties for UWP validation
-  shacl:name "identificator"@nl;
+  shacl:name "identificator"@nl; # UWP: optional on nested entities; validate when present
   shacl:nodeKind shacl:BlankNodeOrIRI ; # EDIT : added properties for UWP validation
   shacl:path <http://www.w3.org/ns/adms#identifier> . 
 
@@ -1563,8 +1562,7 @@
 <https://data.uitwisselingsplatform.be/doc/implementatieprofiel/2025-08-21#OrganisatorShape/3>
   shacl:datatype xsd:dateTime ;
   shacl:description "Tijdstip waarop de Entiteit werd verwerkt in het dataproduct"@nl;
-  shacl:maxCount 1 ;
-  shacl:minCount 1 ;
+  shacl:maxCount 1 ; # UWP: optional on nested entities; validate when present
   shacl:name "verwerkt op tijdstip"@nl ;
   shacl:path <https://data.uitwisselingsplatform.be/ns/platform#verwerktOp> .
 
@@ -1579,8 +1577,7 @@
   shacl:class <http://www.w3.org/ns/adms#Identifier>;
   shacl:description "Identificator dat de Organisator verkreeg bij registratie."@nl;
   shacl:maxCount 1 ; # EDIT : added properties for UWP validation
-  shacl:minCount 1 ; # EDIT : added properties for UWP validation
-  shacl:name "identificator"@nl;
+  shacl:name "identificator"@nl; # UWP: optional on nested entities; validate when present
   shacl:nodeKind shacl:BlankNodeOrIRI ; # EDIT : added properties for UWP validation
   shacl:path <http://www.w3.org/ns/adms#identifier> . 
 
