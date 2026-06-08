@@ -9,6 +9,7 @@
 # * properties aan shapes toegevoegd die van belang zijn voor de werking van het UWP: created, modified, verwerktOp, Identificator.bron,...
 # * nieuwe shapes toegevoegd die van belang zijn voor de werking van het UWP: AddressShape, GeometryShape, VirtualLocationShape...
 # ** deze shapes en properties kregen een URI binnen de volgende (tijdelijke) namespace "https://data.uitwisselingsplatform.be/doc/implementatieprofiel/2025-08-21#"
+# * Cardinaliteit: shacl:minCount verwijderd — eigenschappen worden gevalideerd wanneer aanwezig (datatype, class, maxCount), niet op verplichte aanwezigheid
 # * Class validatie gedeactiveerd wanneer deze niet geverifieerd kan worden: voor het verwijzen naar concepten of externe entiteiten wordt vaak enkel de URI meegegeven, de targetClass van deze URI kan in dat geval niet geverifieerd worden
 ####
 
@@ -192,7 +193,6 @@
   shacl:datatype xsd:dateTime ;
   shacl:description "Tijdstip waarop de Entiteit werd verwerkt in het dataproduct"@nl;
   shacl:maxCount 1 ;
-  shacl:minCount 1 ;
   shacl:name "verwerkt op tijdstip"@nl ;
   shacl:path <https://data.uitwisselingsplatform.be/ns/platform#verwerktOp> .
 
@@ -215,7 +215,6 @@
   shacl:class <http://www.w3.org/ns/adms#Identifier>;
   shacl:description "Identificator dat de Activiteit verkreeg bij registratie."@nl;
   shacl:maxCount 1 ; # EDIT : added properties for UWP validation
-  shacl:minCount 1 ; # EDIT : added properties for UWP validation
   shacl:name "identificator"@nl;
   shacl:nodeKind shacl:BlankNodeOrIRI ; # EDIT : added properties for UWP validation
   shacl:path <http://www.w3.org/ns/adms#identifier> . # EDIT : changed scheme from https to http
@@ -242,7 +241,6 @@
 <https://data.vlaanderen.be/doc/applicatieprofiel/cultuurparticipatie/erkendestandaard/2024-09-11#ActiviteitShape/1399bd400d4637b15d5fe38202d6572f82150aac> rdfs:seeAlso "https://data.vlaanderen.be/doc/applicatieprofiel/cultuurparticipatie/erkendestandaard/2024-09-11#Activiteit.naam";
   shacl:datatype rdf:langString; # EDIT : changed property from shacl:class to shacl:datatype
   shacl:description "De naam die de activiteit draagt."@nl;
-  shacl:minCount 1 ; # EDIT : added properties for UWP validation
   shacl:name "naam"@nl;
   shacl:path dc:title .
 
@@ -495,7 +493,6 @@
 
 <https://data.vlaanderen.be/doc/applicatieprofiel/cultuurparticipatie/erkendestandaard/2024-09-11#ActiviteitVerhoudingShape/16649c299ca5d2ea9ef861fc9007050f799c62ea> rdfs:seeAlso "https://data.vlaanderen.be/doc/applicatieprofiel/cultuurparticipatie/erkendestandaard/2024-09-11#ActiviteitVerhouding.Activiteit(target)";
   shacl:description "Referentie naar verbonden klasse."@nl;
-  shacl:minCount 1;
   shacl:name "Activiteit (target)"@nl;
   shacl:path <https://data.vlaanderen.be/ns/cultuurparticipatie#ActiviteitVerhouding.activiteit.target> .
 
@@ -507,7 +504,6 @@
 
 <https://data.vlaanderen.be/doc/applicatieprofiel/cultuurparticipatie/erkendestandaard/2024-09-11#ActiviteitVerhoudingShape/892f5d5615ed9bae8f66e98f02318d5b086ba49d> rdfs:seeAlso "https://data.vlaanderen.be/doc/applicatieprofiel/cultuurparticipatie/erkendestandaard/2024-09-11#ActiviteitVerhouding.Activiteit(source)";
   shacl:description "Referentie naar verbonden klasse."@nl;
-  shacl:minCount 1;
   shacl:name "Activiteit (source)"@nl;
   shacl:path <https://data.vlaanderen.be/ns/cultuurparticipatie#ActiviteitVerhouding.activiteit.source> .
 
@@ -570,7 +566,6 @@
   # shacl:class skos:Concept; # temporary commented out Concept Class validation
   shacl:description "Het type algemeen kenmerk van de participant"@nl;
   shacl:maxCount 1 ; # Added property for UWP compliance
-  shacl:minCount 1 ; # Added property for UWP compliance
   shacl:name "type"@nl;
   shacl:nodeKind shacl:IRI ; # Added property for UWP compliance
   shacl:path dc:type .
@@ -717,7 +712,6 @@
   # shacl:class <http://www.cidoc-crm.org/cidoc-crm/E7_Activity> ; # merged from duplicate node - commented out class validation for demo dataproduct transformation
   shacl:description "Referentie naar verbonden klasse."@nl;
   shacl:maxCount 1; # merged from duplicate node
-  shacl:minCount 1;
   shacl:name "Activiteit"@nl;
   shacl:nodeKind shacl:IRI ; # Added property for UWP compliance
   shacl:path <https://data.vlaanderen.be/ns/cultuurparticipatie#Deelname.activiteit> .
@@ -746,7 +740,6 @@
 <https://data.vlaanderen.be/doc/applicatieprofiel/cultuurparticipatie/erkendestandaard/2024-09-11#DeelnameShape/4871811d8d5f50d25ff627cd32699aace01c70a4> rdfs:seeAlso "https://data.vlaanderen.be/doc/applicatieprofiel/cultuurparticipatie/erkendestandaard/2024-09-11#Deelname.tijdstip";
   shacl:class <http://data.europa.eu/m8g/PeriodOfTime>;
   shacl:description "De periode van de deelname afgebakend in tijd."@nl;
-  shacl:minCount 1; # Added property for UWP compliance
   shacl:name "tijdstip"@nl;
   shacl:nodeKind shacl:BlankNodeOrIRI ; # Added property for UWP compliance
   shacl:path <https://data.vlaanderen.be/ns/cultuurparticipatie#Deelname.tijdstip> .
@@ -755,7 +748,6 @@
   # shacl:class <https://data.vlaanderen.be/ns/cultuurparticipatie#Participant>; # merged from duplicate node - commented out class validation for demo dataproduct transformation
   shacl:description "Referentie naar verbonden klasse."@nl;
   shacl:maxCount 1;
-  shacl:minCount 1; # merged from duplicate node
   shacl:name "Participant"@nl;
   shacl:nodeKind shacl:IRI ; # Added property for UWP compliance
   shacl:path <https://data.vlaanderen.be/ns/cultuurparticipatie#Deelname.participant> .
@@ -956,7 +948,6 @@
 
 <https://data.vlaanderen.be/doc/applicatieprofiel/cultuurparticipatie/erkendestandaard/2024-09-11#GeregistreerdPersoonShape/df3ba01409fe5d24a380d375ef9332757fb45310> rdfs:seeAlso "https://data.vlaanderen.be/doc/applicatieprofiel/cultuurparticipatie/erkendestandaard/2024-09-11#GeregistreerdPersoon.registratie";
   shacl:description "Identificatiecode vd persoon ih register."@nl;
-  shacl:minCount 1;
   shacl:name "registratie"@nl;
   shacl:path <https://data.vlaanderen.be/ns/persoon#registratie> .
 
@@ -978,7 +969,6 @@
 
 <https://data.vlaanderen.be/doc/applicatieprofiel/cultuurparticipatie/erkendestandaard/2024-09-11#GeregistreerdeOrganisatieShape/02ed73f36c4e07925a539c05520582449b3e581c> rdfs:seeAlso "https://data.vlaanderen.be/doc/applicatieprofiel/cultuurparticipatie/erkendestandaard/2024-09-11#GeregistreerdeOrganisatie.wettelijkenaam";
   shacl:description "Wettelijk geregistreerde naam vd organisatie."@nl;
-  shacl:minCount 1;
   shacl:name "wettelijke naam"@nl;
   shacl:path <http://www.w3.org/ns/regorg#legalName> .
 
@@ -1026,7 +1016,6 @@
 
 <https://data.vlaanderen.be/doc/applicatieprofiel/cultuurparticipatie/erkendestandaard/2024-09-11#GeregistreerdeOrganisatieShape/df3ba01409fe5d24a380d375ef9332757fb45310> rdfs:seeAlso "https://data.vlaanderen.be/doc/applicatieprofiel/cultuurparticipatie/erkendestandaard/2024-09-11#GeregistreerdeOrganisatie.registratie";
   shacl:description "Identificator dat de organisatie verkreeg bij registratie."@nl;
-  shacl:minCount 1;
   shacl:name "registratie"@nl;
   shacl:path <http://www.w3.org/ns/regorg#registration> .
 
@@ -1068,7 +1057,6 @@
 <https://data.uitwisselingsplatform.be/doc/implementatieprofiel/2025-08-21#IdentificatorShape/1>
   shacl:description "Link naar de agent die de identificator heeft uitgegeven. URI met OVO-code van de organisatie"@nl ;
   shacl:maxCount 1 ;
-  shacl:minCount 1 ;
   shacl:name "toegekend door"@nl;
   shacl:nodeKind shacl:IRI ;
   shacl:path dc:creator .
@@ -1076,7 +1064,6 @@
 <https://data.uitwisselingsplatform.be/doc/implementatieprofiel/2025-08-21#IdentificatorShape/2>
   shacl:description "URI van de bron in beheer van de agent die de identificator heeft uitgegeven. Gebaseerd op de naam van het dataproduct in het UiTwisselingsplatform"@nl ;
   shacl:maxCount 1 ;
-  shacl:minCount 1 ;
   shacl:name "bron"@nl ;
   shacl:nodeKind shacl:IRI ;
   shacl:path <https://data.uitwisselingsplatform.be/ns/platform#bron> .
@@ -1085,7 +1072,6 @@
   shacl:datatype xsd:anyURI ;
   shacl:description "Unieke identificator (URI) die de entiteit verkreeg bij registratie in het dataproduct."@nl ;
   shacl:maxCount 1 ;
-  shacl:minCount 1 ;
   shacl:name "notatie"@nl ;
   shacl:path skos:notation .
 
@@ -1100,7 +1086,6 @@
   shacl:class <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator> ;
   shacl:description "Identificator van een object opgesplitst in zijn onderdelen."@nl ;
   shacl:maxCount 1 ;
-  shacl:minCount 1 ;
   shacl:name "gestructureerde identificator"@nl ;
   shacl:nodeKind shacl:BlankNodeOrIRI ;  
   shacl:path <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator> .
@@ -1117,7 +1102,6 @@
   shacl:datatype xsd:string ;
   shacl:description "String gebruikt om het object uniek te identificeren binnen de naamruimte."@nl ;
   shacl:maxCount 1 ;
-  shacl:minCount 1 ;
   shacl:name "lokale identificator"@nl ;
   shacl:path <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> .
 
@@ -1125,7 +1109,6 @@
   shacl:datatype xsd:string ;
   shacl:description "String die toegevoegd wordt aan de lokaleidentificator om deze globaal uniek te maken."@nl ;
   shacl:maxCount 1 ;
-  shacl:minCount 1 ;
   shacl:name "naamruimte"@nl ;
   shacl:path <https://data.vlaanderen.be/ns/generiek#naamruimte> .
 
@@ -1199,7 +1182,6 @@
 
 <https://data.vlaanderen.be/doc/applicatieprofiel/cultuurparticipatie/erkendestandaard/2024-09-11#KwantitatieveWaardeShape/ca4892872b345b4fe994128b7c31877979275399> rdfs:seeAlso "https://data.vlaanderen.be/doc/applicatieprofiel/cultuurparticipatie/erkendestandaard/2024-09-11#KwantitatieveWaarde.waarde";
   shacl:description "Getal waarmee de kwantiteit van het kenmerk kan worden uitgedrukt."@nl;
-  shacl:minCount 1;
   shacl:name "waarde"@nl;
   shacl:path schemas:value .
 
@@ -1279,7 +1261,6 @@
 <https://data.uitwisselingsplatform.be/doc/implementatieprofiel/2025-08-21#LocatieShape/7>
   shacl:class <http://www.w3.org/ns/locn#Address> ;
   shacl:maxCount 1 ;
-  shacl:minCount 1 ;
   shacl:nodeKind shacl:BlankNodeOrIRI ;
   shacl:path <http://www.w3.org/ns/locn#address> .
 
@@ -1291,7 +1272,6 @@
 
 <https://data.uitwisselingsplatform.be/doc/implementatieprofiel/2025-08-21#LocatieShape/9>
   shacl:datatype rdf:langString ;
-  shacl:minCount 1 ;
   shacl:path <http://www.w3.org/ns/locn#locatorName> .
 
 <https://data.vlaanderen.be/doc/applicatieprofiel/cultuurparticipatie/erkendestandaard/2024-09-11#LocatieTypeShape> a shacl:NodeShape;
@@ -1317,7 +1297,6 @@
 
 <https://data.vlaanderen.be/doc/applicatieprofiel/cultuurparticipatie/erkendestandaard/2024-09-11#NationaliteitShape/5587d3f84a318e597a4693ea5f8b72e5ff592f6e> rdfs:seeAlso "https://data.vlaanderen.be/doc/applicatieprofiel/cultuurparticipatie/erkendestandaard/2024-09-11#Nationaliteit.nationaliteit";
   shacl:description "De nationaliteit vd persoon."@nl;
-  shacl:minCount 1;
   shacl:name "nationaliteit"@nl;
   shacl:path <https://data.vlaanderen.be/ns/persoon#nationaliteit> .
 
@@ -1352,7 +1331,6 @@
 
 <https://data.vlaanderen.be/doc/applicatieprofiel/cultuurparticipatie/erkendestandaard/2024-09-11#ObjectShape/972d73e7a13100b66c0c2f44466edac47aa1ab28> rdfs:seeAlso "https://data.vlaanderen.be/doc/applicatieprofiel/cultuurparticipatie/erkendestandaard/2024-09-11#Object.identificator";
   shacl:description "Identificator van het object."@nl;
-  shacl:minCount 1;
   shacl:name "identificator"@nl;
   shacl:path <http://www.w3.org/ns/adms#identifier> .
 
@@ -1602,7 +1580,6 @@
 
 <https://data.uitwisselingsplatform.be/doc/implementatieprofiel/2025-08-21#OrganisatorShape/9>
   shacl:datatype rdf:langString ;
-  shacl:minCount 1 ;
   shacl:path <https://data.vlaanderen.be/ns/cultuurparticipatie#Realisator.naam> .
 
 <https://data.uitwisselingsplatform.be/doc/implementatieprofiel/2025-08-21#OrganisatorShape/10>
@@ -1662,7 +1639,6 @@
   shacl:class <https://data.vlaanderen.be/ns/cultuurparticipatie#AlgemeenParticipantKenmerk>; # EDIT : inconsistent camelCase naming. should be AlgemeenParticipantKenmerk
   shacl:description "Een ParticipantProfiel heeft een AlgemeenKenmerk."@nl;
   shacl:maxCount 1 ; # Added property for UWP compliance
-  shacl:minCount 1 ; # Added property for UWP compliance
   shacl:name "algemeen kenmerk"@nl;
   shacl:nodeKind shacl:BlankNodeOrIRI ; # Added property for UWP compliance
   shacl:path <https://data.vlaanderen.be/ns/cultuurparticipatie#ParticipantProfiel.algemeenKenmerk> .
@@ -1677,7 +1653,6 @@
   shacl:class <https://data.vlaanderen.be/ns/cultuurparticipatie#Cultuurdeelname>;
   shacl:description "Een ParticipantProfiel heeft een Cultuurdeelname van de Participant."@nl;
   shacl:maxCount 1 ; # Added property for UWP compliance
-  shacl:minCount 1 ; # Added property for UWP compliance
   shacl:name "cultureel"@nl;
   shacl:nodeKind shacl:BlankNodeOrIRI ; # Added property for UWP compliance
   shacl:path <https://data.vlaanderen.be/ns/cultuurparticipatie#ParticipantProfiel.cultureel> .
@@ -1686,7 +1661,6 @@
   shacl:class <https://data.vlaanderen.be/ns/cultuurparticipatie#SociodemografischKenmerk>;
   shacl:description "Sociodemografisch kenmerk over de participant"@nl;
   shacl:maxCount 1 ; # Added property for UWP compliance
-  shacl:minCount 1 ; # Added property for UWP compliance
   shacl:name "sociodemografisch"@nl;
   shacl:nodeKind shacl:BlankNodeOrIRI ; # Added property for UWP compliance
   shacl:path <https://data.vlaanderen.be/ns/cultuurparticipatie#ParticipantProfiel.sociodemografisch> .
@@ -1790,7 +1764,6 @@
   shacl:datatype xsd:dateTime ;
   shacl:description "Tijdstip waarop de Entiteit werd verwerkt in het dataproduct"@nl;
   shacl:maxCount 1 ;
-  shacl:minCount 1 ;
   shacl:name "verwerkt op tijdstip"@nl ;
   shacl:path <https://data.uitwisselingsplatform.be/ns/platform#verwerktOp> .
 
@@ -1805,7 +1778,6 @@
   shacl:class <http://www.w3.org/ns/adms#Identifier>;
   shacl:description "Identificator dat de Participant verkreeg bij registratie."@nl;
   shacl:maxCount 1 ; # EDIT : added properties for UWP validation
-  shacl:minCount 1 ; # EDIT : added properties for UWP validation
   shacl:name "identificator"@nl;
   shacl:nodeKind shacl:BlankNodeOrIRI ; # EDIT : added properties for UWP validation
   shacl:path <http://www.w3.org/ns/adms#identifier> . 
@@ -1862,7 +1834,6 @@
   shacl:datatype xsd:dateTime;
   shacl:description "Aanvang van de tijdsduur."@nl;
   shacl:maxCount 1; # merged from duplicate node
-  shacl:minCount 1; # merged from duplicate node
   shacl:name "begin"@nl;
   shacl:path <http://data.europa.eu/m8g/startTime> .
 
@@ -2214,7 +2185,6 @@
 
 <https://data.vlaanderen.be/doc/applicatieprofiel/cultuurparticipatie/erkendestandaard/2024-09-11#RealisatieShape/0611ac5efc463c0056cb7a9ff97ab6e00438ed54> rdfs:seeAlso "https://data.vlaanderen.be/doc/applicatieprofiel/cultuurparticipatie/erkendestandaard/2024-09-11#Realisatie.Activiteit";
   shacl:description "Referentie naar verbonden klasse."@nl;
-  shacl:minCount 1;
   shacl:name "Activiteit"@nl;
   shacl:path <https://data.vlaanderen.be/ns/cultuurparticipatie#Realisatie.activiteit> .
 
@@ -2262,7 +2232,6 @@
 
 <https://data.vlaanderen.be/doc/applicatieprofiel/cultuurparticipatie/erkendestandaard/2024-09-11#RealisatieShape/a5a95bdb1f5c707a352184f0872ec338b3f8b17c> rdfs:seeAlso "https://data.vlaanderen.be/doc/applicatieprofiel/cultuurparticipatie/erkendestandaard/2024-09-11#Realisatie.Realisator";
   shacl:description "Referentie naar verbonden klasse."@nl;
-  shacl:minCount 1;
   shacl:name "Realisator"@nl;
   shacl:path <https://data.vlaanderen.be/ns/cultuurparticipatie#Realisatie.realisator> .
 
@@ -2418,7 +2387,6 @@
   shacl:class <http://data.europa.eu/m8g/PeriodOfTime>;
   shacl:description "Tijdstip binnen de Ruimtetijd wanneer de activiteit zal plaatsvinden of heeft plaatsgevonden."@nl;
   shacl:maxCount 1 ; # Added property for UWP Compliance
-  shacl:minCount 1 ; # Added property for UWP Compliance
   shacl:name "tijd"@nl;
   shacl:nodeKind shacl:BlankNodeOrIRI ; # Added property for UWP Compliance
   shacl:path <http://www.cidoc-crm.org/cidoc-crm/P160_has_temporal_projection> . # Updated path URI from <https://cidoc-crm.org/html/cidoc_crm_v7.1.2.html#P160>  to correct cidoc URI
@@ -2446,7 +2414,6 @@
 
 <https://data.vlaanderen.be/doc/applicatieprofiel/cultuurparticipatie/erkendestandaard/2024-09-11#SamenwerkingShape/21bd11b765e013784d175a6a70e47a850482b54f> rdfs:seeAlso "https://data.vlaanderen.be/doc/applicatieprofiel/cultuurparticipatie/erkendestandaard/2024-09-11#Samenwerking.Agent(target)";
   shacl:description "Referentie naar verbonden klasse."@nl;
-  shacl:minCount 1;
   shacl:name "Agent (target)"@nl;
   shacl:path <https://data.vlaanderen.be/ns/cultuurparticipatie#Samenwerking.agent.target> .
 
@@ -2464,7 +2431,6 @@
 
 <https://data.vlaanderen.be/doc/applicatieprofiel/cultuurparticipatie/erkendestandaard/2024-09-11#SamenwerkingShape/4b8011f9b6865c3f87649977bae2a85c601fb6a3> rdfs:seeAlso "https://data.vlaanderen.be/doc/applicatieprofiel/cultuurparticipatie/erkendestandaard/2024-09-11#Samenwerking.Agent(source)";
   shacl:description "Referentie naar verbonden klasse."@nl;
-  shacl:minCount 1;
   shacl:name "Agent (source)"@nl;
   shacl:path <https://data.vlaanderen.be/ns/cultuurparticipatie#Samenwerking.agent.source> .
 
@@ -2649,7 +2615,6 @@
 
 <https://data.vlaanderen.be/doc/applicatieprofiel/cultuurparticipatie/erkendestandaard/2024-09-11#TicketShape/cc4a7c4da1ced734b0507689d75a8c53742fca66> rdfs:seeAlso "https://data.vlaanderen.be/doc/applicatieprofiel/cultuurparticipatie/erkendestandaard/2024-09-11#Ticket.transactie";
   shacl:description "De Transactie kan resulteren in een Ticket."@nl;
-  shacl:minCount 1;
   shacl:name "transactie"@nl;
   shacl:path <https://data.vlaanderen.be/ns/cultuurparticipatie#Ticket.transactie> .
 
@@ -2805,7 +2770,6 @@
   shacl:datatype xsd:dateTime ;
   shacl:description "Tijdstip waarop de Entiteit werd verwerkt in het dataproduct"@nl;
   shacl:maxCount 1 ;
-  shacl:minCount 1 ;
   shacl:name "verwerkt op tijdstip"@nl ;
   shacl:path <https://data.uitwisselingsplatform.be/ns/platform#verwerktOp> .
 
@@ -2820,7 +2784,6 @@
   shacl:class <http://www.w3.org/ns/adms#Identifier>;
   shacl:description "Identificator dat de Uitvoerder verkreeg bij registratie."@nl;
   shacl:maxCount 1 ; # EDIT : added properties for UWP validation
-  shacl:minCount 1 ; # EDIT : added properties for UWP validation
   shacl:name "identificator"@nl;
   shacl:nodeKind shacl:BlankNodeOrIRI ; # EDIT : added properties for UWP validation
   shacl:path <http://www.w3.org/ns/adms#identifier> . 
@@ -2835,7 +2798,6 @@
 
 <https://data.uitwisselingsplatform.be/doc/implementatieprofiel/2025-08-21#UitvoerderShape/7>
   shacl:datatype rdf:langString ;
-  shacl:minCount 1 ;
   shacl:path <https://data.vlaanderen.be/ns/cultuurparticipatie#Realisator.naam> .
 
 <https://data.uitwisselingsplatform.be/doc/implementatieprofiel/2025-08-21#UitvoerderShape/8>
