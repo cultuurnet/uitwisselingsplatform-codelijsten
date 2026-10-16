@@ -181,7 +181,7 @@
 <https://data.cultuurparticipatie.be/id/concept/Faciliteit/oplaadzoneRolstoelen> 
     a skos:Concept ;
     skos:inScheme <https://data.cultuurparticipatie.be/id/conceptscheme/Faciliteit> ;
-    skos:prefLabel "Oplaadzone rolstoelen"@nl, "Zone de chargement pour fauteuils roulants"@fr, "Aufladungsmöglichkeit für Rollstuhle"@de, "Charging Faciliteit for wheelchairs"@en ;
+    skos:prefLabel "Oplaadzone rolstoelen"@nl, "Zone de chargement pour fauteuils roulants"@fr, "Aufladungsmöglichkeit für Rollstuhle"@de, "Charging facility for wheelchairs"@en ;
     skos:definition "Een aangewezen zone voor het opladen van rolstoelen en andere mobiliteitsapparatuur."@nl ;
     skos:topConceptOf <https://data.cultuurparticipatie.be/id/conceptscheme/Faciliteit> ;
     skos:exactMatch <https://taxonomy.uitdatabank.be/terms/3.37.0.0.0> .
