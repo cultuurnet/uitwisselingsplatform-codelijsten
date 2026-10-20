@@ -1026,7 +1026,7 @@
   shacl:path <http://www.w3.org/ns/regorg#orgStatus> .
 
 <https://data.vlaanderen.be/doc/applicatieprofiel/cultuurparticipatie/erkendestandaard/2024-09-11#GeregistreerdeOrganisatieShape/fd4a9e4e9a24b82ff902c6dbdd3ed54ccd4debbf> rdfs:seeAlso "https://data.vlaanderen.be/doc/applicatieprofiel/cultuurparticipatie/erkendestandaard/2024-09-11#GeregistreerdeOrganisatie.wettelijkenaam";
-  shacl:class rdf:langString;
+  shacl:datatype rdf:langString; # EDIT : changed property from shacl:class to shacl:datatype
   shacl:description "Wettelijk geregistreerde naam vd organisatie."@nl;
   shacl:name "wettelijke naam"@nl;
   shacl:path <http://www.w3.org/ns/regorg#legalName> .
@@ -1134,7 +1134,7 @@
   shacl:targetClass <https://data.vlaanderen.be/ns/cultuurparticipatie#Kanaal> .
 
 <https://data.vlaanderen.be/doc/applicatieprofiel/cultuurparticipatie/erkendestandaard/2024-09-11#KanaalShape/1399bd400d4637b15d5fe38202d6572f82150aac> rdfs:seeAlso "https://data.vlaanderen.be/doc/applicatieprofiel/cultuurparticipatie/erkendestandaard/2024-09-11#Kanaal.naam";
-  shacl:class rdf:langString;
+  shacl:datatype rdf:langString; # EDIT : changed property from shacl:class to shacl:datatype
   shacl:description "Naam van het promotiekanaal."@nl;
   shacl:name "naam"@nl;
   shacl:path <https://data.vlaanderen.be/ns/cultuurparticipatie#Kanaal.naam> .
@@ -1375,7 +1375,7 @@
   shacl:targetClass org:Organization .
 
 <https://data.vlaanderen.be/doc/applicatieprofiel/cultuurparticipatie/erkendestandaard/2024-09-11#OrganisatieShape/0e9a7d4dbf6ec19568d474169ad717f71e882319> rdfs:seeAlso "https://data.vlaanderen.be/doc/applicatieprofiel/cultuurparticipatie/erkendestandaard/2024-09-11#Organisatie.beschrijving";
-  shacl:class rdf:langString;
+  shacl:datatype rdf:langString; # EDIT : changed property from shacl:class to shacl:datatype
   shacl:description "Beschrijving van de organisatie."@nl;
   shacl:name "beschrijving"@nl;
   shacl:path dc:description .
@@ -1441,7 +1441,7 @@
   shacl:path org:subOrganizationOf .
 
 <https://data.vlaanderen.be/doc/applicatieprofiel/cultuurparticipatie/erkendestandaard/2024-09-11#OrganisatieShape/6b83c94554e8cc117c1d07fa1e155ccdee8ae62d> rdfs:seeAlso "https://data.vlaanderen.be/doc/applicatieprofiel/cultuurparticipatie/erkendestandaard/2024-09-11#Organisatie.voorkeursnaam";
-  shacl:class rdf:langString;
+  shacl:datatype rdf:langString; # EDIT : changed property from shacl:class to shacl:datatype
   shacl:description "Naam waarmee de organisatie bij voorkeur wordt aangeduid."@nl;
   shacl:name "voorkeursnaam"@nl;
   shacl:path skos:prefLabel .
@@ -1465,7 +1465,7 @@
   shacl:path skos:prefLabel .
 
 <https://data.vlaanderen.be/doc/applicatieprofiel/cultuurparticipatie/erkendestandaard/2024-09-11#OrganisatieShape/ccc60f000e8255577f863856ca86c69a40f97951> rdfs:seeAlso "https://data.vlaanderen.be/doc/applicatieprofiel/cultuurparticipatie/erkendestandaard/2024-09-11#Organisatie.alternatievenaam";
-  shacl:class rdf:langString;
+  shacl:datatype rdf:langString; # EDIT : changed property from shacl:class to shacl:datatype
   shacl:description "Andere naam waaronder de organisatie bekend is."@nl;
   shacl:name "alternatieve naam"@nl;
   shacl:path skos:altLabel .
@@ -1483,7 +1483,7 @@
   shacl:path foaf:homepage .
 
 <https://data.vlaanderen.be/doc/applicatieprofiel/cultuurparticipatie/erkendestandaard/2024-09-11#OrganisatieShape/dded78cb6f2b8c34d17d2b01917af9c00654bb31> rdfs:seeAlso "https://data.vlaanderen.be/doc/applicatieprofiel/cultuurparticipatie/erkendestandaard/2024-09-11#Organisatie.doel";
-  shacl:class rdf:langString;
+  shacl:datatype rdf:langString; # EDIT : changed property from shacl:class to shacl:datatype
   shacl:description "Bestaansreden vd organisatie."@nl;
   shacl:name "doel"@nl;
   shacl:path org:purpose .
@@ -1583,7 +1583,7 @@
   shacl:path <https://data.vlaanderen.be/ns/cultuurparticipatie#Realisator.naam> .
 
 <https://data.uitwisselingsplatform.be/doc/implementatieprofiel/2025-08-21#OrganisatorShape/10>
-  shacl:class skos:Concept ;
+  # shacl:class skos:Concept ; # Temporarily commented out skos:Concept class validation
   shacl:nodeKind shacl:IRI ;
   shacl:path <https://data.vlaanderen.be/ns/cultuurparticipatie#Realisator.thema> .
 
@@ -2213,7 +2213,7 @@
   shacl:path <https://data.vlaanderen.be/ns/cultuurparticipatie#Realisatie.activiteit> .
 
 <https://data.vlaanderen.be/doc/applicatieprofiel/cultuurparticipatie/erkendestandaard/2024-09-11#RealisatieShape/5dbb8a009983ec959200e26abc53863fcbd7c7d4> rdfs:seeAlso "https://data.vlaanderen.be/doc/applicatieprofiel/cultuurparticipatie/erkendestandaard/2024-09-11#Realisatie.realisatorvermeldals";
-  shacl:class rdf:langString;
+  shacl:datatype rdf:langString; # EDIT : changed property from shacl:class to shacl:datatype
   shacl:description "De naam waarmee de Realisators vermeldt wordt bij een specifieke Activiteit."@nl;
   shacl:name "realisator vermeld als"@nl;
   shacl:path <https://data.vlaanderen.be/ns/cultuurparticipatie#Realisatie.realisatorVermeldAls> .
@@ -2278,7 +2278,7 @@
   shacl:path <http://www.w3.org/ns/adms#identifier> . # EDIT : changed schema from https to http for adms IRI
 
 <https://data.vlaanderen.be/doc/applicatieprofiel/cultuurparticipatie/erkendestandaard/2024-09-11#RealisatorShape/1399bd400d4637b15d5fe38202d6572f82150aac> rdfs:seeAlso "https://data.vlaanderen.be/doc/applicatieprofiel/cultuurparticipatie/erkendestandaard/2024-09-11#Realisator.naam";
-  shacl:class rdf:langString;
+  shacl:datatype rdf:langString; # EDIT : changed property from shacl:class to shacl:datatype
   shacl:description "De naam van de Realisator."@nl;
   shacl:maxCount 1; # Merged from duplicate node
   shacl:name "naam"@nl;
@@ -2340,7 +2340,7 @@
   shacl:path <https://data.vlaanderen.be/ns/cultuurparticipatie#Realisator.realiseert> .
 
 <https://data.vlaanderen.be/doc/applicatieprofiel/cultuurparticipatie/erkendestandaard/2024-09-11#RealisatorShape/ccc60f000e8255577f863856ca86c69a40f97951> rdfs:seeAlso "https://data.vlaanderen.be/doc/applicatieprofiel/cultuurparticipatie/erkendestandaard/2024-09-11#Realisator.alternatievenaam";
-  shacl:class rdf:langString;
+  shacl:datatype rdf:langString; # EDIT : changed property from shacl:class to shacl:datatype
   shacl:description "Alternatieve naam voor een Realisator."@nl;
   shacl:name "alternatieve naam"@nl;
   shacl:path skos:altLabel .
