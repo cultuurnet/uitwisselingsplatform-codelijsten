@@ -1,0 +1,26 @@
+# Hetzelfde profiel, maar UITGESPLITST PER BRON-DATAPRODUCT.
+#
+# Dit is de query die beschermt tegen het enten van de template op een bron.
+# Een property die bij alle bronnen voorkomt, is een kandidaat voor de kern.
+# Een property die bij een bron voorkomt, hoort in de uitbreidingslaag van die
+# aanbieder - hoe groot die bron ook is.
+#
+# Gemeten voorbeeld (2026-10-20, cp:Deelname): uwp:verwerktOp staat op 100% bij
+# cultuurconnect, yesplan en peppered, en op 0% bij uitpas en museumpas. Een
+# kern-minCount op die property zou 89,5% van alle deelnames afkeuren.
+
+PREFIX cp: <https://data.vlaanderen.be/ns/cultuurparticipatie#>
+PREFIX adms: <http://www.w3.org/ns/adms#>
+PREFIX uwp: <https://data.uitwisselingsplatform.be/ns/platform#>
+PREFIX dc: <http://purl.org/dc/terms/>
+SELECT ?bron (COUNT(*) AS ?deelnames)
+       (SUM(IF(BOUND(?vo),1,0)) AS ?met_verwerktOp)
+       (SUM(IF(BOUND(?mod),1,0)) AS ?met_modified)
+       (SUM(IF(BOUND(?pip),1,0)) AS ?met_isPartOf)
+WHERE {
+  { SELECT ?s WHERE { ?s a cp:Deelname } LIMIT 200000 }
+  ?s cp:Deelname.participant/adms:identifier/uwp:bron ?bron .
+  OPTIONAL { ?s uwp:verwerktOp ?vo }
+  OPTIONAL { ?s dc:modified ?mod }
+  OPTIONAL { ?s dc:isPartOf ?pip }
+} GROUP BY ?bron ORDER BY DESC(?deelnames)

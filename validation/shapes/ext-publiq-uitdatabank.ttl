@@ -1,0 +1,33 @@
+# Laag 4 - AANBIEDER-SPECIFIEKE UITBREIDING: publiq / UiTdatabank.
+#
+# Deze laag hoort NIET in de kern. Ze beschrijft vocabulaire die publiq
+# meelevert bovenop het model. Een andere aanbieder levert hier zijn eigen
+# bestand aan (bv. ext-sirus-peppered.ttl voor peppered:ordered).
+#
+# Dit bestand heeft twee functies:
+#  1. de eigen verrijking valideren waar dat zinvol is;
+#  2. vastleggen welke properties bekend en toegestaan zijn, zodat laag 5
+#     (sh:closed) ze niet als onbekend afkeurt.
+#
+# Gemeten op E7_Activity (2026-10-20): udb:availableFrom 2.622.915,
+# udb:workflowStatus 2.622.915, udb:audienceType 2.132.193.
+
+@prefix shacl: <http://www.w3.org/ns/shacl#> .
+@prefix uwpval: <https://data.uitwisselingsplatform.be/doc/validatie#> .
+@prefix cidoc: <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix udb: <https://data.publiq.be/ns/uitdatabank#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+uwpval:ExtPubliqActiviteit a shacl:NodeShape ;
+  shacl:targetClass cidoc:E7_Activity ;
+  shacl:name "UiTdatabank-verrijking op Activiteit"@nl ;
+  shacl:property [
+    shacl:path udb:availableFrom ; shacl:maxCount 1 ;
+    shacl:datatype xsd:dateTime ;
+    shacl:severity shacl:Warning ;
+    shacl:message "udb:availableFrom moet een xsd:dateTime zijn." ] ;
+  shacl:property [
+    shacl:path udb:workflowStatus ; shacl:maxCount 1 ;
+    shacl:nodeKind shacl:IRI ;
+    shacl:severity shacl:Warning ;
+    shacl:message "udb:workflowStatus moet naar een IRI verwijzen, niet naar een string." ] .

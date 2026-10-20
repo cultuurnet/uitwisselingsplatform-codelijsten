@@ -1,0 +1,31 @@
+# Een activiteit en een deelname die correct gemodelleerd zijn.
+@prefix cidoc: <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix cp:   <https://data.vlaanderen.be/ns/cultuurparticipatie#> .
+@prefix dc:   <http://purl.org/dc/terms/> .
+@prefix adms: <http://www.w3.org/ns/adms#> .
+@prefix uwp:  <https://data.uitwisselingsplatform.be/ns/platform#> .
+@prefix m8g:  <http://data.europa.eu/m8g/> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+@prefix d:    <https://data.uitwisselingsplatform.be/id/> .
+
+d:ev-ok a cidoc:E7_Activity ;
+    dc:title "Concert Permeke"@nl ;
+    dc:type <https://taxonomy.uitdatabank.be/terms/0.50.4.0.0> ;
+    adms:identifier d:ev-ok-id ;
+    uwp:verwerktOp "2026-06-02T03:00:00"^^xsd:dateTime ;
+    dc:created "2026-01-15T10:00:00"^^xsd:dateTime ;
+    cp:Activiteit.ruimtetijd d:ev-ok-rt .
+
+d:ev-ok-rt a cidoc:E92_Spacetime_Volume ;
+    cidoc:P160_has_temporal_projection d:ev-ok-periode .
+d:ev-ok-periode a m8g:PeriodOfTime ;
+    m8g:startTime "2026-03-01T20:00:00"^^xsd:dateTime .
+d:ev-ok-id a adms:Identifier ; uwp:bron <https://data.uitwisselingsplatform.be/id/bron/udb> .
+
+d:dn-ok a cp:Deelname ;
+    cp:Deelname.activiteit d:ev-ok ;
+    cp:Deelname.participant d:part-ok ;
+    cp:Deelname.tijdstip d:dn-ok-periode .
+d:dn-ok-periode a m8g:PeriodOfTime ; m8g:startTime "2026-03-01T20:05:00"^^xsd:dateTime .
+d:part-ok a cp:Participant ; adms:identifier d:part-ok-id .
+d:part-ok-id a adms:Identifier ; uwp:bron <https://data.uitwisselingsplatform.be/id/bron/uitpas> .

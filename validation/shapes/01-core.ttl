@@ -1,0 +1,92 @@
+# Laag 1 - KERN. Aanbieder-neutraal: afgeleid van de OSLO AP en de UWP-ontologie,
+# niet van het predicaatprofiel van een bepaalde bron.
+#
+# De severity per property is een afspraak over bruikbaarheid, geen smaak:
+#   Violation = zonder dit is het record onbruikbaar voor elke consumer
+#   Warning   = consumers verliezen functionaliteit
+#   Info      = volledigheidssignaal voor de dataproduct-owner
+#
+# Bij elke regel staat de gemeten dekking (QLever, 2026-10-20) als onderbouwing.
+# Een property die bij een grote bron structureel ontbreekt, hoort NIET op Violation:
+# dan dwing je je eigen bronprofiel op aan de rest.
+
+@prefix shacl: <http://www.w3.org/ns/shacl#> .
+@prefix uwpval: <https://data.uitwisselingsplatform.be/doc/validatie#> .
+@prefix cidoc: <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix cp: <https://data.vlaanderen.be/ns/cultuurparticipatie#> .
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix adms: <http://www.w3.org/ns/adms#> .
+@prefix uwp: <https://data.uitwisselingsplatform.be/ns/platform#> .
+
+### Activiteit - 2.664.044 instanties
+uwpval:KernActiviteit a shacl:NodeShape ;
+  shacl:targetClass cidoc:E7_Activity ;
+  shacl:name "Kernvereisten Activiteit"@nl ;
+
+  # dekking 2.664.008 / 2.664.044 = 99,999%
+  shacl:property [
+    shacl:path dc:title ; shacl:minCount 1 ; shacl:severity shacl:Violation ;
+    shacl:message "Activiteit zonder dcterms:title is niet bruikbaar voor consumers." ] ;
+
+  # dekking 2.664.044 / 2.664.044 = 100%
+  shacl:property [
+    shacl:path adms:identifier ; shacl:minCount 1 ; shacl:severity shacl:Violation ;
+    shacl:message "Activiteit zonder adms:identifier heeft geen traceerbare herkomst." ] ;
+
+  # dekking 2.663.854 = 99,99%, maar het is platformmetadata: Warning, niet Violation
+  shacl:property [
+    shacl:path uwp:verwerktOp ; shacl:minCount 1 ; shacl:severity shacl:Warning ;
+    shacl:message "uwp:verwerktOp ontbreekt: incrementele verwerking kan dit record niet plaatsen." ] ;
+
+  # dekking 2.654.648 = 99,6%
+  shacl:property [
+    shacl:path dc:created ; shacl:minCount 1 ; shacl:severity shacl:Info ;
+    shacl:message "dcterms:created ontbreekt." ] .
+
+# Tijdsinformatie: niet uit te drukken met minCount, want er zijn twee geldige paden.
+# Warning en niet Violation, omdat de data vandaag massaal de foute variant
+# cp:ruimtetijd gebruikt - die wordt al door laag 2 gemeld. Anders krijgt de
+# developer twee meldingen voor een oorzaak, waarvan een misleidend.
+uwpval:KernActiviteitTijd a shacl:NodeShape ;
+  shacl:targetClass cidoc:E7_Activity ;
+  shacl:severity shacl:Warning ;
+  shacl:message "Activiteit heeft geen tijdsinformatie via cp:Activiteit.ruimtetijd of cidoc:P4_has_time-span. Let op: cp:ruimtetijd (zonder klasseprefix) telt niet mee - zie de melding over foute property-URI's." ;
+  shacl:or (
+    [ shacl:property [ shacl:path cp:Activiteit.ruimtetijd ; shacl:minCount 1 ] ]
+    [ shacl:property [ shacl:path cidoc:P4_has_time-span   ; shacl:minCount 1 ] ]
+  ) .
+
+### Deelname - 21.670.303 instanties, 6 bronnen van 3 aanbieders
+uwpval:KernDeelname a shacl:NodeShape ;
+  shacl:targetClass cp:Deelname ;
+  shacl:name "Kernvereisten Deelname"@nl ;
+
+  # dekking 21.670.294 = ~100%
+  shacl:property [
+    shacl:path cp:Deelname.activiteit ; shacl:minCount 1 ; shacl:severity shacl:Violation ;
+    shacl:message "Deelname zonder cp:Deelname.activiteit is betekenisloos." ] ;
+
+  # dekking 21.138.997 = 97,6%. De ontbrekende 2,4% is een echt signaal, geen ruis.
+  shacl:property [
+    shacl:path cp:Deelname.participant ; shacl:minCount 1 ; shacl:severity shacl:Violation ;
+    shacl:message "Deelname zonder cp:Deelname.participant is betekenisloos." ] ;
+
+  # dekking 20.349.632 = 93,9%
+  shacl:property [
+    shacl:path cp:Deelname.tijdstip ; shacl:minCount 1 ; shacl:severity shacl:Warning ;
+    shacl:message "Deelname zonder tijdstip is onbruikbaar voor tijdreeksanalyse." ] ;
+
+  # dekking 2.277.298 = 10,5%. uitpas (13,0M) en museumpas (6,3M) zetten dit NIET.
+  # Dit is precies de property die je op Violation zou zetten als je alleen naar
+  # cultuurconnect/yesplan/peppered keek: dan keur je 89,5% van alle deelnames af.
+  shacl:property [
+    shacl:path uwp:verwerktOp ; shacl:minCount 1 ; shacl:severity shacl:Info ;
+    shacl:message "uwp:verwerktOp ontbreekt (zetten vandaag: cultuurconnect, yesplan, peppered; niet: uitpas, museumpas)." ] .
+
+### Participant - 1.167.812 instanties
+uwpval:KernParticipant a shacl:NodeShape ;
+  shacl:targetClass cp:Participant ;
+  shacl:name "Kernvereisten Participant"@nl ;
+  shacl:property [
+    shacl:path adms:identifier ; shacl:minCount 1 ; shacl:severity shacl:Violation ;
+    shacl:message "Participant zonder adms:identifier: bron niet traceerbaar (het bron-dataproduct hangt aan adms:identifier/uwp:bron)." ] .

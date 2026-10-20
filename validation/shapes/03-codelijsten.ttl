@@ -1,0 +1,297 @@
+# GEGENEREERD door validation/generate_shapes.py - niet met de hand aanpassen.
+# Bron: ../conceptschemes/*.ttl
+
+@prefix shacl: <http://www.w3.org/ns/shacl#> .
+@prefix uwpval: <https://data.uitwisselingsplatform.be/doc/validatie#> .
+
+# Activiteittype.ttl: 25 concepten + 25 exactMatch-varianten
+uwpval:CodelijstE7_Activity_type a shacl:NodeShape ;
+  shacl:targetClass <http://www.cidoc-crm.org/cidoc-crm/E7_Activity> ;
+  shacl:property [
+    shacl:path <http://purl.org/dc/terms/type> ;
+    shacl:in (
+      <https://data.cultuurparticipatie.be/id/concept/ActiviteitType/activiteitMetDeJeugdbeweging>
+      <https://data.cultuurparticipatie.be/id/concept/ActiviteitType/begeleideUitstapOfRondleiding>
+      <https://data.cultuurparticipatie.be/id/concept/ActiviteitType/beurs>
+      <https://data.cultuurparticipatie.be/id/concept/ActiviteitType/concert>
+      <https://data.cultuurparticipatie.be/id/concept/ActiviteitType/cursusMetOpenSessies>
+      <https://data.cultuurparticipatie.be/id/concept/ActiviteitType/dansvoorstelling>
+      <https://data.cultuurparticipatie.be/id/concept/ActiviteitType/eetOfDrankfestijn>
+      <https://data.cultuurparticipatie.be/id/concept/ActiviteitType/festival>
+      <https://data.cultuurparticipatie.be/id/concept/ActiviteitType/festiviteit>
+      <https://data.cultuurparticipatie.be/id/concept/ActiviteitType/fietsOfWandelroute>
+      <https://data.cultuurparticipatie.be/id/concept/ActiviteitType/film>
+      <https://data.cultuurparticipatie.be/id/concept/ActiviteitType/kampOfVakantie>
+      <https://data.cultuurparticipatie.be/id/concept/ActiviteitType/kinderopvang>
+      <https://data.cultuurparticipatie.be/id/concept/ActiviteitType/lessenreeks>
+      <https://data.cultuurparticipatie.be/id/concept/ActiviteitType/lezingOfCongres>
+      <https://data.cultuurparticipatie.be/id/concept/ActiviteitType/marktBraderieOfKermis>
+      <https://data.cultuurparticipatie.be/id/concept/ActiviteitType/opendeurdag>
+      <https://data.cultuurparticipatie.be/id/concept/ActiviteitType/partyOfFuif>
+      <https://data.cultuurparticipatie.be/id/concept/ActiviteitType/speelpleinwerking>
+      <https://data.cultuurparticipatie.be/id/concept/ActiviteitType/spelOfQuiz>
+      <https://data.cultuurparticipatie.be/id/concept/ActiviteitType/sportactiviteit>
+      <https://data.cultuurparticipatie.be/id/concept/ActiviteitType/sportwedstrijdBekijken>
+      <https://data.cultuurparticipatie.be/id/concept/ActiviteitType/tentoonstelling>
+      <https://data.cultuurparticipatie.be/id/concept/ActiviteitType/theatervoorstelling>
+      <https://data.cultuurparticipatie.be/id/concept/ActiviteitType/typeOnbepaald>
+      <https://taxonomy.uitdatabank.be/terms/0.0.0.0.0>
+      <https://taxonomy.uitdatabank.be/terms/0.12.0.0.0>
+      <https://taxonomy.uitdatabank.be/terms/0.17.0.0.0>
+      <https://taxonomy.uitdatabank.be/terms/0.19.0.0.0>
+      <https://taxonomy.uitdatabank.be/terms/0.28.0.0.0>
+      <https://taxonomy.uitdatabank.be/terms/0.3.1.0.0>
+      <https://taxonomy.uitdatabank.be/terms/0.3.1.0.1>
+      <https://taxonomy.uitdatabank.be/terms/0.3.2.0.0>
+      <https://taxonomy.uitdatabank.be/terms/0.37.0.0.0>
+      <https://taxonomy.uitdatabank.be/terms/0.49.0.0.0>
+      <https://taxonomy.uitdatabank.be/terms/0.5.0.0.0>
+      <https://taxonomy.uitdatabank.be/terms/0.50.21.0.0>
+      <https://taxonomy.uitdatabank.be/terms/0.50.4.0.0>
+      <https://taxonomy.uitdatabank.be/terms/0.50.6.0.0>
+      <https://taxonomy.uitdatabank.be/terms/0.51.0.0.0>
+      <https://taxonomy.uitdatabank.be/terms/0.54.0.0.0>
+      <https://taxonomy.uitdatabank.be/terms/0.55.0.0.0>
+      <https://taxonomy.uitdatabank.be/terms/0.57.0.0.0>
+      <https://taxonomy.uitdatabank.be/terms/0.59.0.0.0>
+      <https://taxonomy.uitdatabank.be/terms/0.6.0.0.0>
+      <https://taxonomy.uitdatabank.be/terms/0.7.0.0.0>
+      <https://taxonomy.uitdatabank.be/terms/1.50.0.0.0>
+      <https://taxonomy.uitdatabank.be/terms/8aRjN4dGsXuE6tBkM1pVwQ>
+      <https://taxonomy.uitdatabank.be/terms/K7mPx3nQrT9bWfH2zL5cYv>
+      <https://taxonomy.uitdatabank.be/terms/hZ5fCyL9nKqW3xDvTrJ2gP> ) ;
+    shacl:severity shacl:Warning ;
+    shacl:message "Waarde zit niet in codelijst Activiteittype. Gebruik een officieel concept uit data.cultuurparticipatie.be, of de UiTdatabank-code die er via skos:exactMatch aan hangt." ] .
+
+# ThemaType.ttl: 77 concepten + 77 exactMatch-varianten
+uwpval:CodelijstE7_Activity_thema a shacl:NodeShape ;
+  shacl:targetClass <http://www.cidoc-crm.org/cidoc-crm/E7_Activity> ;
+  shacl:property [
+    shacl:path <https://data.vlaanderen.be/ns/cultuurparticipatie#thema> ;
+    shacl:in (
+      <https://data.cultuurparticipatie.be/id/concept/ThemaType/actieEnAvonturenfilm>
+      <https://data.cultuurparticipatie.be/id/concept/ThemaType/amusementsmuziek>
+      <https://data.cultuurparticipatie.be/id/concept/ThemaType/animatieEnKinderfilms>
+      <https://data.cultuurparticipatie.be/id/concept/ThemaType/antiekEnBrocante>
+      <https://data.cultuurparticipatie.be/id/concept/ThemaType/architectuur>
+      <https://data.cultuurparticipatie.be/id/concept/ThemaType/atletiekWandelenEnFietsen>
+      <https://data.cultuurparticipatie.be/id/concept/ThemaType/audiovisueleKunst>
+      <https://data.cultuurparticipatie.be/id/concept/ThemaType/balEnRacketsport>
+      <https://data.cultuurparticipatie.be/id/concept/ThemaType/balletEnKlassiekeDans>
+      <https://data.cultuurparticipatie.be/id/concept/ThemaType/beeldhouwkunst>
+      <https://data.cultuurparticipatie.be/id/concept/ThemaType/cinefiel>
+      <https://data.cultuurparticipatie.be/id/concept/ThemaType/circus>
+      <https://data.cultuurparticipatie.be/id/concept/ThemaType/computerEnTechniek>
+      <https://data.cultuurparticipatie.be/id/concept/ThemaType/creativiteit>
+      <https://data.cultuurparticipatie.be/id/concept/ThemaType/danceMuziek>
+      <https://data.cultuurparticipatie.be/id/concept/ThemaType/decoratieveKunst>
+      <https://data.cultuurparticipatie.be/id/concept/ThemaType/design>
+      <https://data.cultuurparticipatie.be/id/concept/ThemaType/documentairesEnReportages>
+      <https://data.cultuurparticipatie.be/id/concept/ThemaType/drama>
+      <https://data.cultuurparticipatie.be/id/concept/ThemaType/economie>
+      <https://data.cultuurparticipatie.be/id/concept/ThemaType/erfgoed>
+      <https://data.cultuurparticipatie.be/id/concept/ThemaType/fictie>
+      <https://data.cultuurparticipatie.be/id/concept/ThemaType/figurenEnPoppentheater>
+      <https://data.cultuurparticipatie.be/id/concept/ThemaType/filmmusical>
+      <https://data.cultuurparticipatie.be/id/concept/ThemaType/fitnessGymnastiekDansEnVechtsport>
+      <https://data.cultuurparticipatie.be/id/concept/ThemaType/folkEnWereldmuziek>
+      <https://data.cultuurparticipatie.be/id/concept/ThemaType/fotografie>
+      <https://data.cultuurparticipatie.be/id/concept/ThemaType/geschiedenis>
+      <https://data.cultuurparticipatie.be/id/concept/ThemaType/gezondheidEnWellness>
+      <https://data.cultuurparticipatie.be/id/concept/ThemaType/gezondheidEnZorg>
+      <https://data.cultuurparticipatie.be/id/concept/ThemaType/grafiek>
+      <https://data.cultuurparticipatie.be/id/concept/ThemaType/griezelfilmOfHorror>
+      <https://data.cultuurparticipatie.be/id/concept/ThemaType/hipHopRnbEnRap>
+      <https://data.cultuurparticipatie.be/id/concept/ThemaType/historischeFilm>
+      <https://data.cultuurparticipatie.be/id/concept/ThemaType/humorEnComedy>
+      <https://data.cultuurparticipatie.be/id/concept/ThemaType/installatiekunst>
+      <https://data.cultuurparticipatie.be/id/concept/ThemaType/intercultureleVorming>
+      <https://data.cultuurparticipatie.be/id/concept/ThemaType/jazzEnBlues>
+      <https://data.cultuurparticipatie.be/id/concept/ThemaType/klassiekeMuziek>
+      <https://data.cultuurparticipatie.be/id/concept/ThemaType/komedie>
+      <https://data.cultuurparticipatie.be/id/concept/ThemaType/kortfilm>
+      <https://data.cultuurparticipatie.be/id/concept/ThemaType/kunstEnKunsteducatie>
+      <https://data.cultuurparticipatie.be/id/concept/ThemaType/landbouwEnPlatteland>
+      <https://data.cultuurparticipatie.be/id/concept/ThemaType/literatuur>
+      <https://data.cultuurparticipatie.be/id/concept/ThemaType/luchtEnMotorsport>
+      <https://data.cultuurparticipatie.be/id/concept/ThemaType/meerdereFilmgenres>
+      <https://data.cultuurparticipatie.be/id/concept/ThemaType/meerdereKunstvormen>
+      <https://data.cultuurparticipatie.be/id/concept/ThemaType/milieuEnNatuur>
+      <https://data.cultuurparticipatie.be/id/concept/ThemaType/mimeEnBewegingstheater>
+      <https://data.cultuurparticipatie.be/id/concept/ThemaType/mode>
+      <https://data.cultuurparticipatie.be/id/concept/ThemaType/moderneDans>
+      <https://data.cultuurparticipatie.be/id/concept/ThemaType/musical>
+      <https://data.cultuurparticipatie.be/id/concept/ThemaType/nonFictie>
+      <https://data.cultuurparticipatie.be/id/concept/ThemaType/omnisportEnAndere>
+      <https://data.cultuurparticipatie.be/id/concept/ThemaType/operaEnOperette>
+      <https://data.cultuurparticipatie.be/id/concept/ThemaType/opvoeding>
+      <https://data.cultuurparticipatie.be/id/concept/ThemaType/outdoorEnAdventureSport>
+      <https://data.cultuurparticipatie.be/id/concept/ThemaType/persoonEnRelaties>
+      <https://data.cultuurparticipatie.be/id/concept/ThemaType/poezie>
+      <https://data.cultuurparticipatie.be/id/concept/ThemaType/politiekEnMaatschappij>
+      <https://data.cultuurparticipatie.be/id/concept/ThemaType/popEnRock>
+      <https://data.cultuurparticipatie.be/id/concept/ThemaType/samenleving>
+      <https://data.cultuurparticipatie.be/id/concept/ThemaType/schilderkunst>
+      <https://data.cultuurparticipatie.be/id/concept/ThemaType/scienceFiction>
+      <https://data.cultuurparticipatie.be/id/concept/ThemaType/stijlEnSalondansen>
+      <https://data.cultuurparticipatie.be/id/concept/ThemaType/strips>
+      <https://data.cultuurparticipatie.be/id/concept/ThemaType/taalEnCommunicatie>
+      <https://data.cultuurparticipatie.be/id/concept/ThemaType/tekstEnMuziektheater>
+      <https://data.cultuurparticipatie.be/id/concept/ThemaType/themaOnbepaald>
+      <https://data.cultuurparticipatie.be/id/concept/ThemaType/themakamp>
+      <https://data.cultuurparticipatie.be/id/concept/ThemaType/thriller>
+      <https://data.cultuurparticipatie.be/id/concept/ThemaType/voeding>
+      <https://data.cultuurparticipatie.be/id/concept/ThemaType/volksdansEnWerelddans>
+      <https://data.cultuurparticipatie.be/id/concept/ThemaType/volkssporten>
+      <https://data.cultuurparticipatie.be/id/concept/ThemaType/wetenschap>
+      <https://data.cultuurparticipatie.be/id/concept/ThemaType/zingevingFilosofieEnReligie>
+      <https://data.cultuurparticipatie.be/id/concept/ThemaType/zwemmenEnWatersport>
+      <https://taxonomy.uitdatabank.be/terms/0.52.0.0.0>
+      <https://taxonomy.uitdatabank.be/terms/1.0.1.0.0>
+      <https://taxonomy.uitdatabank.be/terms/1.0.2.0.0>
+      <https://taxonomy.uitdatabank.be/terms/1.0.3.0.0>
+      <https://taxonomy.uitdatabank.be/terms/1.0.4.0.0>
+      <https://taxonomy.uitdatabank.be/terms/1.0.5.0.0>
+      <https://taxonomy.uitdatabank.be/terms/1.0.6.0.0>
+      <https://taxonomy.uitdatabank.be/terms/1.0.9.0.0>
+      <https://taxonomy.uitdatabank.be/terms/1.1.0.0.0>
+      <https://taxonomy.uitdatabank.be/terms/1.10.0.0.0>
+      <https://taxonomy.uitdatabank.be/terms/1.10.11.0.0>
+      <https://taxonomy.uitdatabank.be/terms/1.10.12.0.0>
+      <https://taxonomy.uitdatabank.be/terms/1.10.5.0.0>
+      <https://taxonomy.uitdatabank.be/terms/1.10.8.0.0>
+      <https://taxonomy.uitdatabank.be/terms/1.11.0.0.0>
+      <https://taxonomy.uitdatabank.be/terms/1.11.1.0.0>
+      <https://taxonomy.uitdatabank.be/terms/1.11.2.0.0>
+      <https://taxonomy.uitdatabank.be/terms/1.17.0.0.0>
+      <https://taxonomy.uitdatabank.be/terms/1.2.1.0.0>
+      <https://taxonomy.uitdatabank.be/terms/1.2.2.0.0>
+      <https://taxonomy.uitdatabank.be/terms/1.21.0.0.0>
+      <https://taxonomy.uitdatabank.be/terms/1.25.0.0.0>
+      <https://taxonomy.uitdatabank.be/terms/1.3.1.0.0>
+      <https://taxonomy.uitdatabank.be/terms/1.3.10.0.0>
+      <https://taxonomy.uitdatabank.be/terms/1.3.4.0.0>
+      <https://taxonomy.uitdatabank.be/terms/1.3.5.0.0>
+      <https://taxonomy.uitdatabank.be/terms/1.37.0.0.0>
+      <https://taxonomy.uitdatabank.be/terms/1.37.1.0.0>
+      <https://taxonomy.uitdatabank.be/terms/1.37.2.0.0>
+      <https://taxonomy.uitdatabank.be/terms/1.4.0.0.0>
+      <https://taxonomy.uitdatabank.be/terms/1.40.0.0.0>
+      <https://taxonomy.uitdatabank.be/terms/1.41.0.0.0>
+      <https://taxonomy.uitdatabank.be/terms/1.42.0.0.0>
+      <https://taxonomy.uitdatabank.be/terms/1.43.0.0.0>
+      <https://taxonomy.uitdatabank.be/terms/1.44.0.0.0>
+      <https://taxonomy.uitdatabank.be/terms/1.49.0.0.0>
+      <https://taxonomy.uitdatabank.be/terms/1.5.0.0.0>
+      <https://taxonomy.uitdatabank.be/terms/1.51.10.0.0>
+      <https://taxonomy.uitdatabank.be/terms/1.51.11.0.0>
+      <https://taxonomy.uitdatabank.be/terms/1.51.12.0.0>
+      <https://taxonomy.uitdatabank.be/terms/1.51.13.0.0>
+      <https://taxonomy.uitdatabank.be/terms/1.51.14.0.0>
+      <https://taxonomy.uitdatabank.be/terms/1.51.3.0.0>
+      <https://taxonomy.uitdatabank.be/terms/1.51.6.0.0>
+      <https://taxonomy.uitdatabank.be/terms/1.52.0.0.0>
+      <https://taxonomy.uitdatabank.be/terms/1.58.0.0.0>
+      <https://taxonomy.uitdatabank.be/terms/1.58.8.0.0>
+      <https://taxonomy.uitdatabank.be/terms/1.61.0.0.0>
+      <https://taxonomy.uitdatabank.be/terms/1.62.0.0.0>
+      <https://taxonomy.uitdatabank.be/terms/1.63.0.0.0>
+      <https://taxonomy.uitdatabank.be/terms/1.64.0.0.0>
+      <https://taxonomy.uitdatabank.be/terms/1.65.0.0.0>
+      <https://taxonomy.uitdatabank.be/terms/1.66.0.0.0>
+      <https://taxonomy.uitdatabank.be/terms/1.7.1.0.0>
+      <https://taxonomy.uitdatabank.be/terms/1.7.10.0.0>
+      <https://taxonomy.uitdatabank.be/terms/1.7.11.0.0>
+      <https://taxonomy.uitdatabank.be/terms/1.7.12.0.0>
+      <https://taxonomy.uitdatabank.be/terms/1.7.13.0.0>
+      <https://taxonomy.uitdatabank.be/terms/1.7.14.0.0>
+      <https://taxonomy.uitdatabank.be/terms/1.7.15.0.0>
+      <https://taxonomy.uitdatabank.be/terms/1.7.2.0.0>
+      <https://taxonomy.uitdatabank.be/terms/1.7.3.0.0>
+      <https://taxonomy.uitdatabank.be/terms/1.7.4.0.0>
+      <https://taxonomy.uitdatabank.be/terms/1.7.6.0.0>
+      <https://taxonomy.uitdatabank.be/terms/1.7.7.0.0>
+      <https://taxonomy.uitdatabank.be/terms/1.7.8.0.0>
+      <https://taxonomy.uitdatabank.be/terms/1.8.1.0.0>
+      <https://taxonomy.uitdatabank.be/terms/1.8.2.0.0>
+      <https://taxonomy.uitdatabank.be/terms/1.8.3.1.0>
+      <https://taxonomy.uitdatabank.be/terms/1.8.3.2.0>
+      <https://taxonomy.uitdatabank.be/terms/1.8.3.3.0>
+      <https://taxonomy.uitdatabank.be/terms/1.8.3.5.0>
+      <https://taxonomy.uitdatabank.be/terms/1.8.4.0.0>
+      <https://taxonomy.uitdatabank.be/terms/1.9.1.0.0>
+      <https://taxonomy.uitdatabank.be/terms/1.9.2.0.0>
+      <https://taxonomy.uitdatabank.be/terms/1.9.3.0.0>
+      <https://taxonomy.uitdatabank.be/terms/1.9.5.0.0> ) ;
+    shacl:severity shacl:Warning ;
+    shacl:message "Waarde zit niet in codelijst ThemaType. Gebruik een officieel concept uit data.cultuurparticipatie.be, of de UiTdatabank-code die er via skos:exactMatch aan hangt." ] .
+
+# Locatietype.ttl: 19 concepten + 19 exactMatch-varianten
+uwpval:CodelijstE7_Activity_Activiteit.locatieType a shacl:NodeShape ;
+  shacl:targetClass <http://www.cidoc-crm.org/cidoc-crm/E7_Activity> ;
+  shacl:property [
+    shacl:path <https://data.vlaanderen.be/ns/cultuurparticipatie#Activiteit.locatieType> ;
+    shacl:in (
+      <https://data.cultuurparticipatie.be/id/concept/Locatietype/archeologischeSite>
+      <https://data.cultuurparticipatie.be/id/concept/Locatietype/bibliotheekOfDocumentatiecentrum>
+      <https://data.cultuurparticipatie.be/id/concept/Locatietype/bioscoop>
+      <https://data.cultuurparticipatie.be/id/concept/Locatietype/cultuurOfOntmoetingscentrum>
+      <https://data.cultuurparticipatie.be/id/concept/Locatietype/discotheek>
+      <https://data.cultuurparticipatie.be/id/concept/Locatietype/horeca>
+      <https://data.cultuurparticipatie.be/id/concept/Locatietype/jeugdhuisOfJeugdcentrum>
+      <https://data.cultuurparticipatie.be/id/concept/Locatietype/monument>
+      <https://data.cultuurparticipatie.be/id/concept/Locatietype/museumOfGalerij>
+      <https://data.cultuurparticipatie.be/id/concept/Locatietype/natuurgebiedOfPark>
+      <https://data.cultuurparticipatie.be/id/concept/Locatietype/openbareRuimte>
+      <https://data.cultuurparticipatie.be/id/concept/Locatietype/recreatiedomeinOfCentrum>
+      <https://data.cultuurparticipatie.be/id/concept/Locatietype/schoolOfOnderwijscentrum>
+      <https://data.cultuurparticipatie.be/id/concept/Locatietype/speeltuin>
+      <https://data.cultuurparticipatie.be/id/concept/Locatietype/sportcentrum>
+      <https://data.cultuurparticipatie.be/id/concept/Locatietype/theater>
+      <https://data.cultuurparticipatie.be/id/concept/Locatietype/themaOfPretpark>
+      <https://data.cultuurparticipatie.be/id/concept/Locatietype/winkel>
+      <https://data.cultuurparticipatie.be/id/concept/Locatietype/zaalOfExpohal>
+      <https://taxonomy.uitdatabank.be/terms/0.14.0.0.0>
+      <https://taxonomy.uitdatabank.be/terms/0.15.0.0.0>
+      <https://taxonomy.uitdatabank.be/terms/0.41.0.0.0>
+      <https://taxonomy.uitdatabank.be/terms/0.53.0.0.0>
+      <https://taxonomy.uitdatabank.be/terms/0.8.0.0.0>
+      <https://taxonomy.uitdatabank.be/terms/3CuHvenJ+EGkcvhXLg9Ykg>
+      <https://taxonomy.uitdatabank.be/terms/8.70.0.0.0>
+      <https://taxonomy.uitdatabank.be/terms/BtVNd33sR0WntjALVbyp3w>
+      <https://taxonomy.uitdatabank.be/terms/GnPFp9uvOUyqhOckIFMKmg>
+      <https://taxonomy.uitdatabank.be/terms/JCjA0i5COUmdjMwcyjNAFA>
+      <https://taxonomy.uitdatabank.be/terms/OyaPaf64AEmEAYXHeLMAtA>
+      <https://taxonomy.uitdatabank.be/terms/VRC6HX0Wa063sq98G5ciqw>
+      <https://taxonomy.uitdatabank.be/terms/YVBc8KVdrU6XfTNvhMYUpg>
+      <https://taxonomy.uitdatabank.be/terms/Yf4aZBfsUEu2NsQqsprngw>
+      <https://taxonomy.uitdatabank.be/terms/eBwaUAAhw0ur0Z02i5ttnw>
+      <https://taxonomy.uitdatabank.be/terms/ekdc4ATGoUitCa0e6me6xA>
+      <https://taxonomy.uitdatabank.be/terms/kI7uAyn2uUu9VV6Z3uWZTA>
+      <https://taxonomy.uitdatabank.be/terms/rJRFUqmd6EiqTD4c7HS90w>
+      <https://taxonomy.uitdatabank.be/terms/wwjRVmExI0w6xfQwT1KWpx> ) ;
+    shacl:severity shacl:Warning ;
+    shacl:message "Waarde zit niet in codelijst Locatietype. Gebruik een officieel concept uit data.cultuurparticipatie.be, of de UiTdatabank-code die er via skos:exactMatch aan hangt." ] .
+
+# DeelnameType.ttl: 2 concepten + 0 exactMatch-varianten
+uwpval:CodelijstDeelname_type a shacl:NodeShape ;
+  shacl:targetClass <https://data.vlaanderen.be/ns/cultuurparticipatie#Deelname> ;
+  shacl:property [
+    shacl:path <http://purl.org/dc/terms/type> ;
+    shacl:in (
+      <https://data.cultuurparticipatie.be/id/concept/DeelnameType/bezoeker>
+      <https://data.cultuurparticipatie.be/id/concept/DeelnameType/toeschouwer> ) ;
+    shacl:severity shacl:Warning ;
+    shacl:message "Waarde zit niet in codelijst DeelnameType. Gebruik een officieel concept uit data.cultuurparticipatie.be, of de UiTdatabank-code die er via skos:exactMatch aan hangt." ] .
+
+# PrijsCategorieType.ttl: 2 concepten + 0 exactMatch-varianten
+uwpval:CodelijstPriceSpecification_Prijsinfo.prijscategorie a shacl:NodeShape ;
+  shacl:targetClass <https://schema.org/PriceSpecification> ;
+  shacl:property [
+    shacl:path <https://data.vlaanderen.be/ns/cultuurparticipatie#Prijsinfo.prijscategorie> ;
+    shacl:in (
+      <https://data.cultuurparticipatie.be/id/concept/PrijsCategorieType/basis>
+      <https://data.cultuurparticipatie.be/id/concept/PrijsCategorieType/tarief> ) ;
+    shacl:severity shacl:Warning ;
+    shacl:message "Waarde zit niet in codelijst PrijsCategorieType. Gebruik een officieel concept uit data.cultuurparticipatie.be, of de UiTdatabank-code die er via skos:exactMatch aan hangt." ] .
+

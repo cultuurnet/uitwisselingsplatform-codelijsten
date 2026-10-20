@@ -1,0 +1,18 @@
+# Predicaatprofiel van een klasse: welke properties komen er echt op voor?
+#
+# Dit is het MEETINSTRUMENT, niet de norm. De uitkomst zegt niet wat toegelaten
+# moet zijn; ze toont waar model en werkelijkheid uiteenlopen. Elk predicaat dat
+# hier opduikt en niet in de kern zit, vraagt een beslissing:
+#   - staat het in de OSLO AP of de UWP-ontologie?  -> hoort in laag 1 (kern)
+#   - is het een schrijffout tegen een modelterm?   -> hoort in laag 2 (verboden)
+#   - is het legitiem maar niet gemodelleerd?       -> laag 4 (aanbieder) OF
+#                                                      agendapunt voor de ontologie
+#
+# Endpoint: https://qlever.uitwisselingsplatform.be/ (POST, application/sparql-query)
+# Vervang de klasse hieronder.
+
+PREFIX cidoc: <http://www.cidoc-crm.org/cidoc-crm/>
+SELECT ?p (COUNT(*) AS ?triples) (COUNT(DISTINCT ?s) AS ?subjecten) WHERE {
+  { SELECT ?s WHERE { ?s a cidoc:E7_Activity } LIMIT 300000 }
+  ?s ?p ?o .
+} GROUP BY ?p ORDER BY DESC(?triples)

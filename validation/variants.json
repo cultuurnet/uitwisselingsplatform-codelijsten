@@ -1,0 +1,49 @@
+{
+  "_comment": "Bekende foute property- en class-URI's in de data. Bron: data-exploration/qlever-mcp/src/sparql/variants.ts en docs/ontologie-data-verschilanalyse.md (gemeten 2026-10-15). Aanbieder-NEUTRAAL: dit zijn schrijffouten tegen de ontologie, geen bronspecifieke keuzes. Verdwijnt een variant uit de data, haal de regel dan hier weg.",
+  "properties": [
+    {
+      "fout": "https://data.vlaanderen.be/ns/cultuurparticipatie#ruimtetijd",
+      "correct": "https://data.vlaanderen.be/ns/cultuurparticipatie#Activiteit.ruimtetijd",
+      "klasse": "http://www.cidoc-crm.org/cidoc-crm/E7_Activity",
+      "gemeten": 7385026
+    },
+    {
+      "fout": "https://data.vlaanderen.be/ns/cultuurparticipatie#beschikbaarheid",
+      "correct": "https://data.vlaanderen.be/ns/cultuurparticipatie#Activiteit.beschikbaarheid",
+      "klasse": "http://www.cidoc-crm.org/cidoc-crm/E7_Activity",
+      "gemeten": 27304
+    },
+    {
+      "fout": "http://www.cidoc-crm.org/cidoc-crm/P4_has_time",
+      "correct": "http://www.cidoc-crm.org/cidoc-crm/P4_has_time-span",
+      "klasse": "http://www.cidoc-crm.org/cidoc-crm/E7_Activity",
+      "gemeten": 27552
+    },
+    {
+      "fout": "https://www.w3.org/2000/01/rdf-schema#label",
+      "correct": "http://purl.org/dc/terms/title",
+      "klasse": "http://www.cidoc-crm.org/cidoc-crm/E7_Activity",
+      "gemeten": 31775,
+      "nota": "https + www is geen geldige rdfs-namespace"
+    },
+    {
+      "fout": "https://data.vlaanderen.be/ns/cultuurparticipatie#Prijs.prijscategorie",
+      "correct": "https://data.vlaanderen.be/ns/cultuurparticipatie#Prijsinfo.prijscategorie",
+      "klasse": "https://schema.org/PriceSpecification",
+      "gemeten": 3785
+    },
+    {
+      "fout": "https://data.uitwisselingsplatform.be/ns/platform#statistischeSector",
+      "correct": "https://data.uitwisselingsplatform.be/ns/platform#statistischeSectorId",
+      "klasse": "https://data.vlaanderen.be/ns/cultuurparticipatie#Participant",
+      "gemeten": 206473
+    },
+    {
+      "fout": "http://schema.org/contactPoint",
+      "correct": "https://schema.org/contactPoint",
+      "klasse": "http://www.cidoc-crm.org/cidoc-crm/E7_Activity",
+      "gemeten": 88336,
+      "nota": "schema.org hoort https te zijn; http is een andere IRI voor SPARQL en SHACL"
+    }
+  ]
+}

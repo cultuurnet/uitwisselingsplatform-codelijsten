@@ -24,3 +24,36 @@ jobs:
       - run: python check_rdf.py
         name: run the script to check for valid rdf
         shell: sh
+
+  validatie-poc:
+    runs-on: ubuntu-latest
+    name: shacl validatie-poc (testdata)
+    steps:
+      - uses: actions/checkout@v3
+        name: checkout the repository
+      - uses: actions/setup-python@v4
+        name: install python
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+      - run: pip install -r requirements.txt
+        name: install dependencies
+        shell: sh
+      - name: shapes opnieuw genereren en vergelijken met wat ingecheckt staat
+        shell: sh
+        run: |
+          cd validation
+          python generate_shapes.py
+          git diff --exit-code shapes/02-verboden-properties.ttl shapes/03-codelijsten.ttl \
+            || { echo "::error::Gegenereerde shapes lopen achter. Draai validation/generate_shapes.py en commit het resultaat."; exit 1; }
+      - name: conforme testdata moet slagen
+        shell: sh
+        run: python validation/validate_dataproduct.py validation/testdata/conform.ttl
+      - name: foute testdata moet falen
+        shell: sh
+        run: |
+          if python validation/validate_dataproduct.py validation/testdata/fouten.ttl; then
+            echo "::error::fouten.ttl kwam er zonder Violations door - de validatie vangt niets meer."
+            exit 1
+          fi
+          echo "fouten.ttl correct afgekeurd."
