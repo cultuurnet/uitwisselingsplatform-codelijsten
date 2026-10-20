@@ -51,3 +51,22 @@ verschillen zitten in de staart (`dcterms:isPartOf` alleen museumpas,
 | Targeten een klasse met 0 instanties | 33 (142 dode property-constraints) |
 | Vuren wel, maar hebben 0 properties (concept-shapes) | 38 |
 | **Dragen alle validatie** | **22** |
+
+## Codelijst-waarden per pad
+
+Gemeten 2026-10-20. Onderbouwt de severity in `shapes/03-codelijsten.ttl`.
+
+| klasse | pad | officieel concept | udb-taxonomiecode |
+|---|---|---|---|
+| `E7_Activity` | `dcterms:type` | 2.194 | 2.618.609 |
+| `E7_Activity` | `cp:thema` | 1.420 | 1.372.465 |
+| `E7_Activity` | `cp:Activiteit.locatieType` | 2.622.917 | 0 |
+| `cp:Deelname` | `dcterms:type` | 19.404.498 | 0 |
+| `schema:PriceSpecification` | `cp:Prijsinfo.prijscategorie` | 2.905.202 | 0 |
+
+`udb:eventType` en `udb:type` staan allebei op **0** in de gepubliceerde graph:
+de migratie zit wel in de nieuwe datasets, maar is hier nog niet geland. De
+shapes leggen de doeltoestand vast, niet de huidige.
+
+De enige `udb:`-properties die vandaag op `E7_Activity` voorkomen zijn
+`availableFrom`, `workflowStatus` en `audienceType`.

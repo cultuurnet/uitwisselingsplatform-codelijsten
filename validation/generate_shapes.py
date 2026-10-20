@@ -2,7 +2,8 @@
 """Genereert de twee shape-lagen die uit een bron afgeleid kunnen worden.
 
   shapes/02-verboden-properties.ttl  <- variants.json
-  shapes/03-codelijsten.ttl          <- ../conceptschemes/*.ttl
+  shapes/03-codelijsten.ttl          <- ../conceptschemes/*.ttl (officiele concepten)
+  shapes/ext-publiq-udb-eventtype.ttl <- ../conceptschemes/Activiteittype.ttl (exactMatch)
 
 Beide zijn GEGENEREERD: niet met de hand aanpassen, maar de bron wijzigen en
 dit script opnieuw draaien. Zo rot de lijst niet mee met de codelijsten.
@@ -69,69 +70,128 @@ def genereer_verboden_properties():
           f"({len(varianten)} varianten over {len(per_klasse)} klassen)")
 
 
-# Welke codelijst hoort bij welk pad. Alleen paden waarvan de codelijst
-# volledig is: een onvolledige lijst levert vals alarm op.
+# Welke codelijst hoort bij welk pad, met de severity en de meting die haar
+# onderbouwt (QLever, 2026-10-20: officiele concepten / udb-taxonomiecodes).
+#
+# REGEL: in dcterms:type en de andere codelijst-paden horen UITSLUITEND de
+# officiele concepten uit de codelijsten. Een UiTdatabank-taxonomiecode hoort
+# in de aanbieder-eigen property udb:eventType - zie genereer_udb_eventtype().
 KOPPELING = [
-    # (codelijst-bestand, targetClass, pad)
+    # (codelijst, targetClass, pad, severity, meting)
     ("Activiteittype.ttl", "http://www.cidoc-crm.org/cidoc-crm/E7_Activity",
-     "http://purl.org/dc/terms/type"),
+     "http://purl.org/dc/terms/type", "Violation",
+     "2.194 officieel / 2.618.609 taxonomie - de taxonomiecodes horen in udb:eventType"),
     ("ThemaType.ttl", "http://www.cidoc-crm.org/cidoc-crm/E7_Activity",
-     "https://data.vlaanderen.be/ns/cultuurparticipatie#thema"),
+     "https://data.vlaanderen.be/ns/cultuurparticipatie#thema", "Warning",
+     "1.420 officieel / 1.372.465 taxonomie - nog geen afgesproken doelproperty, daarom Warning"),
     ("Locatietype.ttl", "http://www.cidoc-crm.org/cidoc-crm/E7_Activity",
-     "https://data.vlaanderen.be/ns/cultuurparticipatie#Activiteit.locatieType"),
+     "https://data.vlaanderen.be/ns/cultuurparticipatie#Activiteit.locatieType", "Violation",
+     "2.622.917 officieel / 0 taxonomie - al conform"),
     ("DeelnameType.ttl", "https://data.vlaanderen.be/ns/cultuurparticipatie#Deelname",
-     "http://purl.org/dc/terms/type"),
+     "http://purl.org/dc/terms/type", "Violation",
+     "19.404.498 officieel / 0 taxonomie - al conform"),
     ("PrijsCategorieType.ttl", "https://schema.org/PriceSpecification",
-     "https://data.vlaanderen.be/ns/cultuurparticipatie#Prijsinfo.prijscategorie"),
+     "https://data.vlaanderen.be/ns/cultuurparticipatie#Prijsinfo.prijscategorie", "Violation",
+     "2.905.202 officieel / 0 taxonomie - al conform"),
 ]
+
+# De taxonomiecodes zijn GEEN geldige waarde in de codelijst-paden, maar ze
+# blijven wel bestaan als aanbieder-eigen gegeven. Dit is hun enige geldige plek.
+UDB_EVENTTYPE = ("Activiteittype.ttl", "http://www.cidoc-crm.org/cidoc-crm/E7_Activity",
+                 "https://data.publiq.be/ns/uitdatabank#eventType", "Warning")
+
+
+def _concepten(bestand):
+    """(concepten, exactMatch-varianten) uit een codelijst."""
+    bron = os.path.join(HIER, "..", "conceptschemes", bestand)
+    if not os.path.exists(bron):
+        return None, None
+    g = Graph()
+    g.parse(bron, format="turtle")
+    concepten = sorted(str(c) for c in g.subjects(RDF.type, SKOS.Concept))
+    matches = sorted(
+        {str(m) for c in g.subjects(RDF.type, SKOS.Concept)
+         for m in g.objects(URIRef(c), SKOS.exactMatch)}
+    )
+    return concepten, matches
 
 
 def genereer_codelijsten():
-    """Laag 3: sh:in per codelijst, inclusief de skos:exactMatch-varianten.
+    """Laag 3: sh:in per codelijst met UITSLUITEND de officiele concepten.
 
-    De exactMatch-tak is er voor de overgangsperiode: de data draagt vandaag de
-    UiTdatabank-taxonomiecode in dcterms:type. Na de datamigratie mag die tak weg
-    en kan de severity naar Violation.
+    De skos:exactMatch-varianten (UiTdatabank-taxonomiecodes) zitten hier
+    bewust NIET in: die horen niet in dcterms:type thuis. Ze krijgen hun eigen
+    shape op udb:eventType in de aanbieder-laag.
     """
     uit = [HEADER.format(bron="../conceptschemes/*.ttl")]
     totaal = 0
-    for bestand, klasse, pad in KOPPELING:
-        bron = os.path.join(HIER, "..", "conceptschemes", bestand)
-        if not os.path.exists(bron):
+    for bestand, klasse, pad, severity, meting in KOPPELING:
+        concepten, matches = _concepten(bestand)
+        if concepten is None:
             print(f"  OVERGESLAGEN: {bestand} bestaat niet")
             continue
-        g = Graph()
-        g.parse(bron, format="turtle")
-        concepten = sorted(str(c) for c in g.subjects(RDF.type, SKOS.Concept))
-        matches = sorted(
-            {str(m) for c in g.subjects(RDF.type, SKOS.Concept)
-             for m in g.objects(URIRef(c), SKOS.exactMatch)}
-        )
         if not concepten:
             print(f"  OVERGESLAGEN: {bestand} bevat geen skos:Concept")
             continue
-        waarden = "\n      ".join(f"<{u}>" for u in concepten + matches)
+        waarden = "\n      ".join(f"<{u}>" for u in concepten)
         lijst = bestand.replace(".ttl", "")
         naam = f"{klasse.split('#')[-1].split('/')[-1]}_{pad.split('#')[-1].split('/')[-1]}"
+        extra = (" Een UiTdatabank-taxonomiecode hoort hier niet: zet die in udb:eventType."
+                 if pad.endswith("terms/type") or pad.endswith("#thema") else "")
         uit.append(
-            f"""# {bestand}: {len(concepten)} concepten + {len(matches)} exactMatch-varianten
+            f"""# {bestand}: {len(concepten)} officiele concepten (de {len(matches)} exactMatch-varianten
+# horen NIET in dit pad). Meting: {meting}
 uwpval:Codelijst{naam} a shacl:NodeShape ;
   shacl:targetClass <{klasse}> ;
   shacl:property [
     shacl:path <{pad}> ;
     shacl:in (
       {waarden} ) ;
-    shacl:severity shacl:Warning ;
-    shacl:message "Waarde zit niet in codelijst {lijst}. Gebruik een officieel concept uit data.cultuurparticipatie.be, of de UiTdatabank-code die er via skos:exactMatch aan hangt." ] .
+    shacl:severity shacl:{severity} ;
+    shacl:message "Waarde zit niet in codelijst {lijst}. Alleen officiele concepten uit data.cultuurparticipatie.be zijn toegelaten.{extra}" ] .
 
 """
         )
         totaal += len(concepten)
-        print(f"  {bestand}: {len(concepten)} concepten, {len(matches)} exactMatch")
+        print(f"  {bestand}: {len(concepten)} concepten -> {pad.split('#')[-1].split('/')[-1]} ({severity})")
     pad_uit = os.path.join(SHAPES, "03-codelijsten.ttl")
     with open(pad_uit, "w", encoding="utf-8") as f:
         f.write("".join(uit))
     print(f"  geschreven: {os.path.relpath(pad_uit, HIER)} ({totaal} concepten totaal)")
+
+
+def genereer_udb_eventtype():
+    """Laag 4 (publiq): de UiTdatabank-taxonomiecodes op udb:eventType.
+
+    Aanbieder-specifiek, dus apart van de kern. Dit is waar de codes naartoe
+    verhuisd zijn nu ze niet meer in dcterms:type mogen staan.
+    """
+    bestand, klasse, pad, severity = UDB_EVENTTYPE
+    concepten, matches = _concepten(bestand)
+    if not matches:
+        print(f"  OVERGESLAGEN: {bestand} heeft geen skos:exactMatch")
+        return
+    waarden = "\n      ".join(f"<{u}>" for u in matches)
+    uit = [HEADER.format(bron=f"../conceptschemes/{bestand} (skos:exactMatch)")]
+    uit.append(
+        f"""# {len(matches)} UiTdatabank-taxonomiecodes, afgeleid van de skos:exactMatch
+# in {bestand}. Aanbieder-specifiek (publiq/UiTdatabank): hoort NIET in de kern.
+uwpval:ExtPubliqEventType a shacl:NodeShape ;
+  shacl:targetClass <{klasse}> ;
+  shacl:name "UiTdatabank-taxonomiecode op udb:eventType"@nl ;
+  shacl:property [
+    shacl:path <{pad}> ;
+    shacl:in (
+      {waarden} ) ;
+    shacl:severity shacl:{severity} ;
+    shacl:message "udb:eventType bevat een code die niet via skos:exactMatch aan codelijst ActiviteitType hangt." ] .
+
+"""
+    )
+    pad_uit = os.path.join(SHAPES, "ext-publiq-udb-eventtype.ttl")
+    with open(pad_uit, "w", encoding="utf-8") as f:
+        f.write("".join(uit))
+    print(f"  geschreven: {os.path.relpath(pad_uit, HIER)} ({len(matches)} taxonomiecodes)")
 
 
 if __name__ == "__main__":
@@ -140,3 +200,5 @@ if __name__ == "__main__":
     genereer_verboden_properties()
     print("### codelijsten ###")
     genereer_codelijsten()
+    print("### udb:eventType (aanbieder-laag) ###")
+    genereer_udb_eventtype()

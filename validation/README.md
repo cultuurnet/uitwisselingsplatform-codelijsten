@@ -26,11 +26,43 @@ Netto doen 22 shapes al het werk, en die toetsen vooral datatypes.
 | 2. Verboden property-URI's | `shapes/02-verboden-properties.ttl` | `variants.json` (gegenereerd) | ja |
 | 3. Codelijsten | `shapes/03-codelijsten.ttl` | `../conceptschemes/` (gegenereerd) | ja |
 | 4. Uitbreiding per aanbieder | `shapes/ext-*.ttl` | de aanbieder zelf | nee, per bron |
+| 4a. UiTdatabank-codes | `shapes/ext-publiq-udb-eventtype.ttl` | `Activiteittype.ttl` exactMatch (gegenereerd) | nee, publiq |
 | 5. `sh:closed` | nog niet | sluitstuk, pas als 1–4 compleet zijn | ja |
 
 De scheiding tussen laag 1 en laag 4 is wat voorkomt dat de template op één
 bron geënt raakt. Een property komt **niet** in de kern omdat een grote bron
 ze levert, maar omdat ze in het model staat.
+
+## Codelijst-paden bevatten alleen officiele concepten
+
+In `dcterms:type` en de andere codelijst-paden horen **uitsluitend de officiele
+concepten** uit `../conceptschemes/`. De `skos:exactMatch`-varianten
+(UiTdatabank-taxonomiecodes) zitten daarom **niet** in laag 3.
+
+Die codes verdwijnen niet: ze zijn in de nieuwe datasets verhuisd naar de
+aanbieder-eigen property `udb:eventType`, en krijgen daar hun eigen shape in
+laag 4a. Dat is meteen een goed voorbeeld van waarom de lagen gescheiden zijn:
+`udb:` is publiq-vocabulaire en hoort niet in een template dat elke aanbieder
+moet kunnen gebruiken.
+
+Gemeten per pad (2026-10-20), met de severity die daaruit volgt:
+
+| klasse | pad | officieel | udb-taxonomie | severity |
+|---|---|---|---|---|
+| `E7_Activity` | `dcterms:type` | 2.194 | 2.618.609 | Violation |
+| `E7_Activity` | `cp:thema` | 1.420 | 1.372.465 | Warning |
+| `E7_Activity` | `cp:Activiteit.locatieType` | 2.622.917 | 0 | Violation |
+| `cp:Deelname` | `dcterms:type` | 19.404.498 | 0 | Violation |
+| `schema:PriceSpecification` | `cp:Prijsinfo.prijscategorie` | 2.905.202 | 0 | Violation |
+
+Drie van de vijf paden zijn dus al volledig conform. `dcterms:type` staat op
+Violation omdat de regel vaststaat en de doelproperty bestaat; de 2,6M bestaande
+taxonomiecodes zijn migratieschuld, geen reden om de regel te verzachten.
+
+**Open punt:** `cp:thema` heeft hetzelfde probleem (1.372.465 taxonomiecodes),
+maar er is nog geen afgesproken doelproperty zoals `udb:eventType`. Daarom staat
+dat pad voorlopig op Warning. Zodra de naam vastligt, kan het naar Violation en
+komt er een tweede gegenereerde shape in laag 4a.
 
 ## Het meten en de norm uit elkaar houden
 
@@ -50,16 +82,18 @@ deelnames af.
 ```sh
 pip install -r ../requirements.txt
 
-# shapes 02 en 03 opnieuw genereren na een wijziging in variants.json
-# of in conceptschemes/
+# shapes 02, 03 en ext-publiq-udb-eventtype opnieuw genereren na een wijziging
+# in variants.json of in conceptschemes/
 python generate_shapes.py
 
 # een dataproduct-export valideren
 python validate_dataproduct.py testdata/conform.ttl
 python validate_dataproduct.py testdata/fouten.ttl
 
-# met de aanbieder-laag erbij
-python validate_dataproduct.py mijn-export.ttl --ext shapes/ext-publiq-uitdatabank.ttl
+# met de aanbieder-lagen erbij
+python validate_dataproduct.py mijn-export.ttl \
+  --ext shapes/ext-publiq-uitdatabank.ttl \
+  --ext shapes/ext-publiq-udb-eventtype.ttl
 
 # ook waarschuwingen laten falen
 python validate_dataproduct.py mijn-export.ttl --strict

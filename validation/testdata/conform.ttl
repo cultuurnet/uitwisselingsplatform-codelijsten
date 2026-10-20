@@ -6,11 +6,13 @@
 @prefix uwp:  <https://data.uitwisselingsplatform.be/ns/platform#> .
 @prefix m8g:  <http://data.europa.eu/m8g/> .
 @prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+@prefix udb:  <https://data.publiq.be/ns/uitdatabank#> .
 @prefix d:    <https://data.uitwisselingsplatform.be/id/> .
 
 d:ev-ok a cidoc:E7_Activity ;
     dc:title "Concert Permeke"@nl ;
-    dc:type <https://taxonomy.uitdatabank.be/terms/0.50.4.0.0> ;
+    dc:type <https://data.cultuurparticipatie.be/id/concept/ActiviteitType/concert> ;
+    udb:eventType <https://taxonomy.uitdatabank.be/terms/0.50.4.0.0> ;
     adms:identifier d:ev-ok-id ;
     uwp:verwerktOp "2026-06-02T03:00:00"^^xsd:dateTime ;
     dc:created "2026-01-15T10:00:00"^^xsd:dateTime ;

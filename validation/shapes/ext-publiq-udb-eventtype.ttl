@@ -1,0 +1,42 @@
+# GEGENEREERD door validation/generate_shapes.py - niet met de hand aanpassen.
+# Bron: ../conceptschemes/Activiteittype.ttl (skos:exactMatch)
+
+@prefix shacl: <http://www.w3.org/ns/shacl#> .
+@prefix uwpval: <https://data.uitwisselingsplatform.be/doc/validatie#> .
+
+# 25 UiTdatabank-taxonomiecodes, afgeleid van de skos:exactMatch
+# in Activiteittype.ttl. Aanbieder-specifiek (publiq/UiTdatabank): hoort NIET in de kern.
+uwpval:ExtPubliqEventType a shacl:NodeShape ;
+  shacl:targetClass <http://www.cidoc-crm.org/cidoc-crm/E7_Activity> ;
+  shacl:name "UiTdatabank-taxonomiecode op udb:eventType"@nl ;
+  shacl:property [
+    shacl:path <https://data.publiq.be/ns/uitdatabank#eventType> ;
+    shacl:in (
+      <https://taxonomy.uitdatabank.be/terms/0.0.0.0.0>
+      <https://taxonomy.uitdatabank.be/terms/0.12.0.0.0>
+      <https://taxonomy.uitdatabank.be/terms/0.17.0.0.0>
+      <https://taxonomy.uitdatabank.be/terms/0.19.0.0.0>
+      <https://taxonomy.uitdatabank.be/terms/0.28.0.0.0>
+      <https://taxonomy.uitdatabank.be/terms/0.3.1.0.0>
+      <https://taxonomy.uitdatabank.be/terms/0.3.1.0.1>
+      <https://taxonomy.uitdatabank.be/terms/0.3.2.0.0>
+      <https://taxonomy.uitdatabank.be/terms/0.37.0.0.0>
+      <https://taxonomy.uitdatabank.be/terms/0.49.0.0.0>
+      <https://taxonomy.uitdatabank.be/terms/0.5.0.0.0>
+      <https://taxonomy.uitdatabank.be/terms/0.50.21.0.0>
+      <https://taxonomy.uitdatabank.be/terms/0.50.4.0.0>
+      <https://taxonomy.uitdatabank.be/terms/0.50.6.0.0>
+      <https://taxonomy.uitdatabank.be/terms/0.51.0.0.0>
+      <https://taxonomy.uitdatabank.be/terms/0.54.0.0.0>
+      <https://taxonomy.uitdatabank.be/terms/0.55.0.0.0>
+      <https://taxonomy.uitdatabank.be/terms/0.57.0.0.0>
+      <https://taxonomy.uitdatabank.be/terms/0.59.0.0.0>
+      <https://taxonomy.uitdatabank.be/terms/0.6.0.0.0>
+      <https://taxonomy.uitdatabank.be/terms/0.7.0.0.0>
+      <https://taxonomy.uitdatabank.be/terms/1.50.0.0.0>
+      <https://taxonomy.uitdatabank.be/terms/8aRjN4dGsXuE6tBkM1pVwQ>
+      <https://taxonomy.uitdatabank.be/terms/K7mPx3nQrT9bWfH2zL5cYv>
+      <https://taxonomy.uitdatabank.be/terms/hZ5fCyL9nKqW3xDvTrJ2gP> ) ;
+    shacl:severity shacl:Warning ;
+    shacl:message "udb:eventType bevat een code die niet via skos:exactMatch aan codelijst ActiviteitType hangt." ] .
+

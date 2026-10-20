@@ -6,10 +6,11 @@
 @prefix d:    <https://data.uitwisselingsplatform.be/id/> .
 
 # foute property-URI voor ruimtetijd + label onder ongeldige namespace,
-# geen titel, geen identificator
+# geen titel, geen identificator, en een UiTdatabank-taxonomiecode in
+# dcterms:type waar alleen officiele concepten mogen staan
 d:ev-fout a cidoc:E7_Activity ;
     <https://www.w3.org/2000/01/rdf-schema#label> "Expo zonder titel"@nl ;
-    dc:type <https://taxonomy.uitdatabank.be/terms/0.59.0.0.0> ;
+    dc:type <https://taxonomy.uitdatabank.be/terms/0.59.0.0.0> ;   # taxonomiecode hoort in udb:eventType
     cp:ruimtetijd d:ev-fout-rt ;
     cidoc:P4_has_time d:ev-fout-tijd .
 
