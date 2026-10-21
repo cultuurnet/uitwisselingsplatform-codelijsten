@@ -1,0 +1,27 @@
+# Welke CODELIJST gebruikt een pad werkelijk?
+#
+# Dit is de controle die ik eerst oversloeg, met een fout tot gevolg. Ik had
+# gemeten of een waarde uit de namespace data.cultuurparticipatie.be kwam en
+# concludeerde "100% officiele concepten". Dat zegt niets over WELKE codelijst.
+#
+# cp:Activiteit.locatieType bleek Aanwezigheidsmodus te dragen (fysiek/online),
+# niet Locatietype (monument/sportcentrum) - ondanks de propertynaam. De shape
+# stond daardoor op de verkeerde lijst en keurde 2,78 miljoen correcte
+# activiteiten af.
+#
+# Draai dit voor ELK pad voordat je het in KOPPELING zet, en opnieuw als een
+# codelijst of een dataproduct wijzigt.
+
+PREFIX cp: <https://data.vlaanderen.be/ns/cultuurparticipatie#>
+SELECT ?schema (COUNT(*) AS ?n) WHERE {
+  ?s cp:Activiteit.locatieType ?v .
+  BIND(REPLACE(STR(?v), "^(https://data.cultuurparticipatie.be/id/[^/]+/[^/]+)/.*$", "$1") AS ?schema)
+} GROUP BY ?schema ORDER BY DESC(?n)
+
+# Let op het eerste padsegment in de BIND: /concept/ hoort daar te staan.
+# Duikt /conceptscheme/ op, dan verwijst de data naar het schema in plaats van
+# naar een concept - dat zijn er vandaag 2 op cp:Activiteit.locatieType.
+#
+# Een steekproef met { SELECT ?s WHERE { ?s a ... } LIMIT n } is hier onbetrouwbaar:
+# QLever kiest een willekeurige deelverzameling en die kan het predicaat volledig
+# missen. Bij cp:Deelname gaf dat nul rijen terwijl er 19,7 miljoen waarden zijn.

@@ -130,14 +130,29 @@ uwpval:CodelijstRegelE7_Activity_thema a shacl:PropertyShape ;
   shacl:severity shacl:Violation ;
   shacl:message "Waarde zit niet in codelijst ThemaType. Alleen officiele concepten uit data.cultuurparticipatie.be zijn toegelaten. Een UiTdatabank-taxonomiecode hoort hier niet: zet die in udb:theme." .
 
-# Locatietype.ttl: 19 officiele concepten (de 19 exactMatch-varianten
-# horen NIET in dit pad). Meting: 2026-10-21: 2.780.536 officieel / 0 taxonomie
+# Aanwezigheidsmodus.ttl: 3 officiele concepten (de 0 exactMatch-varianten
+# horen NIET in dit pad). Meting: 2026-10-21: 2.780.534 uit Aanwezigheidsmodus; 2 foute waarden met /conceptscheme/ i.p.v. /concept/
 uwpval:CodelijstE7_Activity_Activiteit.locatieType a shacl:NodeShape ;
   shacl:targetClass <http://www.cidoc-crm.org/cidoc-crm/E7_Activity> ;
   shacl:property uwpval:CodelijstRegelE7_Activity_Activiteit.locatieType .
 
 uwpval:CodelijstRegelE7_Activity_Activiteit.locatieType a shacl:PropertyShape ;
   shacl:path <https://data.vlaanderen.be/ns/cultuurparticipatie#Activiteit.locatieType> ;
+  shacl:in (
+      <https://data.cultuurparticipatie.be/id/concept/Aanwezigheidsmodus/fysiek>
+      <https://data.cultuurparticipatie.be/id/concept/Aanwezigheidsmodus/hybride>
+      <https://data.cultuurparticipatie.be/id/concept/Aanwezigheidsmodus/online> ) ;
+  shacl:severity shacl:Violation ;
+  shacl:message "Waarde zit niet in codelijst Aanwezigheidsmodus. Alleen officiele concepten uit data.cultuurparticipatie.be zijn toegelaten." .
+
+# Locatietype.ttl: 19 officiele concepten (de 19 exactMatch-varianten
+# horen NIET in dit pad). Meting: 2026-10-21: 260.312 uit Locatietype; 1 waarde met LocatieType (hoofdletter T)
+uwpval:CodelijstLocation_type a shacl:NodeShape ;
+  shacl:targetClass <http://purl.org/dc/terms/Location> ;
+  shacl:property uwpval:CodelijstRegelLocation_type .
+
+uwpval:CodelijstRegelLocation_type a shacl:PropertyShape ;
+  shacl:path <http://purl.org/dc/terms/type> ;
   shacl:in (
       <https://data.cultuurparticipatie.be/id/concept/Locatietype/archeologischeSite>
       <https://data.cultuurparticipatie.be/id/concept/Locatietype/bibliotheekOfDocumentatiecentrum>

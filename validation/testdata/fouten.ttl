@@ -23,3 +23,13 @@ d:dn-fout a cp:Deelname ;
 
 # relatieve IRI als class: lost op tegen de base en belandt in de instantie-namespace
 <https://data.uitwisselingsplatform.be/id/graf1> a <https://data.uitwisselingsplatform.be/id/Tombstone> .
+
+# echte fout uit de graph (2x): /conceptscheme/ in plaats van /concept/
+<https://data.uitwisselingsplatform.be/id/ev-scheme> a cidoc:E7_Activity ;
+    dc:title "Expo"@nl ;
+    <http://www.w3.org/ns/adms#identifier> <https://data.uitwisselingsplatform.be/id/ev-scheme-id> ;
+    cp:Activiteit.locatieType <https://data.cultuurparticipatie.be/id/conceptscheme/Aanwezigheidsmodus/fysiek> .
+
+# echte fout uit de graph (1x): LocatieType met hoofdletter T
+<https://data.uitwisselingsplatform.be/id/plaats-fout> a dc:Location ;
+    dc:type <https://data.cultuurparticipatie.be/id/concept/LocatieType/museum> .

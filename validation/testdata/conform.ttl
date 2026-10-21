@@ -16,7 +16,11 @@ d:ev-ok a cidoc:E7_Activity ;
     adms:identifier d:ev-ok-id ;
     uwp:verwerktOp "2026-06-02T03:00:00"^^xsd:dateTime ;
     dc:created "2026-01-15T10:00:00"^^xsd:dateTime ;
-    cp:Activiteit.ruimtetijd d:ev-ok-rt .
+    cp:Activiteit.ruimtetijd d:ev-ok-rt ;
+    cp:Activiteit.locatieType <https://data.cultuurparticipatie.be/id/concept/Aanwezigheidsmodus/fysiek> .
+
+<https://data.uitwisselingsplatform.be/id/plaats-ok> a dc:Location ;
+    dc:type <https://data.cultuurparticipatie.be/id/concept/Locatietype/monument> .
 
 d:ev-ok-rt a cidoc:E92_Spacetime_Volume ;
     cidoc:P160_has_temporal_projection d:ev-ok-periode .

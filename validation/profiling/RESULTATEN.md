@@ -64,6 +64,11 @@ Gemeten 2026-10-20. Onderbouwt de severity in `shapes/03-codelijsten.ttl`.
 | `cp:Deelname` | `dcterms:type` | 19.404.498 | 0 |
 | `schema:PriceSpecification` | `cp:Prijsinfo.prijscategorie` | 2.905.202 | 0 |
 
+**Correctie:** die telling was op namespace-niveau en dus te grof - ze zei
+niets over welke codelijst een pad gebruikt. Zie de scheme-telling in
+validation/README.md: `cp:Activiteit.locatieType` draagt Aanwezigheidsmodus,
+niet Locatietype, en er zijn 3 waarden die buiten hun lijst vallen.
+
 **Update 2026-10-21:** de migratie is geland. Alle vijf de paden staan nu op
 nul taxonomiecodes (`dcterms:type` 2.769.514 officieel, `cp:thema` 1.442.307,
 `Activiteit.locatieType` 2.780.536, `Deelname dcterms:type` 19.729.996,

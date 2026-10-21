@@ -82,20 +82,38 @@ moet kunnen gebruiken.
 
 Gemeten per pad (2026-10-20), met de severity die daaruit volgt:
 
-Gemeten per pad (2026-10-21), met de severity die daaruit volgt:
+Gemeten per pad op **scheme-niveau** (2026-10-21):
 
-| klasse | pad | officieel | udb-taxonomie | severity |
+| klasse | pad | codelijst | waarden | afwijkend |
 |---|---|---|---|---|
-| `E7_Activity` | `dcterms:type` | 2.769.514 | 0 | Violation |
-| `E7_Activity` | `cp:thema` | 1.442.307 | 0 | Violation |
-| `E7_Activity` | `cp:Activiteit.locatieType` | 2.780.536 | 0 | Violation |
-| `cp:Deelname` | `dcterms:type` | 19.729.996 | 0 | Violation |
-| `schema:PriceSpecification` | `cp:Prijsinfo.prijscategorie` | 2.108.787 | 0 | Violation |
+| `E7_Activity` | `dcterms:type` | ActiviteitType | 2.769.514 | 0 |
+| `E7_Activity` | `cp:thema` | ThemaType | 1.442.307 | 0 |
+| `E7_Activity` | `cp:Activiteit.locatieType` | **Aanwezigheidsmodus** | 2.780.534 | **2** |
+| `dcterms:Location` | `dcterms:type` | **Locatietype** | 260.312 | **1** |
+| `cp:Deelname` | `dcterms:type` | DeelnameType | 19.729.996 | 0 |
+| `schema:PriceSpecification` | `cp:Prijsinfo.prijscategorie` | PrijsCategorieType | 2.108.787 | 0 |
 
-**Alle vijf de paden zijn sinds 21-10 volledig conform**: nul taxonomiecodes.
-Op 20-10 stonden `dcterms:type` en `cp:thema` nog op respectievelijk 2.618.609
-en 1.372.465 taxonomiecodes. `cp:thema` stond daarom eerst op Warning en kon nu
-naar Violation.
+Alle zes staan op Violation.
+
+### Meet op scheme-niveau, niet op namespace
+
+Een eerdere versie van deze PoC koppelde `cp:Activiteit.locatieType` aan
+**Locatietype**, want zo heet de property. Dat is fout: dat pad draagt
+**Aanwezigheidsmodus** (fysiek / online / hybride). Locatietype (monument,
+sportcentrum, natuurgebied) hoort op `dcterms:Location`.
+
+De fout kon ontstaan doordat de controle te grof was: ik mat of een waarde uit
+de namespace `data.cultuurparticipatie.be` kwam en noteerde "100% officiele
+concepten". Dat klopte, en zei niets over wélke lijst. Het gevolg was een
+Violation-regel die 2,78 miljoen correcte activiteiten afkeurde.
+
+Gebruik daarom `profiling/codelijst-per-pad.rq` voordat je een pad in
+`KOPPELING` zet. Die query bracht meteen drie echte datafouten aan het licht:
+
+- 2x `/conceptscheme/Aanwezigheidsmodus/fysiek` in plaats van `/concept/...`
+- 1x `/concept/LocatieType/...` met een hoofdletter T
+
+Alle drie staan nu als testgeval in `testdata/fouten.ttl`.
 
 ## Het meten en de norm uit elkaar houden
 

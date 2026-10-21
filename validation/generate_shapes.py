@@ -156,9 +156,17 @@ KOPPELING = [
      "https://data.vlaanderen.be/ns/cultuurparticipatie#thema", "Violation",
      "2026-10-21: 1.442.307 officieel / 0 taxonomie - migratie afgerond; op 20-10 "
      "was dit nog 1.420 / 1.372.465 en stond het pad daarom op Warning"),
-    ("Locatietype.ttl", "http://www.cidoc-crm.org/cidoc-crm/E7_Activity",
+    # LET OP: de propertynaam wijst de verkeerde kant op. cp:Activiteit.locatieType
+    # draagt NIET Locatietype (monument, sportcentrum, ...) maar Aanwezigheidsmodus
+    # (fysiek / online / hybride). Geverifieerd op scheme-niveau, niet alleen op
+    # namespace: 2.763.128 fysiek + 17.406 online + 2 met /conceptscheme/ in het pad.
+    ("Aanwezigheidsmodus.ttl", "http://www.cidoc-crm.org/cidoc-crm/E7_Activity",
      "https://data.vlaanderen.be/ns/cultuurparticipatie#Activiteit.locatieType", "Violation",
-     "2026-10-21: 2.780.536 officieel / 0 taxonomie"),
+     "2026-10-21: 2.780.534 uit Aanwezigheidsmodus; 2 foute waarden met /conceptscheme/ i.p.v. /concept/"),
+    # Locatietype hoort op de Locatie, niet op de Activiteit.
+    ("Locatietype.ttl", "http://purl.org/dc/terms/Location",
+     "http://purl.org/dc/terms/type", "Violation",
+     "2026-10-21: 260.312 uit Locatietype; 1 waarde met LocatieType (hoofdletter T)"),
     ("DeelnameType.ttl", "https://data.vlaanderen.be/ns/cultuurparticipatie#Deelname",
      "http://purl.org/dc/terms/type", "Violation",
      "2026-10-21: 19.729.996 officieel / 0 taxonomie"),
