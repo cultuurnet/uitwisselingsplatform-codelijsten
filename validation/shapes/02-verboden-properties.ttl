@@ -6,48 +6,62 @@
 
 uwpval:VerbodenPropertiesE7_Activity a shacl:NodeShape ;
   shacl:targetClass <http://www.cidoc-crm.org/cidoc-crm/E7_Activity> ;
-  shacl:property [
-    shacl:path <https://data.vlaanderen.be/ns/cultuurparticipatie#ruimtetijd> ;
-    shacl:maxCount 0 ;
-    shacl:severity shacl:Violation ;
-    shacl:message "Foute property-URI <https://data.vlaanderen.be/ns/cultuurparticipatie#ruimtetijd>. Gebruik <https://data.vlaanderen.be/ns/cultuurparticipatie#Activiteit.ruimtetijd>." ] ;
-  shacl:property [
-    shacl:path <https://data.vlaanderen.be/ns/cultuurparticipatie#beschikbaarheid> ;
-    shacl:maxCount 0 ;
-    shacl:severity shacl:Violation ;
-    shacl:message "Foute property-URI <https://data.vlaanderen.be/ns/cultuurparticipatie#beschikbaarheid>. Gebruik <https://data.vlaanderen.be/ns/cultuurparticipatie#Activiteit.beschikbaarheid>." ] ;
-  shacl:property [
-    shacl:path <http://www.cidoc-crm.org/cidoc-crm/P4_has_time> ;
-    shacl:maxCount 0 ;
-    shacl:severity shacl:Violation ;
-    shacl:message "Foute property-URI <http://www.cidoc-crm.org/cidoc-crm/P4_has_time>. Gebruik <http://www.cidoc-crm.org/cidoc-crm/P4_has_time-span>." ] ;
-  shacl:property [
-    shacl:path <https://www.w3.org/2000/01/rdf-schema#label> ;
-    shacl:maxCount 0 ;
-    shacl:severity shacl:Violation ;
-    shacl:message "Foute property-URI <https://www.w3.org/2000/01/rdf-schema#label>. https + www is geen geldige rdfs-namespace. Gebruik <http://purl.org/dc/terms/title>." ] ;
-  shacl:property [
-    shacl:path <http://schema.org/contactPoint> ;
-    shacl:maxCount 0 ;
-    shacl:severity shacl:Violation ;
-    shacl:message "Foute property-URI <http://schema.org/contactPoint>. schema.org hoort https te zijn. Gebruik <https://schema.org/contactPoint>." ] ;
+  shacl:property uwpval:VerbodenProp-ruimtetijd ;
+  shacl:property uwpval:VerbodenProp-beschikbaarheid ;
+  shacl:property uwpval:VerbodenProp-P4_has_time ;
+  shacl:property uwpval:VerbodenProp-label ;
+  shacl:property uwpval:VerbodenProp-contactPoint ;
   shacl:name "Verboden property-URI's op E7_Activity"@nl .
 
 uwpval:VerbodenPropertiesParticipant a shacl:NodeShape ;
   shacl:targetClass <https://data.vlaanderen.be/ns/cultuurparticipatie#Participant> ;
-  shacl:property [
-    shacl:path <https://data.uitwisselingsplatform.be/ns/platform#statistischeSector> ;
-    shacl:maxCount 0 ;
-    shacl:severity shacl:Violation ;
-    shacl:message "Foute property-URI <https://data.uitwisselingsplatform.be/ns/platform#statistischeSector>. Gebruik <https://data.uitwisselingsplatform.be/ns/platform#statistischeSectorId>." ] ;
+  shacl:property uwpval:VerbodenProp-statistischeSector ;
   shacl:name "Verboden property-URI's op Participant"@nl .
 
 uwpval:VerbodenPropertiesPriceSpecification a shacl:NodeShape ;
   shacl:targetClass <https://schema.org/PriceSpecification> ;
-  shacl:property [
-    shacl:path <https://data.vlaanderen.be/ns/cultuurparticipatie#Prijs.prijscategorie> ;
-    shacl:maxCount 0 ;
-    shacl:severity shacl:Violation ;
-    shacl:message "Foute property-URI <https://data.vlaanderen.be/ns/cultuurparticipatie#Prijs.prijscategorie>. Gebruik <https://data.vlaanderen.be/ns/cultuurparticipatie#Prijsinfo.prijscategorie>." ] ;
+  shacl:property uwpval:VerbodenProp-Prijs-prijscategorie ;
   shacl:name "Verboden property-URI's op PriceSpecification"@nl .
+
+uwpval:VerbodenProp-ruimtetijd a shacl:PropertyShape ;
+  shacl:path <https://data.vlaanderen.be/ns/cultuurparticipatie#ruimtetijd> ;
+  shacl:maxCount 0 ;
+  shacl:severity shacl:Violation ;
+  shacl:message "Foute property-URI <https://data.vlaanderen.be/ns/cultuurparticipatie#ruimtetijd>. Gebruik <https://data.vlaanderen.be/ns/cultuurparticipatie#Activiteit.ruimtetijd>." .
+
+uwpval:VerbodenProp-beschikbaarheid a shacl:PropertyShape ;
+  shacl:path <https://data.vlaanderen.be/ns/cultuurparticipatie#beschikbaarheid> ;
+  shacl:maxCount 0 ;
+  shacl:severity shacl:Violation ;
+  shacl:message "Foute property-URI <https://data.vlaanderen.be/ns/cultuurparticipatie#beschikbaarheid>. Gebruik <https://data.vlaanderen.be/ns/cultuurparticipatie#Activiteit.beschikbaarheid>." .
+
+uwpval:VerbodenProp-P4_has_time a shacl:PropertyShape ;
+  shacl:path <http://www.cidoc-crm.org/cidoc-crm/P4_has_time> ;
+  shacl:maxCount 0 ;
+  shacl:severity shacl:Violation ;
+  shacl:message "Foute property-URI <http://www.cidoc-crm.org/cidoc-crm/P4_has_time>. Gebruik <http://www.cidoc-crm.org/cidoc-crm/P4_has_time-span>." .
+
+uwpval:VerbodenProp-label a shacl:PropertyShape ;
+  shacl:path <https://www.w3.org/2000/01/rdf-schema#label> ;
+  shacl:maxCount 0 ;
+  shacl:severity shacl:Violation ;
+  shacl:message "Foute property-URI <https://www.w3.org/2000/01/rdf-schema#label>. https + www is geen geldige rdfs-namespace. Gebruik <http://purl.org/dc/terms/title>." .
+
+uwpval:VerbodenProp-contactPoint a shacl:PropertyShape ;
+  shacl:path <http://schema.org/contactPoint> ;
+  shacl:maxCount 0 ;
+  shacl:severity shacl:Violation ;
+  shacl:message "Foute property-URI <http://schema.org/contactPoint>. schema.org hoort https te zijn. Gebruik <https://schema.org/contactPoint>." .
+
+uwpval:VerbodenProp-statistischeSector a shacl:PropertyShape ;
+  shacl:path <https://data.uitwisselingsplatform.be/ns/platform#statistischeSector> ;
+  shacl:maxCount 0 ;
+  shacl:severity shacl:Violation ;
+  shacl:message "Foute property-URI <https://data.uitwisselingsplatform.be/ns/platform#statistischeSector>. Gebruik <https://data.uitwisselingsplatform.be/ns/platform#statistischeSectorId>." .
+
+uwpval:VerbodenProp-Prijs-prijscategorie a shacl:PropertyShape ;
+  shacl:path <https://data.vlaanderen.be/ns/cultuurparticipatie#Prijs.prijscategorie> ;
+  shacl:maxCount 0 ;
+  shacl:severity shacl:Violation ;
+  shacl:message "Foute property-URI <https://data.vlaanderen.be/ns/cultuurparticipatie#Prijs.prijscategorie>. Gebruik <https://data.vlaanderen.be/ns/cultuurparticipatie#Prijsinfo.prijscategorie>." .
 

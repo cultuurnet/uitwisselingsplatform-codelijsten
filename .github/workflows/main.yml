@@ -48,6 +48,9 @@ jobs:
             shapes/03-codelijsten.ttl \
             shapes/ext-publiq-udb-taxonomie.ttl \
             || { echo "::error::Gegenereerde shapes lopen achter. Draai validation/generate_shapes.py en commit het resultaat."; exit 1; }
+      - name: productiebundel moet actueel zijn
+        shell: sh
+        run: python validation/build_bundle.py --check
       - name: conforme testdata moet slagen
         shell: sh
         run: python validation/validate_dataproduct.py validation/testdata/conform.ttl

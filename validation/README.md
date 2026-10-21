@@ -110,6 +110,65 @@ cultuurconnect, yesplan en peppered, en op 0% bij uitpas en museumpas. Wie dat
 niet uitsplitst, zet die property op Violation en keurt 89,5% van alle
 deelnames af.
 
+## Van vier lagen naar een productiebestand
+
+Het platform koppelt per output port een enkele URL via
+`linkedDataSchemaDefinition`, haalt die op en POST de inhoud naar het
+`/shacl`-endpoint van de Fuseki dataset:
+
+```js
+const body = await (await fetch(shaclUrl)).text();
+await fetch('/<dataset>/shacl?graph=union', {
+  method: 'POST', headers: { 'Content-Type': 'text/turtle' }, body });
+```
+
+Vier bestanden kunnen daar niet heen. De gelaagdheid is dus een **bron**-indeling;
+`build_bundle.py` is de distributiestap en schrijft alles naar
+`shacl/v1/cultuurparticipatie_shacl.ttl`.
+
+```sh
+python build_bundle.py            # bouwen
+python build_bundle.py --check    # faalt als de bundel achterloopt (draait in CI)
+```
+
+Drie dingen die de bundel bewaakt:
+
+- **`shacl:minCount` in een `ext-*`-laag is verboden.** De bundel gaat naar elke
+  aanbieder. Een shape die alleen iets zegt over vocabulaire *die er staat* is
+  onschadelijk voor wie die vocabulaire niet levert - dat is waarom een
+  publiq-laag mee kan in een template voor iedereen. Een `minCount` breekt die
+  eigenschap, dus de build weigert.
+- **Prefix-conflicten** tussen lagen (zelfde prefix, andere namespace).
+- **Achterlopen**: `--check` vergelijkt de ingecheckte bundel met de lagen.
+
+De huidige `shacl/cultuurparticipatie_shacl.ttl` gaat als **laag 0** mee de
+bundel in en wordt niet vervangen: de 22 shapes die daar wel vuren doen
+datatype- en `maxCount`-controles op klassen die de nieuwe lagen niet raken.
+Opruimen kan daarna, stap voor stap, zonder dat de URL wijzigt.
+
+Het pad heeft bewust een `v1/`: met een vaste URL op `main` slaat elke
+aanscherping onmiddellijk in bij alle dataproducten. Op 20-10 zou
+`dcterms:type` op Violation 2.618.609 activiteiten hebben afgekeurd; dat is
+vandaag nul, maar dat is timing, geen beleid.
+
+## Rapport: elke regel heeft een IRI
+
+Het Fuseki-endpoint geeft een `sh:ValidationReport` terug met per resultaat een
+`sh:resultSeverity` en een `sh:sourceShape`. Daarom heeft elke regel in deze
+lagen een eigen IRI in plaats van een blank node:
+
+```
+sh:resultSeverity  sh:Violation ;
+sh:sourceShape     uwpval:VerbodenProp-statistischeSector ;
+```
+
+Zo kan het platform groeperen en tellen per regel, in plaats van alleen op de
+tekst van de boodschap. Alleen de takken van `sh:or` blijven blank nodes: die
+zijn geen zelfstandige regel, en de melding komt van de NodeShape eromheen.
+
+**Gate op `sh:resultSeverity`, niet op `sh:conforms`.** Dat laatste wordt
+`false` bij elk resultaat, ook bij een losse Info-melding.
+
 ## Gebruik
 
 ```sh

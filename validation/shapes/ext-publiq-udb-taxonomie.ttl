@@ -9,9 +9,11 @@
 uwpval:ExtPubliqUdbType a shacl:NodeShape ;
   shacl:targetClass <http://www.cidoc-crm.org/cidoc-crm/E7_Activity> ;
   shacl:name "UiTdatabank-taxonomiecode op udb:type"@nl ;
-  shacl:property [
-    shacl:path <https://data.publiq.be/ns/uitdatabank#type> ;
-    shacl:in (
+  shacl:property uwpval:ExtPubliqUdbRegel-type .
+
+uwpval:ExtPubliqUdbRegel-type a shacl:PropertyShape ;
+  shacl:path <https://data.publiq.be/ns/uitdatabank#type> ;
+  shacl:in (
       <https://taxonomy.uitdatabank.be/terms/0.0.0.0.0>
       <https://taxonomy.uitdatabank.be/terms/0.12.0.0.0>
       <https://taxonomy.uitdatabank.be/terms/0.17.0.0.0>
@@ -37,17 +39,19 @@ uwpval:ExtPubliqUdbType a shacl:NodeShape ;
       <https://taxonomy.uitdatabank.be/terms/8aRjN4dGsXuE6tBkM1pVwQ>
       <https://taxonomy.uitdatabank.be/terms/K7mPx3nQrT9bWfH2zL5cYv>
       <https://taxonomy.uitdatabank.be/terms/hZ5fCyL9nKqW3xDvTrJ2gP> ) ;
-    shacl:severity shacl:Warning ;
-    shacl:message "udb:type bevat een code die niet via skos:exactMatch aan codelijst Activiteittype hangt." ] .
+  shacl:severity shacl:Warning ;
+  shacl:message "udb:type bevat een code die niet via skos:exactMatch aan codelijst Activiteittype hangt." .
 
 # 77 UiTdatabank-taxonomiecodes uit ThemaType.ttl (skos:exactMatch).
 # Aanbieder-specifiek (publiq/UiTdatabank): hoort NIET in de kern. Meting: 2026-10-21: 1.444.161 taxonomie-IRIs
 uwpval:ExtPubliqUdbTheme a shacl:NodeShape ;
   shacl:targetClass <http://www.cidoc-crm.org/cidoc-crm/E7_Activity> ;
   shacl:name "UiTdatabank-taxonomiecode op udb:theme"@nl ;
-  shacl:property [
-    shacl:path <https://data.publiq.be/ns/uitdatabank#theme> ;
-    shacl:in (
+  shacl:property uwpval:ExtPubliqUdbRegel-theme .
+
+uwpval:ExtPubliqUdbRegel-theme a shacl:PropertyShape ;
+  shacl:path <https://data.publiq.be/ns/uitdatabank#theme> ;
+  shacl:in (
       <https://taxonomy.uitdatabank.be/terms/0.52.0.0.0>
       <https://taxonomy.uitdatabank.be/terms/1.0.1.0.0>
       <https://taxonomy.uitdatabank.be/terms/1.0.2.0.0>
@@ -125,6 +129,6 @@ uwpval:ExtPubliqUdbTheme a shacl:NodeShape ;
       <https://taxonomy.uitdatabank.be/terms/1.9.2.0.0>
       <https://taxonomy.uitdatabank.be/terms/1.9.3.0.0>
       <https://taxonomy.uitdatabank.be/terms/1.9.5.0.0> ) ;
-    shacl:severity shacl:Warning ;
-    shacl:message "udb:theme bevat een code die niet via skos:exactMatch aan codelijst ThemaType hangt." ] .
+  shacl:severity shacl:Warning ;
+  shacl:message "udb:theme bevat een code die niet via skos:exactMatch aan codelijst ThemaType hangt." .
 

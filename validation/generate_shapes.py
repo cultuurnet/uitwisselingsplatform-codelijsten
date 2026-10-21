@@ -19,6 +19,18 @@ SKOS = Namespace("http://www.w3.org/2004/02/skos/core#")
 HIER = os.path.dirname(os.path.abspath(__file__))
 SHAPES = os.path.join(HIER, "shapes")
 
+def slug(uri):
+    """Korte, stabiele naam voor een property-shape-IRI, afgeleid van het pad.
+
+    Zodat sh:sourceShape in het validatierapport herleidbaar is naar een regel
+    in plaats van een blank node. Het Fuseki /shacl-endpoint geeft die IRI
+    letterlijk terug, dus het platform kan erop groeperen en ernaar linken.
+    """
+    kern = uri.split("#")[-1] if "#" in uri else uri.rstrip("/").split("/")[-1]
+    veilig = "".join(c if (c.isalnum() or c in "-_") else "-" for c in kern)
+    return veilig.strip("-")
+
+
 HEADER = """# GEGENEREERD door validation/generate_shapes.py - niet met de hand aanpassen.
 # Bron: {bron}
 
@@ -40,6 +52,7 @@ def genereer_verboden_properties():
         per_klasse.setdefault(v["klasse"], []).append(v)
 
     uit = [HEADER.format(bron="variants.json")]
+    losse = []
     for i, (klasse, items) in enumerate(sorted(per_klasse.items()), start=1):
         naam = klasse.split("#")[-1].split("/")[-1]
         props = []
@@ -49,12 +62,18 @@ def genereer_verboden_properties():
                 f"Foute property-URI <{v['fout']}>.{uitleg} "
                 f"Gebruik <{v['correct']}>."
             )
+            ps_iri = f"uwpval:VerbodenProp-{slug(v['fout'])}"
             props.append(
-                f"""  shacl:property [
-    shacl:path <{v['fout']}> ;
-    shacl:maxCount 0 ;
-    shacl:severity shacl:Violation ;
-    shacl:message "{boodschap}" ] ;"""
+                f"""  shacl:property {ps_iri} ;"""
+            )
+            losse.append(
+                f"""{ps_iri} a shacl:PropertyShape ;
+  shacl:path <{v['fout']}> ;
+  shacl:maxCount 0 ;
+  shacl:severity shacl:Violation ;
+  shacl:message "{boodschap}" .
+
+"""
             )
         uit.append(
             f"""uwpval:VerbodenProperties{naam} a shacl:NodeShape ;
@@ -64,6 +83,7 @@ def genereer_verboden_properties():
 
 """
         )
+    uit.extend(losse)
     pad = os.path.join(SHAPES, "02-verboden-properties.ttl")
     with open(pad, "w", encoding="utf-8") as f:
         f.write("".join(uit))
@@ -100,15 +120,18 @@ def genereer_verboden_klassen():
         else:
             advies = " Er is geen vervangende class afgesproken: dit vraagt een modelleerbeslissing."
         boodschap = f"Verboden class <{k['fout']}>.{uitleg}{advies}"
+        naam = slug(k["fout"])
         uit.append(
             f"""# gemeten {k.get('gemeten_op', '?')}: {k['gemeten']}
-uwpval:VerbodenKlasse{i} a shacl:NodeShape ;
+uwpval:VerbodenKlasse-{naam} a shacl:NodeShape ;
   shacl:targetClass <{k['fout']}> ;
-  shacl:property [
-    shacl:path rdf:type ;
-    shacl:maxCount 0 ;
-    shacl:severity shacl:Violation ;
-    shacl:message "{boodschap}" ] .
+  shacl:property uwpval:VerbodenKlasseRegel-{naam} .
+
+uwpval:VerbodenKlasseRegel-{naam} a shacl:PropertyShape ;
+  shacl:path rdf:type ;
+  shacl:maxCount 0 ;
+  shacl:severity shacl:Violation ;
+  shacl:message "{boodschap}" .
 
 """
         )
@@ -206,12 +229,14 @@ def genereer_codelijsten():
 # horen NIET in dit pad). Meting: {meting}
 uwpval:Codelijst{naam} a shacl:NodeShape ;
   shacl:targetClass <{klasse}> ;
-  shacl:property [
-    shacl:path <{pad}> ;
-    shacl:in (
+  shacl:property uwpval:CodelijstRegel{naam} .
+
+uwpval:CodelijstRegel{naam} a shacl:PropertyShape ;
+  shacl:path <{pad}> ;
+  shacl:in (
       {waarden} ) ;
-    shacl:severity shacl:{severity} ;
-    shacl:message "Waarde zit niet in codelijst {lijst}. Alleen officiele concepten uit data.cultuurparticipatie.be zijn toegelaten.{extra}" ] .
+  shacl:severity shacl:{severity} ;
+  shacl:message "Waarde zit niet in codelijst {lijst}. Alleen officiele concepten uit data.cultuurparticipatie.be zijn toegelaten.{extra}" .
 
 """
         )
@@ -245,12 +270,14 @@ def genereer_udb_taxonomie():
 uwpval:ExtPubliqUdb{lokaal[0].upper()}{lokaal[1:]} a shacl:NodeShape ;
   shacl:targetClass <{klasse}> ;
   shacl:name "UiTdatabank-taxonomiecode op udb:{lokaal}"@nl ;
-  shacl:property [
-    shacl:path <{pad}> ;
-    shacl:in (
+  shacl:property uwpval:ExtPubliqUdbRegel-{lokaal} .
+
+uwpval:ExtPubliqUdbRegel-{lokaal} a shacl:PropertyShape ;
+  shacl:path <{pad}> ;
+  shacl:in (
       {waarden} ) ;
-    shacl:severity shacl:{severity} ;
-    shacl:message "udb:{lokaal} bevat een code die niet via skos:exactMatch aan codelijst {lijst} hangt." ] .
+  shacl:severity shacl:{severity} ;
+  shacl:message "udb:{lokaal} bevat een code die niet via skos:exactMatch aan codelijst {lijst} hangt." .
 
 """
         )

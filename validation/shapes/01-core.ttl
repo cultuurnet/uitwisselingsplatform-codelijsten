@@ -23,33 +23,40 @@
 uwpval:KernActiviteit a shacl:NodeShape ;
   shacl:targetClass cidoc:E7_Activity ;
   shacl:name "Kernvereisten Activiteit"@nl ;
+  shacl:property uwpval:Activiteit-titel ,
+                 uwpval:Activiteit-identificator ,
+                 uwpval:Activiteit-verwerktOp ,
+                 uwpval:Activiteit-created .
 
-  # dekking 2.821.541 / 2.821.596 = 99,998% (55 activiteiten zonder titel)
-  shacl:property [
-    shacl:path dc:title ; shacl:minCount 1 ; shacl:severity shacl:Violation ;
-    shacl:message "Activiteit zonder dcterms:title is niet bruikbaar voor consumers." ] ;
+# dekking 2.821.541 / 2.821.596 = 99,998% (55 activiteiten zonder titel)
+uwpval:Activiteit-titel a shacl:PropertyShape ;
+  shacl:path dc:title ; shacl:minCount 1 ; shacl:severity shacl:Violation ;
+  shacl:message "Activiteit zonder dcterms:title is niet bruikbaar voor consumers." .
 
-  # dekking 2.821.596 / 2.821.596 = 100%
-  shacl:property [
-    shacl:path adms:identifier ; shacl:minCount 1 ; shacl:severity shacl:Violation ;
-    shacl:message "Activiteit zonder adms:identifier heeft geen traceerbare herkomst." ] ;
+# dekking 2.821.596 / 2.821.596 = 100%
+uwpval:Activiteit-identificator a shacl:PropertyShape ;
+  shacl:path adms:identifier ; shacl:minCount 1 ; shacl:severity shacl:Violation ;
+  shacl:message "Activiteit zonder adms:identifier heeft geen traceerbare herkomst." .
 
-  # dekking 2.821.596 = 100% (was 99,99% op 20-10), maar het is platformmetadata:
-  # Warning, niet Violation - een andere aanbieder hoeft dit veld niet te zetten
-  shacl:property [
-    shacl:path uwp:verwerktOp ; shacl:minCount 1 ; shacl:severity shacl:Warning ;
-    shacl:message "uwp:verwerktOp ontbreekt: incrementele verwerking kan dit record niet plaatsen." ] ;
+# dekking 2.821.596 = 100% (was 99,99% op 20-10), maar het is platformmetadata:
+# Warning, niet Violation - een andere aanbieder hoeft dit veld niet te zetten
+uwpval:Activiteit-verwerktOp a shacl:PropertyShape ;
+  shacl:path uwp:verwerktOp ; shacl:minCount 1 ; shacl:severity shacl:Warning ;
+  shacl:message "uwp:verwerktOp ontbreekt: incrementele verwerking kan dit record niet plaatsen." .
 
-  # dekking 2.812.145 = 99,7%
-  shacl:property [
-    shacl:path dc:created ; shacl:minCount 1 ; shacl:severity shacl:Info ;
-    shacl:message "dcterms:created ontbreekt." ] .
+# dekking 2.812.145 = 99,7%
+uwpval:Activiteit-created a shacl:PropertyShape ;
+  shacl:path dc:created ; shacl:minCount 1 ; shacl:severity shacl:Info ;
+  shacl:message "dcterms:created ontbreekt." .
 
 # Tijdsinformatie: niet uit te drukken met minCount, want er zijn twee geldige paden.
 # Dekking 2026-10-21: cp:Activiteit.ruimtetijd 2.525.875 + cidoc:P4_has_time-span
 # 250.176 van 2.821.596 activiteiten. De foute variant cp:ruimtetijd staat sinds
 # 21-10 op 0 (was 7.385.026), dus de dubbele melding uit de vorige versie is weg.
 # Blijft op Warning: een activiteit zonder tijdsinformatie is onvolledig, niet stuk.
+#
+# De takken van sh:or blijven blank nodes: ze zijn geen zelfstandige regel, en
+# de melding komt van de NodeShape zelf, die wel een IRI heeft.
 uwpval:KernActiviteitTijd a shacl:NodeShape ;
   shacl:targetClass cidoc:E7_Activity ;
   shacl:severity shacl:Warning ;
@@ -63,34 +70,40 @@ uwpval:KernActiviteitTijd a shacl:NodeShape ;
 uwpval:KernDeelname a shacl:NodeShape ;
   shacl:targetClass cp:Deelname ;
   shacl:name "Kernvereisten Deelname"@nl ;
+  shacl:property uwpval:Deelname-activiteit ,
+                 uwpval:Deelname-participant ,
+                 uwpval:Deelname-tijdstip ,
+                 uwpval:Deelname-verwerktOp .
 
-  # dekking 21.998.873 van 21.998.883 = 99,99996% (10 deelnames zonder activiteit)
-  shacl:property [
-    shacl:path cp:Deelname.activiteit ; shacl:minCount 1 ; shacl:severity shacl:Violation ;
-    shacl:message "Deelname zonder cp:Deelname.activiteit is betekenisloos." ] ;
+# dekking 21.998.873 van 21.998.883 = 99,99996% (10 deelnames zonder activiteit)
+uwpval:Deelname-activiteit a shacl:PropertyShape ;
+  shacl:path cp:Deelname.activiteit ; shacl:minCount 1 ; shacl:severity shacl:Violation ;
+  shacl:message "Deelname zonder cp:Deelname.activiteit is betekenisloos." .
 
-  # dekking 21.465.982 = 97,6%. De ontbrekende 2,4% is een echt signaal, geen ruis.
-  shacl:property [
-    shacl:path cp:Deelname.participant ; shacl:minCount 1 ; shacl:severity shacl:Violation ;
-    shacl:message "Deelname zonder cp:Deelname.participant is betekenisloos." ] ;
+# dekking 21.465.982 = 97,6%. De ontbrekende 2,4% is een echt signaal, geen ruis.
+uwpval:Deelname-participant a shacl:PropertyShape ;
+  shacl:path cp:Deelname.participant ; shacl:minCount 1 ; shacl:severity shacl:Violation ;
+  shacl:message "Deelname zonder cp:Deelname.participant is betekenisloos." .
 
-  # dekking 20.678.124 = 94,0%
-  shacl:property [
-    shacl:path cp:Deelname.tijdstip ; shacl:minCount 1 ; shacl:severity shacl:Warning ;
-    shacl:message "Deelname zonder tijdstip is onbruikbaar voor tijdreeksanalyse." ] ;
+# dekking 20.678.124 = 94,0%
+uwpval:Deelname-tijdstip a shacl:PropertyShape ;
+  shacl:path cp:Deelname.tijdstip ; shacl:minCount 1 ; shacl:severity shacl:Warning ;
+  shacl:message "Deelname zonder tijdstip is onbruikbaar voor tijdreeksanalyse." .
 
-  # dekking 10,5% (gemeten per bron op 2026-10-20; hermeting 21-10 viel om op
-  # geheugentekort bij het endpoint). uitpas (13,0M) en museumpas (6,3M) zetten dit NIET.
-  # Dit is precies de property die je op Violation zou zetten als je alleen naar
-  # cultuurconnect/yesplan/peppered keek: dan keur je 89,5% van alle deelnames af.
-  shacl:property [
-    shacl:path uwp:verwerktOp ; shacl:minCount 1 ; shacl:severity shacl:Info ;
-    shacl:message "uwp:verwerktOp ontbreekt (zetten vandaag: cultuurconnect, yesplan, peppered; niet: uitpas, museumpas)." ] .
+# dekking 10,5% (gemeten per bron op 2026-10-20; hermeting 21-10 viel om op
+# geheugentekort bij het endpoint). uitpas (13,0M) en museumpas (6,3M) zetten dit NIET.
+# Dit is precies de property die je op Violation zou zetten als je alleen naar
+# cultuurconnect/yesplan/peppered keek: dan keur je 89,5% van alle deelnames af.
+uwpval:Deelname-verwerktOp a shacl:PropertyShape ;
+  shacl:path uwp:verwerktOp ; shacl:minCount 1 ; shacl:severity shacl:Info ;
+  shacl:message "uwp:verwerktOp ontbreekt (zetten vandaag: cultuurconnect, yesplan, peppered; niet: uitpas, museumpas)." .
 
 ### Participant - 1.170.449 instanties
 uwpval:KernParticipant a shacl:NodeShape ;
   shacl:targetClass cp:Participant ;
   shacl:name "Kernvereisten Participant"@nl ;
-  shacl:property [
-    shacl:path adms:identifier ; shacl:minCount 1 ; shacl:severity shacl:Violation ;
-    shacl:message "Participant zonder adms:identifier: bron niet traceerbaar (het bron-dataproduct hangt aan adms:identifier/uwp:bron)." ] .
+  shacl:property uwpval:Participant-identificator .
+
+uwpval:Participant-identificator a shacl:PropertyShape ;
+  shacl:path adms:identifier ; shacl:minCount 1 ; shacl:severity shacl:Violation ;
+  shacl:message "Participant zonder adms:identifier: bron niet traceerbaar (het bron-dataproduct hangt aan adms:identifier/uwp:bron)." .

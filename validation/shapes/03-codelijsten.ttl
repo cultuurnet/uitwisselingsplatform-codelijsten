@@ -8,9 +8,11 @@
 # horen NIET in dit pad). Meting: 2026-10-21: 2.769.514 officieel / 0 taxonomie - migratie afgerond
 uwpval:CodelijstE7_Activity_type a shacl:NodeShape ;
   shacl:targetClass <http://www.cidoc-crm.org/cidoc-crm/E7_Activity> ;
-  shacl:property [
-    shacl:path <http://purl.org/dc/terms/type> ;
-    shacl:in (
+  shacl:property uwpval:CodelijstRegelE7_Activity_type .
+
+uwpval:CodelijstRegelE7_Activity_type a shacl:PropertyShape ;
+  shacl:path <http://purl.org/dc/terms/type> ;
+  shacl:in (
       <https://data.cultuurparticipatie.be/id/concept/ActiviteitType/activiteitMetDeJeugdbeweging>
       <https://data.cultuurparticipatie.be/id/concept/ActiviteitType/begeleideUitstapOfRondleiding>
       <https://data.cultuurparticipatie.be/id/concept/ActiviteitType/beurs>
@@ -36,16 +38,18 @@ uwpval:CodelijstE7_Activity_type a shacl:NodeShape ;
       <https://data.cultuurparticipatie.be/id/concept/ActiviteitType/tentoonstelling>
       <https://data.cultuurparticipatie.be/id/concept/ActiviteitType/theatervoorstelling>
       <https://data.cultuurparticipatie.be/id/concept/ActiviteitType/typeOnbepaald> ) ;
-    shacl:severity shacl:Violation ;
-    shacl:message "Waarde zit niet in codelijst Activiteittype. Alleen officiele concepten uit data.cultuurparticipatie.be zijn toegelaten. Een UiTdatabank-taxonomiecode hoort hier niet: zet die in udb:type." ] .
+  shacl:severity shacl:Violation ;
+  shacl:message "Waarde zit niet in codelijst Activiteittype. Alleen officiele concepten uit data.cultuurparticipatie.be zijn toegelaten. Een UiTdatabank-taxonomiecode hoort hier niet: zet die in udb:type." .
 
 # ThemaType.ttl: 77 officiele concepten (de 77 exactMatch-varianten
 # horen NIET in dit pad). Meting: 2026-10-21: 1.442.307 officieel / 0 taxonomie - migratie afgerond; op 20-10 was dit nog 1.420 / 1.372.465 en stond het pad daarom op Warning
 uwpval:CodelijstE7_Activity_thema a shacl:NodeShape ;
   shacl:targetClass <http://www.cidoc-crm.org/cidoc-crm/E7_Activity> ;
-  shacl:property [
-    shacl:path <https://data.vlaanderen.be/ns/cultuurparticipatie#thema> ;
-    shacl:in (
+  shacl:property uwpval:CodelijstRegelE7_Activity_thema .
+
+uwpval:CodelijstRegelE7_Activity_thema a shacl:PropertyShape ;
+  shacl:path <https://data.vlaanderen.be/ns/cultuurparticipatie#thema> ;
+  shacl:in (
       <https://data.cultuurparticipatie.be/id/concept/ThemaType/actieEnAvonturenfilm>
       <https://data.cultuurparticipatie.be/id/concept/ThemaType/amusementsmuziek>
       <https://data.cultuurparticipatie.be/id/concept/ThemaType/animatieEnKinderfilms>
@@ -123,16 +127,18 @@ uwpval:CodelijstE7_Activity_thema a shacl:NodeShape ;
       <https://data.cultuurparticipatie.be/id/concept/ThemaType/wetenschap>
       <https://data.cultuurparticipatie.be/id/concept/ThemaType/zingevingFilosofieEnReligie>
       <https://data.cultuurparticipatie.be/id/concept/ThemaType/zwemmenEnWatersport> ) ;
-    shacl:severity shacl:Violation ;
-    shacl:message "Waarde zit niet in codelijst ThemaType. Alleen officiele concepten uit data.cultuurparticipatie.be zijn toegelaten. Een UiTdatabank-taxonomiecode hoort hier niet: zet die in udb:theme." ] .
+  shacl:severity shacl:Violation ;
+  shacl:message "Waarde zit niet in codelijst ThemaType. Alleen officiele concepten uit data.cultuurparticipatie.be zijn toegelaten. Een UiTdatabank-taxonomiecode hoort hier niet: zet die in udb:theme." .
 
 # Locatietype.ttl: 19 officiele concepten (de 19 exactMatch-varianten
 # horen NIET in dit pad). Meting: 2026-10-21: 2.780.536 officieel / 0 taxonomie
 uwpval:CodelijstE7_Activity_Activiteit.locatieType a shacl:NodeShape ;
   shacl:targetClass <http://www.cidoc-crm.org/cidoc-crm/E7_Activity> ;
-  shacl:property [
-    shacl:path <https://data.vlaanderen.be/ns/cultuurparticipatie#Activiteit.locatieType> ;
-    shacl:in (
+  shacl:property uwpval:CodelijstRegelE7_Activity_Activiteit.locatieType .
+
+uwpval:CodelijstRegelE7_Activity_Activiteit.locatieType a shacl:PropertyShape ;
+  shacl:path <https://data.vlaanderen.be/ns/cultuurparticipatie#Activiteit.locatieType> ;
+  shacl:in (
       <https://data.cultuurparticipatie.be/id/concept/Locatietype/archeologischeSite>
       <https://data.cultuurparticipatie.be/id/concept/Locatietype/bibliotheekOfDocumentatiecentrum>
       <https://data.cultuurparticipatie.be/id/concept/Locatietype/bioscoop>
@@ -152,30 +158,34 @@ uwpval:CodelijstE7_Activity_Activiteit.locatieType a shacl:NodeShape ;
       <https://data.cultuurparticipatie.be/id/concept/Locatietype/themaOfPretpark>
       <https://data.cultuurparticipatie.be/id/concept/Locatietype/winkel>
       <https://data.cultuurparticipatie.be/id/concept/Locatietype/zaalOfExpohal> ) ;
-    shacl:severity shacl:Violation ;
-    shacl:message "Waarde zit niet in codelijst Locatietype. Alleen officiele concepten uit data.cultuurparticipatie.be zijn toegelaten." ] .
+  shacl:severity shacl:Violation ;
+  shacl:message "Waarde zit niet in codelijst Locatietype. Alleen officiele concepten uit data.cultuurparticipatie.be zijn toegelaten." .
 
 # DeelnameType.ttl: 2 officiele concepten (de 0 exactMatch-varianten
 # horen NIET in dit pad). Meting: 2026-10-21: 19.729.996 officieel / 0 taxonomie
 uwpval:CodelijstDeelname_type a shacl:NodeShape ;
   shacl:targetClass <https://data.vlaanderen.be/ns/cultuurparticipatie#Deelname> ;
-  shacl:property [
-    shacl:path <http://purl.org/dc/terms/type> ;
-    shacl:in (
+  shacl:property uwpval:CodelijstRegelDeelname_type .
+
+uwpval:CodelijstRegelDeelname_type a shacl:PropertyShape ;
+  shacl:path <http://purl.org/dc/terms/type> ;
+  shacl:in (
       <https://data.cultuurparticipatie.be/id/concept/DeelnameType/bezoeker>
       <https://data.cultuurparticipatie.be/id/concept/DeelnameType/toeschouwer> ) ;
-    shacl:severity shacl:Violation ;
-    shacl:message "Waarde zit niet in codelijst DeelnameType. Alleen officiele concepten uit data.cultuurparticipatie.be zijn toegelaten." ] .
+  shacl:severity shacl:Violation ;
+  shacl:message "Waarde zit niet in codelijst DeelnameType. Alleen officiele concepten uit data.cultuurparticipatie.be zijn toegelaten." .
 
 # PrijsCategorieType.ttl: 2 officiele concepten (de 0 exactMatch-varianten
 # horen NIET in dit pad). Meting: 2026-10-21: 2.108.787 officieel / 0 taxonomie
 uwpval:CodelijstPriceSpecification_Prijsinfo.prijscategorie a shacl:NodeShape ;
   shacl:targetClass <https://schema.org/PriceSpecification> ;
-  shacl:property [
-    shacl:path <https://data.vlaanderen.be/ns/cultuurparticipatie#Prijsinfo.prijscategorie> ;
-    shacl:in (
+  shacl:property uwpval:CodelijstRegelPriceSpecification_Prijsinfo.prijscategorie .
+
+uwpval:CodelijstRegelPriceSpecification_Prijsinfo.prijscategorie a shacl:PropertyShape ;
+  shacl:path <https://data.vlaanderen.be/ns/cultuurparticipatie#Prijsinfo.prijscategorie> ;
+  shacl:in (
       <https://data.cultuurparticipatie.be/id/concept/PrijsCategorieType/basis>
       <https://data.cultuurparticipatie.be/id/concept/PrijsCategorieType/tarief> ) ;
-    shacl:severity shacl:Violation ;
-    shacl:message "Waarde zit niet in codelijst PrijsCategorieType. Alleen officiele concepten uit data.cultuurparticipatie.be zijn toegelaten." ] .
+  shacl:severity shacl:Violation ;
+  shacl:message "Waarde zit niet in codelijst PrijsCategorieType. Alleen officiele concepten uit data.cultuurparticipatie.be zijn toegelaten." .
 
