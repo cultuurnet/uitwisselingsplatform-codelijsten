@@ -45,7 +45,7 @@ jobs:
           cd validation
           python generate_shapes.py
           git diff --exit-code shapes/02-verboden-properties.ttl shapes/03-codelijsten.ttl \
-            shapes/ext-publiq-udb-eventtype.ttl \
+            shapes/ext-publiq-udb-taxonomie.ttl \
             || { echo "::error::Gegenereerde shapes lopen achter. Draai validation/generate_shapes.py en commit het resultaat."; exit 1; }
       - name: conforme testdata moet slagen
         shell: sh

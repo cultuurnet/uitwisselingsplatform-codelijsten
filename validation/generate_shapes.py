@@ -3,7 +3,7 @@
 
   shapes/02-verboden-properties.ttl  <- variants.json
   shapes/03-codelijsten.ttl          <- ../conceptschemes/*.ttl (officiele concepten)
-  shapes/ext-publiq-udb-eventtype.ttl <- ../conceptschemes/Activiteittype.ttl (exactMatch)
+  shapes/ext-publiq-udb-taxonomie.ttl <- ../conceptschemes/*.ttl (exactMatch -> udb:type/udb:theme)
 
 Beide zijn GEGENEREERD: niet met de hand aanpassen, maar de bron wijzigen en
 dit script opnieuw draaien. Zo rot de lijst niet mee met de codelijsten.
@@ -75,31 +75,42 @@ def genereer_verboden_properties():
 #
 # REGEL: in dcterms:type en de andere codelijst-paden horen UITSLUITEND de
 # officiele concepten uit de codelijsten. Een UiTdatabank-taxonomiecode hoort
-# in de aanbieder-eigen property udb:eventType - zie genereer_udb_eventtype().
+# in de aanbieder-eigen properties udb:type / udb:theme - zie genereer_udb_taxonomie().
 KOPPELING = [
     # (codelijst, targetClass, pad, severity, meting)
     ("Activiteittype.ttl", "http://www.cidoc-crm.org/cidoc-crm/E7_Activity",
      "http://purl.org/dc/terms/type", "Violation",
-     "2.194 officieel / 2.618.609 taxonomie - de taxonomiecodes horen in udb:eventType"),
+     "2026-10-21: 2.769.514 officieel / 0 taxonomie - migratie afgerond"),
     ("ThemaType.ttl", "http://www.cidoc-crm.org/cidoc-crm/E7_Activity",
-     "https://data.vlaanderen.be/ns/cultuurparticipatie#thema", "Warning",
-     "1.420 officieel / 1.372.465 taxonomie - nog geen afgesproken doelproperty, daarom Warning"),
+     "https://data.vlaanderen.be/ns/cultuurparticipatie#thema", "Violation",
+     "2026-10-21: 1.442.307 officieel / 0 taxonomie - migratie afgerond; op 20-10 "
+     "was dit nog 1.420 / 1.372.465 en stond het pad daarom op Warning"),
     ("Locatietype.ttl", "http://www.cidoc-crm.org/cidoc-crm/E7_Activity",
      "https://data.vlaanderen.be/ns/cultuurparticipatie#Activiteit.locatieType", "Violation",
-     "2.622.917 officieel / 0 taxonomie - al conform"),
+     "2026-10-21: 2.780.536 officieel / 0 taxonomie"),
     ("DeelnameType.ttl", "https://data.vlaanderen.be/ns/cultuurparticipatie#Deelname",
      "http://purl.org/dc/terms/type", "Violation",
-     "19.404.498 officieel / 0 taxonomie - al conform"),
+     "2026-10-21: 19.729.996 officieel / 0 taxonomie"),
     ("PrijsCategorieType.ttl", "https://schema.org/PriceSpecification",
      "https://data.vlaanderen.be/ns/cultuurparticipatie#Prijsinfo.prijscategorie", "Violation",
-     "2.905.202 officieel / 0 taxonomie - al conform"),
+     "2026-10-21: 2.108.787 officieel / 0 taxonomie"),
 ]
 
 # De taxonomiecodes zijn GEEN geldige waarde in de codelijst-paden, maar ze
 # blijven wel bestaan als aanbieder-eigen gegeven. Dit is hun enige geldige plek.
-UDB_EVENTTYPE = ("Activiteittype.ttl", "http://www.cidoc-crm.org/cidoc-crm/E7_Activity",
-                 "https://data.publiq.be/ns/uitdatabank#eventType", "Warning")
-
+#
+# De properties heten udb:type en udb:theme - NIET udb:eventType. Gemeten
+# 2026-10-21: udb:type 2.775.996, udb:theme 1.444.161, udb:eventType 0 (komt
+# nergens in de graph voor). Beide staan zo ook in ontology/owl-uwp-oslo-cp.ttl.
+UDB_TAXONOMIE = [
+    # (codelijst, targetClass, pad, severity, meting)
+    ("Activiteittype.ttl", "http://www.cidoc-crm.org/cidoc-crm/E7_Activity",
+     "https://data.publiq.be/ns/uitdatabank#type", "Warning",
+     "2026-10-21: 2.775.996 taxonomie-IRIs"),
+    ("ThemaType.ttl", "http://www.cidoc-crm.org/cidoc-crm/E7_Activity",
+     "https://data.publiq.be/ns/uitdatabank#theme", "Warning",
+     "2026-10-21: 1.444.161 taxonomie-IRIs"),
+]
 
 def _concepten(bestand):
     """(concepten, exactMatch-varianten) uit een codelijst."""
@@ -121,7 +132,7 @@ def genereer_codelijsten():
 
     De skos:exactMatch-varianten (UiTdatabank-taxonomiecodes) zitten hier
     bewust NIET in: die horen niet in dcterms:type thuis. Ze krijgen hun eigen
-    shape op udb:eventType in de aanbieder-laag.
+    shapes op udb:type / udb:theme in de aanbieder-laag.
     """
     uit = [HEADER.format(bron="../conceptschemes/*.ttl")]
     totaal = 0
@@ -136,8 +147,12 @@ def genereer_codelijsten():
         waarden = "\n      ".join(f"<{u}>" for u in concepten)
         lijst = bestand.replace(".ttl", "")
         naam = f"{klasse.split('#')[-1].split('/')[-1]}_{pad.split('#')[-1].split('/')[-1]}"
-        extra = (" Een UiTdatabank-taxonomiecode hoort hier niet: zet die in udb:eventType."
-                 if pad.endswith("terms/type") or pad.endswith("#thema") else "")
+        # noem de juiste doelproperty, afgeleid uit UDB_TAXONOMIE (zelfde
+        # codelijst + klasse), zodat de boodschap klopt per pad
+        doel = next((u_pad for u_best, u_kl, u_pad, _, _ in UDB_TAXONOMIE
+                     if u_best == bestand and u_kl == klasse), None)
+        extra = (f" Een UiTdatabank-taxonomiecode hoort hier niet: zet die in "
+                 f"udb:{doel.split('#')[-1]}." if doel else "")
         uit.append(
             f"""# {bestand}: {len(concepten)} officiele concepten (de {len(matches)} exactMatch-varianten
 # horen NIET in dit pad). Meting: {meting}
@@ -160,38 +175,43 @@ uwpval:Codelijst{naam} a shacl:NodeShape ;
     print(f"  geschreven: {os.path.relpath(pad_uit, HIER)} ({totaal} concepten totaal)")
 
 
-def genereer_udb_eventtype():
-    """Laag 4 (publiq): de UiTdatabank-taxonomiecodes op udb:eventType.
+def genereer_udb_taxonomie():
+    """Laag 4a (publiq): de UiTdatabank-taxonomiecodes op udb:type en udb:theme.
 
     Aanbieder-specifiek, dus apart van de kern. Dit is waar de codes naartoe
-    verhuisd zijn nu ze niet meer in dcterms:type mogen staan.
+    verhuisd zijn nu ze niet meer in dcterms:type en cp:thema mogen staan.
     """
-    bestand, klasse, pad, severity = UDB_EVENTTYPE
-    concepten, matches = _concepten(bestand)
-    if not matches:
-        print(f"  OVERGESLAGEN: {bestand} heeft geen skos:exactMatch")
-        return
-    waarden = "\n      ".join(f"<{u}>" for u in matches)
-    uit = [HEADER.format(bron=f"../conceptschemes/{bestand} (skos:exactMatch)")]
-    uit.append(
-        f"""# {len(matches)} UiTdatabank-taxonomiecodes, afgeleid van de skos:exactMatch
-# in {bestand}. Aanbieder-specifiek (publiq/UiTdatabank): hoort NIET in de kern.
-uwpval:ExtPubliqEventType a shacl:NodeShape ;
+    uit = [HEADER.format(bron="../conceptschemes/*.ttl (skos:exactMatch)")]
+    geschreven = 0
+    for bestand, klasse, pad, severity, meting in UDB_TAXONOMIE:
+        _, matches = _concepten(bestand)
+        if not matches:
+            print(f"  OVERGESLAGEN: {bestand} heeft geen skos:exactMatch")
+            continue
+        waarden = "\n      ".join(f"<{u}>" for u in matches)
+        lokaal = pad.split("#")[-1]
+        lijst = bestand.replace(".ttl", "")
+        uit.append(
+            f"""# {len(matches)} UiTdatabank-taxonomiecodes uit {bestand} (skos:exactMatch).
+# Aanbieder-specifiek (publiq/UiTdatabank): hoort NIET in de kern. Meting: {meting}
+uwpval:ExtPubliqUdb{lokaal[0].upper()}{lokaal[1:]} a shacl:NodeShape ;
   shacl:targetClass <{klasse}> ;
-  shacl:name "UiTdatabank-taxonomiecode op udb:eventType"@nl ;
+  shacl:name "UiTdatabank-taxonomiecode op udb:{lokaal}"@nl ;
   shacl:property [
     shacl:path <{pad}> ;
     shacl:in (
       {waarden} ) ;
     shacl:severity shacl:{severity} ;
-    shacl:message "udb:eventType bevat een code die niet via skos:exactMatch aan codelijst ActiviteitType hangt." ] .
+    shacl:message "udb:{lokaal} bevat een code die niet via skos:exactMatch aan codelijst {lijst} hangt." ] .
 
 """
-    )
-    pad_uit = os.path.join(SHAPES, "ext-publiq-udb-eventtype.ttl")
+        )
+        geschreven += 1
+        print(f"  {bestand}: {len(matches)} taxonomiecodes -> udb:{lokaal} ({severity})")
+    pad_uit = os.path.join(SHAPES, "ext-publiq-udb-taxonomie.ttl")
     with open(pad_uit, "w", encoding="utf-8") as f:
         f.write("".join(uit))
-    print(f"  geschreven: {os.path.relpath(pad_uit, HIER)} ({len(matches)} taxonomiecodes)")
+    print(f"  geschreven: {os.path.relpath(pad_uit, HIER)} ({geschreven} shapes)")
 
 
 if __name__ == "__main__":
@@ -200,5 +220,5 @@ if __name__ == "__main__":
     genereer_verboden_properties()
     print("### codelijsten ###")
     genereer_codelijsten()
-    print("### udb:eventType (aanbieder-laag) ###")
-    genereer_udb_eventtype()
+    print("### udb-taxonomiecodes (aanbieder-laag) ###")
+    genereer_udb_taxonomie()

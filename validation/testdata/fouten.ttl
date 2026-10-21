@@ -10,7 +10,7 @@
 # dcterms:type waar alleen officiele concepten mogen staan
 d:ev-fout a cidoc:E7_Activity ;
     <https://www.w3.org/2000/01/rdf-schema#label> "Expo zonder titel"@nl ;
-    dc:type <https://taxonomy.uitdatabank.be/terms/0.59.0.0.0> ;   # taxonomiecode hoort in udb:eventType
+    dc:type <https://taxonomy.uitdatabank.be/terms/0.59.0.0.0> ;   # taxonomiecode hoort in udb:type
     cp:ruimtetijd d:ev-fout-rt ;
     cidoc:P4_has_time d:ev-fout-tijd .
 

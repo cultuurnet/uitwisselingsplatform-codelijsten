@@ -12,7 +12,7 @@
 d:ev-ok a cidoc:E7_Activity ;
     dc:title "Concert Permeke"@nl ;
     dc:type <https://data.cultuurparticipatie.be/id/concept/ActiviteitType/concert> ;
-    udb:eventType <https://taxonomy.uitdatabank.be/terms/0.50.4.0.0> ;
+    udb:type <https://taxonomy.uitdatabank.be/terms/0.50.4.0.0> ;
     adms:identifier d:ev-ok-id ;
     uwp:verwerktOp "2026-06-02T03:00:00"^^xsd:dateTime ;
     dc:created "2026-01-15T10:00:00"^^xsd:dateTime ;

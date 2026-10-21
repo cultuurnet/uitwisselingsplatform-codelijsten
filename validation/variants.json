@@ -1,49 +1,61 @@
 {
-  "_comment": "Bekende foute property- en class-URI's in de data. Bron: data-exploration/qlever-mcp/src/sparql/variants.ts en docs/ontologie-data-verschilanalyse.md (gemeten 2026-10-15). Aanbieder-NEUTRAAL: dit zijn schrijffouten tegen de ontologie, geen bronspecifieke keuzes. Verdwijnt een variant uit de data, haal de regel dan hier weg.",
+  "_comment": "Bekende foute property-URI's in de data. Bron: data-exploration/qlever-mcp/src/sparql/variants.ts en de eigen hermeting. Aanbieder-NEUTRAAL: dit zijn schrijffouten tegen de ontologie, geen bronspecifieke keuzes. Een variant die op 0 staat blijft hier als REGRESSIEBEWAKING: zo wordt opnieuw invoeren meteen gemeld. Hermeten op 2026-10-21.",
   "properties": [
     {
       "fout": "https://data.vlaanderen.be/ns/cultuurparticipatie#ruimtetijd",
       "correct": "https://data.vlaanderen.be/ns/cultuurparticipatie#Activiteit.ruimtetijd",
       "klasse": "http://www.cidoc-crm.org/cidoc-crm/E7_Activity",
-      "gemeten": 7385026
+      "gemeten": 0,
+      "gemeten_op": "2026-10-21",
+      "nota": "OPGELOST op 2026-10-21 (was 7.385.026 op 20-10). cp:Activiteit.ruimtetijd staat nu op 7.445.350. Blijft staan als regressiebewaking."
     },
     {
       "fout": "https://data.vlaanderen.be/ns/cultuurparticipatie#beschikbaarheid",
       "correct": "https://data.vlaanderen.be/ns/cultuurparticipatie#Activiteit.beschikbaarheid",
       "klasse": "http://www.cidoc-crm.org/cidoc-crm/E7_Activity",
-      "gemeten": 27304
+      "gemeten": 27304,
+      "gemeten_op": "2026-10-21",
+      "nota": "Onveranderd sinds 20-10. Bron: dp-be-publiq-vrijetijdsparticipatie-cultuurconnect-digitaalpodium-activiteiten."
     },
     {
       "fout": "http://www.cidoc-crm.org/cidoc-crm/P4_has_time",
       "correct": "http://www.cidoc-crm.org/cidoc-crm/P4_has_time-span",
       "klasse": "http://www.cidoc-crm.org/cidoc-crm/E7_Activity",
-      "gemeten": 27552
+      "gemeten": 27552,
+      "gemeten_op": "2026-10-21",
+      "nota": "Onveranderd sinds 20-10. Bron: dp-be-publiq-vrijetijdsparticipatie-cultuurconnect-digitaalpodium-activiteiten."
     },
     {
       "fout": "https://www.w3.org/2000/01/rdf-schema#label",
       "correct": "http://purl.org/dc/terms/title",
       "klasse": "http://www.cidoc-crm.org/cidoc-crm/E7_Activity",
       "gemeten": 31775,
-      "nota": "https + www is geen geldige rdfs-namespace"
+      "nota": "31.775 triples op 27.326 knopen, onveranderd. Bron: cultuurconnect-digitaalpodium-activiteiten. https + www is geen geldige rdfs-namespace.",
+      "gemeten_op": "2026-10-21"
     },
     {
       "fout": "https://data.vlaanderen.be/ns/cultuurparticipatie#Prijs.prijscategorie",
       "correct": "https://data.vlaanderen.be/ns/cultuurparticipatie#Prijsinfo.prijscategorie",
       "klasse": "https://schema.org/PriceSpecification",
-      "gemeten": 3785
+      "gemeten": 3851,
+      "gemeten_op": "2026-10-21",
+      "nota": "Licht gegroeid sinds 20-10 (was 3.785)."
     },
     {
       "fout": "https://data.uitwisselingsplatform.be/ns/platform#statistischeSector",
       "correct": "https://data.uitwisselingsplatform.be/ns/platform#statistischeSectorId",
       "klasse": "https://data.vlaanderen.be/ns/cultuurparticipatie#Participant",
-      "gemeten": 206473
+      "gemeten": 206473,
+      "gemeten_op": "2026-10-21",
+      "nota": "Onveranderd sinds 20-10. Bron: cultuurconnect-digitaalpodium."
     },
     {
       "fout": "http://schema.org/contactPoint",
       "correct": "https://schema.org/contactPoint",
       "klasse": "http://www.cidoc-crm.org/cidoc-crm/E7_Activity",
-      "gemeten": 88336,
-      "nota": "schema.org hoort https te zijn; http is een andere IRI voor SPARQL en SHACL"
+      "gemeten": 38981,
+      "nota": "Gedaald sinds 20-10 (was 88.336), maar nog niet weg. schema.org hoort https te zijn.",
+      "gemeten_op": "2026-10-21"
     }
   ]
 }

@@ -64,9 +64,16 @@ Gemeten 2026-10-20. Onderbouwt de severity in `shapes/03-codelijsten.ttl`.
 | `cp:Deelname` | `dcterms:type` | 19.404.498 | 0 |
 | `schema:PriceSpecification` | `cp:Prijsinfo.prijscategorie` | 2.905.202 | 0 |
 
-`udb:eventType` en `udb:type` staan allebei op **0** in de gepubliceerde graph:
-de migratie zit wel in de nieuwe datasets, maar is hier nog niet geland. De
-shapes leggen de doeltoestand vast, niet de huidige.
+**Update 2026-10-21:** de migratie is geland. Alle vijf de paden staan nu op
+nul taxonomiecodes (`dcterms:type` 2.769.514 officieel, `cp:thema` 1.442.307,
+`Activiteit.locatieType` 2.780.536, `Deelname dcterms:type` 19.729.996,
+`Prijsinfo.prijscategorie` 2.108.787).
 
-De enige `udb:`-properties die vandaag op `E7_Activity` voorkomen zijn
-`availableFrom`, `workflowStatus` en `audienceType`.
+De codes zijn verhuisd naar `udb:type` (2.775.996) en `udb:theme` (1.444.161),
+beide gedeclareerd in de ontologie. `udb:eventType` komt **nergens** in de graph
+voor en staat ook niet in de ontologie.
+
+Nieuw op `E7_Activity` en nog niet in de ontologie gedeclareerd:
+`udb:typeLabel` (2.776.018), `udb:themeLabel` (1.444.183),
+`udb:typicalAgeLowerBound` (1.221.221), `udb:typicalAgeUpperBound` (607.176),
+`udb:childrenOnly` (9.400), plus de klasse `udb:SyncState` (5).
