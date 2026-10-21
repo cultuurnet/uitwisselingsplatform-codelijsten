@@ -10,27 +10,27 @@ uwpval:VerbodenPropertiesE7_Activity a shacl:NodeShape ;
     shacl:path <https://data.vlaanderen.be/ns/cultuurparticipatie#ruimtetijd> ;
     shacl:maxCount 0 ;
     shacl:severity shacl:Violation ;
-    shacl:message "Foute property-URI <https://data.vlaanderen.be/ns/cultuurparticipatie#ruimtetijd>. OPGELOST op 2026-10-21 (was 7.385.026 op 20-10). cp:Activiteit.ruimtetijd staat nu op 7.445.350. Blijft staan als regressiebewaking.. Gebruik <https://data.vlaanderen.be/ns/cultuurparticipatie#Activiteit.ruimtetijd>." ] ;
+    shacl:message "Foute property-URI <https://data.vlaanderen.be/ns/cultuurparticipatie#ruimtetijd>. Gebruik <https://data.vlaanderen.be/ns/cultuurparticipatie#Activiteit.ruimtetijd>." ] ;
   shacl:property [
     shacl:path <https://data.vlaanderen.be/ns/cultuurparticipatie#beschikbaarheid> ;
     shacl:maxCount 0 ;
     shacl:severity shacl:Violation ;
-    shacl:message "Foute property-URI <https://data.vlaanderen.be/ns/cultuurparticipatie#beschikbaarheid>. Onveranderd sinds 20-10. Bron: dp-be-publiq-vrijetijdsparticipatie-cultuurconnect-digitaalpodium-activiteiten.. Gebruik <https://data.vlaanderen.be/ns/cultuurparticipatie#Activiteit.beschikbaarheid>." ] ;
+    shacl:message "Foute property-URI <https://data.vlaanderen.be/ns/cultuurparticipatie#beschikbaarheid>. Gebruik <https://data.vlaanderen.be/ns/cultuurparticipatie#Activiteit.beschikbaarheid>." ] ;
   shacl:property [
     shacl:path <http://www.cidoc-crm.org/cidoc-crm/P4_has_time> ;
     shacl:maxCount 0 ;
     shacl:severity shacl:Violation ;
-    shacl:message "Foute property-URI <http://www.cidoc-crm.org/cidoc-crm/P4_has_time>. Onveranderd sinds 20-10. Bron: dp-be-publiq-vrijetijdsparticipatie-cultuurconnect-digitaalpodium-activiteiten.. Gebruik <http://www.cidoc-crm.org/cidoc-crm/P4_has_time-span>." ] ;
+    shacl:message "Foute property-URI <http://www.cidoc-crm.org/cidoc-crm/P4_has_time>. Gebruik <http://www.cidoc-crm.org/cidoc-crm/P4_has_time-span>." ] ;
   shacl:property [
     shacl:path <https://www.w3.org/2000/01/rdf-schema#label> ;
     shacl:maxCount 0 ;
     shacl:severity shacl:Violation ;
-    shacl:message "Foute property-URI <https://www.w3.org/2000/01/rdf-schema#label>. 31.775 triples op 27.326 knopen, onveranderd. Bron: cultuurconnect-digitaalpodium-activiteiten. https + www is geen geldige rdfs-namespace.. Gebruik <http://purl.org/dc/terms/title>." ] ;
+    shacl:message "Foute property-URI <https://www.w3.org/2000/01/rdf-schema#label>. https + www is geen geldige rdfs-namespace. Gebruik <http://purl.org/dc/terms/title>." ] ;
   shacl:property [
     shacl:path <http://schema.org/contactPoint> ;
     shacl:maxCount 0 ;
     shacl:severity shacl:Violation ;
-    shacl:message "Foute property-URI <http://schema.org/contactPoint>. Gedaald sinds 20-10 (was 88.336), maar nog niet weg. schema.org hoort https te zijn.. Gebruik <https://schema.org/contactPoint>." ] ;
+    shacl:message "Foute property-URI <http://schema.org/contactPoint>. schema.org hoort https te zijn. Gebruik <https://schema.org/contactPoint>." ] ;
   shacl:name "Verboden property-URI's op E7_Activity"@nl .
 
 uwpval:VerbodenPropertiesParticipant a shacl:NodeShape ;
@@ -39,7 +39,7 @@ uwpval:VerbodenPropertiesParticipant a shacl:NodeShape ;
     shacl:path <https://data.uitwisselingsplatform.be/ns/platform#statistischeSector> ;
     shacl:maxCount 0 ;
     shacl:severity shacl:Violation ;
-    shacl:message "Foute property-URI <https://data.uitwisselingsplatform.be/ns/platform#statistischeSector>. Onveranderd sinds 20-10. Bron: cultuurconnect-digitaalpodium.. Gebruik <https://data.uitwisselingsplatform.be/ns/platform#statistischeSectorId>." ] ;
+    shacl:message "Foute property-URI <https://data.uitwisselingsplatform.be/ns/platform#statistischeSector>. Gebruik <https://data.uitwisselingsplatform.be/ns/platform#statistischeSectorId>." ] ;
   shacl:name "Verboden property-URI's op Participant"@nl .
 
 uwpval:VerbodenPropertiesPriceSpecification a shacl:NodeShape ;
@@ -48,6 +48,6 @@ uwpval:VerbodenPropertiesPriceSpecification a shacl:NodeShape ;
     shacl:path <https://data.vlaanderen.be/ns/cultuurparticipatie#Prijs.prijscategorie> ;
     shacl:maxCount 0 ;
     shacl:severity shacl:Violation ;
-    shacl:message "Foute property-URI <https://data.vlaanderen.be/ns/cultuurparticipatie#Prijs.prijscategorie>. Licht gegroeid sinds 20-10 (was 3.785).. Gebruik <https://data.vlaanderen.be/ns/cultuurparticipatie#Prijsinfo.prijscategorie>." ] ;
+    shacl:message "Foute property-URI <https://data.vlaanderen.be/ns/cultuurparticipatie#Prijs.prijscategorie>. Gebruik <https://data.vlaanderen.be/ns/cultuurparticipatie#Prijsinfo.prijscategorie>." ] ;
   shacl:name "Verboden property-URI's op PriceSpecification"@nl .
 

@@ -17,3 +17,9 @@ d:ev-fout a cidoc:E7_Activity ;
 # deelname zonder participant
 d:dn-fout a cp:Deelname ;
     cp:Deelname.activiteit d:ev-fout .
+
+# verboden class: propertynaam met hoofdletter als class
+<https://data.uitwisselingsplatform.be/id/besch1> a <https://data.vlaanderen.be/ns/cultuurparticipatie#Activiteit.Beschikbaarheid> .
+
+# relatieve IRI als class: lost op tegen de base en belandt in de instantie-namespace
+<https://data.uitwisselingsplatform.be/id/graf1> a <https://data.uitwisselingsplatform.be/id/Tombstone> .

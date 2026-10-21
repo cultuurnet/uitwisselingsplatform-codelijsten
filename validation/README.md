@@ -24,6 +24,7 @@ Netto doen 22 shapes al het werk, en die toetsen vooral datatypes.
 |---|---|---|---|
 | 1. Kern | `shapes/01-core.ttl` | OSLO AP + UWP-ontologie | ja |
 | 2. Verboden property-URI's | `shapes/02-verboden-properties.ttl` | `variants.json` (gegenereerd) | ja |
+| 2b. Verboden classes | `shapes/02b-verboden-klassen.ttl` | `variants.json` (gegenereerd) | ja |
 | 3. Codelijsten | `shapes/03-codelijsten.ttl` | `../conceptschemes/` (gegenereerd) | ja |
 | 4. Uitbreiding per aanbieder | `shapes/ext-*.ttl` | de aanbieder zelf | nee, per bron |
 | 4a. UiTdatabank-codes | `shapes/ext-publiq-udb-taxonomie.ttl` | `*.ttl` exactMatch (gegenereerd) | nee, publiq |
@@ -32,6 +33,39 @@ Netto doen 22 shapes al het werk, en die toetsen vooral datatypes.
 De scheiding tussen laag 1 en laag 4 is wat voorkomt dat de template op één
 bron geënt raakt. Een property komt **niet** in de kern omdat een grote bron
 ze levert, maar omdat ze in het model staat.
+
+## Verboden termen: properties en classes
+
+Laag 2 en 2b worden allebei uit `variants.json` gegenereerd en bevatten de
+bekende schrijffouten tegen de ontologie. Properties worden afgevangen met
+`sh:maxCount 0` op het foute pad; classes met een `sh:targetClass` op de foute
+class plus `sh:maxCount 0` op `rdf:type`, wat precies een melding per knoop
+geeft.
+
+Classes in de lijst (gemeten 2026-10-21):
+
+| foute class | aantal | hoort te zijn |
+|---|---|---|
+| `http://schema.org/ContactPoint` | 88.483 | `https://schema.org/ContactPoint` |
+| `cp:Activiteit.Beschikbaarheid` | 27.304 | `cp:Beschikbaarheid` |
+| `generiek:gestructureerdeIdentificator` | 533 | `generiek:GestructureerdeIdentificator` |
+| `sosa:hasResult` | 423 | property, geen class - modelleerbeslissing |
+| `gebouw:adres` | 83 | `gebouw:Adres` |
+| `dcterms:Organisator` | 71 knopen, 27.552 verwijzingen | `cp:Organisator` |
+
+**Niet met een targetClass te vangen:** een kale term als `a <Tombstone>`
+(1.785 knopen in QLever, groeiend). Turtle lost zo'n relatieve IRI op tegen de
+base van het bestand, dus bij het inlezen wordt het
+`https://data.uitwisselingsplatform.be/id/Tombstone` - een absolute IRI, en per
+bestand een andere.
+
+Dat vangt `validate_dataproduct.py` met een eigen controle: elke `rdf:type` die
+in de instantie-namespace `.../id/` wijst, wordt gemeld. Legitieme
+platform-classes staan in `.../ns/platform#`, dus die regel raakt niets geldigs.
+Bewust **geen** SHACL: zie Prestaties hieronder.
+
+In `variants.json` gaat het veld `uitleg` mee in de foutboodschap; `nota`
+bevat de meethistoriek en de bron, en blijft uit de boodschap.
 
 ## Codelijst-paden bevatten alleen officiele concepten
 
@@ -99,6 +133,25 @@ python validate_dataproduct.py mijn-export.ttl --strict
 ```
 
 Exit-code 0 bij geen Violations. Warnings en Info blokkeren niet.
+
+## Prestaties
+
+Gemeten op een synthetische export van 50.000 activiteiten (350.007 triples),
+met de gepinde pySHACL:
+
+| opzet | tijd |
+|---|---|
+| alle shape-lagen + de eigen hygiene-controle | **47 s** |
+| idem, maar de hygiene-controle als `sh:sparql` met `shacl:targetSubjectsOf rdf:type` | **> 5 min** (afgebroken) |
+
+Dezelfde detectie, meer dan vijf keer zo traag: een SPARQL-constraint maakt elke
+getypeerde knoop een focus node en voert de query per knoop uit. Die controle
+zit daarom in Python, niet in SHACL.
+
+Reken met die 47 s voor 50.000 activiteiten als je dit inplant. Een volledige
+export van 2,8 miljoen activiteiten loopt richting drie kwartier, dus valideer
+per dataproduct en bij voorkeur incrementeel op wat er gewijzigd is - niet elke
+nacht de hele graph.
 
 ## Severity als afspraak
 

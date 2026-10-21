@@ -1,5 +1,5 @@
 {
-  "_comment": "Bekende foute property-URI's in de data. Bron: data-exploration/qlever-mcp/src/sparql/variants.ts en de eigen hermeting. Aanbieder-NEUTRAAL: dit zijn schrijffouten tegen de ontologie, geen bronspecifieke keuzes. Een variant die op 0 staat blijft hier als REGRESSIEBEWAKING: zo wordt opnieuw invoeren meteen gemeld. Hermeten op 2026-10-21.",
+  "_comment": "Bekende foute property-URI's in de data. Bron: data-exploration/qlever-mcp/src/sparql/variants.ts en de eigen hermeting. Aanbieder-NEUTRAAL: dit zijn schrijffouten tegen de ontologie, geen bronspecifieke keuzes. Een variant die op 0 staat blijft hier als REGRESSIEBEWAKING: zo wordt opnieuw invoeren meteen gemeld. Hermeten op 2026-10-21. Veld 'uitleg' gaat MEE in de foutboodschap (developer-gericht); 'nota' is interne boekhouding en blijft uit de boodschap.",
   "properties": [
     {
       "fout": "https://data.vlaanderen.be/ns/cultuurparticipatie#ruimtetijd",
@@ -7,7 +7,8 @@
       "klasse": "http://www.cidoc-crm.org/cidoc-crm/E7_Activity",
       "gemeten": 0,
       "gemeten_op": "2026-10-21",
-      "nota": "OPGELOST op 2026-10-21 (was 7.385.026 op 20-10). cp:Activiteit.ruimtetijd staat nu op 7.445.350. Blijft staan als regressiebewaking."
+      "nota": "OPGELOST op 2026-10-21 (was 7.385.026 op 20-10). cp:Activiteit.ruimtetijd staat nu op 7.445.350. Blijft staan als regressiebewaking.",
+      "uitleg": ""
     },
     {
       "fout": "https://data.vlaanderen.be/ns/cultuurparticipatie#beschikbaarheid",
@@ -15,7 +16,8 @@
       "klasse": "http://www.cidoc-crm.org/cidoc-crm/E7_Activity",
       "gemeten": 27304,
       "gemeten_op": "2026-10-21",
-      "nota": "Onveranderd sinds 20-10. Bron: dp-be-publiq-vrijetijdsparticipatie-cultuurconnect-digitaalpodium-activiteiten."
+      "nota": "Onveranderd sinds 20-10. Bron: dp-be-publiq-vrijetijdsparticipatie-cultuurconnect-digitaalpodium-activiteiten.",
+      "uitleg": ""
     },
     {
       "fout": "http://www.cidoc-crm.org/cidoc-crm/P4_has_time",
@@ -23,7 +25,8 @@
       "klasse": "http://www.cidoc-crm.org/cidoc-crm/E7_Activity",
       "gemeten": 27552,
       "gemeten_op": "2026-10-21",
-      "nota": "Onveranderd sinds 20-10. Bron: dp-be-publiq-vrijetijdsparticipatie-cultuurconnect-digitaalpodium-activiteiten."
+      "nota": "Onveranderd sinds 20-10. Bron: dp-be-publiq-vrijetijdsparticipatie-cultuurconnect-digitaalpodium-activiteiten.",
+      "uitleg": ""
     },
     {
       "fout": "https://www.w3.org/2000/01/rdf-schema#label",
@@ -31,7 +34,8 @@
       "klasse": "http://www.cidoc-crm.org/cidoc-crm/E7_Activity",
       "gemeten": 31775,
       "nota": "31.775 triples op 27.326 knopen, onveranderd. Bron: cultuurconnect-digitaalpodium-activiteiten. https + www is geen geldige rdfs-namespace.",
-      "gemeten_op": "2026-10-21"
+      "gemeten_op": "2026-10-21",
+      "uitleg": "https + www is geen geldige rdfs-namespace."
     },
     {
       "fout": "https://data.vlaanderen.be/ns/cultuurparticipatie#Prijs.prijscategorie",
@@ -39,7 +43,8 @@
       "klasse": "https://schema.org/PriceSpecification",
       "gemeten": 3851,
       "gemeten_op": "2026-10-21",
-      "nota": "Licht gegroeid sinds 20-10 (was 3.785)."
+      "nota": "Licht gegroeid sinds 20-10 (was 3.785).",
+      "uitleg": ""
     },
     {
       "fout": "https://data.uitwisselingsplatform.be/ns/platform#statistischeSector",
@@ -47,7 +52,8 @@
       "klasse": "https://data.vlaanderen.be/ns/cultuurparticipatie#Participant",
       "gemeten": 206473,
       "gemeten_op": "2026-10-21",
-      "nota": "Onveranderd sinds 20-10. Bron: cultuurconnect-digitaalpodium."
+      "nota": "Onveranderd sinds 20-10. Bron: cultuurconnect-digitaalpodium.",
+      "uitleg": ""
     },
     {
       "fout": "http://schema.org/contactPoint",
@@ -55,7 +61,58 @@
       "klasse": "http://www.cidoc-crm.org/cidoc-crm/E7_Activity",
       "gemeten": 38981,
       "nota": "Gedaald sinds 20-10 (was 88.336), maar nog niet weg. schema.org hoort https te zijn.",
-      "gemeten_op": "2026-10-21"
+      "gemeten_op": "2026-10-21",
+      "uitleg": "schema.org hoort https te zijn."
     }
-  ]
+  ],
+  "classes": [
+    {
+      "fout": "https://data.vlaanderen.be/ns/cultuurparticipatie#Activiteit.Beschikbaarheid",
+      "correct": "https://data.vlaanderen.be/ns/cultuurparticipatie#Beschikbaarheid",
+      "gemeten": 27304,
+      "gemeten_op": "2026-10-21",
+      "nota": "Propertynaam met hoofdletter als class gebruikt. Bron: dp-be-publiq-vrijetijdsparticipatie-cultuurconnect-digitaalpodium-activiteiten. Het aantal is exact gelijk aan dat van de foute property cp:beschikbaarheid.",
+      "uitleg": "Een propertynaam met hoofdletter, gebruikt als class."
+    },
+    {
+      "fout": "http://schema.org/ContactPoint",
+      "correct": "https://schema.org/ContactPoint",
+      "gemeten": 88483,
+      "gemeten_op": "2026-10-21",
+      "nota": "schema.org hoort https te zijn; http is voor SPARQL en SHACL een andere IRI.",
+      "uitleg": "schema.org hoort https te zijn."
+    },
+    {
+      "fout": "http://purl.org/dc/terms/Organisator",
+      "correct": "https://data.vlaanderen.be/ns/cultuurparticipatie#Organisator",
+      "gemeten": 71,
+      "gemeten_op": "2026-10-21",
+      "nota": "dcterms:Organisator bestaat niet in Dublin Core. 71 knopen, maar 27.552 verwijzingen via cidoc:P14_carried_out_by.",
+      "uitleg": "Deze term bestaat niet in Dublin Core."
+    },
+    {
+      "fout": "https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator",
+      "correct": "https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator",
+      "gemeten": 533,
+      "gemeten_op": "2026-10-21",
+      "nota": "Kleine beginletter; de correcte class staat op 11.084.369.",
+      "uitleg": "Kleine beginletter; classes schrijf je met hoofdletter."
+    },
+    {
+      "fout": "https://data.vlaanderen.be/ns/gebouw#adres",
+      "correct": "https://data.vlaanderen.be/ns/gebouw#Adres",
+      "gemeten": 83,
+      "gemeten_op": "2026-10-21",
+      "nota": "Kleine beginletter; de correcte class staat op 8.633.",
+      "uitleg": "Kleine beginletter; classes schrijf je met hoofdletter."
+    },
+    {
+      "fout": "http://www.w3.org/ns/sosa/hasResult",
+      "gemeten": 423,
+      "gemeten_op": "2026-10-21",
+      "nota": "sosa:hasResult is een PROPERTY, geen class. Even vaak als sosa:Observation (423): de resultaatknoop kreeg de property-IRI als type. Geen vervanger ingevuld: welke class hier hoort is een modelleerbeslissing.",
+      "uitleg": "sosa:hasResult is een property, geen class."
+    }
+  ],
+  "_comment_classes": "Classes die niet gebruikt mogen worden. Een kale term als 'Tombstone' (1.785 in QLever) staat hier NIET in: dat is een relatieve IRI, en bij het inlezen van een export lost die op tegen de base van het bestand (bv. https://data.uitwisselingsplatform.be/id/Tombstone). Zo'n term is dus niet met een vaste shacl:targetClass te vangen. Daarvoor is de regel in 01-core.ttl die class-IRIs in de instantie-namespace afkeurt."
 }

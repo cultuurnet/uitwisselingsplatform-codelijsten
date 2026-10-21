@@ -18,10 +18,32 @@ import sys
 from collections import Counter, defaultdict
 
 from pyshacl import validate
-from rdflib import Graph, Namespace
+from rdflib import Graph, Namespace, URIRef
 
 SH = Namespace("http://www.w3.org/ns/shacl#")
+RDF_TYPE = URIRef("http://www.w3.org/1999/02/22-rdf-syntax-ns#type")
+INSTANTIE_NS = "https://data.uitwisselingsplatform.be/id/"
 VOLGORDE = ["Violation", "Warning", "Info"]
+
+
+def hygiene_classes(data):
+    """Class-IRI's die in de instantie-namespace staan.
+
+    Dit vangt het geval dat een shape niet kan vangen: een kale term als
+    `a <Tombstone>` lost bij het parsen op tegen de base van het bestand en
+    wordt dan <.../id/Tombstone> - absolute IRI, maar in de namespace waar
+    instanties wonen. De class verschilt per bestand, dus een vaste
+    shacl:targetClass werkt niet.
+
+    Bewust GEEN SHACL: als sh:sparql met shacl:targetSubjectsOf rdf:type
+    gekost dit op 50.000 knopen meer dan vijf minuten, tegen 48 seconden voor
+    de rest samen. Deze lus doet hetzelfde in milliseconden.
+    """
+    gevonden = Counter()
+    for t in data.objects(None, RDF_TYPE):
+        if isinstance(t, URIRef) and str(t).startswith(INSTANTIE_NS):
+            gevonden[str(t)] += 1
+    return gevonden
 
 
 def laad_shapes(shapes_dir, extra):
@@ -61,6 +83,13 @@ def main():
         pad = rapport.value(r, SH.resultPath)
         sleutel = str(msg) if msg else f"(geen boodschap) pad={pad}"
         per_sev[sev][sleutel] += 1
+
+    for klasse, n in hygiene_classes(data).items():
+        per_sev["Violation"][
+            f"rdf:type verwijst naar <{klasse}>, een IRI in de instantie-namespace "
+            f"({INSTANTIE_NS}). Daar wonen instanties, geen classes - vaak het gevolg "
+            f"van een relatieve IRI zoals 'a <Tombstone>' die tegen de base is opgelost."
+        ] += n
 
     totalen = {s: sum(per_sev[s].values()) for s in VOLGORDE}
     for sev in VOLGORDE:

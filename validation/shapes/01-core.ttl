@@ -17,6 +17,7 @@
 @prefix dc: <http://purl.org/dc/terms/> .
 @prefix adms: <http://www.w3.org/ns/adms#> .
 @prefix uwp: <https://data.uitwisselingsplatform.be/ns/platform#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 
 ### Activiteit - 2.821.596 instanties
 uwpval:KernActiviteit a shacl:NodeShape ;

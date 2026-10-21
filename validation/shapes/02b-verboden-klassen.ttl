@@ -1,0 +1,62 @@
+# GEGENEREERD door validation/generate_shapes.py - niet met de hand aanpassen.
+# Bron: variants.json (classes)
+
+@prefix shacl: <http://www.w3.org/ns/shacl#> .
+@prefix uwpval: <https://data.uitwisselingsplatform.be/doc/validatie#> .
+
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+
+# gemeten 2026-10-21: 27304
+uwpval:VerbodenKlasse1 a shacl:NodeShape ;
+  shacl:targetClass <https://data.vlaanderen.be/ns/cultuurparticipatie#Activiteit.Beschikbaarheid> ;
+  shacl:property [
+    shacl:path rdf:type ;
+    shacl:maxCount 0 ;
+    shacl:severity shacl:Violation ;
+    shacl:message "Verboden class <https://data.vlaanderen.be/ns/cultuurparticipatie#Activiteit.Beschikbaarheid>. Een propertynaam met hoofdletter, gebruikt als class. Gebruik <https://data.vlaanderen.be/ns/cultuurparticipatie#Beschikbaarheid>." ] .
+
+# gemeten 2026-10-21: 88483
+uwpval:VerbodenKlasse2 a shacl:NodeShape ;
+  shacl:targetClass <http://schema.org/ContactPoint> ;
+  shacl:property [
+    shacl:path rdf:type ;
+    shacl:maxCount 0 ;
+    shacl:severity shacl:Violation ;
+    shacl:message "Verboden class <http://schema.org/ContactPoint>. schema.org hoort https te zijn. Gebruik <https://schema.org/ContactPoint>." ] .
+
+# gemeten 2026-10-21: 71
+uwpval:VerbodenKlasse3 a shacl:NodeShape ;
+  shacl:targetClass <http://purl.org/dc/terms/Organisator> ;
+  shacl:property [
+    shacl:path rdf:type ;
+    shacl:maxCount 0 ;
+    shacl:severity shacl:Violation ;
+    shacl:message "Verboden class <http://purl.org/dc/terms/Organisator>. Deze term bestaat niet in Dublin Core. Gebruik <https://data.vlaanderen.be/ns/cultuurparticipatie#Organisator>." ] .
+
+# gemeten 2026-10-21: 533
+uwpval:VerbodenKlasse4 a shacl:NodeShape ;
+  shacl:targetClass <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator> ;
+  shacl:property [
+    shacl:path rdf:type ;
+    shacl:maxCount 0 ;
+    shacl:severity shacl:Violation ;
+    shacl:message "Verboden class <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator>. Kleine beginletter; classes schrijf je met hoofdletter. Gebruik <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator>." ] .
+
+# gemeten 2026-10-21: 83
+uwpval:VerbodenKlasse5 a shacl:NodeShape ;
+  shacl:targetClass <https://data.vlaanderen.be/ns/gebouw#adres> ;
+  shacl:property [
+    shacl:path rdf:type ;
+    shacl:maxCount 0 ;
+    shacl:severity shacl:Violation ;
+    shacl:message "Verboden class <https://data.vlaanderen.be/ns/gebouw#adres>. Kleine beginletter; classes schrijf je met hoofdletter. Gebruik <https://data.vlaanderen.be/ns/gebouw#Adres>." ] .
+
+# gemeten 2026-10-21: 423
+uwpval:VerbodenKlasse6 a shacl:NodeShape ;
+  shacl:targetClass <http://www.w3.org/ns/sosa/hasResult> ;
+  shacl:property [
+    shacl:path rdf:type ;
+    shacl:maxCount 0 ;
+    shacl:severity shacl:Violation ;
+    shacl:message "Verboden class <http://www.w3.org/ns/sosa/hasResult>. sosa:hasResult is een property, geen class. Er is geen vervangende class afgesproken: dit vraagt een modelleerbeslissing." ] .
+

@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """Genereert de twee shape-lagen die uit een bron afgeleid kunnen worden.
 
-  shapes/02-verboden-properties.ttl  <- variants.json
+  shapes/02-verboden-properties.ttl  <- variants.json (properties)
+  shapes/02b-verboden-klassen.ttl    <- variants.json (classes)
   shapes/03-codelijsten.ttl          <- ../conceptschemes/*.ttl (officiele concepten)
   shapes/ext-publiq-udb-taxonomie.ttl <- ../conceptschemes/*.ttl (exactMatch -> udb:type/udb:theme)
 
@@ -43,9 +44,9 @@ def genereer_verboden_properties():
         naam = klasse.split("#")[-1].split("/")[-1]
         props = []
         for v in items:
-            nota = f" {v['nota']}." if v.get("nota") else ""
+            uitleg = f" {v['uitleg']}" if v.get("uitleg") else ""
             boodschap = (
-                f"Foute property-URI <{v['fout']}>.{nota} "
+                f"Foute property-URI <{v['fout']}>.{uitleg} "
                 f"Gebruik <{v['correct']}>."
             )
             props.append(
@@ -68,6 +69,53 @@ def genereer_verboden_properties():
         f.write("".join(uit))
     print(f"  geschreven: {os.path.relpath(pad, HIER)} "
           f"({len(varianten)} varianten over {len(per_klasse)} klassen)")
+
+
+
+def genereer_verboden_klassen():
+    """Laag 2b: classes die niet gebruikt mogen worden.
+
+    Een knoop wordt gevonden via shacl:targetClass op de FOUTE class, en faalt
+    dan altijd op rdf:type met maxCount 0. Dat geeft precies een melding per
+    knoop, met de juiste class in de boodschap.
+
+    Werkt alleen voor classes met een absolute IRI. Een kale term als
+    'Tombstone' lost bij het parsen op tegen de base van het bestand en is dus
+    niet met een vaste targetClass te vangen - zie de regel over de
+    instantie-namespace in 01-core.ttl.
+    """
+    bron = os.path.join(HIER, "variants.json")
+    with open(bron, encoding="utf-8") as f:
+        klassen = json.load(f).get("classes", [])
+    if not klassen:
+        print("  geen classes in variants.json")
+        return
+
+    uit = [HEADER.format(bron="variants.json (classes)")]
+    uit.append("@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n\n")
+    for i, k in enumerate(klassen, start=1):
+        uitleg = f" {k['uitleg']}" if k.get("uitleg") else ""
+        if k.get("correct"):
+            advies = f" Gebruik <{k['correct']}>."
+        else:
+            advies = " Er is geen vervangende class afgesproken: dit vraagt een modelleerbeslissing."
+        boodschap = f"Verboden class <{k['fout']}>.{uitleg}{advies}"
+        uit.append(
+            f"""# gemeten {k.get('gemeten_op', '?')}: {k['gemeten']}
+uwpval:VerbodenKlasse{i} a shacl:NodeShape ;
+  shacl:targetClass <{k['fout']}> ;
+  shacl:property [
+    shacl:path rdf:type ;
+    shacl:maxCount 0 ;
+    shacl:severity shacl:Violation ;
+    shacl:message "{boodschap}" ] .
+
+"""
+        )
+    pad_uit = os.path.join(SHAPES, "02b-verboden-klassen.ttl")
+    with open(pad_uit, "w", encoding="utf-8") as f:
+        f.write("".join(uit))
+    print(f"  geschreven: {os.path.relpath(pad_uit, HIER)} ({len(klassen)} classes)")
 
 
 # Welke codelijst hoort bij welk pad, met de severity en de meting die haar
@@ -218,6 +266,8 @@ if __name__ == "__main__":
     os.makedirs(SHAPES, exist_ok=True)
     print("### verboden properties ###")
     genereer_verboden_properties()
+    print("### verboden klassen ###")
+    genereer_verboden_klassen()
     print("### codelijsten ###")
     genereer_codelijsten()
     print("### udb-taxonomiecodes (aanbieder-laag) ###")
