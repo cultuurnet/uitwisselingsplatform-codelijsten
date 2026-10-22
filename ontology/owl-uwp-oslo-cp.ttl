@@ -19,14 +19,17 @@
 @prefix generiek: <https://data.vlaanderen.be/ns/generiek#> .
 @prefix gebouw: <https://data.vlaanderen.be/ns/gebouw#> .
 @prefix infrastr: <https://data.vlaanderen.be/ns/cultuur-en-jeugd/infrastructuur#> .
+@prefix udb: <https://data.publiq.be/ns/uitdatabank#> .
 @prefix uitpas: <https://data.publiq.be/ns/uitpas#> .
 @prefix museumpas: <https://data.publiq.be/ns/museumpassmusees#> .
+@prefix peppered: <https://data.peppered.be/ns/participatie#> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
 @base <http://www.w3.org/2002/07/owl#> .
 
 <> rdf:type owl:Ontology ;
-   owl:versionInfo "2026-05-18" ;
+   owl:versionInfo "2026-10-22" ;
    rdfs:label "UWP OSLO Cultuurparticipatie ontology"@nl ;
-   rdfs:comment "Phase 1-afstemming met instance-data gap-analyse (2026-05-18)."@nl .
+   rdfs:comment "Afstemming met *-rdf dataproduct-pipelines: ontbrekende udb- en museumpas-termen toegevoegd (2026-09-22)."@nl .
 
 #################################################################
 #    Annotation properties
@@ -159,8 +162,8 @@ adms:identifier rdf:type owl:ObjectProperty ;
 
 ###  http://www.w3.org/ns/locn#address
 locn:address rdf:type owl:ObjectProperty ;
-             rdfs:domain dcterms:Location ,
-                         cp:Organisator ;
+             rdfs:domain [ rdf:type owl:Class ;
+                           owl:unionOf ( dcterms:Location cp:Organisator ) ] ;
              rdfs:range locn:Address ;
              rdfs:comment "Het adres van de entiteit."@nl ;
              rdfs:label "adres"@nl .
@@ -168,8 +171,8 @@ locn:address rdf:type owl:ObjectProperty ;
 
 ###  http://www.w3.org/ns/locn#geometry
 locn:geometry rdf:type owl:ObjectProperty ;
-              rdfs:domain dcterms:Location ,
-                          foaf:Agent ;
+              rdfs:domain [ rdf:type owl:Class ;
+                            owl:unionOf ( dcterms:Location cp:Organisator ) ] ;
               rdfs:range locn:Geometry ;
               rdfs:comment "De geometrie van de entiteit."@nl ;
               rdfs:label "geometrie"@nl .
@@ -211,6 +214,48 @@ uwp:virtueleLocatie rdf:type owl:ObjectProperty ;
                     owl:maxCardinality 1 .
 
 
+###  https://data.publiq.be/ns/uitdatabank#audienceType
+udb:audienceType rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf cp:Activiteit.doelgroep ;
+                 rdfs:domain cidoc:E7_Activity ;
+                 rdfs:range skos:Concept ;
+                 rdfs:comment "UiTdatabank-specifiek doelgroeptype, bepaalt op welke publiekskanalen de activiteit verschijnt. Object mapt op dat van Activiteit.doelgroep via skos:exactMatch."@nl ;
+                 skos:scopeNote "Doelpubliek: everyone (iedereen), members (enkel leden van de organiserende vereniging) of education (scholen). Enkel everyone-events zijn publiek zichtbaar."@nl ;
+                 rdfs:label "doelgroeptype"@nl .
+
+
+###  https://data.publiq.be/ns/uitdatabank#workflowStatus
+udb:workflowStatus rdf:type owl:ObjectProperty ;
+                   rdfs:domain cidoc:E7_Activity ,
+                               cp:Organisator ,
+                               dcterms:Location ;
+                   rdfs:range skos:Concept ;
+                   rdfs:comment "Redactionele status van de UiTdatabank-entiteit."@nl ;
+                   skos:scopeNote "Waarden zijn concept-URI's https://data.publiq.be/concepts/workflowStatus/{CODE}. Voor events: DRAFT (ontwerp), READY_FOR_VALIDATION (gepubliceerd, wacht op controle), APPROVED (goedgekeurd), REJECTED (afgekeurd) of DELETED (verwijderd, maar nog aanwezig). Voor organisatoren: ACTIVE of DELETED. Voor locaties o.a. READY_FOR_VALIDATION, APPROVED (en andere UiTdatabank-workflowwaarden)."@nl ;
+                   rdfs:label "workflowstatus"@nl .
+
+
+###  https://data.publiq.be/ns/uitdatabank#type
+udb:type rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf dcterms:type ;
+         rdfs:domain cidoc:E7_Activity ,
+                     dcterms:Location ;
+         rdfs:range skos:Concept ;
+         rdfs:comment "Code van het type activiteit of locatie in UiTdatabank (bv. Concert, Tentoonstelling). Parallel aan dcterms:type, dat het officieel gemapte OSLO-type bevat."@nl ;
+         rdfs:label "UiTdatabank-type"@nl ;
+         owl:maxCardinality 1 .
+
+
+###  https://data.publiq.be/ns/uitdatabank#theme
+udb:theme rdf:type owl:ObjectProperty ;
+          rdfs:subPropertyOf cp:thema ;
+          rdfs:domain cidoc:E7_Activity ;
+          rdfs:range skos:Concept ;
+          rdfs:comment "Code van het thema in UiTdatabank (bv. Pop en rock). Een event heeft hoogstens één thema. Parallel aan cp:thema, dat het officieel gemapte OSLO-thema bevat."@nl ;
+          rdfs:label "UiTdatabank-thema"@nl ;
+          owl:maxCardinality 1 .
+
+
 ###  https://data.vlaanderen.be/ns/cultuurparticipatie#Activiteit.beschikbaarheid
 cp:Activiteit.beschikbaarheid rdf:type owl:ObjectProperty ;
                               rdfs:domain cidoc:E7_Activity ;
@@ -243,6 +288,14 @@ cp:Activiteit.deelnemer rdf:type owl:ObjectProperty ;
                         rdfs:range cp:Participant ;
                         rdfs:comment "Participant die deelneemt aan een Activiteit."@nl ;
                         rdfs:label "deelnemer"@nl .
+
+
+###  https://data.vlaanderen.be/ns/cultuurparticipatie#Activiteit.doelgroep
+cp:Activiteit.doelgroep rdf:type owl:ObjectProperty ;
+                        rdfs:domain cidoc:E7_Activity ;
+                        rdfs:range skos:Concept ;
+                        rdfs:comment "Het bedoelde of verwachte publiek van een Activiteit."@nl ;
+                        rdfs:label "doelgroep"@nl .
 
 
 ###  https://data.vlaanderen.be/ns/cultuurparticipatie#Activiteit.locatieType
@@ -432,6 +485,45 @@ schemas:value rdf:type owl:ObjectProperty ;
               rdfs:label "waarde"@nl .
 
 
+###  http://purl.org/dc/terms/isPartOf
+dcterms:isPartOf rdf:type owl:ObjectProperty ;
+                 rdfs:domain cp:Deelname ;
+                 rdfs:comment "Verwijst van een Deelname naar de overkoepelende bezoekknoop. Eén museumbezoek levert meerdere Deelnames op, één per tentoonstelling die op dat moment liep; tel bezoeken daarom met COUNT(DISTINCT ?bezoek) over deze property. De bezoekknoop draagt zelf geen rdf:type, vandaar geen rdfs:range."@nl ;
+                 rdfs:label "is deel van"@nl .
+
+
+###  http://purl.org/dc/terms/relation
+dcterms:relation rdf:type owl:ObjectProperty ;
+                 rdfs:domain cp:Deelname ;
+                 rdfs:range cp:Participant ;
+                 rdfs:comment "Verwijst naar de Participant die de order plaatste waartoe deze Deelname behoort. Gebruikt in de be.sirus.ticketing-dataproducten, waar een ticketverkoop als Deelname wordt geïnterpreteerd: bevat een order meerdere tickets, dan is alleen de aankoper gekend en krijgen de overige Deelnames géén cp:Deelname.participant, maar wel deze verwijzing. Gemeten 2026-10-22: 526.092 Deelnames, alle zonder eigen participant, verwijzend naar 145.303 aankopers (gemiddeld 3,6 per order). Let op bij tellingen: deze Deelnames hebben geen toegewezen deelnemer."@nl ;
+                 rdfs:label "gerelateerd aan"@nl .
+
+
+###  http://www.w3.org/2004/02/skos/core#relatedMatch
+skos:relatedMatch rdf:type owl:ObjectProperty ;
+                  rdfs:domain cidoc:E7_Activity ;
+                  rdfs:comment "Verwijzing naar een verwante entiteit bij een andere aanbieder. Afwijkend van het SKOS-gebruik, waar deze property tussen Concepten staat: hier verbindt ze een Activiteit met een entiteit in de peppered-namespace. Geen rdfs:range omdat het doel buiten dit model valt."@nl ;
+                  rdfs:label "verwante overeenkomst"@nl .
+
+
+###  https://schema.org/image
+schemas:image rdf:type owl:ObjectProperty ;
+              rdfs:domain [ rdf:type owl:Class ;
+                            owl:unionOf ( cidoc:E7_Activity cp:Organisator ) ] ;
+              rdfs:range schemas:ImageObject ;
+              rdfs:comment "Afbeelding bij een Activiteit of Organisator."@nl ;
+              rdfs:label "afbeelding"@nl .
+
+
+###  https://schema.org/video
+schemas:video rdf:type owl:ObjectProperty ;
+              rdfs:domain cidoc:E7_Activity ;
+              rdfs:range schemas:VideoObject ;
+              rdfs:comment "Video bij een Activiteit."@nl ;
+              rdfs:label "video"@nl .
+
+
 #################################################################
 #    Data properties
 #################################################################
@@ -598,6 +690,24 @@ uwp:verwerktOp rdf:type owl:DatatypeProperty ;
                rdfs:label "verwerkt op"@nl ;
                owl:maxCardinality 1 ;
                owl:minCardinality 1 .
+
+
+###  https://data.publiq.be/ns/uitdatabank#availableFrom
+udb:availableFrom rdf:type owl:DatatypeProperty ;
+                  rdfs:domain cidoc:E7_Activity ;
+                  rdfs:range xsd:dateTime ;
+                  rdfs:comment "Publicatiedatum: vanaf wanneer het event publiek getoond mag worden. Kan in de toekomst liggen; leeg als het event nooit gepubliceerd werd."@nl ;
+                  rdfs:label "beschikbaar vanaf"@nl ;
+                  owl:maxCardinality 1 .
+
+
+###  https://data.publiq.be/ns/museumpassmusees#lastActivity
+museumpas:lastActivity rdf:type owl:DatatypeProperty ;
+                       rdfs:domain museumpas:Passholder ;
+                       rdfs:range xsd:dateTime ;
+                       rdfs:comment "Tijdstip van de meest recente activiteit van de pashouder (grootste van wijziging, geocodering en geregistreerde activiteit). Gebruikt als watermerk voor incrementele synchronisatie."@nl ;
+                       rdfs:label "laatste activiteit"@nl ;
+                       owl:maxCardinality 1 .
 
 
 
@@ -808,6 +918,126 @@ schemas:value rdf:type owl:DatatypeProperty ;
               rdfs:label "waarde"@nl .
 
 
+###  http://www.w3.org/ns/dcat#keyword
+dcat:keyword rdf:type owl:DatatypeProperty ;
+             rdfs:domain [ rdf:type owl:Class ;
+                           owl:unionOf ( cidoc:E7_Activity cp:Organisator dcterms:Location ) ] ;
+             rdfs:comment "Vrij label bij een Activiteit, Organisator of Locatie. Het datatype van de literal draagt het labeltype: https://data.cultuurparticipatie.be/id/concept/LabelType/publiek of .../verborgen. Filter daarop als je alleen publieke labels wil."@nl ;
+             rdfs:label "label"@nl .
+
+
+###  http://www.w3.org/ns/prov#invalidatedAtTime
+prov:invalidatedAtTime rdf:type owl:DatatypeProperty ;
+                       rdfs:range xsd:dateTime ;
+                       rdfs:comment "Tijdstip waarop de entiteit ongeldig werd (soft delete). Platformbreed gebruikt op Activiteit, Deelname, Organisator en Locatie, vandaar geen domain."@nl ;
+                       rdfs:label "verwijderd op tijdstip"@nl .
+
+
+###  https://data.peppered.be/ns/participatie#ordered
+peppered:ordered rdf:type owl:DatatypeProperty ;
+                 rdfs:domain cp:Deelname ;
+                 rdfs:range xsd:dateTime ;
+                 rdfs:comment "Tijdstip waarop de order werd geplaatst. Aanbieder-eigen term van peppered (sirus ticketing)."@nl ;
+                 rdfs:label "besteld op"@nl .
+
+
+###  https://data.publiq.be/ns/uitdatabank#childrenOnly
+udb:childrenOnly rdf:type owl:DatatypeProperty ;
+                 rdfs:domain cidoc:E7_Activity ;
+                 rdfs:range xsd:boolean ;
+                 rdfs:comment "Geeft aan of de Activiteit uitsluitend voor kinderen bedoeld is. Aanbieder-eigen term van UiTdatabank."@nl ;
+                 rdfs:label "enkel voor kinderen"@nl .
+
+
+###  https://data.publiq.be/ns/uitdatabank#themeLabel
+udb:themeLabel rdf:type owl:DatatypeProperty ;
+               rdfs:domain cidoc:E7_Activity ;
+               rdfs:range rdf:langString ;
+               rdfs:comment "Label dat UiTdatabank bij de taxonomiecode in udb:theme levert. Aanbieder-eigen term; het officiële concept in cp:thema draagt zijn eigen skos:prefLabel."@nl ;
+               rdfs:label "thema label"@nl .
+
+
+###  https://data.publiq.be/ns/uitdatabank#typeLabel
+udb:typeLabel rdf:type owl:DatatypeProperty ;
+              rdfs:domain cidoc:E7_Activity ;
+              rdfs:range rdf:langString ;
+              rdfs:comment "Label dat UiTdatabank bij de taxonomiecode in udb:type levert. Aanbieder-eigen term; het officiële concept in dcterms:type draagt zijn eigen skos:prefLabel."@nl ;
+              rdfs:label "type label"@nl .
+
+
+###  https://data.publiq.be/ns/uitdatabank#typicalAgeLowerBound
+udb:typicalAgeLowerBound rdf:type owl:DatatypeProperty ;
+                         rdfs:domain cidoc:E7_Activity ;
+                         rdfs:range xsd:integer ;
+                         rdfs:comment "Ondergrens van de leeftijdsgroep waarvoor de Activiteit bedoeld is. Aanbieder-eigen term van UiTdatabank."@nl ;
+                         rdfs:label "typische leeftijd ondergrens"@nl .
+
+
+###  https://data.publiq.be/ns/uitdatabank#typicalAgeUpperBound
+udb:typicalAgeUpperBound rdf:type owl:DatatypeProperty ;
+                         rdfs:domain cidoc:E7_Activity ;
+                         rdfs:range xsd:integer ;
+                         rdfs:comment "Bovengrens van de leeftijdsgroep waarvoor de Activiteit bedoeld is. Aanbieder-eigen term van UiTdatabank."@nl ;
+                         rdfs:label "typische leeftijd bovengrens"@nl .
+
+
+###  https://data.publiq.be/ns/uitpas#lastActivity
+uitpas:lastActivity rdf:type owl:DatatypeProperty ;
+                    rdfs:domain cp:Participant ;
+                    rdfs:range xsd:dateTime ;
+                    rdfs:comment "Tijdstip van de laatste UiTPAS-activiteit van de Participant. Aanbieder-eigen term; de museumpas-tegenhanger is museumpas:lastActivity."@nl ;
+                    rdfs:label "laatste activiteit"@nl .
+
+
+###  https://schema.org/copyrightHolder
+schemas:copyrightHolder rdf:type owl:DatatypeProperty ;
+                        rdfs:domain schemas:ImageObject ;
+                        rdfs:range xsd:string ;
+                        rdfs:comment "Rechthebbende op de afbeelding."@nl ;
+                        rdfs:label "rechthebbende"@nl .
+
+
+###  https://schema.org/description
+schemas:description rdf:type owl:DatatypeProperty ;
+                    rdfs:domain schemas:ImageObject ;
+                    rdfs:range xsd:string ;
+                    rdfs:comment "Beschrijving van de afbeelding. Let op: dit is een andere term dan dcterms:description, die op Activiteit, Organisator en Locatie gebruikt wordt."@nl ;
+                    rdfs:label "beschrijving"@nl .
+
+
+###  https://schema.org/identifier
+schemas:identifier rdf:type owl:DatatypeProperty ;
+                   rdfs:domain schemas:ImageObject ;
+                   rdfs:range xsd:string ;
+                   rdfs:comment "Identificator van de afbeelding bij de bron. Let op: dit is een andere term dan adms:identifier, die de platform-identificator draagt."@nl ;
+                   rdfs:label "identificator"@nl .
+
+
+###  https://schema.org/inLanguage
+schemas:inLanguage rdf:type owl:DatatypeProperty ;
+                   rdfs:domain [ rdf:type owl:Class ;
+                                 owl:unionOf ( schemas:ImageObject schemas:VideoObject ) ] ;
+                   rdfs:range xsd:string ;
+                   rdfs:comment "Taalcode van de afbeelding of video, bijvoorbeeld \"nl\"."@nl ;
+                   rdfs:label "taal"@nl .
+
+
+###  https://schema.org/isAccessibleForFree
+schemas:isAccessibleForFree rdf:type owl:DatatypeProperty ;
+                            rdfs:domain cp:Beschikbaarheid ;
+                            rdfs:range xsd:boolean ;
+                            rdfs:comment "Geeft aan of deelname kosteloos is. LET OP: de data levert dit vandaag als xsd:string met de waarde \"True\" (509 triples, gemeten 2026-10-22); de ontologie houdt xsd:boolean aan en de bron hoort te volgen."@nl ;
+                            rdfs:label "gratis toegankelijk"@nl .
+
+
+###  https://schema.org/unitText
+schemas:unitText rdf:type owl:DatatypeProperty ;
+                 rdfs:domain schemas:QuantitativeValue ;
+                 rdfs:range xsd:string ;
+                 rdfs:comment "Eenheid bij de waarde in schemas:value."@nl ;
+                 rdfs:label "eenheid"@nl .
+
+
 #################################################################
 #    Classes
 #################################################################
@@ -926,6 +1156,14 @@ museumpas:Visit rdf:type owl:Class ;
                  rdfs:comment "Deelname geregistreerd als museumbezoek via museumPASSmusées."@nl ;
                  skos:scopeNote "Af te leiden voor cp:Deelname-instanties met subject-URI-prefix https://data.publiq.be/id/visit/mpm/ ."@nl ;
                  rdfs:label "Museumbezoek"@nl .
+
+
+###  https://data.publiq.be/ns/museumpassmusees#Passholder
+museumpas:Passholder rdf:type owl:Class ;
+                     rdfs:subClassOf cp:Participant ;
+                     rdfs:comment "Anonieme museumPASSmusées-pashouder."@nl ;
+                     skos:scopeNote "Af te leiden voor cp:Participant-instanties met subject-URI-prefix https://data.publiq.be/id/passholder/mpm/ ."@nl ;
+                     rdfs:label "Pashouder"@nl .
 
 
 ###  https://data.vlaanderen.be/ns/cultuurparticipatie#Organisator
